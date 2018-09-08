@@ -5,6 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700");
 html {
   line-height: 1.15;
   /* 1 */
@@ -302,62 +303,69 @@ template {
   padding: 0;
   box-sizing: border-box; }
 
-.component-landing-page .header {
-  background-image: url("../assets/images/bg-main3.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 100vh; }
-  .component-landing-page .header .header-content .header-logo {
-    text-align: center;
-    padding-top: 1rem;
-    margin-bottom: 5%; }
-    .component-landing-page .header .header-content .header-logo h1 {
-      margin: 0;
-      font-size: 4rem;
-      color: white; }
-  .component-landing-page .header .header-content .header-form {
-    background-color: rgba(0, 0, 0, 0.9);
-    width: 50%;
-    height: 70vh;
-    margin: 0 auto;
-    color: white;
-    padding: 2rem; }
-    .component-landing-page .header .header-content .header-form .header-form-type {
-      display: flex; }
-      .component-landing-page .header .header-content .header-form .header-form-type .form-controls {
-        background-color: #4D5765;
-        width: 50%;
-        text-align: center;
-        padding: 12px;
-        font-size: 1.25rem; }
-        .component-landing-page .header .header-content .header-form .header-form-type .form-controls:hover {
-          cursor: pointer; }
-      .component-landing-page .header .header-content .header-form .header-form-type .signupActive, .component-landing-page .header .header-content .header-form .header-form-type .loginActive {
-        background-color: #00B795; }
-    .component-landing-page .header .header-content .header-form .header-form-title {
+.component-landing-page {
+  font-family: "Roboto Mono", monospace; }
+  .component-landing-page .header {
+    background-image: url("../assets/images/bg-main3.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh; }
+    .component-landing-page .header .header-content .header-logo {
       text-align: center;
-      margin: 1.5rem;
-      font-size: 1.6rem; }
-    .component-landing-page .header .header-content .header-form .header-form-body input {
-      padding: 12px 6px;
-      background-color: transparent;
-      border: 1px solid grey;
-      margin-bottom: 0.8rem; }
-    .component-landing-page .header .header-content .header-form .header-form-body .input-name-container {
-      display: flex;
-      justify-content: space-between; }
-      .component-landing-page .header .header-content .header-form .header-form-body .input-name-container input {
-        width: 48%; }
-    .component-landing-page .header .header-content .header-form .header-form-body .input-container {
-      width: 100%; }
-      .component-landing-page .header .header-content .header-form .header-form-body .input-container input {
-        width: 100%; }
-    .component-landing-page .header .header-content .header-form .header-form-footer {
-      text-align: center;
-      width: 75%;
+      padding-top: 1rem;
+      margin-bottom: 5%; }
+      .component-landing-page .header .header-content .header-logo h1 {
+        margin: 0;
+        font-size: 4rem;
+        color: white; }
+    .component-landing-page .header .header-content .header-form {
+      background-color: rgba(0, 0, 0, 0.9);
+      width: 50%;
+      min-height: 60vh;
       margin: 0 auto;
-      margin-top: 15px;
-      padding: 10px;
-      background-color: #00B795; }
-      .component-landing-page .header .header-content .header-form .header-form-footer h4 {
-        font-size: 1.5rem; }
+      color: white;
+      padding: 2rem; }
+      .component-landing-page .header .header-content .header-form .header-form-type {
+        display: flex; }
+        .component-landing-page .header .header-content .header-form .header-form-type .form-controls {
+          background-color: #4D5765;
+          width: 50%;
+          text-align: center;
+          padding: 12px;
+          font-size: 1.25rem; }
+          .component-landing-page .header .header-content .header-form .header-form-type .form-controls:hover {
+            cursor: pointer; }
+        .component-landing-page .header .header-content .header-form .header-form-type .signupActive, .component-landing-page .header .header-content .header-form .header-form-type .loginActive {
+          background-color: #0786FC; }
+      .component-landing-page .header .header-content .header-form .header-form-title {
+        text-align: center;
+        margin: 1.5rem;
+        font-size: 1.6rem; }
+      .component-landing-page .header .header-content .header-form .header-form-body .hidden {
+        display: none; }
+      .component-landing-page .header .header-content .header-form .header-form-body input {
+        padding: 12px 6px;
+        background-color: transparent;
+        border: 1px solid grey;
+        margin-bottom: 0.8rem;
+        color: #fff; }
+      .component-landing-page .header .header-content .header-form .header-form-body input:focus {
+        outline: #0786FC solid 2px; }
+      .component-landing-page .header .header-content .header-form .header-form-body .input-name-container {
+        display: flex;
+        justify-content: space-between; }
+        .component-landing-page .header .header-content .header-form .header-form-body .input-name-container input {
+          width: 48%; }
+      .component-landing-page .header .header-content .header-form .header-form-body .input-container {
+        width: 100%; }
+        .component-landing-page .header .header-content .header-form .header-form-body .input-container input {
+          width: 100%; }
+      .component-landing-page .header .header-content .header-form .header-form-footer {
+        text-align: center;
+        width: 75%;
+        margin: 0 auto;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #0786FC; }
+        .component-landing-page .header .header-content .header-form .header-form-footer h4 {
+          font-size: 1.5rem; }

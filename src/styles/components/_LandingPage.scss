@@ -1,4 +1,6 @@
+@import '../variables';
 .component-landing-page {
+    font-family: $font-main;
     .header {
         background-image:  url('../assets/images/bg-main3.jpg');
         background-size: cover;
@@ -13,13 +15,12 @@
                     margin: 0;
                     font-size: 4rem;
                     color: white;
-
                 }
             }
             .header-form{
                 background-color: rgba(0,0,0,0.9);
                 width: 50%;
-                height: 70vh;
+                min-height: 60vh;
                 margin: 0 auto;
                 color: white;
                 padding: 2rem;
@@ -27,7 +28,7 @@
                 .header-form-type{
                     display: flex;
                     .form-controls{
-                        background-color: #4D5765; 
+                        background-color: $btn-grey; 
                         width: 50%;
                         text-align: center;
                         padding: 12px;
@@ -37,7 +38,7 @@
                         }
                     }
                     .signupActive, .loginActive{
-                        background-color: #00B795;
+                        background-color: $btn-blue;
                     }
                 }
                 .header-form-title{
@@ -47,11 +48,18 @@
                 }
 
                 .header-form-body{
+                    .hidden{
+                        display: none;
+                    }
                     input{
                         padding: 12px 6px;
                         background-color: transparent;
                         border: 1px solid grey;
                         margin-bottom: 0.8rem;
+                        color: #fff;
+                    }
+                    input:focus{
+                        outline: $btn-blue solid 2px;
                     }
                     .input-name-container{
                         display: flex;
@@ -73,7 +81,7 @@
                     margin: 0 auto;
                     margin-top: 15px;
                     padding: 10px;
-                    background-color: #00B795;
+                    background-color: $btn-blue;
                     h4{
                         font-size: 1.5rem;
                     }
