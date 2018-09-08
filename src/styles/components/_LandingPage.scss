@@ -2,7 +2,7 @@
 .component-landing-page {
     font-family: $font-main;
     .header {
-        background-image:  url('../assets/images/bg-main3.jpg');
+        background-image: url('../assets/images/bg-main3.jpg');
         background-size: cover;
         background-position: center;
         height: 100vh;
@@ -17,73 +17,81 @@
                     color: white;
                 }
             }
-            .header-form{
-                background-color: rgba(0,0,0,0.9);
+            .header-form {
+                background-color: rgba(0, 0, 0, 0.9);
                 width: 50%;
                 min-height: 60vh;
                 margin: 0 auto;
                 color: white;
                 padding: 2rem;
-
-                .header-form-type{
+                .header-form-type {
                     display: flex;
-                    .form-controls{
-                        background-color: $btn-grey; 
+                    .form-controls {
+                        background-color: $btn-grey;
                         width: 50%;
                         text-align: center;
                         padding: 12px;
                         font-size: 1.25rem;
-                        &:hover{
+                        &:hover {
                             cursor: pointer;
                         }
                     }
-                    .signupActive, .loginActive{
+                    .signupActive,
+                    .loginActive {
                         background-color: $btn-blue;
                     }
                 }
-                .header-form-title{
+                .header-form-title {
                     text-align: center;
                     margin: 1.5rem;
                     font-size: 1.6rem;
                 }
-
-                .header-form-body{
-                    .hidden{
+                .header-form-body {
+                    .hidden {
                         display: none;
                     }
-                    input{
+                    input {
                         padding: 12px 6px;
                         background-color: transparent;
                         border: 1px solid grey;
                         margin-bottom: 0.8rem;
                         color: #fff;
                     }
-                    input:focus{
+                    input:focus {
                         outline: $btn-blue solid 2px;
                     }
-                    .input-name-container{
+                    .input-name-container {
                         display: flex;
                         justify-content: space-between;
-                        input{
+                        input {
                             width: 48%;
                         }
                     }
-                    .input-container{
+                    .input-container {
                         width: 100%;
-                        input{
+                        input {
                             width: 100%;
                         }
                     }
                 }
-                .header-form-footer{
+                .header-form-footer {
                     text-align: center;
                     width: 75%;
                     margin: 0 auto;
                     margin-top: 15px;
-                    padding: 10px;
-                    background-color: $btn-blue;
-                    h4{
-                        font-size: 1.5rem;
+                    
+                    button {
+                        padding: 10px;
+                        background-color: $btn-blue;
+                        width: 100%;
+                        border: none;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                        h4 {
+                            font-size: 1.5rem;
+                            color: #fff;
+                        }
                     }
                 }
             }

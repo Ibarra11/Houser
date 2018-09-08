@@ -335,7 +335,8 @@ template {
           font-size: 1.25rem; }
           .component-landing-page .header .header-content .header-form .header-form-type .form-controls:hover {
             cursor: pointer; }
-        .component-landing-page .header .header-content .header-form .header-form-type .signupActive, .component-landing-page .header .header-content .header-form .header-form-type .loginActive {
+        .component-landing-page .header .header-content .header-form .header-form-type .signupActive,
+        .component-landing-page .header .header-content .header-form .header-form-type .loginActive {
           background-color: #0786FC; }
       .component-landing-page .header .header-content .header-form .header-form-title {
         text-align: center;
@@ -364,8 +365,89 @@ template {
         text-align: center;
         width: 75%;
         margin: 0 auto;
-        margin-top: 15px;
-        padding: 10px;
-        background-color: #0786FC; }
-        .component-landing-page .header .header-content .header-form .header-form-footer h4 {
-          font-size: 1.5rem; }
+        margin-top: 15px; }
+        .component-landing-page .header .header-content .header-form .header-form-footer button {
+          padding: 10px;
+          background-color: #0786FC;
+          width: 100%;
+          border: none; }
+          .component-landing-page .header .header-content .header-form .header-form-footer button:hover {
+            cursor: pointer; }
+          .component-landing-page .header .header-content .header-form .header-form-footer button h4 {
+            font-size: 1.5rem;
+            color: #fff; }
+
+.component-home {
+  background-color: #344055;
+  height: 100vh; }
+  .component-home .nav {
+    display: flex;
+    background-color: #0786FC;
+    align-items: center;
+    padding: 1rem;
+    color: #fff;
+    justify-content: space-between; }
+    .component-home .nav .navbar-logo h2 {
+      font-size: 1.75rem; }
+    .component-home .nav .nav-links {
+      list-style: none;
+      display: flex; }
+      .component-home .nav .nav-links .link {
+        padding-right: 1rem;
+        font-size: 1.25rem;
+        letter-spacing: 2px; }
+        .component-home .nav .nav-links .link:hover {
+          cursor: pointer; }
+  .component-home .property-view {
+    height: 89.5vh;
+    display: flex; }
+    .component-home .property-view .property-controls {
+      width: 30%;
+      border: 1px solid white;
+      padding: 1rem;
+      height: 100%; }
+      .component-home .property-view .property-controls .search h4,
+      .component-home .property-view .property-controls .search h5 {
+        color: #fff;
+        text-align: center; }
+      .component-home .property-view .property-controls .search h4 {
+        text-align: center;
+        font-size: 1.5rem; }
+      .component-home .property-view .property-controls .search h5 {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem; }
+      .component-home .property-view .property-controls .search .search-filter .filter {
+        text-align: center;
+        margin-top: 1rem; }
+        .component-home .property-view .property-controls .search .search-filter .filter select {
+          width: 100%;
+          padding: 8px; }
+      .component-home .property-view .property-controls .search .search-button {
+        display: flex;
+        justify-content: center; }
+        .component-home .property-view .property-controls .search .search-button button {
+          width: 75%;
+          margin-top: 1.5rem;
+          padding: 5px 0;
+          text-align: center;
+          padding: 10px 0;
+          border-radius: 5px;
+          border: none;
+          font-size: 1.25rem; }
+    .component-home .property-view .property-list {
+      width: 70%;
+      height: 100%;
+      border: 1px solid red; }
+      .component-home .property-view .property-list .property-header {
+        height: 12%;
+        border: 1px solid green;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        .component-home .property-view .property-list .property-header h3 {
+          color: #fff;
+          font-size: 2rem; }
+        .component-home .property-view .property-list .property-header h6 {
+          color: #fff;
+          font-size: 1rem; }

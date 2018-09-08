@@ -1,0 +1,99 @@
+.component-home {
+    background-color: #344055;
+    height: 100vh;
+    .nav {
+        display: flex;
+        background-color: $btn-blue;
+        align-items: center;
+        padding: 1rem;
+        color: #fff;
+        justify-content: space-between;
+        .navbar-logo {
+            h2 {
+                font-size: 1.75rem;
+            }
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            .link {
+                padding-right: 1rem;
+                font-size: 1.25rem;
+                letter-spacing: 2px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .property-view {
+        height: 89.5vh;
+        display: flex;
+        .property-controls {
+            width: 30%;
+            border: 1px solid white;
+            padding: 1rem;
+            height: 100%;
+            .search {
+                h4,
+                h5 {
+                    color: #fff;
+                    text-align: center;
+                }
+                h4 {
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+                h5 {
+                    margin-bottom: 0.5rem;
+                    font-size: 1.2rem;
+                }
+                .search-filter {
+                    .filter {
+                        text-align: center;
+                        margin-top: 1rem;
+                        select {
+                            width: 100%;
+                            padding: 8px;
+                        }
+                    }
+                }
+                .search-button {
+                    display: flex;
+                    justify-content: center;
+                    button {
+                        width: 75%;
+                        margin-top: 1.5rem;
+                        padding: 5px 0;
+                        text-align: center;
+                        padding: 10px 0;
+                        border-radius: 5px;
+                        border: none;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }
+        .property-list{
+            width: 70%;
+            height: 100%;
+            border: 1px solid red;
+            .property-header{
+                height: 12%;
+                border: 1px solid green;
+                padding: 0 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                h3{
+                    color: #fff;
+                    font-size: 2rem;
+                }
+                h6{
+                    color: #fff;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}

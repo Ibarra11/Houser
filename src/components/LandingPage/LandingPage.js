@@ -16,27 +16,23 @@ class LandingPage extends Component {
         this.onInputChange = this.onInputChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     };
-
     toggleActive() {
         this.setState({
             loginActive: !this.state.loginActive,
             signupActive: !this.state.signupActive
         })
     }
-
     onInputChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-
     formEnter(e) {
         console.log(e.target.value);
     }
-
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
         console.log(this.state);
+        this.props.history.push('/home');
     }
-
     render() {
         return (
             <div className="component-landing-page">
@@ -56,17 +52,17 @@ class LandingPage extends Component {
                             <div className="header-form-body">
                                 <form onSubmit={this.onSubmit} >
                                     <div className={this.state.loginActive ? "hidden" : "input-name-container"}>
-                                        <input required onChange={this.onInputChange} value={this.state.firstName} name="firstName" placeholder="First Name*" type="text" />
-                                        <input required onChange={this.onInputChange} value={this.state.lastName} name="lastName" placeholder="Last Name*" type="text" />
+                                        <input onChange={this.onInputChange} value={this.state.firstName} name="firstName" placeholder="First Name*" type="text" />
+                                        <input onChange={this.onInputChange} value={this.state.lastName} name="lastName" placeholder="Last Name*" type="text" />
                                     </div>
                                     <div className="input-container">
-                                        <input required onChange={this.onInputChange} value={this.state.email} name="email" placeholder="Email*" type="email" />
+                                        <input onChange={this.onInputChange} value={this.state.email} name="email" placeholder="Email*" type="email" />
                                     </div>
                                     <div className="input-container">
-                                        <input required onChange={this.onInputChange} value={this.state.password} name="password" placeholder="Password*" type="password" />
+                                        <input onChange={this.onInputChange} value={this.state.password} name="password" placeholder="Password*" type="password" />
                                     </div>
                                     <div className="header-form-footer">
-                                        <h4>{this.state.signupActive ? 'Sign Up' : "Login"}</h4>
+                                        <button type="submit"><h4>{this.state.signupActive ? 'Sign Up' : "Login"}</h4></button>
                                     </div>
                                 </form>
                             </div>
