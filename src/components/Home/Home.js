@@ -1,6 +1,39 @@
 import React, { Component } from 'react';
+import PropertySearch from '../PropertySearch/PropertySearch';
 
+import PropertyWizard from '../PropertyAddWizard/PropertyWizard';
 class Home extends Component {
+    constructor() {
+        super();
+        this.state = {
+            searchProperty: true,
+            addProperty: false,
+            wizardStep: 'property-img'
+        }
+        this.toggleActiveTab = this.toggleActiveTab.bind(this);
+        this.renderBasedOnMenuType = this.renderBasedOnMenuType.bind(this);
+        this.onDrop = this.onDrop.bind(this);
+    }
+
+    toggleActiveTab() {
+        this.setState({
+            searchProperty: !this.state.searchProperty,
+            addProperty: !this.state.addProperty
+        });
+    }
+
+    onDrop() {
+
+    }
+    renderBasedOnMenuType() {
+        if (this.state.searchProperty) {
+           return <PropertySearch />
+        }
+        else {
+            return <PropertyWizard />
+        }
+    }
+
     render() {
         return (
             <div className="component-home">
@@ -18,46 +51,15 @@ class Home extends Component {
                 </nav>
                 <div className="property-view">
                     <div className="property-controls">
-                        <div className="search">
-                            <h4>Property Search</h4>
-                            <div className="search-filter">
-                                <ul className="filter">
-                                    <h5>Type</h5>
-                                    <select>
-                                        <option value=""></option>
-                                        <option value="house">House</option>
-                                        <option value="apartment">Apartment</option>
-                                    </select>
-                                </ul>
-                                <ul className="filter">
-                                    <h5>Year</h5>
-                                    <select>
-                                        <option value=""></option>
-                                        <option value="turlock">2012</option>
-                                        <option value="modesto">2015</option>
-                                    </select>
-                                </ul>
-                                <ul className="filter">
-                                    <h5>City</h5>
-                                    <select>
-                                        <option value=""></option>
-                                        <option value="turlock">Turlock</option>
-                                        <option value="modesto">Modesto</option>
-                                    </select>
-                                </ul>
-                                <ul className="filter">
-                                    <h5>State</h5>
-                                    <select>
-                                        <option value=""></option>
-                                        <option value="turlock">California</option>
-                                        <option value="modesto">Utah</option>
-                                    </select>
-                                </ul>
-                                <div className="search-button">
-                                    <button>Search</button>
-                                </div>
+                        <div className="controls-menu">
+                            <div onClick={this.searchProperty ? null : this.toggleActiveTab} className={this.state.searchProperty ? "menu-tab active" : "menu-tab"}>
+                                Search Properties
+                            </div>
+                            <div onClick={this.addProperty ? null : this.toggleActiveTab} className={this.state.addProperty ? "menu-tab active" : "menu-tab"}>
+                                Add Property
                             </div>
                         </div>
+                        {this.renderBasedOnMenuType()}
                     </div>
                     <div className="property-list">
                         <div className="property-header">

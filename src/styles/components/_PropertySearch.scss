@@ -1,0 +1,40 @@
+.component-property-search {
+    h4,
+    h5 {
+        color: #fff;
+        text-align: center;
+    }
+    h4 {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    h5 {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+    .search-filter {
+        padding: 0 1rem;
+        .filter {
+            text-align: center;
+            margin-top: 1rem;
+            select {
+                width: 100%;
+                padding: 8px;
+            }
+        }
+    }
+    .search-button {
+        display: flex;
+        justify-content: center;
+        button {
+            width: 75%;
+            margin-top: 1.5rem;
+            padding: 5px 0;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 1.25rem;
+        }
+    }
+}

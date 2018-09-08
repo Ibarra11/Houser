@@ -1,0 +1,71 @@
+.component-property-wizard {
+    width: 85%;
+    margin: 0 auto;
+    height: 100%;
+    .wizard-steps{
+        height: 8%;
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        .hr{
+            width: 25%;
+            border: 1px solid green;
+        }
+        .icon-container{
+            border: 2px solid blue;
+            height: 130%;
+            width: 20%;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i{
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .property-img {
+        h4 {
+            text-align: center;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 1rem;
+        }
+        .dropzone {
+            height: 35vh;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            border: 1px dashed lightgray;
+            &:hover {
+                cursor: pointer;
+            }
+            p {
+                text-align: center;
+                color: #99A2B2;
+                font-size: 1.25rem;
+            }
+        }
+    }
+    .wizard-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10%;
+        button:nth-child(2) {
+            margin-left: 20%;
+        }
+        button {
+            width: 40%;
+            font-size: 1.2rem;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

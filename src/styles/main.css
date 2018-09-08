@@ -404,36 +404,23 @@ template {
     .component-home .property-view .property-controls {
       width: 30%;
       border: 1px solid white;
-      padding: 1rem;
       height: 100%; }
-      .component-home .property-view .property-controls .search h4,
-      .component-home .property-view .property-controls .search h5 {
-        color: #fff;
-        text-align: center; }
-      .component-home .property-view .property-controls .search h4 {
-        text-align: center;
-        font-size: 1.5rem; }
-      .component-home .property-view .property-controls .search h5 {
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem; }
-      .component-home .property-view .property-controls .search .search-filter .filter {
-        text-align: center;
-        margin-top: 1rem; }
-        .component-home .property-view .property-controls .search .search-filter .filter select {
-          width: 100%;
-          padding: 8px; }
-      .component-home .property-view .property-controls .search .search-button {
+      .component-home .property-view .property-controls .controls-menu {
         display: flex;
-        justify-content: center; }
-        .component-home .property-view .property-controls .search .search-button button {
-          width: 75%;
-          margin-top: 1.5rem;
-          padding: 5px 0;
-          text-align: center;
-          padding: 10px 0;
-          border-radius: 5px;
-          border: none;
-          font-size: 1.25rem; }
+        height: 12%; }
+        .component-home .property-view .property-controls .controls-menu .menu-tab {
+          color: #fff;
+          font-size: 1.35rem;
+          border: 1px solid #4D5765;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          .component-home .property-view .property-controls .controls-menu .menu-tab:hover {
+            cursor: pointer; }
+        .component-home .property-view .property-controls .controls-menu .active {
+          background-color: #2E6B8D; }
     .component-home .property-view .property-list {
       width: 70%;
       height: 100%;
@@ -451,3 +438,95 @@ template {
         .component-home .property-view .property-list .property-header h6 {
           color: #fff;
           font-size: 1rem; }
+
+.component-property-search h4,
+.component-property-search h5 {
+  color: #fff;
+  text-align: center; }
+
+.component-property-search h4 {
+  text-align: center;
+  font-size: 1.5rem; }
+
+.component-property-search h5 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem; }
+
+.component-property-search .search-filter {
+  padding: 0 1rem; }
+  .component-property-search .search-filter .filter {
+    text-align: center;
+    margin-top: 1rem; }
+    .component-property-search .search-filter .filter select {
+      width: 100%;
+      padding: 8px; }
+
+.component-property-search .search-button {
+  display: flex;
+  justify-content: center; }
+  .component-property-search .search-button button {
+    width: 75%;
+    margin-top: 1.5rem;
+    padding: 5px 0;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.25rem; }
+
+.component-property-wizard {
+  width: 85%;
+  margin: 0 auto;
+  height: 100%; }
+  .component-property-wizard .wizard-steps {
+    height: 8%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff; }
+    .component-property-wizard .wizard-steps .hr {
+      width: 25%;
+      border: 1px solid green; }
+    .component-property-wizard .wizard-steps .icon-container {
+      border: 2px solid blue;
+      height: 130%;
+      width: 20%;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .component-property-wizard .wizard-steps .icon-container i {
+        font-size: 1.5rem; }
+  .component-property-wizard .property-img h4 {
+    text-align: center;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 1rem; }
+  .component-property-wizard .property-img .dropzone {
+    height: 35vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    border: 1px dashed lightgray; }
+    .component-property-wizard .property-img .dropzone:hover {
+      cursor: pointer; }
+    .component-property-wizard .property-img .dropzone p {
+      text-align: center;
+      color: #99A2B2;
+      font-size: 1.25rem; }
+  .component-property-wizard .wizard-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%; }
+    .component-property-wizard .wizard-controls button:nth-child(2) {
+      margin-left: 20%; }
+    .component-property-wizard .wizard-controls button {
+      width: 40%;
+      font-size: 1.2rem;
+      padding: 5px;
+      border: none;
+      border-radius: 5px; }
+      .component-property-wizard .wizard-controls button:hover {
+        cursor: pointer; }
