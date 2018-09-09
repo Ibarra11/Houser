@@ -497,7 +497,7 @@ template {
     padding: 8px 3px; }
   .component-property-wizard .wizard-steps {
     height: 10%;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -520,7 +520,7 @@ template {
   .component-property-wizard .wizard-controls {
     display: flex;
     justify-content: center;
-    margin-top: 10%; }
+    margin-top: 7%; }
     .component-property-wizard .wizard-controls button:nth-child(2) {
       margin-left: 20%; }
     .component-property-wizard .wizard-controls button {
