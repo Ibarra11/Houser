@@ -478,6 +478,23 @@ template {
   width: 85%;
   margin: 0 auto;
   height: 100%; }
+  .component-property-wizard .wizard-step-title {
+    text-align: center;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0; }
+  .component-property-wizard .input-group:nth-child(1n+2) {
+    margin-top: 5%; }
+  .component-property-wizard .input-group h6 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 1%; }
+  .component-property-wizard .input-group input {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 8px 3px; }
   .component-property-wizard .wizard-steps {
     height: 8%;
     margin-top: 2rem;
@@ -485,11 +502,13 @@ template {
     align-items: center;
     justify-content: space-between;
     color: #fff; }
+    .component-property-wizard .wizard-steps .active {
+      background-color: #09814A; }
     .component-property-wizard .wizard-steps .hr {
       width: 25%;
-      border: 1px solid green; }
+      border: 1px solid #99A2B2; }
     .component-property-wizard .wizard-steps .icon-container {
-      border: 2px solid blue;
+      border: 2px solid #99A2B2;
       height: 130%;
       width: 20%;
       border-radius: 50%;
@@ -498,24 +517,6 @@ template {
       align-items: center; }
       .component-property-wizard .wizard-steps .icon-container i {
         font-size: 1.5rem; }
-  .component-property-wizard .property-img h4 {
-    text-align: center;
-    color: #fff;
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 1rem; }
-  .component-property-wizard .property-img .dropzone {
-    height: 35vh;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    border: 1px dashed lightgray; }
-    .component-property-wizard .property-img .dropzone:hover {
-      cursor: pointer; }
-    .component-property-wizard .property-img .dropzone p {
-      text-align: center;
-      color: #99A2B2;
-      font-size: 1.25rem; }
   .component-property-wizard .wizard-controls {
     display: flex;
     justify-content: center;
@@ -530,3 +531,15 @@ template {
       border-radius: 5px; }
       .component-property-wizard .wizard-controls button:hover {
         cursor: pointer; }
+  .component-property-wizard .step3 .property-img .dropzone {
+    height: 35vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    border: 1px dashed lightgray; }
+    .component-property-wizard .step3 .property-img .dropzone:hover {
+      cursor: pointer; }
+    .component-property-wizard .step3 .property-img .dropzone p {
+      text-align: center;
+      color: #99A2B2;
+      font-size: 1.25rem; }
