@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+import Step4 from './Step4';
+import Step5 from './Step5';
 class PropertyWizard extends Component {
     constructor() {
         super();
@@ -9,6 +11,8 @@ class PropertyWizard extends Component {
             step1: false,
             step2: false,
             step3: false,
+            step4: false,
+            step5: false,
             renderStep: 'step1'
         }
         this.onStep = this.onStep.bind(this);
@@ -19,21 +23,45 @@ class PropertyWizard extends Component {
             this.setState({
                 step1: true,
                 step2: false,
-                step3: false
+                step3: false,
+                step4: false,
+                step5: false
             })
         }
         else if (step === 'step2') {
             this.setState({
                 step1: true,
                 step2: true,
-                step3: false
+                step3: false,
+                step4: false,
+                step5: false
             })
         }
         else if (step === 'step3') {
             this.setState({
                 step1: true,
                 step2: true,
-                step3: true
+                step3: true,
+                step4: false,
+                step5: false
+            })
+        }
+        else if (step === 'step4') {
+            this.setState({
+                step1: true,
+                step2: true,
+                step3: true,
+                step4: true,
+                step5: false
+            })
+        }
+        else {
+            this.setState({
+                step1: true,
+                step2: true,
+                step3: true,
+                step4: true,
+                step5: true
             })
         }
     }
@@ -50,8 +78,14 @@ class PropertyWizard extends Component {
         else if (this.state.renderStep === 'step2') {
             return <Step2 updateStep={this.updateStep} onStep={this.onStep} />
         }
-        else{
+        else if (this.state.renderStep === 'step3') {
             return <Step3 updateStep={this.updateStep} onStep={this.onStep} />
+        }
+        else if (this.state.renderStep === 'step4') {
+            return <Step4 updateStep={this.updateStep} onStep={this.onStep} />
+        }
+        else {
+            return <Step5 updateStep={this.updateStep} onStep={this.onStep} />
         }
     }
     render() {
@@ -68,10 +102,18 @@ class PropertyWizard extends Component {
                     </div>
                     <div className="hr"></div>
                     <div className={this.state.step3 ? "icon-container active" : "icon-container"}>
+                        <i className="fa fa-user"></i>
+                    </div>
+                    <div className="hr"></div>
+                    <div className={this.state.step4 ? "icon-container active" : "icon-container"}>
                         <i className="fa fa-image"></i>
                     </div>
+                    <div className="hr"></div>
+                    <div className={this.state.step5 ? "icon-container active" : "icon-container"}>
+                        <i className="fa fa-check-circle"></i>
+                    </div>
                 </div>
-                
+
                 {this.renderStep()}
 
             </div>

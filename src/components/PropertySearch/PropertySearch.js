@@ -6,22 +6,6 @@ class PropertySearch extends Component {
             <div className="component-property-search">
                 <div className="search-filter">
                     <ul className="filter">
-                        <h5>Type</h5>
-                        <select>
-                            <option value=""></option>
-                            <option value="house">House</option>
-                            <option value="apartment">Apartment</option>
-                        </select>
-                    </ul>
-                    <ul className="filter">
-                        <h5>Year</h5>
-                        <select>
-                            <option value=""></option>
-                            <option value="turlock">2012</option>
-                            <option value="modesto">2015</option>
-                        </select>
-                    </ul>
-                    <ul className="filter">
                         <h5>City</h5>
                         <select>
                             <option value=""></option>
@@ -31,6 +15,14 @@ class PropertySearch extends Component {
                     </ul>
                     <ul className="filter">
                         <h5>State</h5>
+                        <select>
+                            <option value=""></option>
+                            <option value="turlock">California</option>
+                            <option value="modesto">Utah</option>
+                        </select>
+                    </ul>
+                    <ul className="filter">
+                        <h5>Zipcode</h5>
                         <select>
                             <option value=""></option>
                             <option value="turlock">California</option>

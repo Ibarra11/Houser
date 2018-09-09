@@ -477,13 +477,13 @@ template {
 .component-property-wizard {
   width: 85%;
   margin: 0 auto;
-  height: 100%; }
+  height: 85%; }
   .component-property-wizard .wizard-step-title {
     text-align: center;
     color: #fff;
     text-align: center;
     font-size: 1.5rem;
-    margin: 2rem 0 1rem 0; }
+    margin: 1.5rem 0 0.75rem 0; }
   .component-property-wizard .input-group:nth-child(1n+2) {
     margin-top: 5%; }
   .component-property-wizard .input-group h6 {
@@ -496,7 +496,7 @@ template {
     border: none;
     padding: 8px 3px; }
   .component-property-wizard .wizard-steps {
-    height: 8%;
+    height: 10%;
     margin-top: 2rem;
     display: flex;
     align-items: center;
@@ -505,12 +505,12 @@ template {
     .component-property-wizard .wizard-steps .active {
       background-color: #09814A; }
     .component-property-wizard .wizard-steps .hr {
-      width: 25%;
+      width: 10%;
       border: 1px solid #99A2B2; }
     .component-property-wizard .wizard-steps .icon-container {
       border: 2px solid #99A2B2;
-      height: 130%;
-      width: 20%;
+      height: 110%;
+      width: 30%;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -531,15 +531,21 @@ template {
       border-radius: 5px; }
       .component-property-wizard .wizard-controls button:hover {
         cursor: pointer; }
-  .component-property-wizard .step3 .property-img .dropzone {
+  .component-property-wizard .step3 p {
+    color: #fff;
+    text-align: center;
+    font-size: 0.8rem;
+    position: relative;
+    bottom: 8px; }
+  .component-property-wizard .step4 .property-img .dropzone {
     height: 35vh;
     margin: 0 auto;
     display: flex;
     align-items: center;
     border: 1px dashed lightgray; }
-    .component-property-wizard .step3 .property-img .dropzone:hover {
+    .component-property-wizard .step4 .property-img .dropzone:hover {
       cursor: pointer; }
-    .component-property-wizard .step3 .property-img .dropzone p {
+    .component-property-wizard .step4 .property-img .dropzone p {
       text-align: center;
       color: #99A2B2;
       font-size: 1.25rem; }
