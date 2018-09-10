@@ -14,6 +14,7 @@ let initialState = {
 
 const SET_PROPERTY_ADDRESS = 'PROPERTY_ADDRESS';
 const SET_FINANCIAL_INFORMATION = 'SET_FINANCIAL_INFORMATION';
+const SET_TENANT_INFORMATION = 'SET_TENTANT_INFORMATION';
 
 
 export default function (state = initialState, action) {
@@ -23,8 +24,10 @@ export default function (state = initialState, action) {
             return Object.assign({}, state, { propertyStreet, propertyCity, propertyState, propertyZipcode });
         case SET_FINANCIAL_INFORMATION:
             let {propertyLoanAmount, propertyMortgage, propertyRent } = action.payload;
-            console.log(action.payload);
             return Object.assign({}, state, {propertyLoanAmount, propertyMortgage, propertyRent});
+        case SET_TENANT_INFORMATION:
+            let {propertyTenantName, propertyTenantContactNumber, propertyTenantEmail} = action.payload;
+            return Object.assign({}, state, {propertyTenantName, propertyTenantContactNumber, propertyTenantEmail});
         default:
             return state;
     }
@@ -48,4 +51,12 @@ export function setFinancialInformation(propertyLoanAmount, propertyMortgage, pr
     }
 }
 
+export function setTenantInformation(propertyTenantName, propertyTenantContactNumber, propertyTenantEmail){
+    return {
+        type: SET_TENANT_INFORMATION,
+        payload: {
+            propertyTenantName, propertyTenantContactNumber, propertyTenantEmail
+        }
+    }
+}
 
