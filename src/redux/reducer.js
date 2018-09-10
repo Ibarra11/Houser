@@ -9,7 +9,7 @@ let initialState = {
     propertyTenantName: '',
     propertyTenantContactNumber: '',
     propertyTenantEmail: '',
-    propertImg: ''
+    propertyImg: ''
 }
 
 const SET_PROPERTY_ADDRESS = 'PROPERTY_ADDRESS';

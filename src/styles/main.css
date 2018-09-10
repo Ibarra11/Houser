@@ -537,6 +537,25 @@ template {
     font-size: 0.8rem;
     position: relative;
     bottom: 8px; }
+  .component-property-wizard .step4 .property-img .property-img-content {
+    position: relative; }
+    .component-property-wizard .step4 .property-img .property-img-content img {
+      height: 35vh;
+      width: 100%;
+      border: 1px dashed lightgray; }
+    .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons {
+      position: absolute;
+      right: 1px;
+      bottom: 5px; }
+      .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button {
+        padding: 5px 10px;
+        border: none; }
+        .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button:hover {
+          cursor: pointer;
+          color: red; }
+        .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button i {
+          font-size: 1.25rem;
+          color: inherit; }
   .component-property-wizard .step4 .property-img .dropzone {
     height: 35vh;
     margin: 0 auto;

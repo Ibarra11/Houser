@@ -36,7 +36,7 @@
             background-color: #09814A;
         }
         .hr {
-            width:10%;
+            width: 10%;
             border: 1px solid #99A2B2;
         }
         .icon-container {
@@ -70,8 +70,8 @@
             }
         }
     }
-    .step3{
-        p{
+    .step3 {
+        p {
             color: #fff;
             text-align: center;
             font-size: 0.8rem;
@@ -79,8 +79,34 @@
             bottom: 8px;
         }
     }
-    .step4{
+    .step4 {
         .property-img {
+            .property-img-content {
+                position: relative;
+                img {
+                    height: 35vh;
+                    width: 100%;
+                    border: 1px dashed lightgray;
+                }
+                .property-img-buttons {
+                    position: absolute;
+                    right: 1px;
+                    bottom: 5px; // display: flex;
+                    // justify-content: flex-end;
+                    button {
+                        padding: 5px 10px;
+                        border: none;
+                        &:hover{
+                            cursor: pointer;
+                            color: red;
+                        }
+                        i{
+                            font-size: 1.25rem;
+                            color: inherit;
+                        }
+                    }
+                }
+            }
             .dropzone {
                 height: 35vh;
                 margin: 0 auto;
