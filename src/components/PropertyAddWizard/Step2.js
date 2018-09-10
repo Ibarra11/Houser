@@ -56,7 +56,7 @@ class Step2 extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
+    
     let { propertyLoanAmount, propertyMortgage, propertyRent } = state;
     return {
         propertyLoanAmount, propertyMortgage, propertyRent

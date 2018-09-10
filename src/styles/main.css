@@ -475,15 +475,16 @@ template {
     font-size: 1.25rem; }
 
 .component-property-wizard {
-  width: 85%;
-  margin: 0 auto;
-  height: 85%; }
+  height: 88%;
+  padding: 2vh 0 4vh 0;
+  overflow-y: auto;
+  overflow-x: hidden; }
   .component-property-wizard .wizard-step-title {
     text-align: center;
     color: #fff;
     text-align: center;
     font-size: 1.5rem;
-    margin: 1.5rem 0 0.75rem 0; }
+    margin: 1rem 0 0.5rem 0; }
   .component-property-wizard .input-group:nth-child(1n+2) {
     margin-top: 5%; }
   .component-property-wizard .input-group h6 {
@@ -497,7 +498,8 @@ template {
     padding: 8px 3px; }
   .component-property-wizard .wizard-steps {
     height: 10%;
-    margin-top: 1.25rem;
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -520,6 +522,8 @@ template {
   .component-property-wizard .wizard-controls {
     display: flex;
     justify-content: center;
+    width: 90%;
+    margin: 0 auto;
     margin-top: 7%; }
     .component-property-wizard .wizard-controls button:nth-child(2) {
       margin-left: 20%; }
@@ -531,40 +535,68 @@ template {
       border-radius: 5px; }
       .component-property-wizard .wizard-controls button:hover {
         cursor: pointer; }
+  .component-property-wizard .step1, .component-property-wizard .step2, .component-property-wizard .step3 {
+    width: 90%;
+    margin: 0 auto; }
   .component-property-wizard .step3 p {
     color: #fff;
     text-align: center;
     font-size: 0.8rem;
     position: relative;
     bottom: 8px; }
-  .component-property-wizard .step4 .property-img .property-img-content {
-    position: relative; }
-    .component-property-wizard .step4 .property-img .property-img-content img {
+  .component-property-wizard .step4 {
+    width: 90%;
+    margin: 0 auto; }
+    .component-property-wizard .step4 .property-img .property-img-content {
+      position: relative; }
+      .component-property-wizard .step4 .property-img .property-img-content img {
+        height: 35vh;
+        width: 100%;
+        border: 1px dashed lightgray; }
+      .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons {
+        position: absolute;
+        right: 1px;
+        bottom: 5px; }
+        .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button {
+          padding: 5px 10px;
+          border: none; }
+          .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button:hover {
+            cursor: pointer;
+            color: red; }
+          .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button i {
+            font-size: 1.25rem;
+            color: inherit; }
+    .component-property-wizard .step4 .property-img .dropzone {
       height: 35vh;
-      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
       border: 1px dashed lightgray; }
-    .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons {
-      position: absolute;
-      right: 1px;
-      bottom: 5px; }
-      .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button {
-        padding: 5px 10px;
-        border: none; }
-        .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button:hover {
-          cursor: pointer;
-          color: red; }
-        .component-property-wizard .step4 .property-img .property-img-content .property-img-buttons button i {
-          font-size: 1.25rem;
-          color: inherit; }
-  .component-property-wizard .step4 .property-img .dropzone {
-    height: 35vh;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    border: 1px dashed lightgray; }
-    .component-property-wizard .step4 .property-img .dropzone:hover {
-      cursor: pointer; }
-    .component-property-wizard .step4 .property-img .dropzone p {
-      text-align: center;
-      color: #99A2B2;
-      font-size: 1.25rem; }
+      .component-property-wizard .step4 .property-img .dropzone:hover {
+        cursor: pointer; }
+      .component-property-wizard .step4 .property-img .dropzone p {
+        text-align: center;
+        color: #99A2B2;
+        font-size: 1.25rem; }
+  .component-property-wizard .step5 {
+    width: 90%;
+    margin: 0 auto; }
+    .component-property-wizard .step5 .property-img {
+      height: 30vh;
+      width: 100%;
+      margin: 5% 0; }
+      .component-property-wizard .step5 .property-img img {
+        height: 100%;
+        width: auto; }
+    .component-property-wizard .step5 .property-section {
+      border-top: 1px solid #99A2B2;
+      border-bottom: 1px solid #99A2B2;
+      padding: 0.5rem 0; }
+      .component-property-wizard .step5 .property-section h6 {
+        color: #fff;
+        font-size: 1.15rem;
+        text-align: center;
+        margin-bottom: 0.5rem; }
+      .component-property-wizard .step5 .property-section .property-content p {
+        color: #fff;
+        margin-bottom: 0.5rem; }

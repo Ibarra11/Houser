@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import {connect} from 'react-redux';
+import {setPropertyImg} from '../../redux/reducer';
 class Step4 extends Component {
 
     constructor() {
@@ -9,9 +11,13 @@ class Step4 extends Component {
         }
         this.onDrop = this.onDrop.bind(this);
         this.resetDropzone = this.resetDropzone.bind(this);
+        this.updateWizard = this.updateWizard.bind(this);
     }
     componentDidMount() {
         this.props.onStep('step4');
+        this.setState({
+            propertyImg: this.props.propertyImg
+        })
     }
 
     onDrop(file) {
@@ -24,6 +30,11 @@ class Step4 extends Component {
         this.setState({propertyImg: ''})
     }
 
+    updateWizard(direction){
+        this.props.setPropertyImg(this.state.propertyImg);
+        direction === 'next' ? this.props.updateStep('step5') : this.props.updateStep('step3');
+    }
+
     render() {
         return (
             <div className="step4">
@@ -34,7 +45,6 @@ class Step4 extends Component {
                             <img src={this.state.propertyImg} alt="" />
                             <div className="property-img-buttons">
                                 <button onClick={this.resetDropzone}> <i className="fa fa-times"></i></button>
-                                {/* <button> <i className="fa fa-check"></i></button> */}
                             </div>
                         </div>
                         :
@@ -44,12 +54,19 @@ class Step4 extends Component {
                     }
                 </div>
                 <div className="wizard-controls">
-                    <button onClick={() => this.props.updateStep('step3')}>Previous Step</button>
-                    <button onClick={() => this.props.updateStep('step5')}>Next Step</button>
+                    <button onClick={() => this.updateWizard('prev') }>Previous Step</button>
+                    <button onClick={() => this.updateWizard('next') }>Next Step</button>
                 </div>
             </div>
         )
     }
 }
 
-export default Step4;
+function mapStateToProps(state){
+    return{
+        propertyImg: state.propertyImg
+    }
+}
+
+
+export default connect(mapStateToProps, {setPropertyImg})(Step4);
