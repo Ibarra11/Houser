@@ -381,6 +381,7 @@ template {
   background-color: #344055;
   height: 100vh; }
   .component-home .nav {
+    display: flex;
     align-items: center;
     background-color: #0786FC;
     align-items: center;
