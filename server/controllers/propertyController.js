@@ -40,4 +40,14 @@ module.exports = {
          */
         setPropertyInformation();
     },
+    getProperties: (req,res) =>{
+        let {ownerId} = req.session;
+        console.log(req.session);
+        console.log(ownerId);
+        req.app.get('db').get_properties([ownerId])
+        .then(properties =>{
+            res.send(properties);
+        })
+        .catch(err => console.log(err));
+    }
 }

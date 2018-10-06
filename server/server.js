@@ -35,10 +35,12 @@ massive(CONNECTION_STRING)
 
 
 // Handle owners login and signup
-app.post('/api/signup', authCtrl.ownerRegistration)
-app.post('/api/login', authCtrl.ownerLogin)
+app.post('/api/signup', authCtrl.ownerRegistration);
+app.post('/api/login', authCtrl.ownerLogin);
 
-app.post('/api/property', propertyCtrl.addProperty)
+// Property request
+app.post('/api/property', propertyCtrl.addProperty);
+app.get('/api/property', propertyCtrl.getProperties);
 
 
 

@@ -444,14 +444,12 @@ template {
         color: #fff; }
         .component-home .property-view .property-list-container .property-list .property {
           height: 27vh;
-          border: 1px solid green;
           width: 95%;
           margin: 0 auto;
           display: flex; }
         .component-home .property-view .property-list-container .property-list .property-img {
           height: 100%;
-          width: 25%;
-          border: 1px solid orange; }
+          width: 25%; }
           .component-home .property-view .property-list-container .property-list .property-img img {
             width: 100%;
             height: 100%; }
@@ -635,7 +633,7 @@ template {
       margin: 5% 0; }
       .component-property-wizard .step5 .property-img img {
         height: 100%;
-        width: auto; }
+        width: 100%; }
     .component-property-wizard .step5 .property-section {
       border-top: 1px solid #99A2B2;
       border-bottom: 1px solid #99A2B2;
