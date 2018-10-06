@@ -20,9 +20,9 @@ CREATE TABLE property_finances(
 );
 
 
-CREATE TABLE property_tentant(
+CREATE TABLE property_tenants(
     property_id INTEGER PRIMARY KEY,
     tenantName VARCHAR(100),
     tenantPhone VARCHAR(20),
-    tenantEmai VARCHAR(200)
+    tenantEmail VARCHAR(200)
 )

@@ -7,42 +7,34 @@ module.exports = {
         let { ownerId } = req.session;
 
         async function setPropertyInformation() {
-            let fn;
-           await db.add_property_info(ownerId, propertyStreet, propertyCity, propertyState, propertyZipcode, imgUrl)
+            await db.add_property_info(ownerId, propertyStreet, propertyCity, propertyState, propertyZipcode, imgUrl)
                 .then(res => {
-                    console.log(res);
-                    console.log('test');
-                    let { property_id } = res.data;
-                    console.log(1);
-                    console.log(res.data)
-                    fn = setPropertyFinances(property_id);
-                    return fn;
+                    let { property_id } = res[0];
+                    setPropertyFinances(property_id);
                 })
-                .catch(err => res.send(err + 'step1'))
-            
+                .catch(err => res.send(err + 'step1'));
         }
 
         // 2. Financial Information
         let { propertyRent } = req.body;
-        function setPropertyFinances(property_id) {
-            console.log(2);
-            db.add_property_finances(property_id, propertyRent)
+        async function setPropertyFinances(property_id) {
+            await db.add_property_finances(property_id, propertyRent)
                 .then(() => setPropertyTenants(property_id))
-                .catch(res.status(500).send(err))
+                .catch(err => console.log(err))
         }
 
         // 3. Tenant Information
         let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail } = req.body
-        function setPropertyTenants(property_id) {
-            console.log(3);
-            db.add_property_tentants(property_id, propertyTenantName, propertyTenantContactNumber, propertyTenantEmail)
+        async function setPropertyTenants(property_id) {
+            await db.add_property_tenants(property_id, propertyTenantName, propertyTenantContactNumber, propertyTenantEmail)
                 .then(() => res.sendStatus(200))
-                .catch(res.status(500).send(err))
+                .catch(err => console.log(err))
         }
 
-        // Function Invocation of all three functions in order
-        let firstAsyncFn = await setPropertyInformation();
-        let secondAsyncFn = await firstAsyncFn();
-        secondAsyncFn();
+        /* 
+        Function invocation of all three functions in order
+            setPropertyInformation => setPropertyFinances => setPropertyTenants
+         */
+        setPropertyInformation();
     }
 }
