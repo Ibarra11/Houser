@@ -425,7 +425,8 @@ template {
     .component-home .property-view .property-list-container {
       width: 70%;
       height: 100%;
-      border: 1px solid red; }
+      border: 1px solid red;
+      overflow: auto; }
       .component-home .property-view .property-list-container .property-header {
         height: 12%;
         border: 1px solid green;
@@ -440,7 +441,7 @@ template {
           color: #fff;
           font-size: 1rem; }
       .component-home .property-view .property-list-container .property-list {
-        padding-top: 1rem;
+        padding: 1rem 0;
         color: #fff; }
         .component-home .property-view .property-list-container .property-list .property {
           height: 27vh;

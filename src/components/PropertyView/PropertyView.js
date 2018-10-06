@@ -14,12 +14,11 @@ class PropertyView extends Component {
         }
         this.toggleActiveTab = this.toggleActiveTab.bind(this);
         this.renderBasedOnMenuType = this.renderBasedOnMenuType.bind(this);
+        this.updatePropertyList = this.updatePropertyList.bind(this);
     }
 
     componentDidMount() {
-        axios.get('/api/property')
-            .then(res => this.setState({ propertyList: res.data }))
-            .catch(err => console.log(err))
+        this.getProperties();
     }
 
     toggleActiveTab() {
@@ -28,15 +27,30 @@ class PropertyView extends Component {
             addProperty: !this.state.addProperty
         });
     }
+
+    getProperties() {
+        axios.get('/api/property')
+            .then(res => this.setState({ propertyList: res.data }))
+            .catch(err => console.log(err))
+    }
+
+    // This method will make it so that when a property is added, it will
+    // cause this component to re-render, and thus get all the properties from
+    // the server
+    updatePropertyList() {
+      this.getProperties();
+    }
+
     renderBasedOnMenuType() {
         if (this.state.searchProperty) {
             return <PropertySearch />
         }
         else {
-            return <PropertyWizard />
+            return <PropertyWizard updatePropertyList={this.updatePropertyList} />
         }
     }
-    r
+
+
     render() {
         return (
             <div className="property-view">
@@ -54,7 +68,7 @@ class PropertyView extends Component {
                 <div className="property-list-container">
                     <div className="property-header">
                         <h3>Properties</h3>
-                        <h6>15 Properties</h6>
+                        <h6>{this.state.propertyList.length} Properties</h6>
                     </div>
                     <div className="property-list">
                         <PropertyList propertyList={this.state.propertyList} />

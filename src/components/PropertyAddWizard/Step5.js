@@ -4,7 +4,7 @@ import axios from 'axios';
 class Step5 extends Component {
     componentDidMount() {
         this.props.onStep('step5');
-    } s
+    } 
 
     uploadPhotoToCloud = async () => {
         let { REACT_APP_UPLOAD_PRESET, CLOUDINARY_API_KEY, REACT_APP_CLOUD_NAME } = process.env;
@@ -32,7 +32,9 @@ class Step5 extends Component {
         let imgUrl = await this.uploadPhotoToCloud();
         axios.post('/api/property', { ...this.props, imgUrl })
             .then(() => {
-                this.props.updateStep('step1')
+                console.log(this.props);
+                this.props.updatePropertyList();
+                this.props.updateStep('step1');
             })
             .catch(err => console.log(err))
 

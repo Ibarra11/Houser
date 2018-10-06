@@ -59,6 +59,7 @@
             width: 70%;
             height: 100%;
             border: 1px solid red;
+            overflow: auto;
             .property-header {
                 height: 12%;
                 border: 1px solid green;
@@ -76,7 +77,7 @@
                 }
             }
             .property-list {
-                padding-top: 1rem;
+                padding: 1rem 0;
                 color: #fff;
                 .property {
                     height: 27vh;

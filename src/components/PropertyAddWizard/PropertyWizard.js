@@ -85,7 +85,7 @@ class PropertyWizard extends Component {
             return <Step4 updateStep={this.updateStep} onStep={this.onStep} />
         }
         else {
-            return <Step5 updateStep={this.updateStep} onStep={this.onStep} />
+            return <Step5 updatePropertyList={this.props.updatePropertyList} updateStep={this.updateStep} onStep={this.onStep} />
         }
     }
     render() {
