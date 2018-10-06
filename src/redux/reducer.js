@@ -11,10 +11,11 @@ let initialState = {
 
 }
 
-const SET_PROPERTY_ADDRESS = 'PROPERTY_ADDRESS';
+const SET_PROPERTY_ADDRESS = 'SET_PROPERTY_ADDRESS';
 const SET_FINANCIAL_INFORMATION = 'SET_FINANCIAL_INFORMATION';
 const SET_TENANT_INFORMATION = 'SET_TENTANT_INFORMATION';
 const SET_PROPERTY_IMG = 'SET_PROPERTY_IMG';
+const CLEAR_STATE = 'CLEAR_STATE';
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -30,6 +31,8 @@ export default function (state = initialState, action) {
         case SET_PROPERTY_IMG:
             let { propertyImgFile } = action.payload;
             return Object.assign({}, state, { propertyImgFile });
+        case CLEAR_STATE:
+            return initialState;
         default:
             return state;
     }
@@ -66,6 +69,12 @@ export function setPropertyImg(propertyImgFile) {
     return {
         type: SET_PROPERTY_IMG,
         payload: { propertyImgFile }
+    }
+}
+
+export function clearState(){
+    return{
+        type: CLEAR_STATE
     }
 }
 

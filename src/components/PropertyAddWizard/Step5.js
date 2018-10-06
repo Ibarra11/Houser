@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {clearState} from '../../redux/reducer';
 class Step5 extends Component {
     componentDidMount() {
         this.props.onStep('step5');
-    } 
+    }
 
     uploadPhotoToCloud = async () => {
         let { REACT_APP_UPLOAD_PRESET, CLOUDINARY_API_KEY, REACT_APP_CLOUD_NAME } = process.env;
@@ -32,8 +33,8 @@ class Step5 extends Component {
         let imgUrl = await this.uploadPhotoToCloud();
         axios.post('/api/property', { ...this.props, imgUrl })
             .then(() => {
-                console.log(this.props);
                 this.props.updatePropertyList();
+                this.props.clearState();
                 this.props.updateStep('step1');
             })
             .catch(err => console.log(err))
@@ -96,4 +97,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(Step5);
+export default connect(mapStateToProps, { clearState })(Step5);
