@@ -1,1 +1,1 @@
-INSERT INTO property_tenants (property_id, tenantName, tenantPhone, tenantEmail) VALUES ($1, $2, $3, $4);
+INSERT INTO property_tenants (property_id, tenant_name, tenant_phone, tenant_email) VALUES ($1, $2, $3, $4);

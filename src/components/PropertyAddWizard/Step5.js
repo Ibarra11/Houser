@@ -32,7 +32,6 @@ class Step5 extends Component {
         let imgUrl = await this.uploadPhotoToCloud();
         axios.post('/api/property', { ...this.props, imgUrl })
             .then(() => {
-
                 this.props.updateStep('step1')
             })
             .catch(err => console.log(err))

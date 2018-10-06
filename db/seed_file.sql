@@ -22,7 +22,7 @@ CREATE TABLE property_finances(
 
 CREATE TABLE property_tenants(
     property_id INTEGER PRIMARY KEY,
-    tenantName VARCHAR(100),
-    tenantPhone VARCHAR(20),
-    tenantEmail VARCHAR(200)
+    tenant_name VARCHAR(100),
+    tenant_phone VARCHAR(20),
+    tenant_email VARCHAR(200)
 )

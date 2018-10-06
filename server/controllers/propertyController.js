@@ -1,7 +1,10 @@
 module.exports = {
     addProperty: async (req, res) => {
+
+        // Seperate the data into their respective table
+
         const db = req.app.get('db');
-        // Seperate the data into their respective tabl
+
         // 1. Property Information
         let { propertyStreet, propertyCity, propertyState, propertyZipcode, imgUrl } = req.body;
         let { ownerId } = req.session;
@@ -36,5 +39,5 @@ module.exports = {
             setPropertyInformation => setPropertyFinances => setPropertyTenants
          */
         setPropertyInformation();
-    }
+    },
 }
