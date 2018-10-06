@@ -3,13 +3,12 @@ let initialState = {
     propertyCity: '',
     propertyState: '',
     propertyZipcode: '',
-    propertyLoanAmount: '',
-    propertyMortgage: '',
     propertyRent: '',
     propertyTenantName: '',
     propertyTenantContactNumber: '',
     propertyTenantEmail: '',
-    propertyImg: ''
+    propertyImgFile: '',
+
 }
 
 const SET_PROPERTY_ADDRESS = 'PROPERTY_ADDRESS';
@@ -23,14 +22,14 @@ export default function (state = initialState, action) {
             let { propertyStreet, propertyCity, propertyState, propertyZipcode } = action.payload;
             return Object.assign({}, state, { propertyStreet, propertyCity, propertyState, propertyZipcode });
         case SET_FINANCIAL_INFORMATION:
-            let { propertyLoanAmount, propertyMortgage, propertyRent } = action.payload;
-            return Object.assign({}, state, { propertyLoanAmount, propertyMortgage, propertyRent });
+            let { propertyRent } = action.payload;
+            return Object.assign({}, state, { propertyRent });
         case SET_TENANT_INFORMATION:
             let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail } = action.payload;
             return Object.assign({}, state, { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail });
         case SET_PROPERTY_IMG:
-            let {propertyImg} = action.payload;
-            return Object.assign({}, state, {propertyImg});
+            let { propertyImgFile } = action.payload;
+            return Object.assign({}, state, { propertyImgFile });
         default:
             return state;
     }
@@ -45,11 +44,11 @@ export function setPropertyAddress(propertyStreet, propertyCity, propertyState, 
     }
 }
 
-export function setFinancialInformation(propertyLoanAmount, propertyMortgage, propertyRent) {
+export function setFinancialInformation(propertyRent) {
     return {
         type: SET_FINANCIAL_INFORMATION,
         payload: {
-            propertyLoanAmount, propertyMortgage, propertyRent
+            propertyRent
         }
     }
 }
@@ -63,10 +62,10 @@ export function setTenantInformation(propertyTenantName, propertyTenantContactNu
     }
 }
 
-export function setPropertyImg(propertyImg) {
+export function setPropertyImg(propertyImgFile) {
     return {
         type: SET_PROPERTY_IMG,
-        payload: { propertyImg }
+        payload: { propertyImgFile }
     }
 }
 

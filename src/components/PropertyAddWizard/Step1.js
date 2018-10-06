@@ -28,6 +28,7 @@ class Step1 extends Component {
 
     updateWizard() {
         let { propertyStreet, propertyCity, propertyState, propertyZipcode } = this.state;
+        propertyZipcode = +propertyZipcode;
         this.props.setPropertyAddress(propertyStreet, propertyCity, propertyState, propertyZipcode);
         this.props.updateStep('step2')
     }

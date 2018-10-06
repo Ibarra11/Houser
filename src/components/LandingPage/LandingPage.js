@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class LandingPage extends Component {
     constructor() {
         super();
         this.state = {
             loginActive: false,
             signupActive: true,
-            firstName: '',
-            lastName: '',
             email: '',
             password: ''
         }
         this.toggleActive = this.toggleActive.bind(this);
-        this.formEnter = this.formEnter.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     };
@@ -25,13 +22,35 @@ class LandingPage extends Component {
     onInputChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-    formEnter(e) {
-        console.log(e.target.value);
-    }
     onSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
-        this.props.history.push('/home');
+        let { email, password } = this.state;
+        if (this.state.loginActive) {
+            axios.post('/api/login', { email, password })
+                .then((res) => {
+                    if (res.data === 'Login Successful') {
+                        this.props.history.push('/houser');
+                    }
+                    else{
+                        alert('Unsuccessful Login');
+                    }
+                })
+                .catch(err => console.log(err))
+        }
+        else {
+            axios.post('/api/signup', { email, password })
+                .then((res) => {
+                    if(res.data === 'Signup Successful'){
+                        this.props.history.push('/houser');
+                    }
+                    else{
+                        alert('Unsuccessful Signjup');
+                    }
+                })
+                .catch(err => console.log(err))
+        }
+
+
     }
     render() {
         return (
@@ -41,7 +60,7 @@ class LandingPage extends Component {
                         <div className="header-logo">
                             <h1>Houser</h1>
                         </div>
-                        <div onKeyUp={this.formEnter} className="header-form" >
+                        <div className="header-form" >
                             <div className="header-form-type">
                                 <div onClick={this.state.signupActive ? null : this.toggleActive} className={this.state.signupActive ? "form-controls signupActive" : "form-controls"}>Sign Up</div>
                                 <div onClick={this.state.loginActive ? null : this.toggleActive} className={this.state.loginActive ? "form-controls loginActive" : "form-controls"}>Log In</div>
@@ -51,10 +70,6 @@ class LandingPage extends Component {
                             </div>
                             <div className="header-form-body">
                                 <form onSubmit={this.onSubmit} >
-                                    <div className={this.state.loginActive ? "hidden" : "input-name-container"}>
-                                        <input onChange={this.onInputChange} value={this.state.firstName} name="firstName" placeholder="First Name*" type="text" />
-                                        <input onChange={this.onInputChange} value={this.state.lastName} name="lastName" placeholder="Last Name*" type="text" />
-                                    </div>
                                     <div className="input-container">
                                         <input onChange={this.onInputChange} value={this.state.email} name="email" placeholder="Email*" type="email" />
                                     </div>
