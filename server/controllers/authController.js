@@ -32,11 +32,13 @@ module.exports = {
             .then(resUser => {
                 let ownerId = resUser.user.uid;
                 req.session.ownerId = ownerId;
+                console.log('test2');
                 req.app.get('db').register_owner([ownerId, email])
                     .then(() => {
+                        console.log('test');
                         res.send('Signup Successful')
                     })
-                    .catch(err => res.send(err))
+                    .catch(err => console.log(err))
             })
             .catch(err => res.send(err));
     }

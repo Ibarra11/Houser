@@ -27,7 +27,7 @@ class LandingPage extends Component {
         let { email, password } = this.state;
         if (this.state.loginActive) {
             axios.post('/api/login', { email, password })
-                .then((res) => {
+                .then(res => {
                     if (res.data === 'Login Successful') {
                         this.props.history.push('/houser');
                     }
@@ -40,6 +40,7 @@ class LandingPage extends Component {
         else {
             axios.post('/api/signup', { email, password })
                 .then((res) => {
+                    console.log(res.data);
                     if(res.data === 'Signup Successful'){
                         this.props.history.push('/houser');
                     }

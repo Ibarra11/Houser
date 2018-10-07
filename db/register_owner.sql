@@ -1,0 +1,1 @@
+INSERT INTO owners (owner_id, email) VALUES ($1, $2);
