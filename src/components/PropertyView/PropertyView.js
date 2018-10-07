@@ -38,7 +38,7 @@ class PropertyView extends Component {
     // cause this component to re-render, and thus get all the properties from
     // the server
     updatePropertyList() {
-      this.getProperties();
+        this.getProperties();
     }
 
     renderBasedOnMenuType() {
@@ -49,8 +49,6 @@ class PropertyView extends Component {
             return <PropertyWizard updatePropertyList={this.updatePropertyList} />
         }
     }
-
-
     render() {
         return (
             <div className="property-view">
@@ -67,9 +65,21 @@ class PropertyView extends Component {
                 </div>
                 <div className="property-list-container">
                     <div className="property-header">
-                        <h3>Properties</h3>
-                        <h6>{this.state.propertyList.length} Properties</h6>
+                        <div className="header-title">
+                            <h3>Properties</h3>
+                            <h6>( {this.state.propertyList.length} Properties )</h6>
+                        </div>
+
+
+                        <div className="pagination">
+                            <div className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
+                            <div className="page-count">
+                                <p>1 of 10</p>
+                            </div>
+                            <div className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
+                        </div>
                     </div>
+
                     <div className="property-list">
                         <PropertyList propertyList={this.state.propertyList} />
                     </div>

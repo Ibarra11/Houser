@@ -434,12 +434,31 @@ template {
         display: flex;
         justify-content: space-between;
         align-items: center; }
-        .component-home .property-view .property-list-container .property-header h3 {
-          color: #fff;
-          font-size: 2rem; }
-        .component-home .property-view .property-list-container .property-header h6 {
-          color: #fff;
-          font-size: 1rem; }
+        .component-home .property-view .property-list-container .property-header .header-title {
+          display: flex;
+          align-items: center; }
+          .component-home .property-view .property-list-container .property-header .header-title h3 {
+            color: #fff;
+            font-size: 2rem; }
+          .component-home .property-view .property-list-container .property-header .header-title h6 {
+            color: whitesmoke;
+            font-size: 1rem;
+            position: relative;
+            top: 0.5vh;
+            left: 2%; }
+      .component-home .property-view .property-list-container .pagination {
+        display: flex;
+        width: 20%;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        float: right; }
+        .component-home .property-view .property-list-container .pagination .pagination-button i {
+          font-size: 2rem;
+          color: #fff; }
+        .component-home .property-view .property-list-container .pagination p {
+          font-size: 1.1rem;
+          color: #fff; }
       .component-home .property-view .property-list-container .property-list {
         padding: 1rem 0;
         color: #fff; }

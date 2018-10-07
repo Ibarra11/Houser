@@ -67,13 +67,42 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+               .header-title{
+                   display: flex;
+                   align-items: center;
                 h3 {
                     color: #fff;
                     font-size: 2rem;
+                    
                 }
                 h6 {
-                    color: #fff;
+                    color: whitesmoke;
                     font-size: 1rem;
+                    position: relative;
+                    top: 0.5vh;
+                    left: 2%;
+                }
+
+               }
+               
+            }
+            .pagination {
+                display: flex;
+           
+                width: 20%;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                float: right;
+                .pagination-button {
+                    i {
+                        font-size: 2rem;
+                        color: #fff;
+                    }
+                }
+                p {
+                    font-size: 1.1rem;
+                    color: #fff;
                 }
             }
             .property-list {
