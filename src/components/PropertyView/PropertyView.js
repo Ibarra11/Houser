@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropertySearch from '../PropertySearch/PropertySearch';
 import PropertyWizard from '../PropertyAddWizard/PropertyWizard';
 import PropertyList from './PropertyList';
+import Pagination from '../../utilities/Pagination';
 import axios from 'axios';
 class PropertyView extends Component {
     constructor() {
@@ -10,11 +11,18 @@ class PropertyView extends Component {
             searchProperty: true,
             addProperty: false,
             wizardStep: 'property-img',
-            propertyList: []
+            propertyList: [],
+            propertiesOnPage: []
         }
+
+        // These are for the pagination
+        this.paginationInstance = new Pagination([], 5);
+        this.currentPage = 1;
+
         this.toggleActiveTab = this.toggleActiveTab.bind(this);
         this.renderBasedOnMenuType = this.renderBasedOnMenuType.bind(this);
         this.updatePropertyList = this.updatePropertyList.bind(this);
+        this.updatePageItems = this.updatePageItems.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +38,12 @@ class PropertyView extends Component {
 
     getProperties() {
         axios.get('/api/property')
-            .then(res => this.setState({ propertyList: res.data }))
+            .then(res => {
+                this.paginationInstance.itemList = res.data;
+                this.paginationInstance.calculateNumOfPages();
+                let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
+                this.setState({ propertyList: res.data, propertiesOnPage: pageItems })
+            })
             .catch(err => console.log(err))
     }
 
@@ -41,6 +54,29 @@ class PropertyView extends Component {
         this.getProperties();
     }
 
+    updatePageItems() {
+        let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
+        this.setState({
+            propertiesOnPage: pageItems
+        })
+    }
+
+    updateCurrentPage(direction) {
+        if (direction === 'next') {
+            if (this.currentPage < this.paginationInstance.numberOfPages) {
+                this.currentPage++;
+                this.updatePageItems();
+            }
+        }
+        else if(direction === 'prev') {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.updatePageItems();
+            }
+        }
+       
+    }
+
     renderBasedOnMenuType() {
         if (this.state.searchProperty) {
             return <PropertySearch />
@@ -49,6 +85,7 @@ class PropertyView extends Component {
             return <PropertyWizard updatePropertyList={this.updatePropertyList} />
         }
     }
+
     render() {
         return (
             <div className="property-view">
@@ -69,19 +106,17 @@ class PropertyView extends Component {
                             <h3>Properties</h3>
                             <h6>( {this.state.propertyList.length} Properties )</h6>
                         </div>
-
-
                         <div className="pagination">
-                            <div className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
+                            <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
                             <div className="page-count">
-                                <p>1 of 10</p>
+                                <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
                             </div>
-                            <div className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
+                            <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
                         </div>
                     </div>
 
                     <div className="property-list">
-                        <PropertyList propertyList={this.state.propertyList} />
+                        <PropertyList propertyList={this.state.propertiesOnPage} />
                     </div>
                 </div>
             </div>

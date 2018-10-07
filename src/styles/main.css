@@ -453,6 +453,8 @@ template {
         align-items: center;
         position: relative;
         float: right; }
+        .component-home .property-view .property-list-container .pagination .pagination-button:hover {
+          cursor: pointer; }
         .component-home .property-view .property-list-container .pagination .pagination-button i {
           font-size: 2rem;
           color: #fff; }
