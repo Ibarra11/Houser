@@ -42,7 +42,8 @@ class PropertyView extends Component {
                 this.paginationInstance.itemList = res.data;
                 this.paginationInstance.calculateNumOfPages();
                 let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
-                this.setState({ propertyList: res.data, propertiesOnPage: pageItems })
+                this.setState({ propertyList: res.data, propertiesOnPage: pageItems });
+                // this.renderBasedOnMenuType();
             })
             .catch(err => console.log(err))
     }
@@ -68,18 +69,18 @@ class PropertyView extends Component {
                 this.updatePageItems();
             }
         }
-        else if(direction === 'prev') {
+        else if (direction === 'prev') {
             if (this.currentPage > 1) {
                 this.currentPage--;
                 this.updatePageItems();
             }
         }
-       
+
     }
 
     renderBasedOnMenuType() {
         if (this.state.searchProperty) {
-            return <PropertySearch />
+            return <PropertySearch propertyList={this.state.propertyList} />
         }
         else {
             return <PropertyWizard updatePropertyList={this.updatePropertyList} />
