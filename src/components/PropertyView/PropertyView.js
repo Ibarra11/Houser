@@ -12,6 +12,7 @@ class PropertyView extends Component {
             addProperty: false,
             wizardStep: 'property-img',
             propertyList: [],
+            filtredPropertyList: [],
             propertiesOnPage: []
         }
 
@@ -23,6 +24,7 @@ class PropertyView extends Component {
         this.renderBasedOnMenuType = this.renderBasedOnMenuType.bind(this);
         this.updatePropertyList = this.updatePropertyList.bind(this);
         this.updatePageItems = this.updatePageItems.bind(this);
+        this.renderFilteredProperties = this.renderFilteredProperties.bind(this);
     }
 
     componentDidMount() {
@@ -78,9 +80,21 @@ class PropertyView extends Component {
 
     }
 
+    // resetFilteredProperties(){
+    //     this.paginationInstance.itemList = this.state.propertyList();
+    // }
+
+    renderFilteredProperties(propertyList) {
+        this.paginationInstance.itemList = propertyList;
+        this.paginationInstance.calculateNumOfPages();
+        this.currentPage = 1;
+        this.updatePageItems();
+    }
+
     renderBasedOnMenuType() {
         if (this.state.searchProperty) {
-            return <PropertySearch propertyList={this.state.propertyList} />
+
+            return <PropertySearch renderFilteredProperties={this.renderFilteredProperties} propertyList={this.state.propertyList} />
         }
         else {
             return <PropertyWizard updatePropertyList={this.updatePropertyList} />

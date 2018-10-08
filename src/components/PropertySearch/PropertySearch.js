@@ -1,5 +1,13 @@
 import React from 'react';
-const PropertySearch = function ({ propertyList }) {
+/* 
+    Keep track of what filters the user selects.
+    Ex:
+        filters = {property_city: Turlock, property_state: CA}
+
+*/
+let filters = {};
+
+const PropertySearch = function ({ propertyList, renderFilteredProperties }) {
     function parsePropertyList() {
         let cities = [];
         let states = [];
@@ -19,14 +27,50 @@ const PropertySearch = function ({ propertyList }) {
         return { cities, states, zipCodes };
     }
 
-    let { cities, states, zipCodes } = parsePropertyList();
+    function updateFilter(e, filter) {
+        if (e.target.value) {
+            if (filter === 'property_zipcode') {
+                filters[filter] = parseInt(e.target.value);
+            }
+            else {
+                filters[filter] = e.target.value;
+            }
+        }
+        else {
+            delete filters[filter];
+        }
+    }
 
+    function filterProperties() {
+        let keys = Object.keys(filters);
+        if (keys.length > 0) {
+            let filteredProperties = [];
+            let keyFlag;
+            for (let i = 0; i < propertyList.length; i++) {
+                keyFlag = false;
+                for (let j = 0; j < keys.length; j++) {
+                    if (propertyList[i][keys[j]] === filters[keys[j]]) {
+                        keyFlag = true;
+                    }
+                    else {
+                        keyFlag = false;
+                        break;
+                    }
+                }
+                if (keyFlag) {
+                    filteredProperties.push(propertyList[i]);
+                }
+            }
+            renderFilteredProperties(filteredProperties);
+        }
+    }
+    let { cities, states, zipCodes } = parsePropertyList();
     return (
         <div className="component-property-search">
             <div className="search-filter">
                 <ul className="filter">
                     <h5>City</h5>
-                    <select>
+                    <select onChange={e => updateFilter(e, 'property_city')}>
                         <option value=""></option>
                         {cities.length > 0 ? cities.map((city, index) => {
                             return <option key={city + index} value={city}>{city}</option>
@@ -35,7 +79,7 @@ const PropertySearch = function ({ propertyList }) {
                 </ul>
                 <ul className="filter">
                     <h5>State</h5>
-                    <select>
+                    <select onChange={e => updateFilter(e, 'property_state')}>
                         <option value=""></option>
                         {states.length > 0 ? states.map((state, index) => {
                             return <option key={state + index} value={state}>{state}</option>
@@ -44,7 +88,7 @@ const PropertySearch = function ({ propertyList }) {
                 </ul>
                 <ul className="filter">
                     <h5>Zipcode</h5>
-                    <select>
+                    <select onChange={e => updateFilter(e, 'property_zipcode')}>
                         <option value=""></option>
                         {zipCodes.length > 0 ? zipCodes.map((zipCode, index) => {
                             return <option key={zipCode + index} value={zipCode}>{zipCode}</option>
@@ -52,7 +96,8 @@ const PropertySearch = function ({ propertyList }) {
                     </select>
                 </ul>
                 <div className="search-button">
-                    <button>Search</button>
+                    <button onClick={filterProperties}>Search</button>
+                    <button>Reset</button>
                 </div>
             </div>
         </div>
