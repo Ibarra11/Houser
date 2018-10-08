@@ -25,6 +25,7 @@ class PropertyView extends Component {
         this.updatePropertyList = this.updatePropertyList.bind(this);
         this.updatePageItems = this.updatePageItems.bind(this);
         this.renderFilteredProperties = this.renderFilteredProperties.bind(this);
+        this.clearFilteredProperties = this.clearFilteredProperties.bind(this);
     }
 
     componentDidMount() {
@@ -80,9 +81,12 @@ class PropertyView extends Component {
 
     }
 
-    // resetFilteredProperties(){
-    //     this.paginationInstance.itemList = this.state.propertyList();
-    // }
+    clearFilteredProperties(){
+        this.paginationInstance.itemList = this.state.propertyList;
+        this.currentPage = 1;
+        this.paginationInstance.calculateNumOfPages();
+        this.updatePageItems();
+    }
 
     renderFilteredProperties(propertyList) {
         this.paginationInstance.itemList = propertyList;
@@ -94,7 +98,7 @@ class PropertyView extends Component {
     renderBasedOnMenuType() {
         if (this.state.searchProperty) {
 
-            return <PropertySearch renderFilteredProperties={this.renderFilteredProperties} propertyList={this.state.propertyList} />
+            return <PropertySearch clearFilteredProperties={this.clearFilteredProperties} renderFilteredProperties={this.renderFilteredProperties} propertyList={this.state.propertyList} />
         }
         else {
             return <PropertyWizard updatePropertyList={this.updatePropertyList} />
@@ -119,7 +123,7 @@ class PropertyView extends Component {
                     <div className="property-header">
                         <div className="header-title">
                             <h3>Properties</h3>
-                            <h6>( {this.state.propertyList.length} Properties )</h6>
+                            <h6>( {this.paginationInstance.itemList.length} Properties )</h6>
                         </div>
                         <div className="pagination">
                             <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>

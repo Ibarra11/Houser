@@ -531,9 +531,9 @@ template {
 
 .component-property-search .search-button {
   display: flex;
-  justify-content: center; }
+  justify-content: space-between; }
   .component-property-search .search-button button {
-    width: 75%;
+    width: 45%;
     margin-top: 1.5rem;
     padding: 5px 0;
     text-align: center;
