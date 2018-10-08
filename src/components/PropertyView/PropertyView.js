@@ -81,7 +81,7 @@ class PropertyView extends Component {
 
     }
 
-    clearFilteredProperties(){
+    clearFilteredProperties() {
         this.paginationInstance.itemList = this.state.propertyList;
         this.currentPage = 1;
         this.paginationInstance.calculateNumOfPages();
@@ -125,17 +125,34 @@ class PropertyView extends Component {
                             <h3>Properties</h3>
                             <h6>( {this.paginationInstance.itemList.length} Properties )</h6>
                         </div>
-                        <div className="pagination">
-                            <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
-                            <div className="page-count">
-                                <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
+
+                        {this.paginationInstance.numberOfPages > 1 ?
+                            <div className="pagination">
+                                <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
+                                <div className="page-count">
+                                    <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
+                                </div>
+                                <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
                             </div>
-                            <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
-                        </div>
+                            :
+                            null
+                        }
+
                     </div>
 
                     <div className="property-list">
-                        <PropertyList propertyList={this.state.propertiesOnPage} />
+                        {this.state.propertyList.length > 0 && this.state.propertiesOnPage.length === 0 ?
+                            <div className="property-message">
+                                <h2>
+                                    Your search came up with no properties. <br />
+                                    Enter a new search or click the reset button to view all
+                                    the properties
+                                </h2>
+                            </div>
+                            :
+                            <PropertyList propertyList={this.state.propertiesOnPage} />
+                        }
+
                     </div>
                 </div>
             </div>

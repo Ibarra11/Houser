@@ -463,7 +463,13 @@ template {
           color: #fff; }
       .component-home .property-view .property-list-container .property-list {
         padding: 1rem 0;
-        color: #fff; }
+        color: #fff;
+        position: relative; }
+        .component-home .property-view .property-list-container .property-list .property-message {
+          position: absolute;
+          width: 100%;
+          text-align: center;
+          top: 600%; }
         .component-home .property-view .property-list-container .property-list .property {
           height: 27vh;
           width: 95%;

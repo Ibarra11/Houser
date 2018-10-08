@@ -67,24 +67,21 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-               .header-title{
-                   display: flex;
-                   align-items: center;
-                h3 {
-                    color: #fff;
-                    font-size: 2rem;
-                    
+                .header-title {
+                    display: flex;
+                    align-items: center;
+                    h3 {
+                        color: #fff;
+                        font-size: 2rem;
+                    }
+                    h6 {
+                        color: whitesmoke;
+                        font-size: 1rem;
+                        position: relative;
+                        top: 0.5vh;
+                        left: 2%;
+                    }
                 }
-                h6 {
-                    color: whitesmoke;
-                    font-size: 1rem;
-                    position: relative;
-                    top: 0.5vh;
-                    left: 2%;
-                }
-
-               }
-               
             }
             .pagination {
                 display: flex;
@@ -94,7 +91,7 @@
                 position: relative;
                 float: right;
                 .pagination-button {
-                    &:hover{
+                    &:hover {
                         cursor: pointer;
                     }
                     i {
@@ -110,6 +107,13 @@
             .property-list {
                 padding: 1rem 0;
                 color: #fff;
+                position: relative;
+                .property-message {
+                    position: absolute;
+                    width: 100%;
+                    text-align: center;
+                    top: 600%;
+                }
                 .property {
                     height: 27vh;
                     width: 95%;
