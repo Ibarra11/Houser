@@ -4,3 +4,4 @@ SELECT
     p3.tenant_name, p3.tenant_phone, p3.tenant_email
 FROM property_information p1, property_finances p2, property_tenants p3
 WHERE p1.owner_id = $1 AND p1.property_id = p2.property_id AND p1.property_id = p3.property_id
+ORDER BY p1.property_id DESC;

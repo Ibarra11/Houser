@@ -41,6 +41,7 @@ app.post('/api/login', authCtrl.ownerLogin);
 // Property request
 app.post('/api/property', propertyCtrl.addProperty);
 app.get('/api/property', propertyCtrl.getProperties);
+app.delete('/api/property/:propertyId', propertyCtrl.deleteProperty);
 
 
 

@@ -40,14 +40,20 @@ module.exports = {
          */
         setPropertyInformation();
     },
-    getProperties: (req,res) =>{
-        let {ownerId} = req.session;
-        console.log(req.session);
-        console.log(ownerId);
+    getProperties: (req, res) => {
+        let { ownerId } = req.session;
         req.app.get('db').get_properties([ownerId])
-        .then(properties =>{
-            res.send(properties);
+            .then(properties => {
+                res.send(properties);
+            })
+            .catch(err => console.log(err));
+    },
+    deleteProperty: (req, res) => {
+        let { propertyId } = req.params;
+        req.app.get('db').delete_property([propertyId])
+        .then(() =>{
+            res.sendStatus(200);
         })
-        .catch(err => console.log(err));
+        .catch(err => res.status(500).send(err))
     }
 }

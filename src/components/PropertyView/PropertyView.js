@@ -26,6 +26,7 @@ class PropertyView extends Component {
         this.updatePageItems = this.updatePageItems.bind(this);
         this.renderFilteredProperties = this.renderFilteredProperties.bind(this);
         this.clearFilteredProperties = this.clearFilteredProperties.bind(this);
+        this.deleteProperty = this.deleteProperty.bind(this);
     }
 
     componentDidMount() {
@@ -56,6 +57,12 @@ class PropertyView extends Component {
     // the server
     updatePropertyList() {
         this.getProperties();
+    }
+
+    deleteProperty(propertyId) {
+        axios.delete(`/api/property/${propertyId}`)
+        .then(() => this.updatePropertyList())
+        .catch(err => console.log(err));
     }
 
     updatePageItems() {
@@ -150,7 +157,7 @@ class PropertyView extends Component {
                                 </h2>
                             </div>
                             :
-                            <PropertyList propertyList={this.state.propertiesOnPage} />
+                            <PropertyList deleteProperty={this.deleteProperty} propertyList={this.state.propertiesOnPage} />
                         }
 
                     </div>

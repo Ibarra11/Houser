@@ -15,13 +15,13 @@ CREATE TABLE property_information(
 
 
 CREATE TABLE property_finances(
-    property_id INTEGER PRIMARY KEY,
+    property_id INTEGER PRIMARY KEY REFERENCES property_information(property_id) ON DELETE CASCADE,
     property_rent float
 );
 
 
 CREATE TABLE property_tenants(
-    property_id INTEGER PRIMARY KEY,
+    property_id INTEGER PRIMARY KEY REFERENCES property_information(property_id) ON DELETE CASCADE,
     tenant_name VARCHAR(100),
     tenant_phone VARCHAR(20),
     tenant_email VARCHAR(200)

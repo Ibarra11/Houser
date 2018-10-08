@@ -6,6 +6,7 @@ class Property extends Component {
             property_state, property_zipcode, tenant_email, tenant_name,
             tenant_phone, property_rent
         } = this.props.property;
+        
         return (
             <div className="property">
                 <div className="property-img">
@@ -33,7 +34,7 @@ class Property extends Component {
                         <div className="action">
                             <i className="fa fa-edit"></i>
                         </div>
-                        <div className="action">
+                        <div onClick={() => this.props.deleteProperty(property_id)} className="action">
                             <i className="fa fa-trash"></i>
                         </div>
                     </div>

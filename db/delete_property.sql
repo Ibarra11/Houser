@@ -1,0 +1,1 @@
+DELETE FROM property_information WHERE property_id = $1;
