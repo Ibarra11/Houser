@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import JobQueue from './JobQueue';
-import AddJob from './AddJob';
-import CompletedJobs from './CompletedJobs';
+import CreateWorkOrder from './CreateWorkOrder';
+import CompletedWorkOrders from './CompletedWorkOrders';
 
-class JobsView extends Component {
+class WorkOrders extends Component {
 
     constructor() {
         super();
         this.state = {
-            view: <AddJob />
+            view: <CreateWorkOrder />
         }
         this.renderView = this.renderView.bind(this);
     }
     renderView(view) {
-        if (view === 'AddJob') {
-            this.setState({ view: <AddJob /> })
+        if (view === 'CreateWorkOrder') {
+            this.setState({ view: <CreateWorkOrder /> })
         }
-        else if (view === 'JobQueue') {
+        else if (view === 'WorkOrderQueue') {
             this.setState({ view: <JobQueue /> })
         }
-        else if (view === 'CompletedJobs'){
-            this.setState({view: <CompletedJobs />})
+        else if (view === 'CompletedWorkOrders'){
+            this.setState({view: <CompletedWorkOrders />})
         }
     }
     render() {
@@ -28,13 +28,13 @@ class JobsView extends Component {
             <div className="component-jobs">
                 <div className="control-panel">
                     <div className="control-panel-header">
-                        <h3>Jobs</h3>
+                        <h3>Work Orders</h3>
                         <h5>Control Panel</h5>
                     </div>
                     <div className="controls">
-                        <div onClick={() => this.renderView('AddJob')} className="controls-link">Add Job</div>
-                        <div onClick={() => this.renderView('JobQueue')} className="controls-link"> Job Queue</div>
-                        <div onClick={() => this.renderView('CompletedJobs')} className="controls-link">Completed Jobs</div>
+                        <div onClick={() => this.renderView('CreateWorkOrder')} className="controls-link">Create Work Order</div>
+                        <div onClick={() => this.renderView('WorkOrderQueue')} className="controls-link"> Work Order Queue</div>
+                        <div onClick={() => this.renderView('CompletedWorkOrders')} className="controls-link">Completed Work Orders</div>
                         <div onClick={() => this.renderView('AddJob')} className="controls-link">Analytics</div>
                     </div>
                 </div>
@@ -46,4 +46,4 @@ class JobsView extends Component {
     }
 }
 
-export default JobsView;
+export default WorkOrders;

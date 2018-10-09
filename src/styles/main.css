@@ -790,6 +790,9 @@ template {
           .component-jobs .jobs-view .add-job .job-order-form .form-body .input-group input {
             padding: 6px 2px;
             border-radius: 5px; }
+          .component-jobs .jobs-view .add-job .job-order-form .form-body .input-group select {
+            padding: 6px 2px;
+            border-radius: 5px; }
         .component-jobs .jobs-view .add-job .job-order-form .form-body .form-right-side {
           width: 50%; }
         .component-jobs .jobs-view .add-job .job-order-form .form-body .form-left-side {

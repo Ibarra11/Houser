@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CompletedJobs extends Component {
+class CompletedWorkOrders extends Component {
     render() {
         return (
             <div className="completed-jobs">
@@ -102,4 +102,4 @@ class CompletedJobs extends Component {
     }
 }
 
-export default CompletedJobs;
+export default CompletedWorkOrders;

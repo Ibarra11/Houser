@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { mainRoutes } from '../../routes';
-import PropertyView from '../PropertyView/PropertyView';
 class Home extends Component {
     render() {
         return (
@@ -12,7 +11,7 @@ class Home extends Component {
                     </div>
                     <ul className="nav-links">
                         <Link to='/houser/properties' className="link">Properties</Link>
-                        <Link to='/houser/jobs' className="link">Jobs</Link>
+                        <Link to='/houser/work' className="link">Work Orders</Link>
                         <Link to='/houser/transactions' className="link">Transactions</Link>
                         <Link to='/logout' className="link">Logout</Link>
                     </ul>

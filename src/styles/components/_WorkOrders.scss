@@ -68,6 +68,10 @@
                             padding: 6px 2px;
                             border-radius: 5px;
                         }
+                        select {
+                            padding: 6px 2px;
+                            border-radius: 5px;
+                        }
                     }
                     .form-right-side {
                         width: 50%;
@@ -95,11 +99,10 @@
                     padding: 8px 0;
                     display: flex;
                     justify-content: center;
-                    button{
+                    button {
                         padding: 6px 12px;
                     }
-
-                    button:first-child{
+                    button:first-child {
                         margin-right: 2%;
                     }
                 }
@@ -167,57 +170,55 @@
                 text-align: right;
             }
         }
-        .completed-jobs{
+        .completed-jobs {
             height: 100%;
-            .job-header{
+            .job-header {
                 border: 1px solid red;
                 height: 12%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                h4{
+                h4 {
                     font-size: 1.5rem;
                 }
             }
-            .completed-jobs-container{
+            .completed-jobs-container {
                 padding: 0 1rem 1rem 1rem;
                 display: flex;
                 justify-content: space-between;
                 flex-wrap: wrap;
-                .job-card{
+                .job-card {
                     height: 32vh;
                     border: 1px solid red;
                     width: 31%;
                     margin-top: 1rem;
-                    .card-img-header{
+                    .card-img-header {
                         position: relative;
                         height: 100%;
                         width: 100%;
                         border: 1px solid green;
-                        img{
+                        img {
                             // height: 100%;
-                            height: 100% ;
+                            height: 100%;
                             width: 100%;
                         }
                     }
-                    .card-overlay{
+                    .card-overlay {
                         position: absolute;
                         bottom: 0;
                         padding-top: 2%;
                         width: 100%;
-                        background-color: rgba(0,0,0,0.7);
-                
-                        h5{
+                        background-color: rgba(0, 0, 0, 0.7);
+                        h5 {
                             text-align: center;
                             font-size: 1.25rem;
                             margin-bottom: 0.25rem;
                         }
-                        p{
+                        p {
                             font-size: 0.8rem;
                             text-align: center;
                         }
-
-                        .card-controls{
+                        .card-controls {
                             display: flex;
                             width: 50%;
                             margin: 0 auto;
@@ -227,15 +228,14 @@
                     }
                 }
             }
-
-            .jobs-pagination{
+            .jobs-pagination {
                 display: flex;
                 justify-content: flex-end;
                 padding: 0 1rem;
-                button{
+                button {
                     padding: 4px 10px;
                 }
-                button:first-child{
+                button:first-child {
                     margin-right: 20px;
                 }
             }

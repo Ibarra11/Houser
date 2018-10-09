@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
-import JobsView from './components/JobsView/JobsView';
+import WorkOrders from './components/WorkOrders/WorkOrders';
 import PropertiesView from './components/PropertyView/PropertyView'; 
 import Transactions from './components/Transactions/Transactions'; 
 
@@ -22,7 +22,7 @@ export function baseRoutes() {
 export function mainRoutes() {
     return (
         <Switch>
-            <Route path='/houser/jobs' component={JobsView} />
+            <Route path='/houser/work' component={WorkOrders} />
             <Route path='/houser/properties' component={PropertiesView} />
             <Route path='/houser/transactions' component={Transactions} />
         </Switch>

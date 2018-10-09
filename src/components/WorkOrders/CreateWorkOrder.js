@@ -1,12 +1,46 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+class CreateWorkOrder extends Component {
+    constructor() {
+        super();
+        this.state = {
+            properties: [],
+            propertyId: 0
+        }
+        this.listProperties = this.listProperties.bind(this);
+        this.onPropertyChange = this.onPropertyChange.bind(this);
+    }
 
-class AddJob extends Component {
+    componentDidMount() {
+        axios.get('/api/property')
+            .then(res => {
+                this.setState({ properties: res.data })
+            })
+            .catch(err => console.log(err));
+    }
+
+    listProperties() {
+        let tempArr = [];
+        for (let i = 0; i < this.state.properties.length; i++) {
+            let { property_id, property_city, property_state, property_street, property_zipcode } = this.state.properties[i];
+            let option = <option key={property_id} value={property_id}>{property_street}, {property_city}, {property_state} {property_zipcode}</option>;
+            tempArr.push(option);
+        }
+        return tempArr;
+    }
+
+    onPropertyChange(e){
+        this.setState({
+            propertyId: e.target.value
+        })
+    }
+
     render() {
         return (
             <div className="add-job">
                 <div className="job-order-form">
                     <div className="form-header">
-                        <h4>Job Order</h4>
+                        <h4>Work Order</h4>
                     </div>
                     <div className="form-body">
                         <div className="form-left-side">
@@ -14,11 +48,9 @@ class AddJob extends Component {
                                 <h5>Property Information</h5>
                                 <div className="input-group">
                                     <h6>Select A Property</h6>
-                                    <select>
+                                    <select onChange={this.onPropertyChange}>
                                         <option value=""></option>
-                                        <option value="">1675 Ramson Dr</option>
-                                        <option value="">2600 Dels Lane </option>
-                                        <option value=""></option>
+                                        {this.listProperties()}
                                     </select>
                                 </div>
                             </div>
@@ -59,4 +91,4 @@ class AddJob extends Component {
     }
 }
 
-export default AddJob;
+export default CreateWorkOrder;
