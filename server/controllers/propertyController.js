@@ -51,9 +51,24 @@ module.exports = {
     deleteProperty: (req, res) => {
         let { propertyId } = req.params;
         req.app.get('db').delete_property([propertyId])
-        .then(() =>{
-            res.sendStatus(200);
-        })
-        .catch(err => res.status(500).send(err))
+            .then(() => {
+                res.sendStatus(200);
+            })
+            .catch(err => res.status(500).send(err))
+    },
+    updateProperty: (req, res) => {
+        let { propertyId } = req.params;
+        let {
+            property_city, property_state, property_zipcode, property_street,
+            property_rent, tenant_name, tenant_email, tenant_phone
+        } = req.body;
+        req.app.get('db').update_property([
+            propertyId, property_street, property_city, property_state, property_zipcode,
+            property_rent, tenant_name, tenant_phone, tenant_email
+        ])
+            .then(() => {
+                res.sendStatus(200);
+            })
+            .catch(err => console.log(err))
     }
 }
