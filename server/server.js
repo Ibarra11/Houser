@@ -8,6 +8,7 @@ require('dotenv').config();
 // Controllers
 const authCtrl = require('./controllers/authController');
 const propertyCtrl = require('./controllers/propertyController');
+const workOrderCtrl = require('./controllers/workOrderController');
 
 
 const {
@@ -44,7 +45,8 @@ app.get('/api/property', propertyCtrl.getProperties);
 app.delete('/api/property/:propertyId', propertyCtrl.deleteProperty);
 app.put('/api/property/:propertyId', propertyCtrl.updateProperty);
 
-
+// Work order request
+app.post('/api/work_orders', workOrderCtrl.createWorkOrder);
 
 app.listen(SERVER_PORT, console.log('Server running'));
 

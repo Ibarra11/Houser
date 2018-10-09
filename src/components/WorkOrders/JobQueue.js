@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class JobQueue extends Component {
+class WorkOrderQueue extends Component {
     render() {
         return (
             <div className="job-queue">
@@ -127,4 +127,4 @@ class JobQueue extends Component {
     }
 }
 
-export default JobQueue;
+export default WorkOrderQueue;

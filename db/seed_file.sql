@@ -26,3 +26,13 @@ CREATE TABLE property_tenants(
     tenant_phone VARCHAR(20),
     tenant_email VARCHAR(200)
 )
+
+CREATE TABLE work_orders(
+    property_id INTEGER PRIMARY KEY,
+    company_name VARCHAR(100),
+    company_phone VARCHAR(100),
+    company_charge FLOAT,
+    company_email VARCHAR(200),
+    job_description TEXT,
+    date_time TIMESTAMP
+)

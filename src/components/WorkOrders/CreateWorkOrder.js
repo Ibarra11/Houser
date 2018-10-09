@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 class CreateWorkOrder extends Component {
     constructor() {
         super();
         this.state = {
             properties: [],
-            propertyId: 0
+            propertyId: 0,
+            companyName: '',
+            companyPhone: '',
+            companyEmail: '',
+            companyCharge: '',
+            description: ''
         }
         this.listProperties = this.listProperties.bind(this);
         this.onPropertyChange = this.onPropertyChange.bind(this);
+        this.onInputChange = this.onInputChange.bind(this);
+        this.workOrder = this.workOrder.bind(this);
     }
 
     componentDidMount() {
@@ -29,10 +37,28 @@ class CreateWorkOrder extends Component {
         return tempArr;
     }
 
-    onPropertyChange(e){
+    onPropertyChange(e) {
         this.setState({
-            propertyId: e.target.value
+            propertyId: +e.target.value
         })
+    }
+
+    onInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    workOrder() {
+        let timeStamp = moment().format('YYYY-MM-DD hh:mm');
+        let { propertyId, companyName, companyCharge, companyEmail, companyPhone, description } = this.state;
+        companyCharge = parseFloat(companyCharge);
+
+        axios.post('/api/work_orders', { propertyId, companyName, companyCharge, companyEmail, companyPhone, description, timeStamp })
+            .then(() => {
+                console.log('hooray');
+            })
+            .catch(err => console.log(err))
     }
 
     render() {
@@ -58,31 +84,31 @@ class CreateWorkOrder extends Component {
                                 <h5>Company/Worker Information</h5>
                                 <div className="input-group">
                                     <h6>Name</h6>
-                                    <input type="text" />
+                                    <input name="companyName" onChange={this.onInputChange} value={this.state.companyName} type="text" />
                                 </div>
                                 <div className="input-group">
                                     <h6>Phone Number</h6>
-                                    <input type="text" />
+                                    <input name="companyPhone" onChange={this.onInputChange} value={this.state.companyPhone} type="text" />
                                 </div>
                                 <div className="input-group">
                                     <h6>Email</h6>
-                                    <input type="text" />
+                                    <input name="companyEmail" onChange={this.onInputChange} value={this.state.companyEmail} type="text" />
                                 </div>
                                 <div className="input-group">
                                     <h6>Charge</h6>
-                                    <input type="text" />
+                                    <input name="companyCharge" onChange={this.onInputChange} value={this.state.companyCharge} type="text" />
                                 </div>
                             </div>
                         </div>
                         <div className="form-right-side">
                             <div className="job-description">
                                 <h5>Job Description</h5>
-                                <textarea></textarea>
+                                <textarea onChange={this.onInputChange} name="description"></textarea>
                             </div>
                         </div>
                     </div>
                     <div className="form-footer">
-                        <button>Create</button>
+                        <button onClick={this.workOrder}>Create</button>
                         <button>Clear</button>
                     </div>
                 </div>
