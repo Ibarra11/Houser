@@ -50,11 +50,12 @@ class CreateWorkOrder extends Component {
     }
 
     workOrder() {
-        let timeStamp = moment().format('YYYY-MM-DD hh:mm');
+        let date = moment().format('l');
+        let time = moment().format('LT');
         let { propertyId, companyName, companyCharge, companyEmail, companyPhone, description } = this.state;
         companyCharge = parseFloat(companyCharge);
 
-        axios.post('/api/work_orders', { propertyId, companyName, companyCharge, companyEmail, companyPhone, description, timeStamp })
+        axios.post('/api/work_orders', { propertyId, companyName, companyCharge, companyEmail, companyPhone, description, date, time })
             .then(() => {
                 console.log('hooray');
             })

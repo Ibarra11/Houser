@@ -28,11 +28,13 @@ CREATE TABLE property_tenants(
 )
 
 CREATE TABLE work_orders(
-    property_id INTEGER PRIMARY KEY,
+    job_id SERIAL PRIMARY KEY,
+    property_id INTEGER,
     company_name VARCHAR(100),
     company_phone VARCHAR(100),
     company_charge FLOAT,
     company_email VARCHAR(200),
     job_description TEXT,
-    date_time TIMESTAMP
+    date_created VARCHAR(50),
+    time_crated VARCHAR(50)
 )

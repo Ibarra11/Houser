@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import JobQueue from './JobQueue';
+import WorkOrderQueue from './WorkOrderQueue';
 import CreateWorkOrder from './CreateWorkOrder';
 import CompletedWorkOrders from './CompletedWorkOrders';
 
 class WorkOrders extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -17,7 +16,7 @@ class WorkOrders extends Component {
             this.setState({ view: <CreateWorkOrder /> })
         }
         else if (view === 'WorkOrderQueue') {
-            this.setState({ view: <JobQueue /> })
+            this.setState({ view: <WorkOrderQueue /> })
         }
         else if (view === 'CompletedWorkOrders'){
             this.setState({view: <CompletedWorkOrders />})
