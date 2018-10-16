@@ -1,22 +1,78 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import Pagination from '../../utilities/Pagination';
 class CompletedWorkOrders extends Component {
-    render() {
-        return (
-            <div className="completed-jobs">
-                <div className="job-header">
-                    <h4>Completed Jobs</h4>
-                </div>
-                <div className="completed-jobs-container">
-                    <div className="job-card">
+    constructor() {
+        super();
+        this.state = {
+            workOrderList: [],
+            workOrdersOnPage: []
+        }
+
+        this.paginationInstance = new Pagination([], 6);
+        this.currentPage = 1;
+
+        this.getCompletedWorkOrders = this.getCompletedWorkOrders.bind(this);
+        this.updateCurrentPage = this.updateCurrentPage.bind(this);
+        this.renderWorkOrderList = this.renderWorkOrderList.bind(this);
+    }
+
+    componentDidMount() {
+        this.getCompletedWorkOrders();
+    }
+
+    getCompletedWorkOrders() {
+        axios.get('/api/work_orders/completed')
+            .then(res => {
+                if (res.data.length > 0) {
+                    this.paginationInstance.itemList = res.data;
+                    this.paginationInstance.calculateNumOfPages();
+                    let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
+                    this.setState({ workOrderList: res.data, workOrdersOnPage: pageItems })
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
+    updateCurrentPage(direction) {
+        if (direction === 'next') {
+            if (this.currentPage < this.paginationInstance.numberOfPages) {
+                this.currentPage++;
+                this.updatePageItems();
+            }
+        }
+        else if (direction === 'prev') {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.updatePageItems();
+            }
+        }
+    }
+
+    updatePageItems() {
+        let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
+        this.setState({
+            currentWorkOrders: pageItems
+        })
+
+    }
+
+    renderWorkOrderList() {
+        if (this.state.workOrdersOnPage.length > 0) {
+            let { workOrdersOnPage } = this.state;
+            let workOrdArr = [];
+            for (let i = 0; i < workOrdersOnPage.length; i++) {
+                let { property_street, property_state, property_city, property_zipcode } = workOrdersOnPage[i];
+                let workOrder =
+                    <div key={workOrdersOnPage[i].job_id} className="job-card">
                         <div className="card-img-header">
-                            <img src="https://picsum.photos/300/?random" alt="" />
+                            <img src={workOrdersOnPage[i].property_img} alt="property img" />
                             <div className="card-overlay">
                                 <div className="job-id">
-                                    <h5>Job #1</h5>
+                                    <h5> Job #{workOrdersOnPage[i].job_id}</h5>
                                 </div>
                                 <div className="property-address">
-                                    <p>3561 Glenville CT, Turlock, CA 95382</p>
+                                    <p>{property_street}, {property_city}, {property_state} {property_zipcode}</p>
                                 </div>
                                 <div className="card-controls">
                                     <i className="fa fa-eye"></i>
@@ -25,77 +81,31 @@ class CompletedWorkOrders extends Component {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div className="job-card">
-                        <div className="card-img-header">
-                            <img src="https://picsum.photos/300/?random" alt="" />
-                        </div>
-                        {/* <div className="card-panel">
-                            <div>Property Information</div>
-                            <div>Company/Worker Information</div>
-                            <div>Job Description</div>
-                        </div>
-                        <div className="card-view">
+                workOrdArr.push(workOrder);
+            }
+            return workOrdArr;
+        }
+        else {
+            return;
+        }
+    }
 
-                        </div> */}
-                    </div>
-                    <div className="job-card">
-                        <div className="card-img-header">
-                            <img src="https://picsum.photos/300/?random" alt="" />
-                        </div>
-                        {/* <div className="card-panel">
-                            <div>Property Information</div>
-                            <div>Company/Worker Information</div>
-                            <div>Job Description</div>
-                        </div>
-                        <div className="card-view">
-
-                        </div> */}
-                    </div>
-                    <div className="job-card">
-                        <div className="card-img-header">
-                            <img src="https://picsum.photos/300/?random" alt="" />
-                        </div>
-                        {/* <div className="card-panel">
-                            <div>Property Information</div>
-                            <div>Company/Worker Information</div>
-                            <div>Job Description</div>
-                        </div>
-                        <div className="card-view">
-
-                        </div> */}
-                    </div>
-                    <div className="job-card">
-                        <div className="card-img-header">
-                            <img src="https://picsum.photos/300/?random" alt="" />
-                        </div>
-                        {/* <div className="card-panel">
-                            <div>Property Information</div>
-                            <div>Company/Worker Information</div>
-                            <div>Job Description</div>
-                        </div>
-                        <div className="card-view">
-
-                        </div> */}
-                    </div>
-                    <div className="job-card">
-                        <div className="card-img-header">
-                            <img src="https://picsum.photos/300/?random" alt="" />
-                        </div>
-                        {/* <div className="card-panel">
-                            <div>Property Information</div>
-                            <div>Company/Worker Information</div>
-                            <div>Job Description</div>
-                        </div>
-                        <div className="card-view">
-
-                        </div> */}
-                    </div>
+    render() {
+        return (
+            <div className="completed-jobs">
+                <div className="job-header">
+                    <h4>Completed Work Orders</h4>
                 </div>
-                <div className="jobs-pagination">
-                    <button>Next</button>
-                    <button>Back</button>
+                <div className="completed-jobs-container">
+                    {this.renderWorkOrderList()}
+                </div>
+                <div className="pagination">
+                    <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
+                    <div className="page-count">
+                        <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
+                    </div>
+                    <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
                 </div>
             </div>
         )

@@ -858,7 +858,7 @@ template {
           height: 17%;
           justify-content: space-between;
           align-items: center;
-          padding: 0  1rem;
+          padding: 0 1rem;
           color: #fff;
           margin-bottom: 0.75rem; }
           .component-jobs .jobs-view .job-queue .job-queue-container .job .job-house-img {
@@ -872,7 +872,19 @@ template {
           .component-jobs .jobs-view .job-queue .job-queue-container .job .job-elapsed-time {
             font-size: 1.5rem; }
           .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls {
-            font-size: 1.25rem; }
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            width: 10%; }
+            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action i {
+              font-size: 1.75rem;
+              transition: all 1s; }
+            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action:hover {
+              cursor: pointer; }
+            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action:first-child i:hover {
+              color: #FFCF40; }
+            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action:last-child i:hover {
+              color: #4CD765; }
       .component-jobs .jobs-view .job-queue .pagination {
         height: 8%;
         position: relative;
@@ -891,7 +903,9 @@ template {
         padding: 0 1rem 1rem 1rem;
         display: flex;
         justify-content: space-between;
-        flex-wrap: wrap; }
+        flex-wrap: wrap;
+        border: 1px solid blue;
+        height: 79%; }
         .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card {
           height: 32vh;
           border: 1px solid red;
@@ -924,14 +938,10 @@ template {
               margin: 0 auto;
               padding: 5px 0;
               justify-content: space-between; }
-      .component-jobs .jobs-view .completed-jobs .jobs-pagination {
-        display: flex;
-        justify-content: flex-end;
-        padding: 0 1rem; }
-        .component-jobs .jobs-view .completed-jobs .jobs-pagination button {
-          padding: 4px 10px; }
-        .component-jobs .jobs-view .completed-jobs .jobs-pagination button:first-child {
-          margin-right: 20px; }
+      .component-jobs .jobs-view .completed-jobs .pagination {
+        border: 1px solid orange;
+        height: 9%;
+        margin-right: 1rem; }
 
 .component-transactions {
   height: 89vh;

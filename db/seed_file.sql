@@ -27,14 +27,28 @@ CREATE TABLE property_tenants(
     tenant_email VARCHAR(200)
 )
 
-CREATE TABLE work_orders(
+CREATE TABLE work_order_queue(
     job_id SERIAL PRIMARY KEY,
     property_id INTEGER,
+    owner_id VARCHAR(50) REFERENCES owners(owner_id),
     company_name VARCHAR(100),
     company_phone VARCHAR(100),
     company_charge FLOAT,
     company_email VARCHAR(200),
     job_description TEXT,
     date_created VARCHAR(50),
-    time_crated VARCHAR(50)
+    time_created VARCHAR(50)
+)
+
+CREATE TABLE completed_work_orders(
+    job_id SERIAL PRIMARY KEY,
+    property_id INTEGER,
+    owner_id VARCHAR(50) REFERENCES owners(owner_id),
+    company_name VARCHAR(100),
+    company_phone VARCHAR(100),
+    company_charge FLOAT,
+    company_email VARCHAR(200),
+    job_description TEXT,
+    date_created VARCHAR(50),
+    time_created VARCHAR(50)
 )

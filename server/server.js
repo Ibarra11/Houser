@@ -48,6 +48,8 @@ app.put('/api/property/:propertyId', propertyCtrl.updateProperty);
 // Work order request
 app.post('/api/work_orders', workOrderCtrl.createWorkOrder);
 app.get('/api/work_orders',workOrderCtrl.getWorkOrders);
+app.post('/api/work_orders/completed', workOrderCtrl.completedWorkOrder);
+app.get('/api/work_orders/completed', workOrderCtrl.getCompletedWorkOrders);
 
 app.listen(SERVER_PORT, console.log('Server running'));
 

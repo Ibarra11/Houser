@@ -126,7 +126,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-
             .job-queue-header {
                 height: 12%;
                 border-bottom: 1px solid $btn-grey;
@@ -153,7 +152,7 @@
                     height: 17%;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 0  1rem;
+                    padding: 0 1rem;
                     color: #fff;
                     margin-bottom: 0.75rem;
                     .job-house-img {
@@ -174,12 +173,34 @@
                     }
                     .job-controls {
                         font-size: 1.25rem;
+                        display: flex;
+                        justify-content: space-between;
+                        width: 10%;
+                        .action {
+                            
+                            i {
+                                font-size: 1.75rem;
+                                transition: all 1s;
+                            }
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                        .action:first-child {
+                            i:hover {
+                                color: #FFCF40;
+                            }
+                        }
+                        .action:last-child {
+                            i:hover {
+                                color: #4CD765;
+                            }
+                        }
                     }
                 }
             }
             .pagination {
                 height: 8%;
-               
                 position: relative;
                 margin: 0 auto;
             }
@@ -201,6 +222,8 @@
                 display: flex;
                 justify-content: space-between;
                 flex-wrap: wrap;
+                border: 1px solid blue;
+                height: 79%;
                 .job-card {
                     height: 32vh;
                     border: 1px solid red;
@@ -242,16 +265,10 @@
                     }
                 }
             }
-            .jobs-pagination {
-                display: flex;
-                justify-content: flex-end;
-                padding: 0 1rem;
-                button {
-                    padding: 4px 10px;
-                }
-                button:first-child {
-                    margin-right: 20px;
-                }
+            .pagination {
+              border: 1px solid orange;
+              height: 9%;
+              margin-right: 1rem;
             }
         }
     }
