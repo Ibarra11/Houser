@@ -109,7 +109,7 @@
                     height: 10%;
                     display: flex;
                     justify-content: center;
-                   margin-top: 3%;
+                    margin-top: 3%;
                     button {
                         padding: 6px 12px;
                         border-radius: 5px;
@@ -123,8 +123,12 @@
         .job-queue {
             height: 100%;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
             .job-queue-header {
-                padding: 1.9% 0;
+                height: 12%;
                 border-bottom: 1px solid $btn-grey;
                 display: flex;
                 align-items: center;
@@ -141,18 +145,15 @@
                 }
             }
             .job-queue-container {
-                display: flex;
                 height: 75%;
-                flex-direction: column;
-                justify-content: space-between;
                 border: 1px solid yellow;
                 .job {
                     display: flex;
                     border: 1px solid blue;
-                    height: 15%;
+                    height: 17%;
                     justify-content: space-between;
                     align-items: center;
-                    padding-right: 1rem;
+                    padding: 0  1rem;
                     color: #fff;
                     margin-bottom: 0.75rem;
                     .job-house-img {
@@ -176,10 +177,11 @@
                     }
                 }
             }
-            .queue-pagination {
-                border: 1px solid orange;
-                padding: 1rem;
-                text-align: right;
+            .pagination {
+                height: 8%;
+               
+                position: relative;
+                margin: 0 auto;
             }
         }
         .completed-jobs {

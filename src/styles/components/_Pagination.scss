@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    float: right;
+    .pagination-button {
+        &:hover {
+            cursor: pointer;
+        }
+        i {
+            font-size: 2rem;
+            color: #fff;
+        }
+    }
+    p {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+}

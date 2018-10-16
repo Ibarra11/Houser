@@ -831,9 +831,12 @@ template {
             margin-right: 2%; }
     .component-jobs .jobs-view .job-queue {
       height: 100%;
-      text-align: center; }
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
       .component-jobs .jobs-view .job-queue .job-queue-header {
-        padding: 1.9% 0;
+        height: 12%;
         border-bottom: 1px solid #4D5765;
         display: flex;
         align-items: center;
@@ -847,18 +850,15 @@ template {
           position: relative;
           bottom: 0.25vh; }
       .component-jobs .jobs-view .job-queue .job-queue-container {
-        display: flex;
         height: 75%;
-        flex-direction: column;
-        justify-content: space-between;
         border: 1px solid yellow; }
         .component-jobs .jobs-view .job-queue .job-queue-container .job {
           display: flex;
           border: 1px solid blue;
-          height: 15%;
+          height: 17%;
           justify-content: space-between;
           align-items: center;
-          padding-right: 1rem;
+          padding: 0  1rem;
           color: #fff;
           margin-bottom: 0.75rem; }
           .component-jobs .jobs-view .job-queue .job-queue-container .job .job-house-img {
@@ -873,10 +873,10 @@ template {
             font-size: 1.5rem; }
           .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls {
             font-size: 1.25rem; }
-      .component-jobs .jobs-view .job-queue .queue-pagination {
-        border: 1px solid orange;
-        padding: 1rem;
-        text-align: right; }
+      .component-jobs .jobs-view .job-queue .pagination {
+        height: 8%;
+        position: relative;
+        margin: 0 auto; }
     .component-jobs .jobs-view .completed-jobs {
       height: 100%; }
       .component-jobs .jobs-view .completed-jobs .job-header {
@@ -977,3 +977,19 @@ template {
     width: 25%;
     border: 1px solid orange;
     height: 100%; }
+
+.pagination {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  float: right; }
+  .pagination .pagination-button:hover {
+    cursor: pointer; }
+  .pagination .pagination-button i {
+    font-size: 2rem;
+    color: #fff; }
+  .pagination p {
+    font-size: 1.1rem;
+    color: #fff; }
