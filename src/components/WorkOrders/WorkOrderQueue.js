@@ -119,6 +119,7 @@ class WorkOrderQueue extends Component {
                     {this.renderWorkOrders()}
                 </div>
                 <div className="pagination">
+                
                     <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
                     <div className="page-count">
                         <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>

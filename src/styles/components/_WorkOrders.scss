@@ -220,7 +220,6 @@
             .completed-jobs-container {
                 padding: 0 1rem 1rem 1rem;
                 display: flex;
-                justify-content: space-between;
                 flex-wrap: wrap;
                 border: 1px solid blue;
                 height: 79%;
@@ -263,6 +262,12 @@
                             justify-content: space-between;
                         }
                     }
+                }
+
+                .job-card:nth-child(3n+2){
+                    border: 2px solid orange;
+                    margin-left: 3%;
+                    margin-right: 3%;
                 }
             }
             .pagination {

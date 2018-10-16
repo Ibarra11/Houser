@@ -902,7 +902,6 @@ template {
       .component-jobs .jobs-view .completed-jobs .completed-jobs-container {
         padding: 0 1rem 1rem 1rem;
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
         border: 1px solid blue;
         height: 79%; }
@@ -938,6 +937,10 @@ template {
               margin: 0 auto;
               padding: 5px 0;
               justify-content: space-between; }
+        .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card:nth-child(3n+2) {
+          border: 2px solid orange;
+          margin-left: 3%;
+          margin-right: 3%; }
       .component-jobs .jobs-view .completed-jobs .pagination {
         border: 1px solid orange;
         height: 9%;
