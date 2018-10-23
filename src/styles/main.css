@@ -304,78 +304,136 @@ template {
   box-sizing: border-box; }
 
 .component-landing-page {
-  font-family: "Roboto Mono", monospace; }
+  font-family: "Roboto Mono", monospace;
+  color: #F9FDFF; }
+  .component-landing-page .section-header {
+    text-align: center;
+    font-size: 1.75rem; }
+  .component-landing-page .nav {
+    position: absolute;
+    width: 100%;
+    height: 14%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .component-landing-page .nav .nav-logo {
+      display: flex;
+      align-items: center; }
+      .component-landing-page .nav .nav-logo h1 {
+        font-size: 2.75rem;
+        margin: 0; }
+        .component-landing-page .nav .nav-logo h1 span {
+          color: #009DDB; }
+    .component-landing-page .nav .nav-links {
+      display: flex;
+      align-items: center; }
+      .component-landing-page .nav .nav-links .nav-link {
+        padding-right: 10%;
+        padding-top: 2%;
+        font-size: 1.1rem; }
   .component-landing-page .header {
-    background-image: url("../assets/images/bg-main3.jpg");
+    background-image: linear-gradient(rgba(0, 100, 148, 0.35), rgba(0, 100, 148, 0.35)), url("../assets/images/bg-main2.jpg");
     background-size: cover;
     background-position: center;
-    height: 100vh; }
-    .component-landing-page .header .header-content .header-logo {
-      text-align: center;
-      padding-top: 1rem;
-      margin-bottom: 5%; }
-      .component-landing-page .header .header-content .header-logo h1 {
-        margin: 0;
-        font-size: 4rem;
-        color: white; }
-    .component-landing-page .header .header-content .header-form {
-      background-color: rgba(0, 0, 0, 0.9);
-      width: 50%;
-      min-height: 60vh;
-      margin: 0 auto;
-      color: white;
-      padding: 2rem; }
-      .component-landing-page .header .header-content .header-form .header-form-type {
-        display: flex; }
-        .component-landing-page .header .header-content .header-form .header-form-type .form-controls {
-          background-color: #4D5765;
-          width: 50%;
-          text-align: center;
-          padding: 12px;
-          font-size: 1.25rem; }
-          .component-landing-page .header .header-content .header-form .header-form-type .form-controls:hover {
-            cursor: pointer; }
-        .component-landing-page .header .header-content .header-form .header-form-type .signupActive,
-        .component-landing-page .header .header-content .header-form .header-form-type .loginActive {
-          background-color: #0786FC; }
-      .component-landing-page .header .header-content .header-form .header-form-title {
-        text-align: center;
-        margin: 1.5rem;
-        font-size: 1.6rem; }
-      .component-landing-page .header .header-content .header-form .header-form-body .hidden {
-        display: none; }
-      .component-landing-page .header .header-content .header-form .header-form-body input {
-        padding: 12px 6px;
-        background-color: transparent;
-        border: 1px solid grey;
-        margin-bottom: 0.8rem;
-        color: #fff; }
-      .component-landing-page .header .header-content .header-form .header-form-body input:focus {
-        outline: #0786FC solid 2px; }
-      .component-landing-page .header .header-content .header-form .header-form-body .input-name-container {
-        display: flex;
-        justify-content: space-between; }
-        .component-landing-page .header .header-content .header-form .header-form-body .input-name-container input {
-          width: 48%; }
-      .component-landing-page .header .header-content .header-form .header-form-body .input-container {
-        width: 100%; }
-        .component-landing-page .header .header-content .header-form .header-form-body .input-container input {
-          width: 100%; }
-      .component-landing-page .header .header-content .header-form .header-form-footer {
-        text-align: center;
-        width: 75%;
+    height: 100vh;
+    padding-top: 10%; }
+    .component-landing-page .header .header-container {
+      display: flex;
+      width: 90%;
+      margin: 0 auto; }
+      .component-landing-page .header .header-container .header-content {
+        width: 50%; }
+      .component-landing-page .header .header-container .header-form {
+        background-color: rgba(0, 0, 0, 0.75);
+        width: 50%;
+        height: 25rem;
         margin: 0 auto;
-        margin-top: 15px; }
-        .component-landing-page .header .header-content .header-form .header-form-footer button {
-          padding: 10px;
-          background-color: #0786FC;
-          width: 100%;
-          border: none; }
-          .component-landing-page .header .header-content .header-form .header-form-footer button:hover {
-            cursor: pointer; }
-          .component-landing-page .header .header-content .header-form .header-form-footer button h4 {
-            font-size: 1.5rem;
-            color: #fff; }
+        color: white;
+        padding: 2rem; }
+        .component-landing-page .header .header-container .header-form .header-form-type {
+          display: flex; }
+          .component-landing-page .header .header-container .header-form .header-form-type .form-controls {
+            background-color: #4D5765;
+            width: 50%;
+            text-align: center;
+            padding: 12px;
+            font-size: 1.25rem; }
+            .component-landing-page .header .header-container .header-form .header-form-type .form-controls:hover {
+              cursor: pointer; }
+          .component-landing-page .header .header-container .header-form .header-form-type .signupActive,
+          .component-landing-page .header .header-container .header-form .header-form-type .loginActive {
+            background-color: #0786FC; }
+        .component-landing-page .header .header-container .header-form .header-form-title {
+          text-align: center;
+          margin: 1.5rem;
+          font-size: 1.6rem; }
+        .component-landing-page .header .header-container .header-form .header-form-body .hidden {
+          display: none; }
+        .component-landing-page .header .header-container .header-form .header-form-body input {
+          padding: 12px 6px;
+          background-color: transparent;
+          border: 1px solid grey;
+          margin-bottom: 0.8rem;
+          color: #fff; }
+        .component-landing-page .header .header-container .header-form .header-form-body input:focus {
+          outline: #0786FC solid 2px; }
+        .component-landing-page .header .header-container .header-form .header-form-body .input-name-container {
+          display: flex;
+          justify-content: space-between; }
+          .component-landing-page .header .header-container .header-form .header-form-body .input-name-container input {
+            width: 48%; }
+        .component-landing-page .header .header-container .header-form .header-form-body .input-container {
+          width: 100%; }
+          .component-landing-page .header .header-container .header-form .header-form-body .input-container input {
+            width: 100%; }
+        .component-landing-page .header .header-container .header-form .header-form-footer {
+          text-align: center;
+          width: 75%;
+          margin: 0 auto;
+          margin-top: 15px; }
+          .component-landing-page .header .header-container .header-form .header-form-footer button {
+            padding: 10px;
+            background-color: #0786FC;
+            width: 100%;
+            border: none; }
+            .component-landing-page .header .header-container .header-form .header-form-footer button:hover {
+              cursor: pointer; }
+            .component-landing-page .header .header-container .header-form .header-form-footer button h4 {
+              font-size: 1.5rem;
+              color: #fff; }
+  .component-landing-page .services {
+    background-color: #36393F;
+    padding: 2rem 0; }
+    .component-landing-page .services .services-container {
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5rem; }
+      .component-landing-page .services .services-container .service-box {
+        width: 30%;
+        height: 16rem;
+        text-align: center;
+        padding: 1rem; }
+        .component-landing-page .services .services-container .service-box .box-header {
+          margin-bottom: 3%; }
+          .component-landing-page .services .services-container .service-box .box-header h5 {
+            font-size: 1.5rem; }
+        .component-landing-page .services .services-container .service-box .box-icon {
+          height: 6rem;
+          width: 6em;
+          background-color: #009DDB;
+          margin: 0 auto;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 4%; }
+          .component-landing-page .services .services-container .service-box .box-icon i {
+            font-size: 3rem; }
+        .component-landing-page .services .services-container .service-box .box-description p {
+          font-size: 1.125rem; }
 
 .component-home {
   background-color: #344055;
@@ -942,7 +1000,6 @@ template {
           margin-left: 3%;
           margin-right: 3%; }
       .component-jobs .jobs-view .completed-jobs .pagination {
-        border: 1px solid orange;
         height: 9%;
         margin-right: 1rem; }
 

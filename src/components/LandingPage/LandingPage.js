@@ -31,7 +31,7 @@ class LandingPage extends Component {
                     if (res.data === 'Login Successful') {
                         this.props.history.push('/houser');
                     }
-                    else{
+                    else {
                         alert('Unsuccessful Login');
                     }
                 })
@@ -41,10 +41,10 @@ class LandingPage extends Component {
             axios.post('/api/signup', { email, password })
                 .then((res) => {
                     console.log(res.data);
-                    if(res.data === 'Signup Successful'){
+                    if (res.data === 'Signup Successful') {
                         this.props.history.push('/houser');
                     }
-                    else{
+                    else {
                         alert('Unsuccessful Signjup');
                     }
                 })
@@ -56,10 +56,29 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="component-landing-page">
+                <nav className="nav">
+                    <div className="nav-logo">
+                        <h1><span><i className="fa fa-home"></i></span>ouser</h1>
+                    </div>
+                    <div className="nav-links">
+                        <div className="nav-link">
+                            <h3>Services</h3>
+                        </div>
+                        <div className="nav-link">
+                            <h3>Payment</h3>
+                        </div>
+                        <div className="nav-link">
+                            <h3>Contact</h3>
+                        </div>
+                    </div>
+                </nav>
                 <header className="header">
-                    <div className="header-content">
-                        <div className="header-logo">
-                            <h1>Houser</h1>
+                    <div className="header-container">
+                        <div className="header-content">
+                            <h1>Property Management</h1>
+                            <h4>
+                                Houser is a top of the line property management sys
+                        </h4>
                         </div>
                         <div className="header-form" >
                             <div className="header-form-type">
@@ -85,6 +104,46 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </header>
+                <section className="services">
+                    <div className="section-header">
+                        <h3>Services</h3>
+                    </div>
+                    <div className="services-container">
+                        <div className="service-box">
+                        <div className="box-icon">
+                                <i className="fa fa-home"></i>
+                            </div>
+                            <div className="box-header">
+                                <h5>Property Management</h5>
+                            </div>
+                            <div className="box-description">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, deserunt.</p>
+                            </div>
+                        </div>
+                        <div className="service-box">
+                        <div className="box-icon">
+                                <i className="fa fa-wrench"></i>
+                            </div>
+                            <div className="box-header">
+                                <h5>Work Order History</h5>
+                            </div>
+                            <div className="box-description">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, rem?</p>
+                            </div>
+                        </div>
+                        <div className="service-box">
+                        <div className="box-icon">
+                                <i className="fa fa-credit-card"></i>
+                            </div>
+                            <div className="box-header">
+                                <h5>Transaction System</h5>
+                            </div>
+                            <div className="box-description">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, labore!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         )
     }
