@@ -1076,43 +1076,40 @@ template {
   background-color: rgba(0, 0, 0, 0.75);
   width: 90%;
   margin: 0 auto;
-  display: flex;
-  padding: 2rem; }
-  .payment .payment-description {
-    width: 40%;
-    background-color: #009DDB;
-    text-align: center; }
-    .payment .payment-description h1 {
-      text-align: center;
-      font-size: 1.75rem; }
-    .payment .payment-description p {
-      text-align: center;
-      padding: 0 0.5rem;
-      font-size: 1.15rem; }
-    .payment .payment-description button {
-      width: 50%;
-      margin-top: 5%;
-      padding: 8px; }
+  display: flex; }
   .payment .payment-form {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid red; }
+    display: flex; }
+    .payment .payment-form .payment-description {
+      width: 40%;
+      background-color: #009DDB;
+      text-align: center; }
+      .payment .payment-form .payment-description h1 {
+        text-align: center;
+        font-size: 1.75rem; }
+      .payment .payment-form .payment-description p {
+        text-align: center;
+        padding: 0 0.5rem;
+        font-size: 1.15rem; }
+      .payment .payment-form .payment-description button {
+        width: 50%;
+        margin-top: 8%;
+        padding: 8px; }
     .payment .payment-form .tenant-info {
-      width: 27%; }
+      width: 26%;
+      padding: 1rem 0;
+      margin-left: 2%;
+      margin-right: 4%; }
       .payment .payment-form .tenant-info .input-group {
         width: 100%; }
         .payment .payment-form .tenant-info .input-group input {
           width: 100%; }
     .payment .payment-form .payment-info {
-      width: 27%; }
+      width: 26%;
+      padding: 1rem 0;
+      margin-right: 2%; }
       .payment .payment-form .payment-info .input-group {
         width: 100%; }
-    .payment .payment-form .button-submit {
-      position: absolute;
-      bottom: 0; }
-      .payment .payment-form .button-submit button {
-        padding: 0.75rem; }
   .payment input,
   .payment .StripeElement {
     display: block;

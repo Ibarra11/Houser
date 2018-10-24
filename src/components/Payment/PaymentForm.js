@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CardNumberElement, CardCVCElement, CardExpiryElement, injectStripe } from 'react-stripe-elements';
-
+import axios from 'axios';
 class PaymentForm extends Component {
     constructor(props) {
         super(props);
@@ -12,6 +12,8 @@ class PaymentForm extends Component {
     }
     handleSubmit = async () => {
         let { token } = await this.props.stripe.createToken({ name: "Name" });
+        let response = await axios.post('/api/payment', {token, ...this.state});
+        console.log(response);
     }
     handleChange = e => {
         let { value } = e.target;

@@ -3,12 +3,14 @@ const app = express();
 const massive = require('massive');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const stripe = require('stripe')('sk_test_r0TfH7jBUVUvuuVoVVMIAuzu');
 require('dotenv').config();
 
 // Controllers
 const authCtrl = require('./controllers/authController');
 const propertyCtrl = require('./controllers/propertyController');
 const workOrderCtrl = require('./controllers/workOrderController');
+const paymentCtrl = require('./controllers/paymentController');
 
 
 const {
@@ -50,6 +52,27 @@ app.post('/api/work_orders', workOrderCtrl.createWorkOrder);
 app.get('/api/work_orders',workOrderCtrl.getWorkOrders);
 app.post('/api/work_orders/completed', workOrderCtrl.completedWorkOrder);
 app.get('/api/work_orders/completed', workOrderCtrl.getCompletedWorkOrders);
+
+
+// Payments
+app.post('/api/payment', async (req,res) =>{
+    let {amount, token} = req.body;
+    amount = amount * 100;
+    try{
+        let response = await stripe.charges.create({
+            amount,
+            currency: "usd",
+            description: "An example charge",
+            source: token.id
+        })
+        console.log(response)
+        res.json({...response.status})
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).send(err)
+    }
+});
 
 app.listen(SERVER_PORT, console.log('Server running'));
 
