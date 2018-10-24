@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 class LandingPage extends Component {
     constructor() {
         super();
@@ -40,7 +41,6 @@ class LandingPage extends Component {
         else {
             axios.post('/api/signup', { email, password })
                 .then((res) => {
-                    console.log(res.data);
                     if (res.data === 'Signup Successful') {
                         this.props.history.push('/houser');
                     }
@@ -48,10 +48,8 @@ class LandingPage extends Component {
                         alert('Unsuccessful Signjup');
                     }
                 })
-                .catch(err => console.log(err))
+                .catch(err => console.log(err));
         }
-
-
     }
     render() {
         return (
@@ -65,10 +63,10 @@ class LandingPage extends Component {
                             <h3>Services</h3>
                         </div>
                         <div className="nav-link">
-                            <h3>Payment</h3>
+                            <h3><Link to='/payment'>Tenants</Link></h3>
                         </div>
                         <div className="nav-link">
-                            <h3>Contact</h3>
+                            <h3>Payments</h3>
                         </div>
                     </div>
                 </nav>
@@ -78,7 +76,7 @@ class LandingPage extends Component {
                             <h1>Property Management</h1>
                             <h4>
                                 Houser is a top of the line property management sys
-                        </h4>
+                            </h4>
                         </div>
                         <div className="header-form" >
                             <div className="header-form-type">
@@ -110,7 +108,7 @@ class LandingPage extends Component {
                     </div>
                     <div className="services-container">
                         <div className="service-box">
-                        <div className="box-icon">
+                            <div className="box-icon">
                                 <i className="fa fa-home"></i>
                             </div>
                             <div className="box-header">
@@ -121,7 +119,7 @@ class LandingPage extends Component {
                             </div>
                         </div>
                         <div className="service-box">
-                        <div className="box-icon">
+                            <div className="box-icon">
                                 <i className="fa fa-wrench"></i>
                             </div>
                             <div className="box-header">
@@ -132,7 +130,7 @@ class LandingPage extends Component {
                             </div>
                         </div>
                         <div className="service-box">
-                        <div className="box-icon">
+                            <div className="box-icon">
                                 <i className="fa fa-credit-card"></i>
                             </div>
                             <div className="box-header">
@@ -144,6 +142,19 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </section>
+                {/* <section className="contact">
+                    <div className="section-header">
+                        <h3>Contact</h3>
+                    </div>
+                    <div className="contact-container">
+                        <div className="contact-info">
+
+                        </div>
+                        <div className="contact-form">
+
+                        </div>
+                    </div>
+                </section> */}
             </div>
         )
     }

@@ -6,6 +6,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700");
 html {
   line-height: 1.15;
   /* 1 */
@@ -306,9 +307,11 @@ template {
 .component-landing-page {
   font-family: "Roboto Mono", monospace;
   color: #F9FDFF; }
-  .component-landing-page .section-header {
-    text-align: center;
-    font-size: 1.75rem; }
+  .component-landing-page section {
+    padding: 2rem 0; }
+    .component-landing-page section .section-header {
+      text-align: center;
+      font-size: 1.75rem; }
   .component-landing-page .nav {
     position: absolute;
     width: 100%;
@@ -404,8 +407,7 @@ template {
               font-size: 1.5rem;
               color: #fff; }
   .component-landing-page .services {
-    background-color: #36393F;
-    padding: 2rem 0; }
+    background-color: #36393F; }
     .component-landing-page .services .services-container {
       margin: 0 auto;
       display: flex;
@@ -434,6 +436,12 @@ template {
             font-size: 3rem; }
         .component-landing-page .services .services-container .service-box .box-description p {
           font-size: 1.125rem; }
+  .component-landing-page .contact {
+    background-color: #495867; }
+    .component-landing-page .contact .contact-container {
+      width: 75%;
+      border: 1px solid orange;
+      margin: 0 auto; }
 
 .component-home {
   background-color: #344055;
@@ -1063,3 +1071,61 @@ template {
   .pagination p {
     font-size: 1.1rem;
     color: #fff; }
+
+.payment {
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  padding: 2rem; }
+  .payment .payment-description {
+    width: 40%;
+    background-color: #009DDB;
+    text-align: center; }
+    .payment .payment-description h1 {
+      text-align: center;
+      font-size: 1.75rem; }
+    .payment .payment-description p {
+      text-align: center;
+      padding: 0 0.5rem;
+      font-size: 1.15rem; }
+    .payment .payment-description button {
+      width: 50%;
+      margin-top: 5%;
+      padding: 8px; }
+  .payment .tenant-info {
+    width: 25%;
+    margin-left: 5%; }
+    .payment .tenant-info .input-group {
+      width: 100%; }
+      .payment .tenant-info .input-group input {
+        width: 100%; }
+  .payment .payment-form {
+    width: 20rem;
+    width: 25%;
+    margin-left: 5%; }
+    .payment .payment-form .input-group {
+      width: 100%; }
+  .payment input,
+  .payment .StripeElement {
+    display: block;
+    margin: 10px 0 20px 0;
+    max-width: 500px;
+    padding: 10px 14px;
+    font-size: 1em;
+    font-family: 'Source Code Pro', monospace;
+    box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+    border: 0;
+    outline: 0;
+    border-radius: 4px;
+    background: white; }
+  .payment input::placeholder {
+    color: #aab7c4; }
+  .payment input:focus,
+  .payment .StripeElement--focus {
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .payment .StripeElement.IdealBankElement,
+  .payment .StripeElement.PaymentRequestButton {
+    padding: 0; }

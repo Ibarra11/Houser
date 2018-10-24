@@ -2,10 +2,14 @@
 .component-landing-page {
     font-family: $font-main;
     color: $light;
-    .section-header {
-        text-align: center;
-        font-size: 1.75rem;
+    section{
+        padding: 2rem 0;
+        .section-header {
+            text-align: center;
+            font-size: 1.75rem;
+        }   
     }
+   
     .nav {
         position: absolute;
         width: 100%;
@@ -132,7 +136,6 @@
     }
     .services {
         background-color: #36393F;
-        padding: 2rem 0;
         .services-container {
             margin: 0 auto;
             display: flex;
@@ -169,6 +172,14 @@
                     }
                 }
             }
+        }
+    }
+    .contact{
+        background-color: #495867;
+        .contact-container{
+            width: 75%;
+            border: 1px solid orange;
+            margin: 0 auto;
         }
     }
 }
