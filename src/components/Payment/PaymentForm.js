@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { CardNumberElement, CardCVCElement, CardExpiryElement, injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
+import { BeatLoader } from 'react-spinners';
 class PaymentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
             ssn: 0,
-            amount: 0
+            amount: 0,
+            isLoading: true
         }
     }
     handleSubmit = async () => {
         let { token } = await this.props.stripe.createToken({ name: "Name" });
-        let response = await axios.post('/api/payment', {token, ...this.state});
+        let response = await axios.post('/api/payment', { token, ...this.state });
         console.log(response);
     }
     handleChange = e => {
@@ -22,6 +24,20 @@ class PaymentForm extends Component {
         }
         this.setState({ [e.target.name]: value })
     }
+
+    displayLoading = () => {
+        return (
+            <div className="loader-container">
+                <h2>Processing Payment</h2>
+                <BeatLoader
+                   size={35}
+                    color={"#fff"}
+                    loading={this.state.loading}
+                />
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="payment-form" onSubmit={this.handleSubmit}>
@@ -34,40 +50,45 @@ class PaymentForm extends Component {
                                 </p>
                     <button onClick={this.handleSubmit}>Sumbit Payment</button>
                 </div>
-                <div className="tenant-info">
-                    <div className="input-group">
-                        <label htmlFor="">Name</label>
-                        <input name='name' onChange={this.handleChange} type="text" />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="">Last 4 Digits of SSN</label>
-                        <input name='ssn' onChange={this.handleChange} type="text" />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="">Amount</label>
-                        <input name='amount' onChange={this.handleChange} type="text" />
-                    </div>
-                </div>
-                <div className="payment-info">
-                    <div className="input-group">
-                        Card number
+                {this.state.isLoading ? this.displayLoading() :
+                    <div className="form-data">
+                        <div className="tenant-info">
+                            <div className="input-group">
+                                <label htmlFor="">Name</label>
+                                <input name='name' onChange={this.handleChange} type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="">Last 4 Digits of SSN</label>
+                                <input name='ssn' onChange={this.handleChange} type="text" />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="">Amount</label>
+                                <input name='amount' onChange={this.handleChange} type="text" />
+                            </div>
+                        </div>
+
+                        <div className="payment-info">
+                            <div className="input-group">
+                                Card number
                    <CardNumberElement
-                            onChange={this.props.handleChange}
-                        />
-                    </div>
-                    <div className="input-group">
-                        Expiration Date
+                                    onChange={this.props.handleChange}
+                                />
+                            </div>
+                            <div className="input-group">
+                                Expiration Date
                     <CardExpiryElement
-                            onChange={this.props.handleChange}
-                        />
-                    </div>
-                    <div className="input-group">
-                        CVC
+                                    onChange={this.props.handleChange}
+                                />
+                            </div>
+                            <div className="input-group">
+                                CVC
                     <CardCVCElement
-                            onChange={this.props.handleChange}
-                        />
+                                    onChange={this.props.handleChange}
+                                />
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         )
     }

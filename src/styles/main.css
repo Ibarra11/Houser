@@ -1076,12 +1076,15 @@ template {
   background-color: rgba(0, 0, 0, 0.75);
   width: 90%;
   margin: 0 auto;
-  display: flex; }
+  display: flex;
+  height: 17.9rem; }
   .payment .payment-form {
     width: 100%;
-    display: flex; }
+    display: flex;
+    height: 100%; }
     .payment .payment-form .payment-description {
       width: 40%;
+      height: 100%;
       background-color: #009DDB;
       text-align: center; }
       .payment .payment-form .payment-description h1 {
@@ -1095,21 +1098,30 @@ template {
         width: 50%;
         margin-top: 8%;
         padding: 8px; }
-    .payment .payment-form .tenant-info {
+    .payment .payment-form .form-data .tenant-info {
       width: 26%;
       padding: 1rem 0;
       margin-left: 2%;
       margin-right: 4%; }
-      .payment .payment-form .tenant-info .input-group {
+      .payment .payment-form .form-data .tenant-info .input-group {
         width: 100%; }
-        .payment .payment-form .tenant-info .input-group input {
+        .payment .payment-form .form-data .tenant-info .input-group input {
           width: 100%; }
-    .payment .payment-form .payment-info {
+    .payment .payment-form .form-data .payment-info {
       width: 26%;
       padding: 1rem 0;
       margin-right: 2%; }
-      .payment .payment-form .payment-info .input-group {
+      .payment .payment-form .form-data .payment-info .input-group {
         width: 100%; }
+  .payment .loader-container {
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    padding: 5rem 0;
+    flex-direction: column;
+    align-items: center; }
+    .payment .loader-container h2 {
+      margin-bottom: 2rem; }
   .payment input,
   .payment .StripeElement {
     display: block;

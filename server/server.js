@@ -3,15 +3,13 @@ const app = express();
 const massive = require('massive');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const stripe = require('stripe')('sk_test_r0TfH7jBUVUvuuVoVVMIAuzu');
 require('dotenv').config();
+const stripe = require('stripe')(process.env.PAYMENT_KEY);
 
 // Controllers
 const authCtrl = require('./controllers/authController');
 const propertyCtrl = require('./controllers/propertyController');
 const workOrderCtrl = require('./controllers/workOrderController');
-const paymentCtrl = require('./controllers/paymentController');
-
 
 const {
     SERVER_PORT, CONNECTION_STRING, SESSION_SECRET
