@@ -1182,3 +1182,6 @@ template {
   .payment .StripeElement.IdealBankElement,
   .payment .StripeElement.PaymentRequestButton {
     padding: 0; }
+
+.property {
+  background-color: red; }

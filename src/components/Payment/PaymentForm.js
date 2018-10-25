@@ -23,31 +23,25 @@ class PaymentForm extends Component {
     processPayment = async () => {
         let { token } = await this.props.stripe.createToken({ name: "Name" });
         let response = await axios.post('/api/payment', { token, ...this.state });
-        console.log(response)
         if (response.status === 200) {
             this.setState({ isLoading: false, displayTransactionReciept: true })
         }
-
     }
 
     handleChange = e => {
         let { value } = e.target;
-        console.log(parseInt(value));
         if (e.target.name === 'ssn' || e.target.name === 'amount') {
             value = parseInt(e.target.value);
             if (value) {
                 this.setState({ [e.target.name]: value })
             }
-            else{
-                this.setState({[e.target.name]: ''})
+            else {
+                this.setState({ [e.target.name]: '' })
             }
         }
         else {
             this.setState({ [e.target.name]: value })
         }
-
-
-
     }
 
     displayLoader = () => {
@@ -66,6 +60,20 @@ class PaymentForm extends Component {
         });
     }
 
+    printReceipt = () => {
+        var mywindow = window.open('', 'Print', 'height=600, width=1000');
+        mywindow.document.writeln('<html><head>');
+        // mywindow.document.writeln('<style type="text/css">.payment-info{text-align:center; color:red;}</style>')
+        mywindow.document.writeln('</head><body style="text-align:center;">');
+        mywindow.document.writeln(document.querySelector('.payment-container').innerHTML);
+        console.log(document.querySelector('.payment-info'));
+        mywindow.document.writeln('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+        mywindow.print();
+        mywindow.close();
+    }
     render() {
         return (
             <div className="payment-form" onSubmit={this.handleSubmit}>
@@ -117,7 +125,7 @@ class PaymentForm extends Component {
                                 </div>
                             </div>
                             <div className="payment-controls">
-                                <i className='fa fa-print'></i>
+                                <i onClick={this.printReceipt} className='fa fa-print'></i>
                                 <i onClick={this.closeReciept} className='fa fa-times'></i>
                             </div>
                         </div>
