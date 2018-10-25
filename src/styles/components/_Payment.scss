@@ -28,9 +28,15 @@
                 padding: 8px;
             }
         }
+        .hidden {
+            display: none;
+            border: 1px solid orange;
+        }
         .form-data {
+            display: flex;
+            width: 60%;
             .tenant-info {
-                width: 26%;
+                width: 48%;
                 padding: 1rem 0;
                 margin-left: 2%;
                 margin-right: 4%;
@@ -42,7 +48,7 @@
                 }
             }
             .payment-info {
-                width: 26%;
+                width: 48%;
                 padding: 1rem 0;
                 margin-right: 2%;
                 .input-group {
@@ -51,15 +57,54 @@
             }
         }
     }
-    .loader-container{
+    .loader-container {
         width: 40%;
         margin: 0 auto;
         display: flex;
         padding: 5rem 0;
         flex-direction: column;
         align-items: center;
-        h2{
+        h2 {
             margin-bottom: 2rem;
+        }
+    }
+    .payment-container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 1rem;
+        position: relative;
+        h2 {
+            text-align: center;
+        }
+        .payment-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            position: relative;
+            .payment-group {
+                width: 45%;
+                margin-bottom: 1rem;
+                border-bottom: 1px solid yellow;
+                padding-bottom: 0.25rem;
+                h5 {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.25rem;
+                }
+            }
+            .payment-group:nth-child(2n+2) {
+                margin-left: 10%;
+            }
+        }
+        .payment-controls {
+            position: absolute;
+            right: -35px;
+            width: 4rem;
+            display: flex;
+            justify-content: space-between;
+            top: 10px;
+            i{
+                font-size: 1.75rem;
+            }
         }
     }
     input,

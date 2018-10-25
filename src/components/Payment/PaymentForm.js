@@ -7,35 +7,63 @@ class PaymentForm extends Component {
         super(props);
         this.state = {
             name: '',
-            ssn: 0,
-            amount: 0,
-            isLoading: true
+            ssn: '',
+            amount: '',
+            isLoading: false,
+            displayTransactionReciept: false
         }
-    }
-    handleSubmit = async () => {
-        let { token } = await this.props.stripe.createToken({ name: "Name" });
-        let response = await axios.post('/api/payment', { token, ...this.state });
-        console.log(response);
-    }
-    handleChange = e => {
-        let { value } = e.target;
-        if (e.target.name === 'ssn' || e.target.name === 'amount') {
-            value = parseInt(e.target.value);
-        }
-        this.setState({ [e.target.name]: value })
     }
 
-    displayLoading = () => {
-        return (
-            <div className="loader-container">
-                <h2>Processing Payment</h2>
-                <BeatLoader
-                   size={35}
-                    color={"#fff"}
-                    loading={this.state.loading}
-                />
-            </div>
-        )
+    componentDidUpdate(prevProps, prevState) {
+        if (!prevState.isLoading && this.state.isLoading) {
+            this.processPayment();
+        }
+    }
+
+    processPayment = async () => {
+        let { token } = await this.props.stripe.createToken({ name: "Name" });
+        let response = await axios.post('/api/payment', { token, ...this.state });
+        console.log(response)
+        if (response.status === 200) {
+            this.setState({ isLoading: false, displayTransactionReciept: true })
+        }
+
+    }
+
+    handleChange = e => {
+        let { value } = e.target;
+        console.log(parseInt(value));
+        if (e.target.name === 'ssn' || e.target.name === 'amount') {
+            value = parseInt(e.target.value);
+            if (value) {
+                this.setState({ [e.target.name]: value })
+            }
+            else{
+                this.setState({[e.target.name]: ''})
+            }
+        }
+        else {
+            this.setState({ [e.target.name]: value })
+        }
+
+
+
+    }
+
+    displayLoader = () => {
+        this.setState({ isLoading: true })
+    }
+
+    closeReciept = () => {
+        this._cardNumber.clear();
+        this._expirationDate.clear();
+        this._cardCVE.clear();
+        this.setState({
+            displayTransactionReciept: false,
+            name: '',
+            ssn: '',
+            amount: ''
+        });
     }
 
     render() {
@@ -48,47 +76,92 @@ class PaymentForm extends Component {
                         the information is correct your payment will be processed and your landlord will be
                         notified.
                                 </p>
-                    <button onClick={this.handleSubmit}>Sumbit Payment</button>
+                    <button onClick={this.displayLoader}>Sumbit Payment</button>
                 </div>
-                {this.state.isLoading ? this.displayLoading() :
-                    <div className="form-data">
-                        <div className="tenant-info">
-                            <div className="input-group">
-                                <label htmlFor="">Name</label>
-                                <input name='name' onChange={this.handleChange} type="text" />
+                {this.state.isLoading ?
+                    <div className="loader-container">
+                        <h2>Processing Payment</h2>
+                        <BeatLoader
+                            size={35}
+                            color={"#fff"}
+                            loading={this.state.loading}
+                        />
+                    </div>
+                    : this.state.displayTransactionReciept ?
+                        <div className="payment-container">
+                            <h2>Payment Receipt</h2>
+                            <div className="payment-info">
+                                <div className="payment-group">
+                                    <h5>Payment Id: </h5>
+                                    <p>123</p>
+                                </div>
+                                <div className="payment-group">
+                                    <h5>Payment Date: </h5>
+                                    <p>10/25/18</p>
+                                </div>
+                                <div className="payment-group">
+                                    <h5>Payment Time: </h5>
+                                    <p>9:39</p>
+                                </div>
+                                <div className="payment-group">
+                                    <h5>Payment Amount: </h5>
+                                    <p>1,000</p>
+                                </div>
+                                <div className="payment-group">
+                                    <h5>Tenant Name: </h5>
+                                    <p>Alan Ibarra</p>
+                                </div>
+                                <div className="payment-group">
+                                    <h5>Property Address: </h5>
+                                    <p>3561 Glenville Ct, Turlock CA 95382</p>
+                                </div>
                             </div>
-                            <div className="input-group">
-                                <label htmlFor="">Last 4 Digits of SSN</label>
-                                <input name='ssn' onChange={this.handleChange} type="text" />
-                            </div>
-                            <div className="input-group">
-                                <label htmlFor="">Amount</label>
-                                <input name='amount' onChange={this.handleChange} type="text" />
+                            <div className="payment-controls">
+                                <i className='fa fa-print'></i>
+                                <i onClick={this.closeReciept} className='fa fa-times'></i>
                             </div>
                         </div>
-
-                        <div className="payment-info">
-                            <div className="input-group">
-                                Card number
-                   <CardNumberElement
-                                    onChange={this.props.handleChange}
-                                />
-                            </div>
-                            <div className="input-group">
-                                Expiration Date
-                    <CardExpiryElement
-                                    onChange={this.props.handleChange}
-                                />
-                            </div>
-                            <div className="input-group">
-                                CVC
-                    <CardCVCElement
-                                    onChange={this.props.handleChange}
-                                />
-                            </div>
+                        : null
+                }
+                <div className={this.state.isLoading || this.state.displayTransactionReciept ? "hidden" : "form-data"}>
+                    <div className="tenant-info">
+                        <div className="input-group">
+                            <label htmlFor="">Name</label>
+                            <input value={this.state.name} name='name' onChange={this.handleChange} type="text" />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="">Last 4 Digits of SSN</label>
+                            <input value={this.state.ssn} name='ssn' onChange={this.handleChange} type="text" />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="">Amount</label>
+                            <input value={this.state.amount} name='amount' onChange={this.handleChange} type="text" />
                         </div>
                     </div>
-                }
+                    <div className="payment-info">
+                        <div className="input-group">
+                            Card number
+                   <CardNumberElement
+                                onChange={this.props.handleChange}
+                                onReady={element => this._cardNumber = element}
+                            />
+                        </div>
+                        <div className="input-group">
+                            Expiration Date
+                    <CardExpiryElement
+                                onChange={this.props.handleChange}
+                                onReady={element => this._expirationDate = element}
+                            />
+                        </div>
+                        <div className="input-group">
+                            CVC
+                    <CardCVCElement
+                                onChange={this.props.handleChange}
+                                onReady={element => this._cardCVE = element}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
