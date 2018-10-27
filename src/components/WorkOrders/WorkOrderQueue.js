@@ -74,7 +74,9 @@ class WorkOrderQueue extends Component {
         let { currentWorkOrders } = this.state;
         for (let i = 0; i < currentWorkOrders.length; i++) {
             let newDate = moment(currentWorkOrders[i].date_created).format('YYYYMMDD');
+            console.log(newDate);
             let timeElapsed = moment(newDate, 'YYYYMMDD').fromNow().split(' ');
+            console.log(timeElapsed);
             if (timeElapsed[0] === 'a') {
                 timeElapsed[0] = 1;
             }

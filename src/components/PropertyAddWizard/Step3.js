@@ -7,24 +7,25 @@ class Step3 extends Component {
         this.state = {
             propertyTenantName: '',
             propertyTenantContactNumber: '',
-            propertyTenantEmail: ''
+            propertyTenantEmail: '',
+            propertyTenantSSN: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentDidMount() {
         this.props.onStep('step3');
-        let {propertyTenantName, propertyTenantContactNumber, propertyTenantEmail} = this.props;
+        let {propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN} = this.props;
         this.setState({
-            propertyTenantName, propertyTenantContactNumber, propertyTenantEmail
+            propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN
         })
     }
     handleInputChange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     updateWizard(direction) {
-        let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail } = this.state;
-        this.props.setTenantInformation(propertyTenantName, propertyTenantContactNumber, propertyTenantEmail);
+        let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN } = this.state;
+        this.props.setTenantInformation(propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN);
 
         direction === 'next' ? this.props.updateStep('step4') : this.props.updateStep('step2')
     }
@@ -46,6 +47,10 @@ class Step3 extends Component {
                         <h6>Email Address </h6>
                         <input value={this.state.propertyTenantEmail} name="propertyTenantEmail" onChange={this.handleInputChange} type="email" />
                     </div>
+                    <div className="input-group">
+                        <h6>Last 4 Digits of SSN</h6>
+                        <input type="password" value={this.state.propertyTenantSSN} name="propertyTenantSSN" onChange={this.handleInputChange} />
+                    </div>
                 </div>
                 <div className="wizard-controls">
                     <button onClick={() => this.updateWizard('prev')}>Previous Step</button>
@@ -56,9 +61,9 @@ class Step3 extends Component {
     }
 }
 function mapStateToProps(state) {
-    let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail } = state;
+    let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN } = state;
     return {
-        propertyTenantName, propertyTenantContactNumber, propertyTenantEmail
+        propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN
     }
 }
 export default connect(mapStateToProps, { setTenantInformation })(Step3);

@@ -24,7 +24,8 @@ CREATE TABLE property_tenants(
     property_id INTEGER PRIMARY KEY REFERENCES property_information(property_id) ON DELETE CASCADE,
     tenant_name VARCHAR(100),
     tenant_phone VARCHAR(20),
-    tenant_email VARCHAR(200)
+    tenant_email VARCHAR(200),
+    tenant_SSN INTEGER
 )
 
 CREATE TABLE work_order_queue(
@@ -52,3 +53,12 @@ CREATE TABLE completed_work_orders(
     date_created VARCHAR(50),
     time_created VARCHAR(50)
 )
+
+
+CREATE TABLE payments(
+    payment_id SERIAL PRIMARY KEY,
+    property_id INTEGER,
+    payment_amount FLOAT,
+    stripe_ID VARCHAR(100)
+);
+

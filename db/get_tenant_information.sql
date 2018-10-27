@@ -1,0 +1,1 @@
+SELECT property_id FROM property_tenants WHERE tenant_name = $1 AND tenant_ssn = $2;

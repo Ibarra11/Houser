@@ -7,8 +7,8 @@ let initialState = {
     propertyTenantName: '',
     propertyTenantContactNumber: '',
     propertyTenantEmail: '',
+    propertyTenantSSN: '',
     propertyImgFile: '',
-
 }
 
 const SET_PROPERTY_ADDRESS = 'SET_PROPERTY_ADDRESS';
@@ -26,8 +26,8 @@ export default function (state = initialState, action) {
             let { propertyRent } = action.payload;
             return Object.assign({}, state, { propertyRent });
         case SET_TENANT_INFORMATION:
-            let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail } = action.payload;
-            return Object.assign({}, state, { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail });
+            let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail,propertyTenantSSN } = action.payload;
+            return Object.assign({}, state, { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN });
         case SET_PROPERTY_IMG:
             let { propertyImgFile } = action.payload;
             return Object.assign({}, state, { propertyImgFile });
@@ -56,11 +56,11 @@ export function setFinancialInformation(propertyRent) {
     }
 }
 
-export function setTenantInformation(propertyTenantName, propertyTenantContactNumber, propertyTenantEmail) {
+export function setTenantInformation(propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN) {
     return {
         type: SET_TENANT_INFORMATION,
         payload: {
-            propertyTenantName, propertyTenantContactNumber, propertyTenantEmail
+            propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN
         }
     }
 }

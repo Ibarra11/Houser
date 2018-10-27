@@ -88,11 +88,11 @@ function mapStateToProps(state) {
         propertyStreet, propertyCity, propertyState, propertyZipcode,
         propertyLoanAmount, propertyMortgage, propertyRent,
         propertyTenantName, propertyTenantContactNumber,
-        propertyTenantEmail, propertyImgFile } = state;
+        propertyTenantEmail, propertyTenantSSN, propertyImgFile } = state;
     return {
         propertyStreet, propertyCity, propertyState, propertyZipcode,
         propertyLoanAmount, propertyMortgage, propertyRent,
-        propertyTenantName, propertyTenantContactNumber, propertyTenantEmail,
+        propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN,
         propertyImgFile
     }
 }

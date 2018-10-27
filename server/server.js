@@ -47,26 +47,42 @@ app.put('/api/property/:propertyId', propertyCtrl.updateProperty);
 
 // Work order request
 app.post('/api/work_orders', workOrderCtrl.createWorkOrder);
-app.get('/api/work_orders',workOrderCtrl.getWorkOrders);
+app.get('/api/work_orders', workOrderCtrl.getWorkOrders);
 app.post('/api/work_orders/completed', workOrderCtrl.completedWorkOrder);
 app.get('/api/work_orders/completed', workOrderCtrl.getCompletedWorkOrders);
 
 
 // Payments
-app.post('/api/payment', async (req,res) =>{
-    let {amount, token} = req.body;
-    amount = amount * 100;
-    try{
+app.post('/api/payment', async (req, res, next) => {
+    let { name, ssn } = req.body;
+    let { property_id } = (await req.app.get('db').get_tenant_information([name, ssn]))[0];
+    if (property_id) {
+        req.property_id = property_id;
+        next();
+    }
+    else {
+        res.status(400).send("No tenant found");
+    }
+}, async (req, res) => {
+    let { amount, token } = req.body;
+  let stripeAmount  = amount * 100;
+    try {
         let response = await stripe.charges.create({
-            amount,
+            amount: stripeAmount,
             currency: "usd",
             description: "An example charge",
             source: token.id
         })
-        console.log(response)
-        res.json({...response.status})
+        let stripeId = response.id;
+       let paymentResponse = await req.app.get('db').insert_payment([req.property_id, amount, stripeId]);
+       if(paymentResponse){
+           res.status(200).send("Payment Successful");
+       }
+       else{
+           res.status(400).send("Payment unsucceessful");
+       }
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         res.status(500).send(err)
     }

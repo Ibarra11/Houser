@@ -8,7 +8,6 @@ module.exports = {
         // 1. Property Information
         let { propertyStreet, propertyCity, propertyState, propertyZipcode, imgUrl } = req.body;
         let { ownerId } = req.session;
-
         async function setPropertyInformation() {
             await db.add_property_info(ownerId, propertyStreet, propertyCity, propertyState, propertyZipcode, imgUrl)
                 .then(res => {
@@ -27,9 +26,9 @@ module.exports = {
         }
 
         // 3. Tenant Information
-        let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail } = req.body
+        let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN } = req.body
         async function setPropertyTenants(property_id) {
-            await db.add_property_tenants(property_id, propertyTenantName, propertyTenantContactNumber, propertyTenantEmail)
+            await db.add_property_tenants(property_id, propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, +propertyTenantSSN)
                 .then(() => res.sendStatus(200))
                 .catch(err => console.log(err))
         }
