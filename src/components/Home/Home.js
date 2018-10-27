@@ -12,7 +12,7 @@ class Home extends Component {
                     <ul className="nav-links">
                         <Link to='/houser/properties' className="link">Properties</Link>
                         <Link to='/houser/work' className="link">Work Orders</Link>
-                        <Link to='/houser/transactions' className="link">Transactions</Link>
+                        <Link to='/houser/payments' className="link">Payments</Link>
                         <Link to='/logout' className="link">Logout</Link>
                     </ul>
                 </nav>

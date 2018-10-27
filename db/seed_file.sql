@@ -59,6 +59,8 @@ CREATE TABLE payments(
     payment_id SERIAL PRIMARY KEY,
     property_id INTEGER,
     payment_amount FLOAT,
+    payment_date DATE,
     stripe_ID VARCHAR(100)
 );
+
 

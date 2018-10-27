@@ -10,6 +10,7 @@ const stripe = require('stripe')(process.env.PAYMENT_KEY);
 const authCtrl = require('./controllers/authController');
 const propertyCtrl = require('./controllers/propertyController');
 const workOrderCtrl = require('./controllers/workOrderController');
+const paymentCtrl = require('./controllers/paymentController');
 
 const {
     SERVER_PORT, CONNECTION_STRING, SESSION_SECRET
@@ -29,11 +30,6 @@ massive(CONNECTION_STRING)
         app.set('db', db);
     })
     .catch(err => console.error(err));
-
-
-
-
-
 
 // Handle owners login and signup
 app.post('/api/signup', authCtrl.ownerRegistration);
@@ -65,7 +61,13 @@ app.post('/api/payment', async (req, res, next) => {
     }
 }, async (req, res) => {
     let { amount, token } = req.body;
-  let stripeAmount  = amount * 100;
+    let stripeAmount = amount * 100;
+    let dateObj = new Date();
+    let month = dateObj.getUTCMonth() + 1;
+    let day = dateObj.getUTCDate();
+    let year = dateObj.getUTCFullYear();
+    let newDate = year + '/' + month + "/" + day;
+    console.log(newDate);
     try {
         let response = await stripe.charges.create({
             amount: stripeAmount,
@@ -74,19 +76,21 @@ app.post('/api/payment', async (req, res, next) => {
             source: token.id
         })
         let stripeId = response.id;
-       let paymentResponse = await req.app.get('db').insert_payment([req.property_id, amount, stripeId]);
-       if(paymentResponse){
-           res.status(200).send("Payment Successful");
-       }
-       else{
-           res.status(400).send("Payment unsucceessful");
-       }
+        let paymentResponse = await req.app.get('db').insert_payment([req.property_id, amount, newDate, stripeId]);
+        if (paymentResponse) {
+            res.status(200).send("Payment Successful");
+        }
+        else {
+            res.status(400).send("Payment unsucceessful");
+        }
     }
     catch (err) {
         console.log(err);
         res.status(500).send(err)
     }
 });
+
+app.get('/api/payments', paymentCtrl.getPayments);
 
 app.listen(SERVER_PORT, console.log('Server running'));
 
