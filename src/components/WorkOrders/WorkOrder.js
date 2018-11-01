@@ -49,7 +49,7 @@ class WorkOrder extends Component {
                         <div className="card-controls">
                             <i onClick={this.renderWorkOrderInfo} className="fa fa-eye"></i>
                             <i onClick={() => this.props.editWorkOrder(this.props.data, this.props.index)} className="fa fa-edit"></i>
-                            <i className="fa fa-trash"></i>
+                            <i onClick={() => this.props.deleteWorkOrder(job_id)} className="fa fa-trash"></i>
                         </div>
                     </div>
                 </div>

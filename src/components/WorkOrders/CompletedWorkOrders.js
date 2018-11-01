@@ -28,6 +28,7 @@ class CompletedWorkOrders extends Component {
         axios.get('/api/work_orders/completed')
             .then(res => {
                 if (res.data.length > 0) {
+                    console.log('test');
                     this.paginationInstance.itemList = res.data;
                     this.paginationInstance.calculateNumOfPages();
                     let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
@@ -76,12 +77,19 @@ class CompletedWorkOrders extends Component {
                 workOrdersOnPage: updatedWorkOrders
             })
         }
-        else{
+        else {
             this.setState({
                 editWorkOrder: false
             })
         }
+    }
 
+    deleteWorkOrder = workOrderId => {
+        axios.delete(`/api/workorder/${workOrderId}`)
+            .then(() => {
+                this.getCompletedWorkOrders();
+            })
+            .catch(err => console.log(err))
     }
 
 
@@ -92,7 +100,7 @@ class CompletedWorkOrders extends Component {
                     <h4>{this.state.editWorkOrder ? 'Editing Work Order #' + this.state.workOrderData.job_id : 'Completed Work Orders'}</h4>
                 </div>
                 <div className="completed-jobs-container">
-                    {this.state.editWorkOrder ? <EditWorkOrder cancelEditWorkOrder={this.cancelEditWorkOrder} workOrderData={this.state.workOrderData} /> : <WorkOrderList editWorkOrder={this.editWorkOrder} workOrders={this.state.workOrdersOnPage} />}
+                    {this.state.editWorkOrder ? <EditWorkOrder cancelEditWorkOrder={this.cancelEditWorkOrder} workOrderData={this.state.workOrderData} /> : <WorkOrderList deleteWorkOrder={this.deleteWorkOrder} editWorkOrder={this.editWorkOrder} workOrders={this.state.workOrdersOnPage} />}
                 </div>
                 {!this.state.editWorkOrder ?
                     <div className="pagination">

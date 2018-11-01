@@ -47,6 +47,7 @@ app.get('/api/work_orders', workOrderCtrl.getWorkOrders);
 app.post('/api/work_orders/completed', workOrderCtrl.completedWorkOrder);
 app.get('/api/work_orders/completed', workOrderCtrl.getCompletedWorkOrders);
 app.put('/api/workorder/:id', workOrderCtrl.updateWorkOrder);
+app.delete('/api/workorder/:id', workOrderCtrl.deleteWorkOrder);
 
 
 // Payments

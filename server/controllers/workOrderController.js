@@ -29,13 +29,19 @@ module.exports = {
         let { ownerId } = req.session;
         req.app.get('db').completed_work_orders([ownerId])
             .then(workOrders => res.send(workOrders))
-            .catch(err => console.log(err))
+            .catch(err => res.status(500).send(err))
     },
     updateWorkOrder: (req, res) => {
         let { id } = req.params;
         let { companyName, companyEmail, companyPhone, companyCharge, jobDescription } = req.body;
-        req.app.get('db').update_work_order([id, companyName,  companyPhone,  +companyCharge, companyEmail, jobDescription])
+        req.app.get('db').update_work_order([id, companyName, companyPhone, +companyCharge, companyEmail, jobDescription])
             .then((workOrder) => res.send(workOrder))
-            .catch(err => console.log(err));
+            .catch(err => res.status(500).send(err));
+    },
+    deleteWorkOrder: (req, res) => {
+        let { id } = req.params;
+        req.app.get('db').delete_work_order([id])
+            .then(() => res.sendStatus(200))
+            .catch(err => res.status(500).send(err))
     }
 }
