@@ -798,20 +798,20 @@ template {
         color: #fff;
         margin-bottom: 0.5rem; }
 
-.component-jobs {
+.component-workOrders {
   display: flex; }
-  .component-jobs .control-panel {
+  .component-workOrders .control-panel {
     width: 25%;
     border: 1px solid #4D5765;
     color: #fff;
     min-height: 89vh; }
-    .component-jobs .control-panel .control-panel-header {
+    .component-workOrders .control-panel .control-panel-header {
       display: flex;
       border-bottom: 1px solid #4D5765;
       padding: 1rem; }
-      .component-jobs .control-panel .control-panel-header h3 {
+      .component-workOrders .control-panel .control-panel-header h3 {
         font-size: 1.75rem; }
-      .component-jobs .control-panel .control-panel-header h5 {
+      .component-workOrders .control-panel .control-panel-header h5 {
         position: relative;
         display: flex;
         color: lightgray;
@@ -820,105 +820,105 @@ template {
         position: relative;
         top: 0.47vh;
         margin-left: 0.5rem; }
-    .component-jobs .control-panel .controls {
+    .component-workOrders .control-panel .controls {
       padding: 1rem; }
-      .component-jobs .control-panel .controls .controls-link {
+      .component-workOrders .control-panel .controls .controls-link {
         margin-bottom: 1rem;
         font-size: 1.25rem; }
-  .component-jobs .jobs-view {
+  .component-workOrders .component-views {
     border: 1px solid orange;
     width: 75%;
     height: 89vh;
     color: #fff; }
-    .component-jobs .jobs-view .add-job {
+    .component-workOrders .component-views .add-job {
       height: 100%; }
-      .component-jobs .jobs-view .add-job .job-order-form {
+      .component-workOrders .component-views .add-job .job-order-form {
         border: 3px solid green;
         width: 90%;
         height: 100%;
         margin: 0 auto; }
-        .component-jobs .jobs-view .add-job .job-order-form .form-header {
+        .component-workOrders .component-views .add-job .job-order-form .form-header {
           text-align: center;
           border: 1px solid red;
           height: 10%;
           display: flex;
           justify-content: center;
           align-items: center; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-header h4 {
+          .component-workOrders .component-views .add-job .job-order-form .form-header h4 {
             font-size: 1.5rem; }
-        .component-jobs .jobs-view .add-job .job-order-form .form-body {
+        .component-workOrders .component-views .add-job .job-order-form .form-body {
           padding: 0 2rem;
           height: 70%;
           margin-top: 2%;
           border: 3px solid orange;
           display: flex;
           justify-content: space-between; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-body h5 {
+          .component-workOrders .component-views .add-job .job-order-form .form-body h5 {
             font-size: 1.25rem;
             margin: 1% 0; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-body .input-group {
+          .component-workOrders .component-views .add-job .job-order-form .form-body .input-group {
             margin-bottom: 0.5rem; }
-            .component-jobs .jobs-view .add-job .job-order-form .form-body .input-group h6 {
+            .component-workOrders .component-views .add-job .job-order-form .form-body .input-group h6 {
               font-size: 1rem;
               margin-bottom: 0.25rem; }
-            .component-jobs .jobs-view .add-job .job-order-form .form-body .input-group input {
+            .component-workOrders .component-views .add-job .job-order-form .form-body .input-group input {
               padding: 6px 2px;
               border-radius: 5px; }
-            .component-jobs .jobs-view .add-job .job-order-form .form-body .input-group select {
+            .component-workOrders .component-views .add-job .job-order-form .form-body .input-group select {
               padding: 6px 2px;
               border-radius: 5px; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-body .form-right-side {
+          .component-workOrders .component-views .add-job .job-order-form .form-body .form-right-side {
             width: 50%; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-body .form-left-side {
+          .component-workOrders .component-views .add-job .job-order-form .form-body .form-left-side {
             width: 45%; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-body .job-description {
+          .component-workOrders .component-views .add-job .job-order-form .form-body .job-description {
             height: 69%;
             position: relative;
             top: 10%; }
-            .component-jobs .jobs-view .add-job .job-order-form .form-body .job-description h5 {
+            .component-workOrders .component-views .add-job .job-order-form .form-body .job-description h5 {
               text-align: center;
               margin-bottom: 0.5rem; }
-            .component-jobs .jobs-view .add-job .job-order-form .form-body .job-description textarea {
+            .component-workOrders .component-views .add-job .job-order-form .form-body .job-description textarea {
               height: 100%;
               width: 100%;
               border-radius: 10px;
               padding: 1rem; }
-        .component-jobs .jobs-view .add-job .job-order-form .form-footer {
+        .component-workOrders .component-views .add-job .job-order-form .form-footer {
           border: 1px solid red;
           padding: 8px 0;
           height: 10%;
           display: flex;
           justify-content: center;
           margin-top: 3%; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-footer button {
+          .component-workOrders .component-views .add-job .job-order-form .form-footer button {
             padding: 6px 12px;
             border-radius: 5px; }
-          .component-jobs .jobs-view .add-job .job-order-form .form-footer button:first-child {
+          .component-workOrders .component-views .add-job .job-order-form .form-footer button:first-child {
             margin-right: 2%; }
-    .component-jobs .jobs-view .job-queue {
+    .component-workOrders .component-views .job-queue {
       height: 100%;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: space-between; }
-      .component-jobs .jobs-view .job-queue .job-queue-header {
+      .component-workOrders .component-views .job-queue .job-queue-header {
         height: 12%;
         border-bottom: 1px solid #4D5765;
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
         justify-content: center; }
-        .component-jobs .jobs-view .job-queue .job-queue-header h4 {
+        .component-workOrders .component-views .job-queue .job-queue-header h4 {
           color: #fff;
           font-size: 1.5rem; }
-        .component-jobs .jobs-view .job-queue .job-queue-header .job-number {
+        .component-workOrders .component-views .job-queue .job-queue-header .job-number {
           font-size: 0.9rem;
           position: relative;
           bottom: 0.25vh; }
-      .component-jobs .jobs-view .job-queue .job-queue-container {
+      .component-workOrders .component-views .job-queue .job-queue-container {
         height: 75%;
         border: 1px solid yellow; }
-        .component-jobs .jobs-view .job-queue .job-queue-container .job {
+        .component-workOrders .component-views .job-queue .job-queue-container .job {
           display: flex;
           border: 1px solid blue;
           height: 17%;
@@ -927,87 +927,141 @@ template {
           padding: 0 1rem;
           color: #fff;
           margin-bottom: 0.75rem; }
-          .component-jobs .jobs-view .job-queue .job-queue-container .job .job-house-img {
+          .component-workOrders .component-views .job-queue .job-queue-container .job .job-house-img {
             border: 1px solid green;
             height: 100%;
             width: 15%; }
-          .component-jobs .jobs-view .job-queue .job-queue-container .job .job-id {
+          .component-workOrders .component-views .job-queue .job-queue-container .job .job-id {
             font-size: 1.25rem; }
-          .component-jobs .jobs-view .job-queue .job-queue-container .job .job-date .date {
+          .component-workOrders .component-views .job-queue .job-queue-container .job .job-date .date {
             margin-bottom: 0.25rem; }
-          .component-jobs .jobs-view .job-queue .job-queue-container .job .job-elapsed-time {
+          .component-workOrders .component-views .job-queue .job-queue-container .job .job-elapsed-time {
             font-size: 1.5rem; }
-          .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls {
+          .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls {
             font-size: 1.25rem;
             display: flex;
             justify-content: space-between;
             width: 10%; }
-            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action i {
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action i {
               font-size: 1.75rem;
               transition: all 1s; }
-            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action:hover {
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:hover {
               cursor: pointer; }
-            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action:first-child i:hover {
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:first-child i:hover {
               color: #FFCF40; }
-            .component-jobs .jobs-view .job-queue .job-queue-container .job .job-controls .action:last-child i:hover {
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:last-child i:hover {
               color: #4CD765; }
-      .component-jobs .jobs-view .job-queue .pagination {
+      .component-workOrders .component-views .job-queue .pagination {
         height: 8%;
         position: relative;
         margin: 0 auto; }
-    .component-jobs .jobs-view .completed-jobs {
+    .component-workOrders .component-views .completed-jobs {
       height: 100%; }
-      .component-jobs .jobs-view .completed-jobs .job-header {
+      .component-workOrders .component-views .completed-jobs .job-header {
         border: 1px solid red;
         height: 12%;
         display: flex;
         justify-content: center;
         align-items: center; }
-        .component-jobs .jobs-view .completed-jobs .job-header h4 {
+        .component-workOrders .component-views .completed-jobs .job-header h4 {
           font-size: 1.5rem; }
-      .component-jobs .jobs-view .completed-jobs .completed-jobs-container {
+      .component-workOrders .component-views .completed-jobs .completed-jobs-container {
         padding: 0 1rem 1rem 1rem;
         display: flex;
         flex-wrap: wrap;
         border: 1px solid blue;
-        height: 79%; }
-        .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card {
-          height: 32vh;
-          border: 1px solid red;
-          width: 31%;
-          margin-top: 1rem; }
-          .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card .card-img-header {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            border: 1px solid green; }
-            .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card .card-img-header img {
+        height: 79%;
+        width: 100%; }
+        .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list {
+          display: flex; }
+          .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order {
+            height: 32vh;
+            width: 31%;
+            margin-top: 1rem;
+            border: 1px solid red; }
+            .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header {
+              border: 1px solid red;
+              position: relative;
               height: 100%;
-              width: 100%; }
-          .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card .card-overlay {
-            position: absolute;
-            bottom: 0;
-            padding-top: 2%;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.7); }
-            .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card .card-overlay h5 {
+              width: 100%;
+              border: 1px solid green; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header img {
+                height: 100%;
+                width: 100%; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header .card-overlay {
+                position: absolute;
+                bottom: 0;
+                padding-top: 2%;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.7); }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header .card-overlay h5 {
+                  text-align: center;
+                  font-size: 1.25rem;
+                  margin-bottom: 0.25rem; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header .card-overlay p {
+                  font-size: 0.8rem;
+                  text-align: center; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header .card-overlay .card-controls {
+                  display: flex;
+                  width: 50%;
+                  margin: 0 auto;
+                  padding: 5px 0;
+                  justify-content: space-between; }
+          .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order:nth-child(3n+2) {
+            border: 2px solid orange;
+            margin-left: 3%;
+            margin-right: 3%; }
+        .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order {
+          border: 1px solid green;
+          width: 95%;
+          margin: 0 auto;
+          padding-top: 1rem;
+          display: flex; }
+          .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container {
+            height: 100%;
+            width: 40%;
+            border: 1px solid yellow; }
+            .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-address {
               text-align: center;
-              font-size: 1.25rem;
-              margin-bottom: 0.25rem; }
-            .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card .card-overlay p {
-              font-size: 0.8rem;
-              text-align: center; }
-            .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card .card-overlay .card-controls {
+              padding: 1rem 0;
+              background-color: #2E6B8D; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-address h4 {
+                font-size: 1.1rem; }
+            .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-img {
+              height: 70%; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-img img {
+                height: 100%;
+                width: 100%; }
+            .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .edit-buttons {
               display: flex;
-              width: 50%;
+              justify-content: space-between;
+              width: 75%;
               margin: 0 auto;
-              padding: 5px 0;
-              justify-content: space-between; }
-        .component-jobs .jobs-view .completed-jobs .completed-jobs-container .job-card:nth-child(3n+2) {
-          border: 2px solid orange;
-          margin-left: 3%;
-          margin-right: 3%; }
-      .component-jobs .jobs-view .completed-jobs .pagination {
+              margin-top: 1rem; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .edit-buttons button {
+                padding: 0.5rem 0;
+                width: 45%; }
+          .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container {
+            width: 60%;
+            border: 1px solid orange; }
+            .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form {
+              padding: 2rem 1rem; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group {
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: space-between; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group label {
+                  font-size: 1.25rem; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group input {
+                  border-radius: 3px;
+                  padding: 4px 12px;
+                  width: 60%; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form textarea {
+                width: 60%;
+                border-radius: 3px;
+                height: 27vh;
+                padding: 1rem; }
+      .component-workOrders .component-views .completed-jobs .pagination {
         height: 9%;
         margin-right: 1rem; }
 

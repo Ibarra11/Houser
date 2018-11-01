@@ -24,7 +24,7 @@ class WorkOrders extends Component {
     }
     render() {
         return (
-            <div className="component-jobs">
+            <div className="component-workOrders">
                 <div className="control-panel">
                     <div className="control-panel-header">
                         <h3>Work Orders</h3>
@@ -37,7 +37,7 @@ class WorkOrders extends Component {
                         <div onClick={() => this.renderView('AddJob')} className="controls-link">Analytics</div>
                     </div>
                 </div>
-                <div className="jobs-view">
+                <div className="component-views">
                     {this.state.view}
                 </div>
             </div>

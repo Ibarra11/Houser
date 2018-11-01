@@ -1,4 +1,4 @@
-.component-jobs {
+.component-workOrders {
     display: flex;
     .control-panel {
         width: 25%;
@@ -31,7 +31,7 @@
             }
         }
     }
-    .jobs-view {
+    .component-views {
         border: 1px solid orange;
         width: 75%;
         height: 89vh;
@@ -87,7 +87,6 @@
                         width: 45%;
                     }
                     .job-description {
-                        // width: 100%;
                         height: 69%;
                         position: relative;
                         top: 10%;
@@ -177,7 +176,6 @@
                         justify-content: space-between;
                         width: 10%;
                         .action {
-                            
                             i {
                                 font-size: 1.75rem;
                                 transition: all 1s;
@@ -223,56 +221,123 @@
                 flex-wrap: wrap;
                 border: 1px solid blue;
                 height: 79%;
-                .job-card {
-                    height: 32vh;
-                    border: 1px solid red;
-                    width: 31%;
-                    margin-top: 1rem;
-                    .card-img-header {
-                        position: relative;
-                        height: 100%;
-                        width: 100%;
-                        border: 1px solid green;
-                        img {
-                            // height: 100%;
+                width: 100%;
+                .work-order-list {
+                    display: flex;
+                    .work-order {
+                        height: 32vh;
+                        width: 31%;
+                        margin-top: 1rem;
+                        border: 1px solid red;
+                        .card-img-header {
+                            border: 1px solid red;
+                            position: relative;
                             height: 100%;
                             width: 100%;
+                            border: 1px solid green;
+                            img {
+                                height: 100%;
+                                width: 100%;
+                            }
+                            .card-overlay {
+                                position: absolute;
+                                bottom: 0;
+                                padding-top: 2%;
+                                width: 100%;
+                                background-color: rgba(0, 0, 0, 0.7);
+                                h5 {
+                                    text-align: center;
+                                    font-size: 1.25rem;
+                                    margin-bottom: 0.25rem;
+                                }
+                                p {
+                                    font-size: 0.8rem;
+                                    text-align: center;
+                                }
+                                .card-controls {
+                                    display: flex;
+                                    width: 50%;
+                                    margin: 0 auto;
+                                    padding: 5px 0;
+                                    justify-content: space-between;
+                                }
+                            }
                         }
                     }
-                    .card-overlay {
-                        position: absolute;
-                        bottom: 0;
-                        padding-top: 2%;
-                        width: 100%;
-                        background-color: rgba(0, 0, 0, 0.7);
-                        h5 {
-                            text-align: center;
-                            font-size: 1.25rem;
-                            margin-bottom: 0.25rem;
-                        }
-                        p {
-                            font-size: 0.8rem;
-                            text-align: center;
-                        }
-                        .card-controls {
-                            display: flex;
-                            width: 50%;
-                            margin: 0 auto;
-                            padding: 5px 0;
-                            justify-content: space-between;
-                        }
+                    .work-order:nth-child(3n+2) {
+                        border: 2px solid orange;
+                        margin-left: 3%;
+                        margin-right: 3%;
                     }
                 }
-
-                .job-card:nth-child(3n+2){
-                    border: 2px solid orange;
-                    margin-left: 3%;
-                    margin-right: 3%;
+                .edit-work-order {
+                    border: 1px solid green;
+                    width: 95%;
+                    margin: 0 auto;
+                    padding-top: 1rem;
+                    display: flex;
+                    .property-info-container {
+                        height: 100%;
+                        width: 40%;
+                        border: 1px solid yellow;
+                        .property-address {
+                            text-align: center;
+                            padding: 1rem 0;
+                            background-color: #2E6B8D;
+                            h4 {
+                                font-size: 1.1rem;
+                            }
+                        }
+                        .property-img {
+                            height: 70%;
+                            img {
+                                height: 100%;
+                                width: 100%;
+                            }
+                        }
+                        .edit-buttons {
+                            display: flex;
+                            justify-content: space-between;
+                            width: 75%;
+                            margin: 0 auto;
+                            margin-top: 1rem;
+                            button {
+                                padding: 0.5rem 0;
+                                width: 45%;
+                            }
+                        }
+                    }
+                    .work-order-info-container {
+                        width: 60%;
+                        border: 1px solid orange;
+                        .form {
+                            padding: 2rem 1rem;
+                            .input-group {
+                                margin-bottom: 1rem;
+                                display: flex;
+                                justify-content: space-between;
+                                label {
+                                    font-size: 1.25rem;
+                                }
+                                input {
+                                    border-radius: 3px;
+                                    padding: 4px 12px;
+                                    width: 60%;
+                                }
+                            }
+                            textarea {
+                                width: 60%;
+                                border-radius: 3px;
+                                height: 27vh;
+                                padding: 1rem;
+                            }
+                        }
+                    }
                 }
             }
             .pagination {
-              height: 9%;
-              margin-right: 1rem;
+                height: 9%;
+                margin-right: 1rem;
             }
         }
     }

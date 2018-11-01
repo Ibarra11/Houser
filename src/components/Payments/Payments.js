@@ -29,10 +29,6 @@ class Payments extends Component {
                     <td>{payment.tenant_name}</td>
                     <td>{payment.property_street}, {payment.property_city}, {payment.property_state} {payment.property_zipcode}</td>
                     <td>{payment.payment_amount}</td>
-                    <td>
-                        <button><i className="fa fa-edit"></i></button>
-                        <button><i className="fa fa-trash"></i></button>
-                    </td>
                 </tr>
             )
         })
@@ -52,7 +48,6 @@ class Payments extends Component {
                                 <th>Tenant</th>
                                 <th>Property Address</th>
                                 <th>Amount</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody className="table-body">
