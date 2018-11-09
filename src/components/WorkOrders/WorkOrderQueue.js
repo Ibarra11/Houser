@@ -28,9 +28,14 @@ class WorkOrderQueue extends Component {
                     this.paginationInstance.itemList = res.data;
                     this.paginationInstance.calculateNumOfPages();
                     let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
-
                     this.setState({
                         workOrders: res.data, currentWorkOrders: pageItems
+                    })
+                }
+                else{
+                    this.paginationInstance.reset();
+                    this.setState({
+                        workOrders: res.data, currentWorkOrders: []
                     })
                 }
 

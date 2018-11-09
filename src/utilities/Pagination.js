@@ -20,3 +20,8 @@ Pagination.prototype.calculateNumOfPages = function () {
     this.numberOfPages = Math.ceil(this.itemList.length / this.itemsPerPage);
 }
 
+Pagination.prototype.reset = function(){
+    this.itemList = [];
+    this.numberOfPages = 0;
+}
+

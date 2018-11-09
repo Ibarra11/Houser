@@ -28,11 +28,14 @@ class CompletedWorkOrders extends Component {
         axios.get('/api/work_orders/completed')
             .then(res => {
                 if (res.data.length > 0) {
-                    console.log('test');
                     this.paginationInstance.itemList = res.data;
                     this.paginationInstance.calculateNumOfPages();
                     let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
                     this.setState({ workOrderList: res.data, workOrdersOnPage: pageItems })
+                }
+                else {
+                    this.paginationInstance.clear();
+                    this.setState({ workOrderList: [], workOrdersOnPage: [] })
                 }
             })
             .catch(err => console.log(err))
@@ -91,7 +94,6 @@ class CompletedWorkOrders extends Component {
             })
             .catch(err => console.log(err))
     }
-
 
     render() {
         return (

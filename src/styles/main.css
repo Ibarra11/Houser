@@ -972,13 +972,50 @@ template {
         border: 1px solid blue;
         height: 79%;
         width: 100%; }
+        .component-workOrders .component-views .completed-jobs .completed-jobs-container i:hover {
+          cursor: pointer; }
         .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list {
-          display: flex; }
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%; }
           .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order {
             height: 32vh;
             width: 31%;
             margin-top: 1rem;
             border: 1px solid red; }
+            .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info {
+              border: 1px solid green;
+              height: 100%;
+              position: relative; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info img {
+                height: 100%;
+                width: 100%; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .cancel-icon {
+                position: absolute;
+                top: 2%;
+                font-size: 1.25rem;
+                right: 10%;
+                color: red;
+                z-index: 5; }
+              .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content {
+                position: absolute;
+                top: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+                height: 100%;
+                width: 100%;
+                padding: 0.5rem;
+                overflow-y: auto; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content h5 {
+                  font-size: 1.25rem;
+                  text-align: center; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content p,
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content h5 {
+                  margin-bottom: 0.5rem; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content .company-info {
+                  border-bottom: 1px solid #4D5765;
+                  margin: 0.5rem 0; }
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content .job-description {
+                  text-align: center; }
             .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .card-img-header {
               border: 1px solid red;
               position: relative;

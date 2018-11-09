@@ -57,7 +57,8 @@ class CreateWorkOrder extends Component {
 
         axios.post('/api/work_orders', { propertyId, companyName, companyCharge, companyEmail, companyPhone, description, date, time })
             .then(() => {
-                console.log('hooray');
+                console.log(this.props);
+                this.props.renderView('WorkOrderQueue');
             })
             .catch(err => console.log(err))
     }

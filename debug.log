@@ -1,2 +1,3 @@
 [1024/155828.922:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
 [1030/120217.352:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[1031/233622.020:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0

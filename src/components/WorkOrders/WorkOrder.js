@@ -8,7 +8,7 @@ class WorkOrder extends Component {
     }
 
     renderWorkOrderInfo = () => {
-        this.setState({ displayWorkOrderInfo: true });
+        this.setState({ displayWorkOrderInfo: !this.state.displayWorkOrderInfo });
     }
 
     renderComponent = () => {
@@ -17,19 +17,23 @@ class WorkOrder extends Component {
             = this.props.data;
         if (this.state.displayWorkOrderInfo) {
             return (
+                <div className="work-order-info">
+                    <img src={property_img} alt="property img" />
+                    <div onClick={this.renderWorkOrderInfo} className="cancel-icon"><i className="fa fa-times"></i></div>
+                    <div className="work-order-content">
+                        <div className="company-info">
+                            <h5>Company Info</h5>
+                            <p>Name: {company_name}</p>
+                            <p>Phone: {company_phone}</p>
+                            <p>Email: {company_email}</p>
+                            <p>Charge: ${company_charge}</p>
+                        </div>
+                        <div className="job-description">
+                            <h5>Job Description</h5>
+                            <p>{job_description}</p>
+                        </div>
+                    </div>
 
-                <div className="workOrder-info">
-                    <div className="company-info">
-                        <h5>Company Info</h5>
-                        <p>{company_name}</p>
-                        <p>{company_phone}</p>
-                        <p>{company_email}</p>
-                        <p>{company_charge}</p>
-                    </div>
-                    <div className="job-description">
-                        <h5>Job Description</h5>
-                        <p>{job_description}</p>
-                    </div>
                 </div>
             );
         }

@@ -13,13 +13,13 @@ class WorkOrders extends Component {
     }
     renderView(view) {
         if (view === 'CreateWorkOrder') {
-            this.setState({ view: <CreateWorkOrder /> })
+            this.setState({ view: <CreateWorkOrder  renderView={() => this.renderView('WorkOrderQueue')} /> })
         }
         else if (view === 'WorkOrderQueue') {
-            this.setState({ view: <WorkOrderQueue /> })
+            this.setState({ view: <WorkOrderQueue  /> })
         }
-        else if (view === 'CompletedWorkOrders'){
-            this.setState({view: <CompletedWorkOrders />})
+        else if (view === 'CompletedWorkOrders') {
+            this.setState({ view: <CompletedWorkOrders /> })
         }
     }
     render() {

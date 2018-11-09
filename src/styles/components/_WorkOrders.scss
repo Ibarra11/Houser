@@ -222,13 +222,59 @@
                 border: 1px solid blue;
                 height: 79%;
                 width: 100%;
+                i:hover{
+                    cursor: pointer;
+                }
                 .work-order-list {
                     display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
                     .work-order {
                         height: 32vh;
                         width: 31%;
                         margin-top: 1rem;
                         border: 1px solid red;
+                        .work-order-info {
+                            border: 1px solid green;
+                            height: 100%;
+                            position: relative;
+                            img {
+                                height: 100%;
+                                width: 100%;
+                            }
+                            .cancel-icon {
+                                position: absolute;
+                                top: 2%;
+                                font-size: 1.25rem;
+                                right: 10%;
+                                color: red;
+                                z-index: 5;
+                            }
+                            .work-order-content {
+                                position: absolute;
+                                top: 0;
+                                background-color: rgba(0, 0, 0, 0.7);
+                                height: 100%;
+                                width: 100%;
+                                padding: 0.5rem;
+                                overflow-y: auto;
+                                h5 {
+                                    font-size: 1.25rem;
+                                    text-align: center;
+                                }
+                                p,
+                                h5 {
+                                    margin-bottom: 0.5rem;
+                                }
+                                .company-info {
+                                    border-bottom: 1px solid $btn-grey;
+                                    margin: 0.5rem 0;
+                                }
+                                .job-description {
+                                    text-align: center;
+                                }
+                            }
+                        }
                         .card-img-header {
                             border: 1px solid red;
                             position: relative;
