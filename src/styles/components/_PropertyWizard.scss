@@ -1,8 +1,9 @@
 .component-property-wizard {
     height: 88%;
-    padding: 2vh 0 4vh 0;
-    overflow-y: auto;
-    overflow-x: hidden;
+    padding: 2vh 0 3vh 0;
+    // border: 1px solid red;
+     overflow-y: auto;
+    // overflow-x: hidden;
     .wizard-step-title {
         text-align: center;
         color: #fff;

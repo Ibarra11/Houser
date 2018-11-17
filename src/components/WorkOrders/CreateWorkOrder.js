@@ -68,7 +68,7 @@ class CreateWorkOrder extends Component {
             <div className="add-job">
                 <div className="job-order-form">
                     <div className="form-header">
-                        <h4>Work Order</h4>
+                        <h4>Create Work Order</h4>
                     </div>
                     <div className="form-body">
                         <div className="form-left-side">

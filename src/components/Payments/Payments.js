@@ -56,8 +56,6 @@ class Payments extends Component {
                         </tbody>
                     </table>
                 </div>
-                <div className="transaction-viewer">
-                </div>
             </div>
         )
     }

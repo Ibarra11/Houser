@@ -13,10 +13,10 @@ class WorkOrders extends Component {
     }
     renderView(view) {
         if (view === 'CreateWorkOrder') {
-            this.setState({ view: <CreateWorkOrder  renderView={() => this.renderView('WorkOrderQueue')} /> })
+            this.setState({ view: <CreateWorkOrder renderView={() => this.renderView('WorkOrderQueue')} /> })
         }
         else if (view === 'WorkOrderQueue') {
-            this.setState({ view: <WorkOrderQueue  /> })
+            this.setState({ view: <WorkOrderQueue /> })
         }
         else if (view === 'CompletedWorkOrders') {
             this.setState({ view: <CompletedWorkOrders /> })
@@ -34,7 +34,6 @@ class WorkOrders extends Component {
                         <div onClick={() => this.renderView('CreateWorkOrder')} className="controls-link">Create Work Order</div>
                         <div onClick={() => this.renderView('WorkOrderQueue')} className="controls-link"> Work Order Queue</div>
                         <div onClick={() => this.renderView('CompletedWorkOrders')} className="controls-link">Completed Work Orders</div>
-                        <div onClick={() => this.renderView('AddJob')} className="controls-link">Analytics</div>
                     </div>
                 </div>
                 <div className="component-views">

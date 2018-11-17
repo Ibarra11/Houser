@@ -30,15 +30,14 @@
     .property-view {
         height: 89.5vh;
         display: flex;
+        color: $light;
         .property-controls {
             width: 30%;
-            border: 1px solid white;
             height: 100%;
             .controls-menu {
                 display: flex;
                 height: 12%;
                 .menu-tab {
-                    color: #fff;
                     font-size: 1.35rem;
                     border: 1px solid $btn-grey;
                     height: 100%;
@@ -58,11 +57,11 @@
         .property-list-container {
             width: 70%;
             height: 100%;
-            border: 1px solid red;
+            border-left: 1px solid $btn-grey;
             overflow: auto;
             .property-header {
                 height: 12%;
-                border: 1px solid green;
+                border-bottom: 1px solid $btn-grey;
                 padding: 0 1rem;
                 display: flex;
                 justify-content: space-between;
@@ -71,11 +70,9 @@
                     display: flex;
                     align-items: center;
                     h3 {
-                        color: #fff;
                         font-size: 2rem;
                     }
                     h6 {
-                        color: whitesmoke;
                         font-size: 1rem;
                         position: relative;
                         top: 0.5vh;
@@ -83,30 +80,8 @@
                     }
                 }
             }
-            .pagination {
-                display: flex;
-                width: 20%;
-                justify-content: space-between;
-                align-items: center;
-                position: relative;
-                float: right;
-                .pagination-button {
-                    &:hover {
-                        cursor: pointer;
-                    }
-                    i {
-                        font-size: 2rem;
-                        color: #fff;
-                    }
-                }
-                p {
-                    font-size: 1.1rem;
-                    color: #fff;
-                }
-            }
             .property-list {
                 padding: 1rem 0;
-                color: #fff;
                 position: relative;
                 .property-message {
                     position: absolute;
@@ -142,7 +117,6 @@
                                 height: 100%;
                                 padding-bottom: 1rem;
                                 overflow-y: scroll;
-                                
                                 .form-header {
                                     background-color: #2E6B8D;
                                     padding: 3% 0;
@@ -164,10 +138,10 @@
                                         display: flex;
                                         flex-direction: column;
                                         margin-bottom: 2%;
-                                        label{
+                                        label {
                                             margin-bottom: 0.25rem;
                                         }
-                                        input{
+                                        input {
                                             border-radius: 5px;
                                             padding: 5px 3px;
                                         }
@@ -178,21 +152,19 @@
                                     justify-content: space-between;
                                     flex-wrap: wrap;
                                     .input-group {
-                                        // border: 1px solid red;
                                         width: 47%;
                                     }
                                 }
-                                .form-submit{
-                                    
+                                .form-submit {
                                     margin-top: 1rem;
                                     display: flex;
                                     justify-content: center;
-                                    button{
+                                    button {
                                         padding: 5px;
                                         width: 25%;
                                         border-radius: 5px;
                                     }
-                                    button:first-child{
+                                    button:first-child {
                                         margin-right: 5%;
                                     }
                                 }
