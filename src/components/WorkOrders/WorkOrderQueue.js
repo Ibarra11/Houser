@@ -120,16 +120,15 @@ class WorkOrderQueue extends Component {
         return (
             <div className="job-queue">
                 <div className="job-queue-header">
-                    <h4>Work Queue <span className="job-number">({this.paginationInstance.itemList.length} Work Orders)</span></h4>
+                    <h4>Work Order Queue <span className="job-number">({this.paginationInstance.itemList.length} Work Orders)</span></h4>
                 </div>
                 <div className="job-queue-container">
                     {this.renderWorkOrders()}
                 </div>
                 <div className="pagination">
-                
                     <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
                     <div className="page-count">
-                        <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
+                        <p>{this.paginationInstance.numberOfPages ? this.currentPage : 0} of {this.paginationInstance.numberOfPages}</p>
                     </div>
                     <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
                 </div>

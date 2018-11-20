@@ -1070,10 +1070,12 @@ template {
 
 .component-transactions {
   height: 89vh;
-  display: flex; }
+  display: flex;
+  flex-direction: column; }
   .component-transactions .transaction-table {
     width: 100%;
     height: 100%;
+    height: 90%;
     border: 1px solid #4D5765;
     color: #F9FDFF; }
     .component-transactions .transaction-table .header {
@@ -1106,13 +1108,18 @@ template {
         padding: 0.5rem 0;
         text-align: center;
         font-size: 1rem; }
+  .component-transactions .pagination {
+    float: none;
+    height: 10%;
+    margin: 0 auto; }
 
 .pagination {
   display: flex;
   width: 20%;
   justify-content: space-between;
   align-items: center;
-  position: relative; }
+  position: relative;
+  float: right; }
   .pagination .pagination-button:hover {
     cursor: pointer; }
   .pagination .pagination-button i {

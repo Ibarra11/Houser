@@ -108,7 +108,7 @@ class CompletedWorkOrders extends Component {
                     <div className="pagination">
                         <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
                         <div className="page-count">
-                            <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
+                            <p>{this.paginationInstance.numberOfPages ? this.currentPage : 0} of {this.paginationInstance.numberOfPages}</p>
                         </div>
                         <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
                     </div>

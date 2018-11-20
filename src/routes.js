@@ -6,7 +6,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
 import WorkOrders from './components/WorkOrders/WorkOrders';
 import PropertiesView from './components/PropertyView/PropertyView';
-import Payments from './components/Payments/Payments';
+import Transactions from './components/Transactions/Transactions';
 import Payment from './components/Payment/Payment';
 
 export function baseRoutes() {
@@ -25,7 +25,7 @@ export function mainRoutes() {
         <Switch>
             <Route path='/houser/work' component={WorkOrders} />
             <Route path='/houser/properties' component={PropertiesView} />
-            <Route path='/houser/payments' component={Payments} />
+            <Route path='/houser/payments' component={Transactions} />
         </Switch>
     )
 

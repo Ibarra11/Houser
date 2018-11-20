@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-class Payments extends Component {
-
+import Pagination from '../../utilities/Pagination';
+class Transactions extends Component {
     constructor() {
         super();
         this.state = {
             paymentList: []
         }
+        this.paginationInstance = new Pagination([], 6);
+        this.currentPage = 1;
     }
     componentDidMount() {
         axios.get('/api/payments')
@@ -50,14 +52,20 @@ class Payments extends Component {
                             </tr>
                         </thead>
                         <tbody className="table-body">
-
                             {this.renderPaymentTable()}
                         </tbody>
                     </table>
+                </div>
+                <div className="pagination">
+                    <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
+                    <div className="page-count">
+                        <p>{this.paginationInstance.numberOfPages ? this.currentPage : 0} of {this.paginationInstance.numberOfPages}</p>
+                    </div>
+                    <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
                 </div>
             </div>
         )
     }
 }
 
-export default Payments;
+export default Transactions;

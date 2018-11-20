@@ -61,8 +61,8 @@ class PropertyView extends Component {
 
     deleteProperty(propertyId) {
         axios.delete(`/api/property/${propertyId}`)
-        .then(() => this.updatePropertyList())
-        .catch(err => console.log(err));
+            .then(() => this.updatePropertyList())
+            .catch(err => console.log(err));
     }
 
     updatePageItems() {
@@ -133,18 +133,14 @@ class PropertyView extends Component {
                             <h6>( {this.paginationInstance.itemList.length} Properties )</h6>
                         </div>
 
-                        {this.paginationInstance.numberOfPages > 1 ?
-                            <div className="pagination">
-                                <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
-                                <div className="page-count">
-                                    <p>{this.currentPage} of {this.paginationInstance.numberOfPages}</p>
-                                </div>
-                                <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
-                            </div>
-                            :
-                            null
-                        }
 
+                        <div className="pagination">
+                            <div onClick={() => this.updateCurrentPage('prev')} className="pagination-button"><i className="fa fa-chevron-circle-left"></i></div>
+                            <div className="page-count">
+                                <p>{this.paginationInstance.numberOfPages ? this.currentPage : 0} of {this.paginationInstance.numberOfPages}</p>
+                            </div>
+                            <div onClick={() => this.updateCurrentPage('next')} className="pagination-button"><i className="fa fa-chevron-circle-right"></i></div>
+                        </div>
                     </div>
 
                     <div className="property-list">
