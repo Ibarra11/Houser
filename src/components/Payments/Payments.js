@@ -12,7 +12,6 @@ class Payments extends Component {
     componentDidMount() {
         axios.get('/api/payments')
             .then(payments => {
-                console.log(payments);
                 if (payments.data.length > 0) {
                     this.setState({ paymentList: payments.data })
                 }
