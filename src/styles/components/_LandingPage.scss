@@ -33,12 +33,26 @@
             display: flex;
             align-items: center;
             .nav-link {
-                padding-right: 10%;
+                padding-right: 2rem;
                 padding-top: 2%;
                 font-size: 1.1rem;
-            } // .nav-link:last-child {
-            //     padding-right: 0;
-            // }
+                text-align: right;
+            }
+            .nav-link:last-child {
+                width: 13rem;
+            }
+            a:link,
+            a:visited {
+                color: $light;
+                text-decoration: none;
+                padding-bottom: 8px;
+                border-bottom: transparent;
+            }
+            a:hover,
+            a:active {
+                cursor: pointer;
+
+            }
         }
     }
     .header {
@@ -208,10 +222,19 @@
                         }
                     }
                 }
+                .submit-form {
+                    width: 50%;
+                    margin: 0 auto;
+                    button {
+                        width: 100%;
+                        padding: 0.5rem;
+                        border-radius: 2px;
+                        border: 0;
+                    }
+                }
             }
             .contact-info {
                 width: 40%;
-              
                 background-color: $primary-blue;
                 padding: 2rem;
                 .contact-info-content {
@@ -242,7 +265,7 @@
             }
         }
     }
-    footer{
+    footer {
         background-color: #1e2024;
         padding: 1.5rem;
         color: $light;

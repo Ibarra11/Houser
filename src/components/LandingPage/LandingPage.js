@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 class LandingPage extends Component {
     constructor() {
         super();
@@ -60,13 +61,14 @@ class LandingPage extends Component {
                     </div>
                     <div className="nav-links">
                         <div className="nav-link">
-                            <h3>Services</h3>
+                            <h3><AnchorLink href="#services">Services</AnchorLink></h3>
                         </div>
                         <div className="nav-link">
-                            <h3><Link to='/payment'>Tenants</Link></h3>
+                            <h3> <AnchorLink href="#contact">Contact</AnchorLink></h3>
                         </div>
                         <div className="nav-link">
-                            <h3>Payments</h3>
+
+                            <h3><Link to='/payment'>Payment System</Link></h3>
                         </div>
                     </div>
                 </nav>
@@ -102,7 +104,7 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </header>
-                <section className="services">
+                <section id="services" className="services">
                     <div className="section-header">
                         <h3>Services</h3>
                     </div>
@@ -142,7 +144,7 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </section>
-                <section className="contact">
+                <section id="contact" className="contact">
                     <div className="section-header">
                         <h3> Contact Us</h3>
                     </div>
