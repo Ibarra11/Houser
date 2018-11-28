@@ -23,9 +23,9 @@ export function baseRoutes() {
 export function mainRoutes() {
     return (
         <Switch>
-            <Route path='/houser/work' component={WorkOrders} />
+            <Route path='/houser/work-orders' component={WorkOrders} />
             <Route path='/houser/properties' component={PropertiesView} />
-            <Route path='/houser/payments' component={Transactions} />
+            <Route path='/houser/Transactions' component={Transactions} />
         </Switch>
     )
 

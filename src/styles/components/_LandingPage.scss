@@ -2,14 +2,13 @@
 .component-landing-page {
     font-family: $font-main;
     color: $light;
-    section{
+    section {
         padding: 2rem 0;
         .section-header {
             text-align: center;
             font-size: 1.75rem;
-        }   
+        }
     }
-   
     .nav {
         position: absolute;
         width: 100%;
@@ -174,12 +173,73 @@
             }
         }
     }
-    .contact{
+    .contact {
         background-color: #495867;
-        .contact-container{
-            width: 75%;
+        h4 {
+            margin-bottom: 1rem;
+        }
+        .contact-card {
             border: 1px solid orange;
+            width: 75%;
             margin: 0 auto;
+            display: flex;
+            .contact-email {
+                width: 60%;
+                border: 1px solid blue;
+                padding: 2rem 1rem;
+                .form {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    .form-group {
+                        width: 47%;
+                        border: 1px solid orange;
+                        margin-bottom: 1rem;
+                        input {
+                            width: 100%;
+                            padding: 8px 3px;
+                            border-radius: 5px;
+                        }
+                    }
+                    .form-group:last-child {
+                        width: 100%;
+                        textarea {
+                            width: 100%;
+                            height: 12rem;
+                        }
+                    }
+                }
+            }
+            .contact-info {
+                width: 40%;
+                border: 1px solid green;
+                padding: 2rem;
+                .contact-info-content {
+                    height: 75%;
+                    .contact-group {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 1rem;
+                        .contact-icon {
+                            margin-right: 0.5rem;
+                            font-size: 2.5rem;
+                        }
+                        .contact-desc {
+                            p {
+                                font-size: 1.5rem;
+                            }
+                        }
+                    }
+                }
+                .contact-info-socials {
+                    display: flex;
+                    justify-content: center;
+                    .social-icon{
+                        font-size: 2rem;
+                        margin-right: 1rem;
+                    }
+                }
+            }
         }
     }
 }

@@ -438,10 +438,55 @@ template {
           font-size: 1.125rem; }
   .component-landing-page .contact {
     background-color: #495867; }
-    .component-landing-page .contact .contact-container {
-      width: 75%;
+    .component-landing-page .contact h4 {
+      margin-bottom: 1rem; }
+    .component-landing-page .contact .contact-card {
       border: 1px solid orange;
-      margin: 0 auto; }
+      width: 75%;
+      margin: 0 auto;
+      display: flex; }
+      .component-landing-page .contact .contact-card .contact-email {
+        width: 60%;
+        border: 1px solid blue;
+        padding: 2rem 1rem; }
+        .component-landing-page .contact .contact-card .contact-email .form {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap; }
+          .component-landing-page .contact .contact-card .contact-email .form .form-group {
+            width: 47%;
+            border: 1px solid orange;
+            margin-bottom: 1rem; }
+            .component-landing-page .contact .contact-card .contact-email .form .form-group input {
+              width: 100%;
+              padding: 8px 3px;
+              border-radius: 5px; }
+          .component-landing-page .contact .contact-card .contact-email .form .form-group:last-child {
+            width: 100%; }
+            .component-landing-page .contact .contact-card .contact-email .form .form-group:last-child textarea {
+              width: 100%;
+              height: 12rem; }
+      .component-landing-page .contact .contact-card .contact-info {
+        width: 40%;
+        border: 1px solid green;
+        padding: 2rem; }
+        .component-landing-page .contact .contact-card .contact-info .contact-info-content {
+          height: 75%; }
+          .component-landing-page .contact .contact-card .contact-info .contact-info-content .contact-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem; }
+            .component-landing-page .contact .contact-card .contact-info .contact-info-content .contact-group .contact-icon {
+              margin-right: 0.5rem;
+              font-size: 2.5rem; }
+            .component-landing-page .contact .contact-card .contact-info .contact-info-content .contact-group .contact-desc p {
+              font-size: 1.5rem; }
+        .component-landing-page .contact .contact-card .contact-info .contact-info-socials {
+          display: flex;
+          justify-content: center; }
+          .component-landing-page .contact .contact-card .contact-info .contact-info-socials .social-icon {
+            font-size: 2rem;
+            margin-right: 1rem; }
 
 .component-home {
   background-color: #344055;
@@ -954,7 +999,6 @@ template {
             width: 31%;
             margin-top: 1rem; }
             .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info {
-              border: 1px solid green;
               height: 100%;
               position: relative; }
               .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info img {

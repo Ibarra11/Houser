@@ -142,19 +142,76 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </section>
-                {/* <section className="contact">
+                <section className="contact">
                     <div className="section-header">
-                        <h3>Contact</h3>
+                        <h3> Us</h3>
                     </div>
-                    <div className="contact-container">
+                    <div className="contact-card">
+                        <div className="contact-email">
+                            <h4>We want to hear from you</h4>
+                            <div className="form">
+                                <div className="form-group">
+                                    <input type="text" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" />
+                                </div>
+                                <div className="form-group">
+                                    <input type="text" />
+                                </div>
+                                <div className="form-group">
+                                    <textarea></textarea>
+                                </div>
+                            </div>
+                            <div className="submit-form">
+                                <button>Submit</button>
+                            </div>
+                        </div>
                         <div className="contact-info">
-
-                        </div>
-                        <div className="contact-form">
-
+                            <h4>Contact Information</h4>
+                            <div className="contact-info-content">
+                                <div className="contact-group">
+                                    <div className="contact-icon">
+                                        <i className="fa fa-map-marker"></i>
+                                    </div>
+                                    <div className="contact-desc">
+                                        <p>123 Main ST Turlock, CA 93234</p>
+                                    </div>
+                                </div>
+                                <div className="contact-group">
+                                    <div className="contact-icon">
+                                        <i className="fa fa-phone"></i>
+                                    </div>
+                                    <div className="contact-desc">
+                                        <p>(111)111-1111</p>
+                                    </div>
+                                </div>
+                                <div className="contact-group">
+                                    <div className="contact-icon">
+                                        <i className="fa fa-envelope"></i>
+                                    </div>
+                                    <div className="contact-desc">
+                                        <p>Houser@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="contact-info-socials">
+                                <div className="social-icon">
+                                    <i className="fa fa-twitter"></i>
+                                </div>
+                                <div className="social-icon">
+                                    <i className="fa fa-facebook"></i>
+                                </div>
+                                <div className="social-icon">
+                                    <i className="fa fa-linkedin"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </section> */}
+                </section>
             </div>
         )
     }
