@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PaymentForm from './PaymentForm';
+import { Link } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 class Payment extends Component {
     render() {
@@ -7,11 +8,11 @@ class Payment extends Component {
             <div className="component-landing-page">
                 <nav className="nav">
                     <div className="nav-logo">
-                        <h1><span><i className="fa fa-home"></i></span>ouser</h1>
+                        <h1><Link to='/'><span><i className="fa fa-home"></i></span>ouser</Link></h1>
                     </div>
                     <div className="nav-links">
                         <div className="nav-link">
-                            <h3>Go Back</h3>
+                            <h3> <Link to='/'> <i className="fa fa-arrow-left"></i> Go Back</Link></h3>
                         </div>
                     </div>
                 </nav>
@@ -19,7 +20,7 @@ class Payment extends Component {
                     <StripeProvider apiKey="pk_test_W69mdTmwiZ7lJv2OFwiwXUX1">
                         <div className="payment">
                             <Elements>
-                                <PaymentForm  />
+                                <PaymentForm />
                             </Elements>
                         </div>
                     </StripeProvider>

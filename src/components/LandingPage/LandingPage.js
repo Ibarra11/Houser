@@ -57,17 +57,16 @@ class LandingPage extends Component {
             <div className="component-landing-page">
                 <nav className="nav">
                     <div className="nav-logo">
-                        <h1><span><i className="fa fa-home"></i></span>ouser</h1>
+                        <h1><a href=""><span><i className="fa fa-home"></i></span>ouser</a></h1>
                     </div>
                     <div className="nav-links">
                         <div className="nav-link">
                             <h3><AnchorLink href="#services">Services</AnchorLink></h3>
                         </div>
                         <div className="nav-link">
-                            <h3> <AnchorLink href="#contact">Contact</AnchorLink></h3>
+                            <h3><AnchorLink href="#contact">Contact</AnchorLink></h3>
                         </div>
                         <div className="nav-link">
-
                             <h3><Link to='/payment'>Payment System</Link></h3>
                         </div>
                     </div>
@@ -217,7 +216,7 @@ class LandingPage extends Component {
                 <footer>
                     <p>Houser &copy; 2018</p>
                 </footer>
-            </div>
+            </div >
         )
     }
 }

@@ -29,6 +29,15 @@
                 }
             }
         }
+        a:link,
+        a:visited {
+            color: $light;
+            text-decoration: none;
+        }
+        a:hover,
+        a:active {
+            cursor: pointer;
+        }
         .nav-links {
             display: flex;
             align-items: center;
@@ -43,15 +52,13 @@
             }
             a:link,
             a:visited {
-                color: $light;
-                text-decoration: none;
                 padding-bottom: 8px;
                 border-bottom: transparent;
+                transition: border-bottom 0.5s;
             }
             a:hover,
             a:active {
-                cursor: pointer;
-
+                border-bottom: 4px solid $primary-blue;
             }
         }
     }

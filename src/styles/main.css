@@ -329,6 +329,13 @@ template {
         margin: 0; }
         .component-landing-page .nav .nav-logo h1 span {
           color: #009DDB; }
+    .component-landing-page .nav a:link,
+    .component-landing-page .nav a:visited {
+      color: #F9FDFF;
+      text-decoration: none; }
+    .component-landing-page .nav a:hover,
+    .component-landing-page .nav a:active {
+      cursor: pointer; }
     .component-landing-page .nav .nav-links {
       display: flex;
       align-items: center; }
@@ -341,13 +348,12 @@ template {
         width: 13rem; }
       .component-landing-page .nav .nav-links a:link,
       .component-landing-page .nav .nav-links a:visited {
-        color: #F9FDFF;
-        text-decoration: none;
         padding-bottom: 8px;
-        border-bottom: transparent; }
+        border-bottom: transparent;
+        transition: border-bottom 0.5s; }
       .component-landing-page .nav .nav-links a:hover,
       .component-landing-page .nav .nav-links a:active {
-        cursor: pointer; }
+        border-bottom: 4px solid #009DDB; }
   .component-landing-page .header {
     background-image: linear-gradient(rgba(0, 100, 148, 0.35), rgba(0, 100, 148, 0.35)), url("../assets/images/bg-main2.jpg");
     background-size: cover;
