@@ -144,7 +144,7 @@ class LandingPage extends Component {
                 </section>
                 <section className="contact">
                     <div className="section-header">
-                        <h3> Us</h3>
+                        <h3> Contact Us</h3>
                     </div>
                     <div className="contact-card">
                         <div className="contact-email">
@@ -212,6 +212,9 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </section>
+                <footer>
+                    <p>Houser &copy; 2018</p>
+                </footer>
             </div>
         )
     }

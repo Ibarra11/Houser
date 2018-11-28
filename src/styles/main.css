@@ -437,17 +437,17 @@ template {
         .component-landing-page .services .services-container .service-box .box-description p {
           font-size: 1.125rem; }
   .component-landing-page .contact {
-    background-color: #495867; }
+    background-color: #2a2d31; }
     .component-landing-page .contact h4 {
       margin-bottom: 1rem; }
     .component-landing-page .contact .contact-card {
-      border: 1px solid orange;
       width: 75%;
       margin: 0 auto;
-      display: flex; }
+      display: flex;
+      margin-top: 2rem; }
       .component-landing-page .contact .contact-card .contact-email {
         width: 60%;
-        border: 1px solid blue;
+        background-color: #3B5B85;
         padding: 2rem 1rem; }
         .component-landing-page .contact .contact-card .contact-email .form {
           display: flex;
@@ -455,7 +455,6 @@ template {
           flex-wrap: wrap; }
           .component-landing-page .contact .contact-card .contact-email .form .form-group {
             width: 47%;
-            border: 1px solid orange;
             margin-bottom: 1rem; }
             .component-landing-page .contact .contact-card .contact-email .form .form-group input {
               width: 100%;
@@ -468,7 +467,7 @@ template {
               height: 12rem; }
       .component-landing-page .contact .contact-card .contact-info {
         width: 40%;
-        border: 1px solid green;
+        background-color: #009DDB;
         padding: 2rem; }
         .component-landing-page .contact .contact-card .contact-info .contact-info-content {
           height: 75%; }
@@ -487,6 +486,11 @@ template {
           .component-landing-page .contact .contact-card .contact-info .contact-info-socials .social-icon {
             font-size: 2rem;
             margin-right: 1rem; }
+  .component-landing-page footer {
+    background-color: #1e2024;
+    padding: 1.5rem;
+    color: #F9FDFF;
+    text-align: center; }
 
 .component-home {
   background-color: #344055;
