@@ -4,31 +4,43 @@
     .nav {
         display: flex;
         align-items: center;
-        background-color: $btn-blue;
+        border-bottom: 1px solid $btn-blue;
         align-items: center;
         padding: 1rem;
-        color: #fff;
         justify-content: space-between;
+        .link{
+            &:link,
+            &:visited {
+                text-decoration: none;
+                padding-right: 1rem;
+                font-size: 1.25rem;
+                letter-spacing: 2px;
+                color: $light;
+                transition:  all 0.5s;
+            }
+            &:hover,&:active {
+                cursor: pointer;
+                color: $btn-blue;
+            }
+        }
         .navbar-logo {
-            h2 {
-                font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            h1 {
+                margin: 0;
+            }
+            .link {
+                font-size: inherit;
+                padding-bottom: 0;
             }
         }
         .nav-links {
             list-style: none;
             display: flex;
-            .link {
-                padding-right: 1rem;
-                font-size: 1.25rem;
-                letter-spacing: 2px;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
         }
     }
     .property-view {
-        height: 89.5vh;
+        height: 88.5vh;
         display: flex;
         color: $light;
         .property-controls {
@@ -50,7 +62,7 @@
                     }
                 }
                 .active {
-                    background-color: #2E6B8D;
+                    background-color: $btn-blue;
                 }
             }
         }

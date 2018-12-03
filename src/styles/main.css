@@ -524,24 +524,33 @@ template {
   .component-home .nav {
     display: flex;
     align-items: center;
-    background-color: #0786FC;
+    border-bottom: 1px solid #0786FC;
     align-items: center;
     padding: 1rem;
-    color: #fff;
     justify-content: space-between; }
-    .component-home .nav .navbar-logo h2 {
-      font-size: 1.75rem; }
+    .component-home .nav .link:link, .component-home .nav .link:visited {
+      text-decoration: none;
+      padding-right: 1rem;
+      font-size: 1.25rem;
+      letter-spacing: 2px;
+      color: #F9FDFF;
+      transition: all 0.5s; }
+    .component-home .nav .link:hover, .component-home .nav .link:active {
+      cursor: pointer;
+      color: #0786FC; }
+    .component-home .nav .navbar-logo {
+      display: flex;
+      align-items: center; }
+      .component-home .nav .navbar-logo h1 {
+        margin: 0; }
+      .component-home .nav .navbar-logo .link {
+        font-size: inherit;
+        padding-bottom: 0; }
     .component-home .nav .nav-links {
       list-style: none;
       display: flex; }
-      .component-home .nav .nav-links .link {
-        padding-right: 1rem;
-        font-size: 1.25rem;
-        letter-spacing: 2px; }
-        .component-home .nav .nav-links .link:hover {
-          cursor: pointer; }
   .component-home .property-view {
-    height: 89.5vh;
+    height: 88.5vh;
     display: flex;
     color: #F9FDFF; }
     .component-home .property-view .property-controls {
@@ -561,7 +570,7 @@ template {
           .component-home .property-view .property-controls .controls-menu .menu-tab:hover {
             cursor: pointer; }
         .component-home .property-view .property-controls .controls-menu .active {
-          background-color: #2E6B8D; }
+          background-color: #0786FC; }
     .component-home .property-view .property-list-container {
       width: 70%;
       height: 100%;

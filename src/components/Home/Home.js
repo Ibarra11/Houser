@@ -9,21 +9,21 @@ class Home extends Component {
 
     componentDidMount() {
         console.log(window.location);
-       
+
         // window.location.href = '/properties';
     }
     render() {
-        if(window.location.hash === '#/houser'){
+        if (window.location.hash === '#/houser') {
             window.location.hash += '/properties';
         }
-        else if(window.location.hash === '#/houser/'){
+        else if (window.location.hash === '#/houser/') {
             window.location.hash += 'properties';
         }
         return (
             <div className="component-home">
                 <nav className="nav">
                     <div className="navbar-logo">
-                        <h2>Houser</h2>
+                        <h1><Link className="link" to='/houser/properties'><span><i className="fa fa-home"></i></span>ouser</Link></h1>
                     </div>
                     <ul className="nav-links">
                         <Link to='/houser/properties' className="link">Properties</Link>
