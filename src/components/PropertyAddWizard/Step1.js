@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setPropertyAddress } from '../../redux/reducer';
+import axios from 'axios';
 class Step1 extends Component {
     constructor() {
         super();
@@ -8,7 +9,8 @@ class Step1 extends Component {
             propertyStreet: '',
             propertyCity: '',
             propertyState: '',
-            propertyZipcode: ''
+            propertyZipcode: '',
+            states: []
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.updateWizard = this.updateWizard.bind(this);
@@ -17,9 +19,14 @@ class Step1 extends Component {
         this.props.onStep('step1');
         this.props.updateStep('step1');
         let { propertyStreet, propertyCity, propertyState, propertyZipcode } = this.props;
-        this.setState({
-            propertyStreet, propertyCity, propertyState, propertyZipcode
-        })
+        axios.get('https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_titlecase.json')
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    propertyStreet, propertyCity, propertyState, propertyZipcode, states: res.data
+                })
+            })
+
     }
 
     handleInputChange(e) {
@@ -48,7 +55,11 @@ class Step1 extends Component {
                     </div>
                     <div className="input-group">
                         <h6>State</h6>
-                        <input value={this.state.propertyState} onChange={this.handleInputChange} name="propertyState" type="text" />
+                        <select>
+                            {this.state.states.map(state => {
+                                return <option>{state.abbreviation}</option>
+                            })}
+                        </select>
                     </div>
                     <div className="input-group">
                         <h6>Zipcode</h6>

@@ -22,7 +22,8 @@ app.use(session({
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false
-}))
+}));
+
 
 massive(CONNECTION_STRING)
     .then(db => {
@@ -69,7 +70,6 @@ app.post('/api/payment', async (req, res, next) => {
     let day = dateObj.getUTCDate();
     let year = dateObj.getUTCFullYear();
     let newDate = year + '/' + month + "/" + day;
-    console.log(newDate);
     try {
         let response = await stripe.charges.create({
             amount: stripeAmount,
@@ -87,7 +87,6 @@ app.post('/api/payment', async (req, res, next) => {
         }
     }
     catch (err) {
-        console.log(err);
         res.status(500).send(err)
     }
 });

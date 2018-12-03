@@ -743,7 +743,7 @@ template {
     color: #fff;
     font-size: 1.25rem;
     margin-bottom: 1%; }
-  .component-property-wizard .input-group input {
+  .component-property-wizard .input-group input, .component-property-wizard .input-group select {
     width: 100%;
     border-radius: 5px;
     border: none;
