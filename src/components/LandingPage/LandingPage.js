@@ -9,7 +9,8 @@ class LandingPage extends Component {
             loginActive: false,
             signupActive: true,
             email: '',
-            password: ''
+            password: '',
+            errMessage: ''
         }
         this.toggleActive = this.toggleActive.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
@@ -18,7 +19,8 @@ class LandingPage extends Component {
     toggleActive() {
         this.setState({
             loginActive: !this.state.loginActive,
-            signupActive: !this.state.signupActive
+            signupActive: !this.state.signupActive,
+            errMessage: ''
         })
     }
     onInputChange(e) {
@@ -34,7 +36,7 @@ class LandingPage extends Component {
                         this.props.history.push('/houser');
                     }
                     else {
-                        alert('Unsuccessful Login');
+                        this.setState({ errMessage: res.data.message })
                     }
                 })
                 .catch(err => console.log(err))
@@ -46,7 +48,7 @@ class LandingPage extends Component {
                         this.props.history.push('/houser');
                     }
                     else {
-                        alert('Unsuccessful Signjup');
+                        this.setState({ errMessage: res.data.message });
                     }
                 })
                 .catch(err => console.log(err));
@@ -82,7 +84,7 @@ class LandingPage extends Component {
                         <div className="header-form" >
                             <div className="header-form-type">
                                 <div onClick={this.state.signupActive ? null : this.toggleActive} className={this.state.signupActive ? "form-controls signupActive" : "form-controls"}>Sign Up</div>
-                                <div onClick={this.state.loginActive ? null : this.toggleActive} className={this.state.loginActive ? "form-controls loginActive" : "form-controls"}>Log In</div>
+                                <div onClick={this.state.loginActive ? null : this.toggleActive} className={this.state.loginActive ? "form-controls loginActive" : "form-controls"}>Login</div>
                             </div>
                             <div className="header-form-title">
                                 <h2>{this.state.signupActive ? 'Sign Up for Free' : "Please Login"}</h2>
@@ -99,9 +101,13 @@ class LandingPage extends Component {
                                         <button type="submit"><h4>{this.state.signupActive ? 'Sign Up' : "Login"}</h4></button>
                                     </div>
                                 </form>
+                                <div className={this.state.errMessage !== '' ? "error-message" : 'hidden'}>
+                                    <p>{this.state.errMessage}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </header>
                 <section id="services" className="services">
                     <div className="section-header">

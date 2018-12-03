@@ -409,6 +409,13 @@ template {
           width: 100%; }
           .component-landing-page .header .header-container .header-form .header-form-body .input-container input {
             width: 100%; }
+        .component-landing-page .header .header-container .header-form .header-form-body .error-message {
+          text-align: center;
+          margin-top: 0.75rem; }
+          .component-landing-page .header .header-container .header-form .header-form-body .error-message p {
+            padding: 0.5rem;
+            color: red;
+            font-size: 0.8rem; }
         .component-landing-page .header .header-container .header-form .header-form-footer {
           text-align: center;
           width: 75%;
