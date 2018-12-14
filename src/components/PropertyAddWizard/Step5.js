@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { clearState } from '../../redux/reducer';
+import PropertyImgPlaceholder from '../../assets/images/propertyPlaceholder.jpg';
 class Step5 extends Component {
     componentDidMount() {
         this.props.onStep('step5');
@@ -9,10 +10,9 @@ class Step5 extends Component {
 
     uploadPhotoToCloud = async () => {
         let { REACT_APP_UPLOAD_PRESET, CLOUDINARY_API_KEY, REACT_APP_CLOUD_NAME } = process.env;
-
         // Information must be in form data, that's the way Cloudinary wants it
         const formData = new FormData();
-        formData.append("file", this.props.propertyImgFile);
+        formData.append("file", this.props.propertyImgFile || PropertyImgPlaceholder);
         formData.append("upload_preset", REACT_APP_UPLOAD_PRESET); // Replace the preset name with your own
         formData.append("api_key", CLOUDINARY_API_KEY); // Replace API key with your own Cloudinary key
         formData.append("timestamp", (Date.now() / 1000) | 0);
@@ -31,6 +31,7 @@ class Step5 extends Component {
     addProperty = async () => {
         // Before I send the data to the server, the image is sent to the cloud and the url is set to this.props.propertyImg
         let imgUrl = await this.uploadPhotoToCloud();
+        console.log(imgUrl);
         axios.post('/api/property', { ...this.props, imgUrl })
             .then(() => {
                 this.props.updatePropertyList();
@@ -41,6 +42,7 @@ class Step5 extends Component {
 
     }
     render() {
+        console.log(this.props);
         return (
             <div className="step5">
                 <div className="wizard-header">
@@ -48,7 +50,7 @@ class Step5 extends Component {
                 </div>
                 <div className="property-information">
                     <div className="property-img">
-                        <img src={this.props.propertyImgFile.preview} alt="property image" />
+                        <img src={this.props.propertyImgFile.preview ? this.props.propertyImgFile.preview : PropertyImgPlaceholder} alt="property image" />
                     </div>
                     <div className="property-section">
                         <h6>Property Address</h6>

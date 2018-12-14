@@ -3,7 +3,6 @@ import Dropzone from 'react-dropzone';
 import { connect } from 'react-redux';
 import { setPropertyImg } from '../../redux/reducer';
 class Step4 extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -29,8 +28,8 @@ class Step4 extends Component {
     }
 
     updateWizard(direction) {
-        this.props.setPropertyImg(this.state.propertyImgFile);
         direction === 'next' ? this.props.updateStep('step5') : this.props.updateStep('step3');
+        this.props.setPropertyImg(this.state.propertyImgFile);
     }
 
     render() {
