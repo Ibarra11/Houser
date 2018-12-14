@@ -84,6 +84,7 @@ class Step5 extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     let {
         propertyStreet, propertyCity, propertyState, propertyZipcode,
         propertyLoanAmount, propertyMortgage, propertyRent,

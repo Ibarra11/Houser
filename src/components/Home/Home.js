@@ -2,15 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { mainRoutes } from '../../routes';
 class Home extends Component {
-
     constructor() {
         super();
-    }
-
-    componentDidMount() {
-        console.log(window.location);
-
-        // window.location.href = '/properties';
     }
     render() {
         if (window.location.hash === '#/houser') {

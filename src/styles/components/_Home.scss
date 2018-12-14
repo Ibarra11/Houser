@@ -3,10 +3,11 @@
     height: 100vh;
     .nav {
         display: flex;
+        height: 10.5vh;
         align-items: center;
         border-bottom: 1px solid $btn-blue;
         align-items: center;
-        padding: 1rem;
+        padding: 0 1rem;
         justify-content: space-between;
         .link{
             &:link,

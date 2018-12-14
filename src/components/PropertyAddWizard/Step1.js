@@ -21,9 +21,8 @@ class Step1 extends Component {
         let { propertyStreet, propertyCity, propertyState, propertyZipcode } = this.props;
         axios.get('https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_titlecase.json')
             .then(res => {
-                console.log(res);
                 this.setState({
-                    propertyStreet, propertyCity, propertyState, propertyZipcode, states: res.data
+                    propertyStreet, propertyCity, propertyState: propertyState ? propertyState : res.data[0].abbreviation, propertyZipcode, states: res.data
                 })
             })
 
@@ -55,10 +54,14 @@ class Step1 extends Component {
                     </div>
                     <div className="input-group">
                         <h6>State</h6>
-                        <select>
+                        <select name="propertyState" onChange={this.handleInputChange}>
+                            {<option key={this.state.propertyState}>{this.state.propertyState}</option>}
                             {this.state.states.map(state => {
-                                return <option>{state.abbreviation}</option>
+                                if (state.abbreviation !== this.state.propertyState) {
+                                    return <option key={state.abbreviation}>{state.abbreviation}</option>
+                                }
                             })}
+
                         </select>
                     </div>
                     <div className="input-group">

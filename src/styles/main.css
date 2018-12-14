@@ -530,10 +530,11 @@ template {
   height: 100vh; }
   .component-home .nav {
     display: flex;
+    height: 10.5vh;
     align-items: center;
     border-bottom: 1px solid #0786FC;
     align-items: center;
-    padding: 1rem;
+    padding: 0 1rem;
     justify-content: space-between; }
     .component-home .nav .link:link, .component-home .nav .link:visited {
       text-decoration: none;
@@ -881,8 +882,10 @@ template {
     min-height: 89vh; }
     .component-workOrders .control-panel .control-panel-header {
       display: flex;
+      height: 12%;
       border-bottom: 1px solid #4D5765;
-      padding: 1rem; }
+      justify-content: center;
+      align-items: center; }
       .component-workOrders .control-panel .control-panel-header h3 {
         font-size: 1.75rem; }
       .component-workOrders .control-panel .control-panel-header h5 {
@@ -899,6 +902,8 @@ template {
       .component-workOrders .control-panel .controls .controls-link {
         margin-bottom: 1rem;
         font-size: 1.25rem; }
+        .component-workOrders .control-panel .controls .controls-link:hover {
+          cursor: pointer; }
   .component-workOrders .component-views {
     border-left: 1px solid #4D5765;
     width: 75%;

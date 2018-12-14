@@ -11,8 +11,10 @@
         min-height: 89vh;
         .control-panel-header {
             display: flex;
+            height: 12%;
             border-bottom: 1px solid $btn-grey;
-            padding: 1rem;
+           justify-content: center;
+            align-items: center;
             h3 {
                 font-size: 1.75rem;
             }
@@ -32,6 +34,9 @@
             .controls-link {
                 margin-bottom: 1rem;
                 font-size: 1.25rem;
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
     }

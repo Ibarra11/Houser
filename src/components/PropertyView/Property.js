@@ -52,13 +52,13 @@ class Property extends Component {
         })
     }
 
-    editProperty(e){
+    editProperty(e) {
         e.preventDefault();
-        axios.put(`/api/property/${this.state.property_id}`,this.state)
-        .then(() =>{
-            this.closeModal();
-        })
-        .catch(err => console.log(err));
+        axios.put(`/api/property/${this.state.property_id}`, this.state)
+            .then(() => {
+                this.closeModal();
+            })
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -87,19 +87,19 @@ class Property extends Component {
                                         </div>
                                         <div className="input-group">
                                             <label htmlFor="street">Street</label>
-                                            <input  name="property_street" onChange={this.onInputChange} type="text" value={this.state.property_street} />
+                                            <input name="property_street" onChange={this.onInputChange} type="text" value={this.state.property_street} />
                                         </div>
                                         <div className="input-group">
                                             <label htmlFor="city">City</label>
-                                            <input  type="text" name="property_city" onChange={this.onInputChange} value={this.state.property_city} />
+                                            <input type="text" name="property_city" onChange={this.onInputChange} value={this.state.property_city} />
                                         </div>
                                         <div className="input-group">
                                             <label htmlFor="state">State</label>
-                                            <input  type="text" name="property_state" onChange={this.onInputChange} value={this.state.property_state} />
+                                            <input type="text" name="property_state" onChange={this.onInputChange} value={this.state.property_state} />
                                         </div>
                                         <div className="input-group">
                                             <label htmlFor="zipcode">Zipcode</label>
-                                            <input  type="text" name="property_zipcode" onChange={this.onInputChange} value={this.state.property_zipcode} />
+                                            <input type="text" name="property_zipcode" onChange={this.onInputChange} value={this.state.property_zipcode} />
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -121,11 +121,11 @@ class Property extends Component {
                                         </div>
                                         <div className="input-group">
                                             <label htmlFor="street">Phone</label>
-                                            <input  type="text" name="tenant_phone" onChange={this.onInputChange} value={this.state.tenant_phone} />
+                                            <input type="text" name="tenant_phone" onChange={this.onInputChange} value={this.state.tenant_phone} />
                                         </div>
                                         <div className="input-group">
                                             <label htmlFor="email">Email</label>
-                                            <input  type="text" name="tenant_email" onChange={this.onInputChange} value={this.state.tenant_email} />
+                                            <input type="text" name="tenant_email" onChange={this.onInputChange} value={this.state.tenant_email} />
                                         </div>
                                     </div>
                                     <div className="form-submit">
