@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setPropertyAddress } from '../../redux/reducer';
 import axios from 'axios';
+
 class Step1 extends Component {
     constructor() {
         super();
@@ -15,6 +16,7 @@ class Step1 extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.updateWizard = this.updateWizard.bind(this);
     }
+
     componentDidMount() {
         this.props.onStep('step1');
         this.props.updateStep('step1');
@@ -25,8 +27,9 @@ class Step1 extends Component {
                     propertyStreet, propertyCity, propertyState: propertyState ? propertyState : res.data[0].abbreviation, propertyZipcode, states: res.data
                 })
             })
-
     }
+
+
 
     handleInputChange(e) {
         this.setState({ [e.target.name]: e.target.value });

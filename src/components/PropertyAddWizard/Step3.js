@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setTenantInformation } from '../../redux/reducer';
+import { AsYouType } from 'libphonenumber-js';
 class Step3 extends Component {
     constructor() {
         super();
@@ -15,20 +16,32 @@ class Step3 extends Component {
 
     componentDidMount() {
         this.props.onStep('step3');
-        let {propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN} = this.props;
+        let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN } = this.props;
         this.setState({
             propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN
         })
     }
+
     handleInputChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+        if (e.target.name === 'propertyTenantContactNumber') {
+            // Only allows phone numbers (209) 111-1111
+            if (this.state.propertyTenantContactNumber.length <= 13) {
+                this.setState({ propertyTenantContactNumber: new AsYouType('US').input(e.target.value) });
+            }
+        }
+        else {
+            this.setState({ [e.target.name]: e.target.value })
+        }
     }
+
     updateWizard(direction) {
         let { propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN } = this.state;
         this.props.setTenantInformation(propertyTenantName, propertyTenantContactNumber, propertyTenantEmail, propertyTenantSSN);
 
         direction === 'next' ? this.props.updateStep('step4') : this.props.updateStep('step2')
     }
+
+
     render() {
         return (
             <div className="step3">

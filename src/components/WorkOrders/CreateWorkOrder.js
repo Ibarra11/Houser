@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { AsYouType } from 'libphonenumber-js';
 class CreateWorkOrder extends Component {
     constructor() {
         super();
@@ -44,9 +45,18 @@ class CreateWorkOrder extends Component {
     }
 
     onInputChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        if (e.target.name === 'companyPhone') {
+            // Only allows phone numbers (209) 111-1111
+            if (this.state.companyPhone.length <= 13) {
+                this.setState({ companyPhone: new AsYouType('US').input(e.target.value) });
+            }
+        }
+        else {
+            this.setState({
+                [e.target.name]: e.target.value
+            })
+        }
+
     }
 
     workOrder() {
@@ -57,7 +67,6 @@ class CreateWorkOrder extends Component {
 
         axios.post('/api/work_orders', { propertyId, companyName, companyCharge, companyEmail, companyPhone, description, date, time })
             .then(() => {
-                console.log(this.props);
                 this.props.renderView('WorkOrderQueue');
             })
             .catch(err => console.log(err))

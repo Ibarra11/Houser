@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import {clearState} from '../../redux/reducer';
+import { clearState } from '../../redux/reducer';
 class Step5 extends Component {
     componentDidMount() {
         this.props.onStep('step5');
@@ -84,7 +84,6 @@ class Step5 extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     let {
         propertyStreet, propertyCity, propertyState, propertyZipcode,
         propertyLoanAmount, propertyMortgage, propertyRent,
