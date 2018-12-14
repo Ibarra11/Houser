@@ -20,10 +20,14 @@ class Step2 extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
     updateWizard(direction) {
-        let {  propertyRent } = this.state;
-        this.props.setFinancialInformation(propertyRent);
-
-        direction === 'next' ? this.props.updateStep('step3') : this.props.updateStep('step1')
+        let { propertyRent } = this.state;
+        if (propertyRent) {
+            this.props.setFinancialInformation(propertyRent);
+            direction === 'next' ? this.props.updateStep('step3') : this.props.updateStep('step1');
+        }
+        else {
+            this.props.toggleAlert();
+        }
     }
     render() {
         return (

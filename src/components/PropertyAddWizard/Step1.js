@@ -29,17 +29,21 @@ class Step1 extends Component {
             })
     }
 
-
-
     handleInputChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
 
     updateWizard() {
-        let { propertyStreet, propertyCity, propertyState, propertyZipcode } = this.state;
-        propertyZipcode = +propertyZipcode;
-        this.props.setPropertyAddress(propertyStreet, propertyCity, propertyState, propertyZipcode);
-        this.props.updateStep('step2')
+        // All fields of this step must be completed before going on
+        if (Object.values(this.state).indexOf('') === -1) {
+            let { propertyStreet, propertyCity, propertyState, propertyZipcode } = this.state;
+            propertyZipcode = +propertyZipcode;
+            this.props.setPropertyAddress(propertyStreet, propertyCity, propertyState, propertyZipcode);
+            this.props.updateStep('step2');
+        }
+        else {
+            this.props.toggleAlert();
+        }
     }
 
     render() {

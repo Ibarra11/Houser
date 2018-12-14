@@ -1,7 +1,7 @@
 .component-property-wizard {
     height: 88%;
     padding: 2vh 0 3vh 0;
-     overflow-y: auto;
+    overflow-y: auto;
     .wizard-step-title {
         text-align: center;
         color: #fff;
@@ -12,20 +12,25 @@
     .input-group:nth-child(1n+2) {
         margin-top: 5%;
     }
+    .wizard-alert {
+        text-align: center;
+        color: $primary-red;
+        position: relative;
+        top: 0.6rem;
+        margin-bottom: 0;
+    }
     .input-group {
         h6 {
             color: #fff;
             font-size: 1.25rem;
             margin-bottom: 1%;
         }
-        input, select {
+        input,
+        select {
             width: 100%;
             border-radius: 5px;
             border: none;
             padding: 8px 3px;
-        }
-        select{
-           
         }
     }
     .wizard-steps {
@@ -76,7 +81,9 @@
             }
         }
     }
-    .step1, .step2, .step3 {
+    .step1,
+    .step2,
+    .step3 {
         width: 90%;
         margin: 0 auto;
     }
@@ -103,8 +110,7 @@
                 .property-img-buttons {
                     position: absolute;
                     right: 1px;
-                    bottom: 5px; // display: flex;
-                    // justify-content: flex-end;
+                    bottom: 5px;
                     button {
                         padding: 5px 10px;
                         border: none;
@@ -161,7 +167,6 @@
             .property-content {
                 p {
                     color: #fff;
-                    
                     margin-bottom: 0.5rem;
                 }
             }

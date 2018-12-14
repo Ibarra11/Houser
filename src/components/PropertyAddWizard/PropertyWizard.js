@@ -13,10 +13,12 @@ class PropertyWizard extends Component {
             step3: false,
             step4: false,
             step5: false,
-            renderStep: 'step1'
+            renderStep: 'step1',
+            displayAlert: false
         }
         this.onStep = this.onStep.bind(this);
         this.updateStep = this.updateStep.bind(this);
+        this.toggleAlert = this.toggleAlert.bind(this);
     }
     onStep(step) {
         if (step === 'step1') {
@@ -68,21 +70,37 @@ class PropertyWizard extends Component {
 
     updateStep(step) {
         this.setState({
-            renderStep: step
+            renderStep: step,
+            displayAlert: false
         })
     }
+
+    displayAlert() {
+        return (
+            <div className={"wizard-alert"}>
+                <p>
+                    Must complete all fields before proceeding!
+                </p>
+            </div>
+        )
+    }
+
+    toggleAlert() {
+        this.setState({ displayAlert: !this.state.displayAlert })
+    }
+
     renderStep() {
         if (this.state.renderStep === 'step1') {
-            return <Step1 updateStep={this.updateStep} onStep={this.onStep} />
+            return <Step1 toggleAlert={this.toggleAlert} updateStep={this.updateStep} onStep={this.onStep} />
         }
         else if (this.state.renderStep === 'step2') {
-            return <Step2 updateStep={this.updateStep} onStep={this.onStep} />
+            return <Step2 toggleAlert={this.toggleAlert} updateStep={this.updateStep} onStep={this.onStep} />
         }
         else if (this.state.renderStep === 'step3') {
-            return <Step3 updateStep={this.updateStep} onStep={this.onStep} />
+            return <Step3 toggleAlert={this.toggleAlert} updateStep={this.updateStep} onStep={this.onStep} />
         }
         else if (this.state.renderStep === 'step4') {
-            return <Step4 updateStep={this.updateStep} onStep={this.onStep} />
+            return <Step4 toggleAlert={this.toggleAlert} updateStep={this.updateStep} onStep={this.onStep} />
         }
         else {
             return <Step5 updatePropertyList={this.props.updatePropertyList} updateStep={this.updateStep} onStep={this.onStep} />
@@ -113,7 +131,7 @@ class PropertyWizard extends Component {
                         <i className="fa fa-check-circle"></i>
                     </div>
                 </div>
-
+                {this.state.displayAlert ? this.displayAlert() : ''}
                 {this.renderStep()}
 
             </div>
