@@ -558,27 +558,34 @@ template {
       list-style: none;
       display: flex; }
   .component-home .property-view {
-    height: 88.5vh;
+    height: 89vh;
     display: flex;
     color: #F9FDFF; }
-    .component-home .property-view .property-controls {
+    .component-home .property-view .property-view-left-column {
       width: 30%;
       height: 100%; }
-      .component-home .property-view .property-controls .controls-menu {
-        display: flex;
-        height: 12%; }
-        .component-home .property-view .property-controls .controls-menu .menu-tab {
-          font-size: 1.35rem;
-          border: 1px solid #4D5765;
-          height: 100%;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center; }
-          .component-home .property-view .property-controls .controls-menu .menu-tab:hover {
-            cursor: pointer; }
-        .component-home .property-view .property-controls .controls-menu .active {
-          background-color: #0786FC; }
+      .component-home .property-view .property-view-left-column .property-menu {
+        height: 100%; }
+        .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs {
+          height: 12%; }
+          .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .menu-tab {
+            display: inline-block;
+            font-size: 1.35rem;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            border: 1px solid #4D5765; }
+            .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .menu-tab:hover {
+              cursor: pointer; }
+            .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .menu-tab .menu-tab-text {
+              display: flex;
+              height: 100%;
+              justify-content: center;
+              align-items: center; }
+          .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .active {
+            background-color: #0786FC; }
+      .component-home .property-view .property-view-left-column .property-menu-views {
+        height: 88%; }
     .component-home .property-view .property-list-container {
       width: 70%;
       height: 100%;
@@ -745,7 +752,7 @@ template {
     font-size: 1.25rem; }
 
 .component-property-wizard {
-  height: 88%;
+  height: 100%;
   padding: 2vh 0 3vh 0;
   overflow-y: auto; }
   .component-property-wizard .wizard-step-title {

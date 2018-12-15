@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from 'react-awesome-modal';
+import PropertyModal from './PropertyModal';
 import axios from 'axios';
 class Property extends Component {
     constructor() {
@@ -13,6 +13,7 @@ class Property extends Component {
             tenant_email: '',
             tenant_name: '',
             tenant_phone: '',
+            tenant_ssn: '',
             property_rent: '',
             property_id: '',
             property_img: ''
@@ -27,11 +28,11 @@ class Property extends Component {
         let {
             property_city, property_id, property_img, property_street,
             property_state, property_zipcode, tenant_email, tenant_name,
-            tenant_phone, property_rent
+            tenant_phone, tenant_ssn, property_rent
         } = this.props.property;
         this.setState({
             property_city, property_street, property_state, property_zipcode, tenant_email,
-            tenant_name, tenant_phone, property_rent, property_id, property_img
+            tenant_name, tenant_phone, tenant_ssn, property_rent, property_id, property_img
         })
     }
     openModal() {
@@ -60,83 +61,9 @@ class Property extends Component {
             })
             .catch(err => console.log(err));
     }
-
     render() {
         return (
             <div className="property">
-                <div className="modal-container">
-                    <Modal
-                        visible={this.state.visible}
-                        width="75%"
-                        height="85%"
-                        effect="fadeInUp"
-                        onClickAway={() => this.closeModal()}
-                    >
-                        <div className="modal-content">
-                            <div className="modal-property-img">
-                                <img src={this.state.property_img} alt="an image of the property" />
-                            </div>
-                            <div className="modal-property-form">
-                                <div className="form-header">
-                                    <h3>Edit Property</h3>
-                                </div>
-                                <form onSubmit={this.editProperty} >
-                                    <div className="form-group">
-                                        <div className="group-header">
-                                            <h5>Property Information</h5>
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="street">Street</label>
-                                            <input name="property_street" onChange={this.onInputChange} type="text" value={this.state.property_street} />
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="city">City</label>
-                                            <input type="text" name="property_city" onChange={this.onInputChange} value={this.state.property_city} />
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="state">State</label>
-                                            <input type="text" name="property_state" onChange={this.onInputChange} value={this.state.property_state} />
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="zipcode">Zipcode</label>
-                                            <input type="text" name="property_zipcode" onChange={this.onInputChange} value={this.state.property_zipcode} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <div className="group-header">
-                                            <h5>Finances</h5>
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="rent">Rent</label>
-                                            <input name="property_rent" type="text" onChange={this.onInputChange} value={this.state.property_rent} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <div className="group-header">
-                                            <h5>Tenant Information</h5>
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="name">Name</label>
-                                            <input type="text" name="tenant_name" onChange={this.onInputChange} value={this.state.tenant_name} />
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="street">Phone</label>
-                                            <input type="text" name="tenant_phone" onChange={this.onInputChange} value={this.state.tenant_phone} />
-                                        </div>
-                                        <div className="input-group">
-                                            <label htmlFor="email">Email</label>
-                                            <input type="text" name="tenant_email" onChange={this.onInputChange} value={this.state.tenant_email} />
-                                        </div>
-                                    </div>
-                                    <div className="form-submit">
-                                        <button type="submit">Edit</button>
-                                        <button onClick={() => this.closeModal}>Close</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </Modal>
-                </div>
                 <div className="property-img">
                     <img src={this.state.property_img} alt="property-img" />
                 </div>
@@ -157,6 +84,7 @@ class Property extends Component {
                         <p> Name: {this.state.tenant_name}</p>
                         <p> Phone: {this.state.tenant_phone}</p>
                         <p> Email: {this.state.tenant_email}</p>
+                        <p> Last 4 of SSN: {this.state.tenant_ssn}</p>
                     </div>
                     <div className="property-actions">
                         <div onClick={this.openModal} className="action">
