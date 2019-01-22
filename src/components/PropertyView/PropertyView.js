@@ -4,6 +4,7 @@ import PropertyWizard from '../PropertyAddWizard/PropertyWizard';
 import PropertyList from './PropertyList';
 import Pagination from '../../utilities/Pagination';
 import axios from 'axios';
+import EditProperty from './EditProperty';
 class PropertyView extends Component {
     constructor() {
         super();
@@ -29,6 +30,7 @@ class PropertyView extends Component {
         this.renderFilteredProperties = this.renderFilteredProperties.bind(this);
         this.clearFilteredProperties = this.clearFilteredProperties.bind(this);
         this.deleteProperty = this.deleteProperty.bind(this);
+        this.toggleEditProperty = this.toggleEditProperty.bind(this);
     }
 
     componentDidMount() {
@@ -49,7 +51,6 @@ class PropertyView extends Component {
                 this.paginationInstance.calculateNumOfPages();
                 let pageItems = this.paginationInstance.displayItemsOnPage(this.currentPage);
                 this.setState({ propertyList: res.data, propertiesOnPage: pageItems });
-                // this.renderBasedOnMenuType();
             })
             .catch(err => console.log(err))
     }
@@ -67,8 +68,13 @@ class PropertyView extends Component {
             .catch(err => console.log(err));
     }
 
-    editProperty(property) {
-        
+    toggleEditProperty(property) {
+        if (property) {
+            this.setState({
+                editProperty: true,
+                propertyToEdit: property
+            });
+        }
     }
 
     updatePageItems() {
@@ -136,7 +142,7 @@ class PropertyView extends Component {
                             </div>
                         </div>
                         :
-                        ""
+                        <EditProperty property={this.state.propertyToEdit} />
                     }
                 </div>
                 <div className="property-list-container">
@@ -164,7 +170,7 @@ class PropertyView extends Component {
                                 </h2>
                             </div>
                             :
-                            <PropertyList editProperty={this.editProperty} deleteProperty={this.deleteProperty} propertyList={this.state.propertiesOnPage} />
+                            <PropertyList  editProperty={this.toggleEditProperty} propertyEditId={this.state.propertyToEdit.property_id} deleteProperty={this.deleteProperty} propertyList={this.state.propertiesOnPage} />
                         }
                     </div>
                 </div>

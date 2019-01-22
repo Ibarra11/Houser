@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import PropertyModal from './PropertyModal';
-import axios from 'axios';
 class Property extends Component {
     constructor() {
         super();
         this.state = {
-            visible: false,
             property_city: '',
             property_street: '',
             property_state: '',
@@ -18,10 +15,6 @@ class Property extends Component {
             property_id: '',
             property_img: ''
         }
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-        this.onInputChange = this.onInputChange.bind(this);
-        this.editProperty = this.editProperty.bind(this);
     }
 
     componentDidMount() {
@@ -35,35 +28,19 @@ class Property extends Component {
             tenant_name, tenant_phone, tenant_ssn, property_rent, property_id, property_img
         })
     }
-    openModal() {
+
+    handleEditProperty = () =>{
         this.setState({
-            visible: true
-        })
+            editing: true
+        }, this.props.editProperty(this.props.property))
     }
 
-    closeModal() {
-        this.setState({
-            visible: false
-        })
-    }
 
-    onInputChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+ 
 
-    editProperty(e) {
-        e.preventDefault();
-        axios.put(`/api/property/${this.state.property_id}`, this.state)
-            .then(() => {
-                this.closeModal();
-            })
-            .catch(err => console.log(err));
-    }
     render() {
         return (
-            <div className="property">
+            <div className={this.props.propertyBeingEdited ? "property property-edit-mode" : "property"}>
                 <div className="property-img">
                     <img src={this.state.property_img} alt="property-img" />
                 </div>
@@ -87,7 +64,7 @@ class Property extends Component {
                         <p> Last 4 of SSN: {this.state.tenant_ssn}</p>
                     </div>
                     <div className="property-actions">
-                        <div onClick={this.openModal} className="action">
+                        <div onClick={this.handleEditProperty} className="action">
                             <i className="fa fa-edit"></i>
                         </div>
                         <div onClick={() => this.props.deleteProperty(this.state.property_id)} className="action">
