@@ -4,6 +4,7 @@
     margin: 0 auto;
     display: flex;
     height: 17.9rem;
+    position: relative;
     .payment-form {
         width: 100%;
         display: flex;
@@ -133,5 +134,17 @@
     .StripeElement.IdealBankElement,
     .StripeElement.PaymentRequestButton {
         padding: 0;
+    }
+    .payment-err {
+        position: absolute;
+        width: 60%;
+        left: 20%;
+        top: 110%;
+        background-color: $primary-red;
+        padding: 0.75rem;
+        text-align: center;
+        h6 {
+            font-size: 0.9rem;
+        }
     }
 }

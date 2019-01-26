@@ -11,7 +11,6 @@ class EditProperty extends Component {
     }
     closeForm =  (e) =>{
         e.preventDefault();
-        console.log(this.props);
          this.props.property.removeFocus();
         this.props.toggleEditProperty();
     }

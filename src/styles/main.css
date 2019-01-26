@@ -1247,7 +1247,8 @@ template {
   width: 90%;
   margin: 0 auto;
   display: flex;
-  height: 17.9rem; }
+  height: 17.9rem;
+  position: relative; }
   .payment .payment-form {
     width: 100%;
     display: flex;
@@ -1352,6 +1353,16 @@ template {
   .payment .StripeElement.IdealBankElement,
   .payment .StripeElement.PaymentRequestButton {
     padding: 0; }
+  .payment .payment-err {
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 110%;
+    background-color: #CB1B26;
+    padding: 0.75rem;
+    text-align: center; }
+    .payment .payment-err h6 {
+      font-size: 0.9rem; }
 
 .component-edit-property {
   height: 100%;

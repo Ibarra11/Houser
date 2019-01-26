@@ -54,13 +54,16 @@ app.delete('/api/workorder/:id', workOrderCtrl.deleteWorkOrder);
 // Payments
 app.post('/api/payment', async (req, res, next) => {
     let { name, ssn } = req.body;
-    let { property_id } = (await req.app.get('db').get_tenant_information([name, ssn]))[0];
-    if (property_id) {
-        req.property_id = property_id;
-        next();
+    try{
+        let { property_id } = (await req.app.get('db').get_tenant_information([name, ssn]))[0];
+        if (property_id) {
+            req.property_id = property_id;
+            next();
+        }
     }
-    else {
-        res.status(400).send("No tenant found");
+    catch{
+        res.statusMessage = "No tentant has been found with the current name and SSN provided!";
+        res.status(400).end();
     }
 }, async (req, res) => {
     let { amount, token } = req.body;

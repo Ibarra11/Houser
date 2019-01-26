@@ -10,7 +10,8 @@ class PaymentForm extends Component {
             ssn: '',
             amount: '',
             isLoading: false,
-            displayTransactionReciept: false
+            displayTransactionReciept: false,
+            paymentError: false
         }
     }
 
@@ -22,10 +23,9 @@ class PaymentForm extends Component {
 
     processPayment = async () => {
         let { token } = await this.props.stripe.createToken({ name: "Name" });
-        let response = await axios.post('/api/payment', { token, ...this.state });
-        if (response.status === 200) {
-            this.setState({ isLoading: false, displayTransactionReciept: true })
-        }
+        await axios.post('/api/payment', { token, ...this.state }).then(() =>{
+            this.setState({ isLoading: false, displayTransactionReciept: true });
+        }).catch(() => this.setState({isLoading: false, paymentError: true}));
     }
 
     handleChange = e => {
@@ -63,10 +63,9 @@ class PaymentForm extends Component {
     printReceipt = () => {
         var mywindow = window.open('', 'Print', 'height=600, width=1000');
         mywindow.document.writeln('<html><head>');
-        // mywindow.document.writeln('<style type="text/css">.payment-info{text-align:center; color:red;}</style>')
         mywindow.document.writeln('</head><body style="text-align:center;">');
         mywindow.document.writeln(document.querySelector('.payment-container').innerHTML);
-        console.log(document.querySelector('.payment-info'));
+      
         mywindow.document.writeln('</body></html>');
 
         mywindow.document.close(); // necessary for IE >= 10
@@ -74,6 +73,7 @@ class PaymentForm extends Component {
         mywindow.print();
         mywindow.close();
     }
+
     render() {
         return (
             <div className="payment-form" onSubmit={this.handleSubmit}>
@@ -170,6 +170,12 @@ class PaymentForm extends Component {
                         </div>
                     </div>
                 </div>
+                {this.state.paymentError ? 
+                <div className="payment-err">
+                    <h6>There was an issue processing your payment.  Verify that you have entered a valid tentant name and SSN.</h6>
+                </div>
+                : null
+                }
             </div>
         )
     }
