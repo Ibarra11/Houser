@@ -67,13 +67,26 @@ class PropertyView extends Component {
             .then(() => this.updatePropertyList())
             .catch(err => console.log(err));
     }
+    
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.propertyToEdit.removeFocus){
+            prevState.propertyToEdit.removeFocus();
+        }
+    }
 
-    toggleEditProperty(property) {
+    toggleEditProperty(property=false, removeFocus) {
         if (property) {
+            property.removeFocus = removeFocus;
             this.setState({
                 editProperty: true,
                 propertyToEdit: property
             });
+        }
+        else{
+            this.setState({
+                editProperty: false,
+                propertyToEdit: ''
+            })
         }
     }
 
@@ -142,7 +155,7 @@ class PropertyView extends Component {
                             </div>
                         </div>
                         :
-                        <EditProperty property={this.state.propertyToEdit} />
+                        <EditProperty toggleEditProperty={this.toggleEditProperty} property={this.state.propertyToEdit} />
                     }
                 </div>
                 <div className="property-list-container">
@@ -170,7 +183,7 @@ class PropertyView extends Component {
                                 </h2>
                             </div>
                             :
-                            <PropertyList  editProperty={this.toggleEditProperty} propertyEditId={this.state.propertyToEdit.property_id} deleteProperty={this.deleteProperty} propertyList={this.state.propertiesOnPage} />
+                            <PropertyList  editProperty={this.toggleEditProperty}  deleteProperty={this.deleteProperty} propertyList={this.state.propertiesOnPage} />
                         }
                     </div>
                 </div>

@@ -9,13 +9,19 @@ class EditProperty extends Component {
     onInputChange(e) {
         console.log(e.target.value);
     }
+    closeForm =  (e) =>{
+        e.preventDefault();
+        console.log(this.props);
+         this.props.property.removeFocus();
+        this.props.toggleEditProperty();
+    }
     render() {
         return (
             <div className="component-edit-property" >
                 <div className="property-img">
                     <img src={this.props.property.property_img} alt="an image of the property" />
                 </div>
-                <form className="edit-property-form">
+                <form  className="edit-property-form">
                     <div className="form-group">
                         <div className="group-header">
                             <h5>Address</h5>
@@ -69,7 +75,7 @@ class EditProperty extends Component {
                     </div>
                     <div className="form-submit">
                         <button className="btn" type="submit">Edit</button>
-                        <button className="btn" onClick={() => this.closeModal}>Close</button>
+                        <button className="btn" onClick={this.closeForm}>Close</button>
                     </div>
                 </form>
 

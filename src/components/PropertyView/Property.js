@@ -3,6 +3,7 @@ class Property extends Component {
     constructor() {
         super();
         this.state = {
+            property_edited: false,
             property_city: '',
             property_street: '',
             property_state: '',
@@ -29,18 +30,17 @@ class Property extends Component {
         })
     }
 
+
     handleEditProperty = () =>{
         this.setState({
-            editing: true
-        }, this.props.editProperty(this.props.property))
+            property_edited: true
+        }, this.props.editProperty(this.props.property, () => this.setState({property_edited: false})))
+        
     }
-
-
- 
 
     render() {
         return (
-            <div className={this.props.propertyBeingEdited ? "property property-edit-mode" : "property"}>
+            <div className={this.state.property_edited ? "property property-edit-mode" : "property"}>
                 <div className="property-img">
                     <img src={this.state.property_img} alt="property-img" />
                 </div>

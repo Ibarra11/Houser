@@ -1,10 +1,10 @@
 import Property from './Property';
 import React from 'react';
-const PropertyList = function ({ propertyList, deleteProperty, editProperty, propertyEditId }) {
+const PropertyList = function ({ propertyList, deleteProperty, editProperty }) {
     return (
         <div>
             {propertyList.map(property => {
-                    return <Property editProperty={editProperty} propertyBeingEdited={property.property_id === propertyEditId} deleteProperty={deleteProperty} key={property.property_id} property={property} />
+                    return <Property editProperty={editProperty}  deleteProperty={deleteProperty} key={property.property_id} property={property} />
                 
             })}
         </div>
