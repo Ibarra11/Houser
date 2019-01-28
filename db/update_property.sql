@@ -7,5 +7,5 @@ SET property_rent = $6
 WHERE property_id = $1;
 
 UPDATE property_tenants
-SET tenant_name = $7, tenant_phone=$8, tenant_email=$9
+SET tenant_name = $7, tenant_phone=$8, tenant_email=$9, tenant_ssn=$10
 WHERE property_id = $1;

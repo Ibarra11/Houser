@@ -26,7 +26,7 @@ class Step1 extends Component {
                 this.setState({
                     propertyStreet, propertyCity, propertyState: propertyState ? propertyState : res.data[0].abbreviation, propertyZipcode, states: res.data
                 })
-            })
+            });
     }
 
     handleInputChange(e) {

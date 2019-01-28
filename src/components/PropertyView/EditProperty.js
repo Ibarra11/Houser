@@ -1,45 +1,91 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import StateList from '../../data/states';
 class EditProperty extends Component {
-    constructor() {
+    constructor(){
         super();
+        this.state = {
+            property_street: "",
+            property_city: "",
+            property_state: "",
+            stateList: StateList,
+            property_zipcode: "",
+            property_rent: "",
+            tenant_name: "",
+            tenant_phone: "",
+            tenant_ssn: "",
+            tenant_email: ""
+        }
     }
     componentDidMount() {
-        console.log(this.props);
+        console.log(this.props.property);
+        this.setState({
+            ...this.props.property
+        });
     }
-    onInputChange(e) {
-        console.log(e.target.value);
+    onInputChange = e => {
+        if(e.target.name === 'tenant_ssn'){
+
+        }
+        else{
+            this.setState({
+                [e.target.name]: e.target.value
+            });
+        }
     }
-    closeForm =  (e) =>{
-        e.preventDefault();
+    closeForm = (e=false) =>{
+        if(e){
+            e.preventDefault();
+        }
          this.props.property.removeFocus();
         this.props.toggleEditProperty();
     }
+    handleEditForm = e =>{
+        e.preventDefault();
+        let {property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, 
+            tenant_phone, tenant_ssn, tenant_email} = this.state;
+            console.log(this.props);
+        axios.put(`/api/property/${this.props.property.property_id}`,{
+            property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, tenant_phone, tenant_ssn, tenant_email
+        }).then(() =>{
+            this.closeForm();
+        })
+        
+    }
     render() {
+        console.log(this.state);
         return (
             <div className="component-edit-property" >
                 <div className="property-img">
                     <img src={this.props.property.property_img} alt="an image of the property" />
                 </div>
-                <form  className="edit-property-form">
+                <form onSubmit={this.handleEditForm}  className="edit-property-form">
                     <div className="form-group">
                         <div className="group-header">
                             <h5>Address</h5>
                         </div>
                         <div className="input-group">
                             <label htmlFor="street">Street</label>
-                            <input name="property_street" onChange={this.onInputChange} type="text" value={this.props.property.property_street} />
+                            <input name="property_street" onChange={this.onInputChange} type="text" value={this.state.property_street} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="city">City</label>
-                            <input type="text" name="property_city" onChange={this.onInputChange} value={this.props.property.property_city} />
+                            <input type="text" name="property_city" onChange={this.onInputChange} value={this.state.property_city} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="state">State</label>
-                            <input type="text" name="property_state" onChange={this.onInputChange} value={this.props.property.property_state} />
+                            <select name="state" onChange={this.onInputChange} >
+                                <option value={this.state.property_state}>{this.state.property_state}</option>
+                                {this.state.stateList.map(state =>{
+                                    if(this.state.property_state !== state){
+                                        return <option key={state.abbreviation} value={state.abbreviation}>{state.abbreviation}</option>
+                                    }
+                                })}
+                            </select>
                         </div>
                         <div className="input-group">
                             <label htmlFor="zipcode">Zipcode</label>
-                            <input type="text" name="property_zipcode" onChange={this.onInputChange} value={this.props.property.property_zipcode} />
+                            <input type="text" name="property_zipcode" onChange={this.onInputChange} value={this.state.property_zipcode} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -48,7 +94,7 @@ class EditProperty extends Component {
                         </div>
                         <div className="input-group">
                             <label htmlFor="rent">Rent</label>
-                            <input name="property_rent" type="text" onChange={this.onInputChange} value={this.props.property.property_rent} />
+                            <input name="property_rent" type="text" onChange={this.onInputChange} value={this.state.property_rent} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -57,23 +103,23 @@ class EditProperty extends Component {
                         </div>
                         <div className="input-group">
                             <label htmlFor="name">Name</label>
-                            <input type="text" name="tenant_name" onChange={this.onInputChange} value={this.props.property.tenant_name} />
+                            <input type="text" name="tenant_name" onChange={this.onInputChange} value={this.state.tenant_name} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="name">Last 4 of SSN</label>
-                            <input type="text" name="tenant_ssn" onChange={this.onInputChange} value={this.props.property.tenant_ssn} />
+                            <input type="text" name="tenant_ssn" onChange={this.onInputChange} value={this.state.tenant_ssn} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="street">Phone</label>
-                            <input type="text" name="tenant_phone" onChange={this.onInputChange} value={this.props.property.tenant_phone} />
+                            <input type="text" name="tenant_phone" onChange={this.onInputChange} value={this.state.tenant_phone} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" name="tenant_email" onChange={this.onInputChange} value={this.props.property.tenant_email} />
+                            <input type="text" name="tenant_email" onChange={this.onInputChange} value={this.state.tenant_email} />
                         </div>
                     </div>
                     <div className="form-submit">
-                        <button className="btn" type="submit">Edit</button>
+                        <button onClick={this.handleEditForm} className="btn" type="submit">Edit</button>
                         <button className="btn" onClick={this.closeForm}>Close</button>
                     </div>
                 </form>

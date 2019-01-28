@@ -56,14 +56,14 @@ module.exports = {
             .catch(err => res.status(500).send(err))
     },
     updateProperty: (req, res) => {
-        let { propertyId } = req.params;
+        let { propertyId } = req.params
         let {
             property_city, property_state, property_zipcode, property_street,
-            property_rent, tenant_name, tenant_email, tenant_phone
+            property_rent, tenant_name, tenant_email, tenant_phone, tenant_ssn
         } = req.body;
         req.app.get('db').update_property([
             propertyId, property_street, property_city, property_state, property_zipcode,
-            property_rent, tenant_name, tenant_phone, tenant_email
+            property_rent, tenant_name, tenant_phone, tenant_email, tenant_ssn
         ])
             .then(() => {
                 res.sendStatus(200);

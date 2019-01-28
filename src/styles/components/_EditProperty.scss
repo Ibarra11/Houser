@@ -41,17 +41,23 @@
             .input-group {
                 width: 45%;
                 margin-top: 0.75rem;
-                input {
+                input,
+                select {
                     width: 100%;
                     margin-top: 0.25rem;
                     border-radius: 2px;
                     border: none;
                     padding: 6px 3px;
+                }
+                input {
                     background-color: transparent;
                     border: 1px solid $btn-blue;
                 }
                 label {
                     font-size: 1.15rem;
+                }
+                select {
+                    display: block;
                 }
             }
             &:first-child,
