@@ -14,7 +14,8 @@ class EditProperty extends Component {
             tenant_name: "",
             tenant_phone: "",
             tenant_ssn: "",
-            tenant_email: ""
+            tenant_email: "",
+            isUpdating: false
         }
     }
     componentDidMount() {
@@ -44,18 +45,21 @@ class EditProperty extends Component {
         e.preventDefault();
         let {property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, 
             tenant_phone, tenant_ssn, tenant_email} = this.state;
-            console.log(this.props);
-        axios.put(`/api/property/${this.props.property.property_id}`,{
-            property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, tenant_phone, tenant_ssn, tenant_email
-        }).then(() =>{
-            this.closeForm();
-        })
-        
+            this.setState({
+                isUpdating: true
+            }, () =>{
+                axios.put(`/api/property/${this.props.property.property_id}`,{
+                    property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, tenant_phone, tenant_ssn, tenant_email
+                }).then(() =>{
+                    this.setState({
+                        isUpdating: false
+                    }, this.closeForm());
+                })
+            })
     }
     render() {
-        console.log(this.state);
         return (
-            <div className="component-edit-property" >
+            <div className="component-edit-property">
                 <div className="property-img">
                     <img src={this.props.property.property_img} alt="an image of the property" />
                 </div>
