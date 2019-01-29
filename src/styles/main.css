@@ -1436,3 +1436,14 @@ template {
   .btn:hover, .btn:active {
     cursor: pointer;
     top: 1px; }
+
+.updating-component {
+  border: 1px solid red;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .updating-component h2 {
+    margin-bottom: 1rem;
+    font-size: 2.25rem; }

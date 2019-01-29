@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import StateList from '../../data/states';
+import Updating from '../Updating/Updating';
 class EditProperty extends Component {
     constructor(){
         super();
@@ -59,7 +60,8 @@ class EditProperty extends Component {
     }
     render() {
         return (
-            <div className="component-edit-property">
+            <div className={this.state.isUpdating ? "component-edit-property updating-property": "component-edit-property" }>
+            <Updating isUpdating={this.state.isUpdating} title={"Updating Property"}>
                 <div className="property-img">
                     <img src={this.props.property.property_img} alt="an image of the property" />
                 </div>
@@ -127,7 +129,7 @@ class EditProperty extends Component {
                         <button className="btn" onClick={this.closeForm}>Close</button>
                     </div>
                 </form>
-
+            </Updating>
             </div>
         )
     }
