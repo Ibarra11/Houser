@@ -19,11 +19,19 @@ class EditProperty extends Component {
             isUpdating: false
         }
     }
+
     componentDidMount() {
         this.setState({
             ...this.props.property
         });
     }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.isUpdating === true && this.state.isUpdating === false){
+            this.closeForm();
+        }
+    }
+
     onInputChange = e => {
         if(e.target.name === 'tenant_ssn'){
 
@@ -34,11 +42,11 @@ class EditProperty extends Component {
             });
         }
     }
-    closeForm = (e=false, propertyData) =>{
+    closeForm =  (e=false, propertyData) =>{
         if(e){
             e.preventDefault();
         }
-         this.props.property.removeFocus(propertyData);
+         this.props.property.removeFocus(this.state);
         this.props.toggleEditProperty();
     }
     handleEditForm = e =>{
@@ -50,10 +58,12 @@ class EditProperty extends Component {
             }, () =>{
                 axios.put(`/api/property/${this.props.property.property_id}`,{
                     property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, tenant_phone, tenant_ssn, tenant_email
-                }).then(resData =>{
+                }).then( async (resData) =>{
+                    //  this.closeForm(false, resData.data[0]);
                     this.setState({
-                        isUpdating: false
-                    }, this.closeForm(false, resData.data[0]));
+                        isUpdating: false,
+                        ...resData.data[0]
+                    });
                 })
             })
     }

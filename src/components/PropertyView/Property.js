@@ -31,7 +31,6 @@ class Property extends Component {
     }
 
     handlePropertyUpdate = (propertyData) =>{
-        console.log(propertyData);
         this.setState({
             property_edited: false,
             ...propertyData
@@ -42,7 +41,7 @@ class Property extends Component {
     handleEditProperty = () =>{
         this.setState({
             property_edited: true
-        }, this.props.editProperty(this.props.property, this.handlePropertyUpdate))
+        }, this.props.editProperty(this.state, this.handlePropertyUpdate))
     }
 
     render() {

@@ -69,11 +69,9 @@ class PropertyView extends Component {
     }
     
     componentDidUpdate(prevProps, prevState){
-        
         if(prevState.propertyToEdit.property_id && this.state.propertyToEdit && prevState.propertyToEdit.property_id  !== this.state.propertyToEdit.property_id){
             prevState.propertyToEdit.removeFocus();
-        }
-        
+        }  
     }
 
     toggleEditProperty(property=false, removeFocus) {
