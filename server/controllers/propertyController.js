@@ -65,8 +65,10 @@ module.exports = {
             propertyId, property_street, property_city, property_state, property_zipcode,
             property_rent, tenant_name, tenant_phone, tenant_email, tenant_ssn
         ])
-            .then(() => {
-                res.sendStatus(200);
+            .then( async () => {
+                let {ownerId} = req.session;
+              await  req.app.get('db').get_property(ownerId, propertyId)
+                .then(data => res.send(data));
             })
             .catch(err => console.log(err))
     }

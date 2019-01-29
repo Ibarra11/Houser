@@ -20,7 +20,6 @@ class EditProperty extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.property);
         this.setState({
             ...this.props.property
         });
@@ -35,11 +34,11 @@ class EditProperty extends Component {
             });
         }
     }
-    closeForm = (e=false) =>{
+    closeForm = (e=false, propertyData) =>{
         if(e){
             e.preventDefault();
         }
-         this.props.property.removeFocus();
+         this.props.property.removeFocus(propertyData);
         this.props.toggleEditProperty();
     }
     handleEditForm = e =>{
@@ -51,10 +50,10 @@ class EditProperty extends Component {
             }, () =>{
                 axios.put(`/api/property/${this.props.property.property_id}`,{
                     property_street, property_state, property_city, property_zipcode, property_rent, tenant_name, tenant_phone, tenant_ssn, tenant_email
-                }).then(() =>{
+                }).then(resData =>{
                     this.setState({
                         isUpdating: false
-                    }, this.closeForm());
+                    }, this.closeForm(false, resData.data[0]));
                 })
             })
     }

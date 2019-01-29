@@ -30,12 +30,19 @@ class Property extends Component {
         })
     }
 
+    handlePropertyUpdate = (propertyData) =>{
+        console.log(propertyData);
+        this.setState({
+            property_edited: false,
+            ...propertyData
+        })
+    }
+
 
     handleEditProperty = () =>{
         this.setState({
             property_edited: true
-        }, this.props.editProperty(this.props.property, () => this.setState({property_edited: false})))
-        
+        }, this.props.editProperty(this.props.property, this.handlePropertyUpdate))
     }
 
     render() {
