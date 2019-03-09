@@ -1131,6 +1131,8 @@ template {
             margin-right: 3%; }
         .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order {
           width: 95%;
+          height: 100%;
+          border: 1px solid orange;
           margin: 0 auto;
           padding-top: 1rem;
           display: flex; }

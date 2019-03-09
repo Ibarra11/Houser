@@ -13,7 +13,7 @@
             display: flex;
             height: 12%;
             border-bottom: 1px solid $btn-grey;
-           justify-content: center;
+            justify-content: center;
             align-items: center;
             h3 {
                 font-size: 1.75rem;
@@ -34,7 +34,7 @@
             .controls-link {
                 margin-bottom: 1rem;
                 font-size: 1.25rem;
-                &:hover{
+                &:hover {
                     cursor: pointer;
                 }
             }
@@ -308,6 +308,8 @@
                 }
                 .edit-work-order {
                     width: 95%;
+                    height: 100%;
+                    border: 1px solid orange;
                     margin: 0 auto;
                     padding-top: 1rem;
                     display: flex;
