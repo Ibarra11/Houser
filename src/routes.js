@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage/LandingPage';
-import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
 import WorkOrders from './components/WorkOrders/WorkOrders';
 import PropertiesView from './components/PropertyView/PropertyView';
 import Transactions from './components/Transactions/Transactions';
@@ -14,7 +14,7 @@ export function baseRoutes() {
         <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route path='/payment' component={Payment} />
-            <Route path='/houser' component={Home} />
+            <Route path='/houser' component={Navbar} />
         </Switch>
     )
 }
@@ -23,9 +23,9 @@ export function baseRoutes() {
 export function mainRoutes() {
     return (
         <Switch>
-            <Route path='/houser/work-orders' component={WorkOrders} />
-            <Route path='/houser/properties' component={PropertiesView} />
-            <Route path='/houser/Transactions' component={Transactions} />
+            <Route exact path='/houser/work-orders' component={WorkOrders} />
+            <Route exact path='/houser/Transactions' component={Transactions} />
+            <Route path='/houser' component={PropertiesView} />
         </Switch>
     )
 

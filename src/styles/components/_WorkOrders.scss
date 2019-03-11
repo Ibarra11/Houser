@@ -308,20 +308,19 @@
                 }
                 .edit-work-order {
                     width: 95%;
-                    height: 100%;
-                    border: 1px solid orange;
+                    height: 27rem;
                     margin: 0 auto;
                     padding-top: 1rem;
                     display: flex;
                     .property-info-container {
                         height: 100%;
                         width: 40%;
+                        background-color: #395D7C;
                         .property-address {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            height: 15%;
-                            background-color: #2E6B8D;
+                            margin: 1.5rem;
                             h4 {
                                 font-size: 1.1rem;
                             }
@@ -335,20 +334,20 @@
                         }
                         .edit-buttons {
                             display: flex;
-                            background-color: #2E6B8D;
                             justify-content: space-between;
                             align-items: center;
                             padding: 0 1rem;
                             width: 100%;
-                            height: 15%;
                             button {
                                 width: 45%;
                                 height: 60%;
+                                padding: 8px 3px;
                             }
                         }
                     }
                     .work-order-info-container {
                         width: 60%;
+                        height: 100%;
                         border: 1px solid $btn-grey;
                         .form {
                             padding: 2rem 1rem;
@@ -368,7 +367,7 @@
                             textarea {
                                 width: 60%;
                                 border-radius: 3px;
-                                height: 27vh;
+                                height: 11rem;
                                 padding: 1rem;
                             }
                         }

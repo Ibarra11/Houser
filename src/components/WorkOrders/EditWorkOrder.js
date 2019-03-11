@@ -42,11 +42,11 @@ class EditWorkOrder extends Component {
         return (
             <div className="edit-work-order">
                 <div className="property-info-container">
-                    <div className="property-address">
-                        <h4>{`${this.props.workOrderData.property_street}, ${this.props.workOrderData.property_city} ${this.props.workOrderData.property_state}, ${this.props.workOrderData.property_zipcode} `}</h4>
-                    </div>
                     <div className="property-img">
                         <img src={this.props.workOrderData.property_img} alt="property img" />
+                    </div>
+                    <div className="property-address">
+                        <h4>{`${this.props.workOrderData.property_street}, ${this.props.workOrderData.property_city} ${this.props.workOrderData.property_state}, ${this.props.workOrderData.property_zipcode} `}</h4>
                     </div>
                     <div className="edit-buttons">
                         <button onClick={this.editWorkOrder}>Edit</button>
