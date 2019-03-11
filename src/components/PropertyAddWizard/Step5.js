@@ -31,7 +31,6 @@ class Step5 extends Component {
     addProperty = async () => {
         // Before I send the data to the server, the image is sent to the cloud and the url is set to this.props.propertyImg
         let imgUrl = await this.uploadPhotoToCloud();
-        console.log(imgUrl);
         axios.post('/api/property', { ...this.props, imgUrl })
             .then(() => {
                 this.props.updatePropertyList();
@@ -42,7 +41,6 @@ class Step5 extends Component {
 
     }
     render() {
-        console.log(this.props);
         return (
             <div className="step5">
                 <div className="wizard-header">

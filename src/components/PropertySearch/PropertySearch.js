@@ -30,6 +30,12 @@ class PropertySearch extends Component {
     componentDidMount() {
         this.parsePropertyList();
     }
+
+    componentDidUpdate(prevProps, prevState){
+        if(this.props.propertyList.length !== prevProps.propertyList.length){
+            this.parsePropertyList();
+        }
+    }
     /* 
         This method is going through the property list and extracting the unique
         cities states,and zipcodes and inserting them into their seperate arrays.  These
@@ -83,7 +89,6 @@ class PropertySearch extends Component {
     
     render() {
         let {uniqueCities, uniqueStates, uniqueZipcodes} = this.state;
-        console.log(uniqueCities);
         return (
             <div>
                 <div className="component-property-search">
