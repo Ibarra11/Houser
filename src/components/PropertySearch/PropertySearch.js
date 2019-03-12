@@ -1,29 +1,22 @@
 import React, { Component } from 'react';
-/* 
-    Keep track of what filters the user selects.
-    Ex:
-        filters = {property_city: Turlock, property_state: CA}
-
-*/
-let filters = {};
-
-
 
 class PropertySearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filters: {},
-            uniqueStates: {
-                length: 0
-            },
-            uniqueCities: {
-                length: 0
-            },
-            uniqueZipcodes: {
-                length: 0
-            }
+            filters: {
+                property_city: "",
+                property_state: "",
+                property_zipcode: 0
+            },    
+            uniqueStates: { length: 0 },
+            uniqueCities: { length: 0 },
+            uniqueZipcodes: { length: 0 }
         }
+
+        this.handleFilterChange = this.handleFilterChange.bind(this);
+        this.filterProperties = this.filterProperties.bind(this);
+        this.clearFilters = this.clearFilters.bind(this);
     }
 
 
@@ -31,8 +24,8 @@ class PropertySearch extends Component {
         this.parsePropertyList();
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if(this.props.propertyList.length !== prevProps.propertyList.length){
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.propertyList.length !== prevProps.propertyList.length) {
             this.parsePropertyList();
         }
     }
@@ -43,9 +36,9 @@ class PropertySearch extends Component {
     */
     parsePropertyList() {
         let { propertyList } = this.props;
-        let states = {length: 0};
-        let cities = {length: 0};
-        let zipcodes = {length: 0};
+        let states = { length: 0 };
+        let cities = { length: 0 };
+        let zipcodes = { length: 0 };
         for (let i = 0; i < propertyList.length; i++) {
             let { property_city, property_state, property_zipcode } = propertyList[i];
             if (!cities[property_city]) {
@@ -67,7 +60,7 @@ class PropertySearch extends Component {
             uniqueZipcodes: zipcodes
         })
     }
-    
+
     /* 
       Description:  Takes an object and returns an array of <option> statements
       Input: {Turlock: "Turlock", Modesto: "Modesto", length: 2}
@@ -77,162 +70,117 @@ class PropertySearch extends Component {
             <option>Modesto</option>
         ]
     */
-    displayPropertyFilters(propertyFilter){
+    displayPropertyFilters(propertyFilter) {
         let arr = [];
-        for(let prop in propertyFilter){
-            if(prop !== "length"){
+        for (let prop in propertyFilter) {
+            if (prop !== "length") {
                 arr.push(<option key={propertyFilter[prop]}>{propertyFilter[prop]}</option>)
             }
         }
         return arr;
     }
-    
+
+    handleFilterChange(e) {
+        // for the zipcode we want typcast the value into a number
+        let filters = Object.assign(
+            {}, 
+            this.state.filters, 
+            {[e.target.name]: e.target.name === "property_zipcode" ? +e.target.value : e.target.value}
+        );
+         this.setState({filters});
+    }
+    /* 
+        This is essentially the same thing as Object.keys.  The main difference is that
+        I only want keys who have values
+        EX:
+            input: {city: "", state: "CA", zipcode: ""}
+            Output: ["state"];
+    */
+    getFilterKeys(filterObj){
+        let arr = [];
+        for(let prop in filterObj){
+            if(filterObj[prop]){
+                arr.push(prop);
+            }
+        }
+        return arr;
+    }
+
+
+     filterProperties() {
+        let filterKeys = this.getFilterKeys(this.state.filters);
+            let filteredProperties = [];
+            let keyFlag;
+            for (let i = 0; i < this.props.propertyList.length; i++) {
+                keyFlag = false;
+                for (let j = 0; j < filterKeys.length; j++) {
+                    if (this.props.propertyList[i][filterKeys[j]] === this.state.filters[filterKeys[j]]) {
+                        keyFlag = true;
+                    }
+                    else {
+                        keyFlag = false;
+                        break;
+                    }
+                }
+                if (keyFlag) {
+                    filteredProperties.push(this.props.propertyList[i]);
+                }
+        }
+        this.props.renderFilteredProperties(filteredProperties);
+    }
+
+     clearFilters() {
+         let {filters} = this.state;
+        if (filters.property_city || filters.property_state || filters.property_zipcode) {
+            filters = {};
+            let filterMenus = document.querySelectorAll('.filterMenu');
+            for (let i = 0; i < filterMenus.length; i++) {
+                filterMenus[i].value = '';
+            }
+            this.props.clearFilteredProperties();
+        }
+    }
+
     render() {
-        let {uniqueCities, uniqueStates, uniqueZipcodes} = this.state;
+        let { uniqueCities, uniqueStates, uniqueZipcodes } = this.state;
         return (
             <div>
                 <div className="component-property-search">
                     <div className="search-filter">
                         <ul className="filter">
                             <h5>City</h5>
-                            <select className="filterMenu" >
+                            <select name="property_city" onChange={this.handleFilterChange} className="filterMenu" >
                                 <option value=""></option>
                                 {uniqueCities.length > 0 ? this.displayPropertyFilters(uniqueCities)
-                                 : null}
+                                    : null}
                             </select>
                         </ul>
                         <ul className="filter">
                             <h5>State</h5>
-                            <select className="filterMenu">
+                            <select name="property_state" onChange={this.handleFilterChange} className="filterMenu">
                                 <option value=''></option>
                                 {uniqueStates.length > 0 ? this.displayPropertyFilters(uniqueStates) : null}
                             </select>
                         </ul>
                         <ul className="filter">
                             <h5>Zipcode</h5>
-                            <select className="filterMenu">
+                            <select name="property_zipcode" onChange={this.handleFilterChange} className="filterMenu">
                                 <option value=""></option>
                                 {uniqueZipcodes.length > 0 ? this.displayPropertyFilters(uniqueZipcodes) : null}
                             </select>
                         </ul>
-                        {/* <div className="search-button">
-                            <button onClick={filterProperties}>Search</button>
-                            <button onClick={clearFilters}>Reset</button>
-                        </div> */}
+                        <div className="search-button">
+                            <button onClick={this.filterProperties}>Search</button>
+                            <button onClick={this.clearFilters}>Reset</button>
+                        </div>
                     </div>
                 </div>
             </div>
         )
     }
 }
-// const PropertySearch = function ({ propertyList, renderFilteredProperties, clearFilteredProperties }) {
-//     function parsePropertyList() {
-//         let cities = [];
-//         let states = [];
-//         let zipCodes = [];
-//         for (let i = 0; i < propertyList.length; i++) {
-//             let { property_city, property_state, property_zipcode } = propertyList[i];
-//             if (!cities.includes(property_city)) {
-//                 cities.push(property_city)
-//             }
-//             if (!states.includes(property_state)) {
-//                 states.push(property_state);
-//             }
-//             if (!zipCodes.includes(property_zipcode)) {
-//                 zipCodes.push(property_zipcode);
-//             }
-//         }
-//         return { cities, states, zipCodes };
-//     }
 
-//     function updateFilter(e, filter) {
-//         if (e.target.value) {
-//             if (filter === 'property_zipcode') {
-//                 filters[filter] = parseInt(e.target.value);
-//             }
-//             else {
-//                 filters[filter] = e.target.value;
-//             }
-//         }
-//         else {
-//             delete filters[filter];
-//         }
-//     }
 
-//     function filterProperties() {
-//         let keys = Object.keys(filters);
-//         if (keys.length > 0) {
-//             let filteredProperties = [];
-//             let keyFlag;
-//             for (let i = 0; i < propertyList.length; i++) {
-//                 keyFlag = false;
-//                 for (let j = 0; j < keys.length; j++) {
-//                     if (propertyList[i][keys[j]] === filters[keys[j]]) {
-//                         keyFlag = true;
-//                     }
-//                     else {
-//                         keyFlag = false;
-//                         break;
-//                     }
-//                 }
-//                 if (keyFlag) {
-//                     filteredProperties.push(propertyList[i]);
-//                 }
-//             }
-//             renderFilteredProperties(filteredProperties);
-//         }
-//     }
 
-//     function clearFilters() {
-//         if (filters.property_city || filters.property_state || filters.property_zipcode) {
-//             filters = {};
-//             let filterMenus = document.querySelectorAll('.filterMenu');
-//             for (let i = 0; i < filterMenus.length; i++) {
-//                 filterMenus[i].value = '';
-//             }
-//             clearFilteredProperties();
-//         }
-
-//     }
-
-//     let { cities, states, zipCodes } = parsePropertyList();
-//     return (
-//         <div className="component-property-search">
-//             <div className="search-filter">
-//                 <ul className="filter">
-//                     <h5>City</h5>
-//                     <select className="filterMenu" onChange={e => updateFilter(e, 'property_city')}>
-//                         <option value=""></option>
-//                         {cities.length > 0 ? cities.map((city, index) => {
-//                             return <option key={city + index} value={city}>{city}</option>
-//                         }) : null}
-//                     </select>
-//                 </ul>
-//                 <ul className="filter">
-//                     <h5>State</h5>
-//                     <select className="filterMenu" onChange={e => updateFilter(e, 'property_state')}>
-//                         <option value=""></option>
-//                         {states.length > 0 ? states.map((state, index) => {
-//                             return <option key={state + index} value={state}>{state}</option>
-//                         }) : null}
-//                     </select>
-//                 </ul>
-//                 <ul className="filter">
-//                     <h5>Zipcode</h5>
-//                     <select className="filterMenu" onChange={e => updateFilter(e, 'property_zipcode')}>
-//                         <option value=""></option>
-//                         {zipCodes.length > 0 ? zipCodes.map((zipCode, index) => {
-//                             return <option key={zipCode + index} value={zipCode}>{zipCode}</option>
-//                         }) : null}
-//                     </select>
-//                 </ul>
-//                 <div className="search-button">
-//                     <button onClick={filterProperties}>Search</button>
-//                     <button onClick={clearFilters}>Reset</button>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
 
 export default PropertySearch;

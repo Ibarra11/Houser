@@ -29,11 +29,10 @@ class Step3 extends Component {
                 this.setState({ propertyTenantContactNumber: new AsYouType('US').input(e.target.value) });
             }
         }
-        if(e.target.name === 'propertyTenantSSN'){
-            console.log(e.target.value);
-            console.log(this.state.propertyTenantSSN);
-            if(e.target.value.length <= 4){
-                this.setState({propertyTenantSSN: e.target.value});
+       else if(e.target.name === 'propertyTenantSSN'){
+            let val = Number(e.target.value);
+            if(e.target.value.length <= 4 && val){
+                this.setState({propertyTenantSSN: val});
             }
             else if(e.target.value === ' '){
                 this.setState({propertyTenantSSN: e.target.value});
