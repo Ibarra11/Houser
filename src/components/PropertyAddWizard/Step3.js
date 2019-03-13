@@ -22,24 +22,52 @@ class Step3 extends Component {
         })
     }
 
+    /* 
+        This function is responsible for formatting the phone number
+        Format: (209) 111-2234
+    */
+    formatPhoneNumber(phnNumber, length){
+        if(length === 3){
+            return `(${phnNumber})`;
+        }
+       else if(length === 5 ){
+            if(phnNumber[0] === "("){
+               return  phnNumber.substring(1,3);
+            }
+        }
+        else if(length === 9){
+            if(phnNumber[8] === '-'){
+                phnNumber.substring(0,8);
+            }
+            else{
+                return `${phnNumber.substring(0,8) + '-' + phnNumber.substring(8)}`;
+            } 
+        }
+        else{
+            return phnNumber;
+        }
+    }
+
     handleInputChange(e) {
         if (e.target.name === 'propertyTenantContactNumber') {
-            // Only allows phone numbers (209) 111-1111
-            if (this.state.propertyTenantContactNumber.length <= 13) {
-                this.setState({ propertyTenantContactNumber: new AsYouType('US').input(e.target.value) });
+            let numberCheck = Number(e.target.value.substring(e.target.value.length - 1));
+            console.log(numberCheck);
+            if(e.target.value.length < 14 && numberCheck ){
+                console.log(this.formatPhoneNumber(e.target))
+                this.setState({propertyTenantContactNumber: this.formatPhoneNumber(e.target.value,e.target.value.length)});
             }
         }
-       else if(e.target.name === 'propertyTenantSSN'){
+        else if (e.target.name === 'propertyTenantSSN') {
             let val = Number(e.target.value);
-            if(e.target.value.length <= 4 && val){
-                this.setState({propertyTenantSSN: val});
+            if (e.target.value.length <= 4 && val) {
+                this.setState({ propertyTenantSSN: val });
             }
-            else if(e.target.value === ' '){
-                this.setState({propertyTenantSSN: e.target.value});
-            }   
+            else if (e.target.value === ' ') {
+                this.setState({ propertyTenantSSN: e.target.value });
+            }
         }
         else {
-            this.setState({ [e.target.name]: e.target.value })
+            this.setState({ [e.target.name]: e.target.value });
         }
     }
 
