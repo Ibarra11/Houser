@@ -30,18 +30,16 @@ class Step3 extends Component {
         if(length === 3){
             return `(${phnNumber})`;
         }
-       else if(length === 5 ){
+       else if(length === 4 ){
             if(phnNumber[0] === "("){
                return  phnNumber.substring(1,3);
             }
         }
         else if(length === 9){
-            if(phnNumber[8] === '-'){
-                phnNumber.substring(0,8);
-            }
-            else{
-                return `${phnNumber.substring(0,8) + '-' + phnNumber.substring(8)}`;
-            } 
+            return `${phnNumber.substring(0,8) + '-' + phnNumber.substring(8)}`;
+        }
+        else if(length === 10 ){
+            return phnNumber.substring(0,8);
         }
         else{
             return phnNumber;
@@ -50,10 +48,9 @@ class Step3 extends Component {
 
     handleInputChange(e) {
         if (e.target.name === 'propertyTenantContactNumber') {
-            let numberCheck = Number(e.target.value.substring(e.target.value.length - 1));
-            console.log(numberCheck);
-            if(e.target.value.length < 14 && numberCheck ){
-                console.log(this.formatPhoneNumber(e.target))
+            let lastInputChar = e.target.value.substring(e.target.value.length - 1);
+            let numberCheck = lastInputChar === "-" || lastInputChar === "(" || lastInputChar === ")" ? true :  Number(lastInputChar);
+            if(e.target.value.length < 14 && numberCheck >= 0 ){
                 this.setState({propertyTenantContactNumber: this.formatPhoneNumber(e.target.value,e.target.value.length)});
             }
         }
