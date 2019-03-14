@@ -17,7 +17,10 @@ class Step2 extends Component {
         this.setState({ propertyRent });
     }
     handleInputChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+        let rentValue = Number(e.target.value);
+        if(rentValue || e.target.value === ""){
+            this.setState({ [e.target.name]: e.target.value });
+        }
     }
     updateWizard(direction) {
         let { propertyRent } = this.state;

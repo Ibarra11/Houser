@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { clearState } from '../../redux/reducer';
 import PropertyImgPlaceholder from '../../assets/images/propertyPlaceholder.jpg';
+import {BarLoader} from 'react-spinners';
 class Step5 extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            processingProperty: false
+        }
+    }
     componentDidMount() {
         this.props.onStep('step5');
     }
@@ -28,23 +35,46 @@ class Step5 extends Component {
 
         return fileURL;
     }
-    addProperty = async () => {
-        // Before I send the data to the server, the image is sent to the cloud and the url is set to this.props.propertyImg
-        let imgUrl = await this.uploadPhotoToCloud();
-        axios.post('/api/property', { ...this.props, imgUrl })
-            .then(() => {
-                this.props.updatePropertyList();
-                this.props.clearState();
-                this.props.updateStep('step1');
-            })
-            .catch(err => console.log(err))
 
+
+
+    addProperty =  () => {
+        /* 
+            First I am going to set the state for processingProperty, so I can inform the user that the property is being
+            added.  Meanwhile the properyt is being sent to the server;
+        */
+        this.setState({ processingProperty: true }, async () => {
+            let imgUrl = await this.uploadPhotoToCloud();
+           await axios.post('/api/property', { ...this.props, imgUrl })
+                .then(() => {
+                    this.props.updatePropertyList();
+                    this.props.clearState();
+                    this.props.updateStep('step1');
+                })
+                .catch(err => console.log(err));
+            this.setState({
+                processingProperty: false
+            })
+        })
     }
+
     render() {
         return (
             <div className="step5">
                 <div className="wizard-header">
                     <h4 className="wizard-step-title">Property Confirmation</h4>
+                </div>
+                <div className={this.state.processingProperty ? "processing-property" : "hidden"}>
+                    <div className="processing-property-text">
+                        <h3>Adding Property</h3>
+                    </div>
+                    <div className="processing-property-loader">
+                    <BarLoader
+                            size={50}
+                            color={"#fff"}
+                            loading={this.state.processingProperty}
+                    />
+                    </div>
                 </div>
                 <div className="property-information">
                     <div className="property-img">
