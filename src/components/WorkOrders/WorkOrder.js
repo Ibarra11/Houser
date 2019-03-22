@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Numeral from 'numeral';
 class WorkOrder extends Component {
     constructor() {
         super();
@@ -26,7 +27,7 @@ class WorkOrder extends Component {
                             <p>Name: {company_name}</p>
                             <p>Phone: {company_phone}</p>
                             <p>Email: {company_email}</p>
-                            <p>Charge: ${company_charge}</p>
+                            <p>Charge: ${Numeral(company_charge).format('0,0.00')}</p>
                         </div>
                         <div className="job-description">
                             <h5>Job Description</h5>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Numeral from 'numeral';
 class Property extends Component {
     constructor() {
         super();
@@ -60,7 +61,7 @@ class Property extends Component {
                     </div>
                     <div className="property-rent">
                         <h5>Finances</h5>
-                        <p>Rent: ${this.state.property_rent}</p>
+                        <p>Rent: ${Numeral(this.state.property_rent).format('0,0.00')}</p>
                     </div>
                     <div className="property-tenants">
                         <h5>Tenant Information</h5>

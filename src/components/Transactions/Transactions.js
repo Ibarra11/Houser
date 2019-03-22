@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import Pagination from '../../utilities/Pagination';
+import Numeral from 'numeral';
 class Transactions extends Component {
     constructor() {
         super();
@@ -29,7 +30,7 @@ class Transactions extends Component {
                     <td>{moment(payment.payment_date).format("YYYY-MM-DD")}</td>
                     <td>{payment.tenant_name}</td>
                     <td>{payment.property_street}, {payment.property_city}, {payment.property_state} {payment.property_zipcode}</td>
-                    <td>{payment.payment_amount}</td>
+                    <td>${Numeral(payment.payment_amount).format('0,0.00')}</td>
                 </tr>
             )
         })
