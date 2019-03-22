@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setTenantInformation } from '../../redux/reducer';
-import { AsYouType } from 'libphonenumber-js';
+import {formatPhoneNumber} from '../../utilities/Format';
 class Step3 extends Component {
     constructor() {
         super();
@@ -22,36 +22,14 @@ class Step3 extends Component {
         })
     }
 
-    /* 
-        This function is responsible for formatting the phone number
-        Format: (209) 111-2234
-    */
-    formatPhoneNumber(phnNumber, length){
-        if(length === 3){
-            return `(${phnNumber})`;
-        }
-       else if(length === 4 ){
-            if(phnNumber[0] === "("){
-               return  phnNumber.substring(1,3);
-            }
-        }
-        else if(length === 9){
-            return `${phnNumber.substring(0,8) + '-' + phnNumber.substring(8)}`;
-        }
-        else if(length === 10 ){
-            return phnNumber.substring(0,8);
-        }
-        else{
-            return phnNumber;
-        }
-    }
+  
 
     handleInputChange(e) {
         if (e.target.name === 'propertyTenantContactNumber') {
             let lastInputChar = e.target.value.substring(e.target.value.length - 1);
             let numberCheck = lastInputChar === "-" || lastInputChar === "(" || lastInputChar === ")" ? true :  Number(lastInputChar);
             if(e.target.value.length < 14 && numberCheck >= 0 ){
-                this.setState({propertyTenantContactNumber: this.formatPhoneNumber(e.target.value,e.target.value.length)});
+                this.setState({propertyTenantContactNumber: formatPhoneNumber(e.target.value,e.target.value.length)});
             }
         }
         else if (e.target.name === 'propertyTenantSSN') {
