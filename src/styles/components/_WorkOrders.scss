@@ -67,8 +67,9 @@
         .work-order-request,
         .company-info,
         .work-description,
-        .property-img {
-          border: 1px solid #22668a;
+        .property-img,
+        .property-selector {
+          border: 3px solid #22668a;
           height: 50%;
         }
         .section-title {
@@ -84,6 +85,7 @@
           margin: 0 auto;
           position: relative;
           .property-img {
+            position: relative;
             width: 100%;
             img {
               height: 100%;
@@ -106,11 +108,27 @@
           }
           .property-selector {
             position: absolute;
-            bottom: 50%;
-            width: 50%;
-            left: 25%;
             text-align: center;
-            padding-bottom: 1rem;
+            width: 100%;
+            height: 50%;
+            top: 0;
+            background-color: rgba($color: #000000, $alpha: 0.7);
+            padding-bottom: 3%;
+            .select-container {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              height: 100%;
+              width: 70%;
+              margin: 0 auto;
+              h6 {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+              }
+              select {
+                padding: 0.25rem;
+              }
+            }
           }
         }
       }

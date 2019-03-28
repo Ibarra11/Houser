@@ -968,8 +968,9 @@ template {
         .component-workOrders .component-views .create-work-order .section-container .work-order-request,
         .component-workOrders .component-views .create-work-order .section-container .company-info,
         .component-workOrders .component-views .create-work-order .section-container .work-description,
-        .component-workOrders .component-views .create-work-order .section-container .property-img {
-          border: 1px solid #22668a;
+        .component-workOrders .component-views .create-work-order .section-container .property-img,
+        .component-workOrders .component-views .create-work-order .section-container .property-selector {
+          border: 3px solid #22668a;
           height: 50%; }
         .component-workOrders .component-views .create-work-order .section-container .section-title {
           font-size: 1.25rem;
@@ -983,6 +984,7 @@ template {
           margin: 0 auto;
           position: relative; }
           .component-workOrders .component-views .create-work-order .section-container .property-section .property-img {
+            position: relative;
             width: 100%; }
             .component-workOrders .component-views .create-work-order .section-container .property-section .property-img img {
               height: 100%;
@@ -999,11 +1001,24 @@ template {
               font-size: 1.15rem; }
           .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector {
             position: absolute;
-            bottom: 50%;
-            width: 50%;
-            left: 25%;
             text-align: center;
-            padding-bottom: 1rem; }
+            width: 100%;
+            height: 50%;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-bottom: 3%; }
+            .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector .select-container {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              height: 100%;
+              width: 70%;
+              margin: 0 auto; }
+              .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector .select-container h6 {
+                font-size: 1rem;
+                margin-bottom: 0.25rem; }
+              .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector .select-container select {
+                padding: 0.25rem; }
       .component-workOrders .component-views .create-work-order .company-section {
         width: 50%; }
         .component-workOrders .component-views .create-work-order .company-section .company-info .input-container {

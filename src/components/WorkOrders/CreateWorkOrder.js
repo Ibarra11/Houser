@@ -128,11 +128,13 @@ class CreateWorkOrder extends Component {
               </div>
             </div>
             <div className="property-selector">
-              <h6>Select A Property</h6>
-              <select onChange={this.onPropertyChange}>
-                <option value="" />
-                {this.listProperties()}
-              </select>
+              <div className="select-container">
+                <h6>Select A Property</h6>
+                <select onChange={this.onPropertyChange}>
+                  <option value="" />
+                  {this.listProperties()}
+                </select>
+              </div>
             </div>
           </div>
           <div className="company-section">
