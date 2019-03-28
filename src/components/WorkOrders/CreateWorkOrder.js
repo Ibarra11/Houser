@@ -109,56 +109,6 @@ class CreateWorkOrder extends Component {
   render() {
     let property = this.state.properties[this.state.propertyIndex];
     return (
-      // <div className="add-job">
-      //     <div className="job-order-form">
-      //         <div className="form-header">
-      //             <h4>Create Work Order</h4>
-      //         </div>
-      //         <div className="form-body">
-      //             <div className="form-left-side">
-      //                 <div className="property-information">
-      //                     <h5>Property Information</h5>
-      //                     <div className="input-group">
-      //                         <h6>Select A Property</h6>
-      //                         <select onChange={this.onPropertyChange}>
-      //                             <option value=""></option>
-      //                             {this.listProperties()}
-      //                         </select>
-      //                     </div>
-      //                 </div>
-      //                 <div className="company-information">
-      //                     <h5>Company/Worker Information</h5>
-      //                     <div className="input-group">
-      //                         <h6>Name</h6>
-      //                         <input name="companyName" onChange={this.onInputChange} value={this.state.companyName} type="text" />
-      //                     </div>
-      //                     <div className="input-group">
-      //                         <h6>Phone Number</h6>
-      //                         <input name="companyPhone" onChange={this.onInputChange} value={this.state.companyPhone} type="text" />
-      //                     </div>
-      //                     <div className="input-group">
-      //                         <h6>Email</h6>
-      //                         <input name="companyEmail" onChange={this.onInputChange} value={this.state.companyEmail} type="text" />
-      //                     </div>
-      //                     <div className="input-group">
-      //                         <h6>Charge</h6>
-      //                         <input name="companyCharge" onChange={this.onInputChange} value={this.state.companyCharge} type="text" />
-      //                     </div>
-      //                 </div>
-      //             </div>
-      //             <div className="form-right-side">
-      //                 <div className="job-description">
-      //                     <h5>Job Description</h5>
-      //                     <textarea onChange={this.onInputChange} name="description"></textarea>
-      //                 </div>
-      //             </div>
-      //         </div>
-      //         <div className="form-footer">
-      //             <button onClick={this.workOrder}>Create</button>
-      //             <button>Clear</button>
-      //         </div>
-      //     </div>
-      // </div>
       <div className="create-work-order">
         <div className="header">
           <h4>Create Work Order</h4>
@@ -170,8 +120,12 @@ class CreateWorkOrder extends Component {
                 <img src={property.property_img} alt="property img" />
               ) : null}
             </div>
-            <div className="property-information">
-              <p>hello</p>
+            <div className="work-order-request">
+              <h5 className="section-title">Work Order Request</h5>
+              <div className="property-buttons">
+                <button className="btn">Submit</button>
+                <button className="btn">Clear</button>
+              </div>
             </div>
             <div className="property-selector">
               <h6>Select A Property</h6>
@@ -183,44 +137,49 @@ class CreateWorkOrder extends Component {
           </div>
           <div className="company-section">
             <div className="company-info">
-              <h5>Company/Worker Information</h5>
-              <div className="input-group">
-                <h6>Name:</h6>
-                <input type="text" />
-              </div>
-              <div className="property-desc">
+              <h5 className="section-title">Company/Worker Information</h5>
+              <div className="input-container">
                 <div className="input-group">
-                  <h6>Address:</h6>
+                  <h6>Name:</h6>
                   <input type="text" />
                 </div>
-              </div>
-              <div className="property-desc">
-                <div className="input-group">
-                  <h6>City:</h6>
-                  <input type="text" />
+                <div className="property-desc">
+                  <div className="input-group">
+                    <h6>Address:</h6>
+                    <input type="text" />
+                  </div>
                 </div>
-              </div>
-              <div className="property-desc">
-                <div className="input-group">
-                  <h6>State:</h6>
-                  <input type="text" />
+                <div className="property-desc">
+                  <div className="input-group">
+                    <h6>City:</h6>
+                    <input type="text" />
+                  </div>
                 </div>
-              </div>
-              <div className="property-desc">
-                <div className="input-group">
-                  <h6>Zipcode:</h6>
-                  <input type="text" />
+                <div className="property-desc">
+                  <div className="input-group">
+                    <h6>State:</h6>
+                    <input type="text" />
+                  </div>
                 </div>
-              </div>
-              <div className="property-desc">
-                <div className="input-group">
-                  <h6>Phone:</h6>
-                  <input type="text" />
+                <div className="property-desc">
+                  <div className="input-group">
+                    <h6>Zipcode:</h6>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="property-desc">
+                  <div className="input-group">
+                    <h6>Phone:</h6>
+                    <input type="text" />
+                  </div>
                 </div>
               </div>
             </div>
             <div className="work-description">
-              <h5>Work Description</h5>
+              <h5 className="section-title">Work Description</h5>
+              <div className="description-box">
+                <textarea className="text-box" />
+              </div>
             </div>
           </div>
         </div>
