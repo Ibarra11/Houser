@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
 import { AsYouType } from "libphonenumber-js";
+import propertyPlaceholder from "../../assets/images/propertyPlaceholder.jpg";
 class CreateWorkOrder extends Component {
   constructor() {
     super();
@@ -55,7 +56,6 @@ class CreateWorkOrder extends Component {
   }
 
   onPropertyChange(e) {
-    console.log(this.state.properties[e.target.value]);
     this.setState({
       propertyIndex: +e.target.value
     });
@@ -116,9 +116,12 @@ class CreateWorkOrder extends Component {
         <div className="section-container">
           <div className="property-section">
             <div className="property-img">
-              {property ? (
-                <img src={property.property_img} alt="property img" />
-              ) : null}
+              {
+                <img
+                  src={property ? property.property_img : propertyPlaceholder}
+                  alt="property img"
+                />
+              }
             </div>
             <div className="work-order-request">
               <h5 className="section-title">Work Order Request</h5>
