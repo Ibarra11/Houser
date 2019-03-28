@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {formatPhoneNumber} from '../../utilities/Format';
 class EditWorkOrder extends Component {
     constructor() {
         super();
@@ -35,8 +36,6 @@ class EditWorkOrder extends Component {
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
-
 
     render() {
         return (

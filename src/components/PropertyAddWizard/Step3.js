@@ -25,11 +25,11 @@ class Step3 extends Component {
   
 
     handleInputChange(e) {
+        
         if (e.target.name === 'propertyTenantContactNumber') {
-            let lastInputChar = e.target.value.substring(e.target.value.length - 1);
-            let numberCheck = lastInputChar === "-" || lastInputChar === "(" || lastInputChar === ")" ? true :  Number(lastInputChar);
-            if(e.target.value.length < 14 && numberCheck >= 0 ){
-                this.setState({propertyTenantContactNumber: formatPhoneNumber(e.target.value,e.target.value.length)});
+            if(e.target.value.length < 14  ){
+                let phoneNumber = formatPhoneNumber(e.target.value);
+               phoneNumber || phoneNumber === '' ? this.setState({propertyTenantContactNumber: phoneNumber}) : null;
             }
         }
         else if (e.target.name === 'propertyTenantSSN') {
