@@ -1039,7 +1039,8 @@ template {
               width: 85%;
               border: none;
               background-color: transparent;
-              border-bottom: 1px solid green;
+              border-bottom: 1px solid #171717;
+              color: #fff;
               padding: 3px 0; }
             .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group input:focus {
               outline: none; }

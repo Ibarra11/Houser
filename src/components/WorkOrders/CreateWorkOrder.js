@@ -3,29 +3,37 @@ import axios from "axios";
 import moment from "moment";
 import { AsYouType } from "libphonenumber-js";
 import propertyPlaceholder from "../../assets/images/propertyPlaceholder.jpg";
+import StateList from "../../utilities/StateList";
 class CreateWorkOrder extends Component {
   constructor() {
     super();
     this.state = {
       properties: [],
+      stateList: [],
       propertyIndex: -1,
       companyName: "",
       companyPhone: "",
-      companyEmail: "",
-      companyCharge: "",
-      description: ""
+      companyAddress: "",
+      companyCity: "",
+      companyZipcode: "",
+      companyState: "",
+      workDescription: ""
     };
     this.listProperties = this.listProperties.bind(this);
     this.onPropertyChange = this.onPropertyChange.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.workOrder = this.workOrder.bind(this);
+    this.clearWorkOrder = this.clearWorkOrder.bind(this);
   }
 
   componentDidMount() {
     axios
       .get("/api/property")
       .then(res => {
-        this.setState({ properties: res.data });
+        this.setState({ properties: res.data }, () => {
+          let stateList = StateList();
+          this.setState({ stateList, companyState: stateList[0].props.value });
+        });
       })
       .catch(err => console.log(err));
   }
@@ -76,6 +84,17 @@ class CreateWorkOrder extends Component {
     }
   }
 
+  clearWorkOrder() {
+    this.setState({
+      propertyIndex: -1,
+      companyName: "",
+      companyPhone: "",
+      companyEmail: "",
+      companyCharge: "",
+      workDescription: ""
+    });
+  }
+
   workOrder() {
     let date = moment().format("l");
     let time = moment().format("LT");
@@ -108,6 +127,7 @@ class CreateWorkOrder extends Component {
 
   render() {
     let property = this.state.properties[this.state.propertyIndex];
+    console.log(this.state);
     return (
       <div className="create-work-order">
         <div className="header">
@@ -127,14 +147,16 @@ class CreateWorkOrder extends Component {
               <h5 className="section-title">Work Order Request</h5>
               <div className="property-buttons">
                 <button className="btn">Submit</button>
-                <button className="btn">Clear</button>
+                <button onClick={this.clearWorkOrder} className="btn">
+                  Clear
+                </button>
               </div>
             </div>
             <div className="property-selector">
               <div className="select-container">
                 <h6>Select A Property</h6>
                 <select onChange={this.onPropertyChange}>
-                  <option value="" />
+                  {this.state.propertyIndex === -1 ? <option value="" /> : null}
                   {this.listProperties()}
                 </select>
               </div>
@@ -142,40 +164,66 @@ class CreateWorkOrder extends Component {
           </div>
           <div className="company-section">
             <div className="company-info">
-              <h5 className="section-title">Company/Worker Information</h5>
+              <h5 className="section-title">Company Information</h5>
               <div className="input-container">
                 <div className="input-group">
                   <h6>Name:</h6>
-                  <input type="text" />
+                  <input
+                    name="companyName"
+                    onChange={this.onInputChange}
+                    type="text"
+                  />
                 </div>
                 <div className="property-desc">
                   <div className="input-group">
                     <h6>Address:</h6>
-                    <input type="text" />
+                    <input
+                      name="companyAddress"
+                      onChange={this.onInputChange}
+                      type="text"
+                    />
                   </div>
                 </div>
                 <div className="property-desc">
                   <div className="input-group">
                     <h6>City:</h6>
-                    <input type="text" />
+                    <input
+                      name="companyCity"
+                      onChange={this.onInputChange}
+                      type="text"
+                    />
                   </div>
                 </div>
                 <div className="property-desc">
                   <div className="input-group">
                     <h6>State:</h6>
-                    <input type="text" />
+                    <select
+                      name="companyState"
+                      className="selectState"
+                      onChange={this.onInputChange}
+                    >
+                      {this.state.stateList}
+                    </select>
                   </div>
                 </div>
                 <div className="property-desc">
                   <div className="input-group">
                     <h6>Zipcode:</h6>
-                    <input type="text" />
+                    <input
+                      name="companyZipcode"
+                      onChange={this.onInputChange}
+                      type="text"
+                    />
                   </div>
                 </div>
                 <div className="property-desc">
                   <div className="input-group">
                     <h6>Phone:</h6>
-                    <input type="text" />
+                    <input
+                      name="companyPhone"
+                      onChange={this.onInputChange}
+                      type="text"
+                    />
                   </div>
                 </div>
               </div>
@@ -183,7 +231,7 @@ class CreateWorkOrder extends Component {
             <div className="work-description">
               <h5 className="section-title">Work Description</h5>
               <div className="description-box">
-                <textarea className="text-box" />
+                <textarea name="" className="text-box" />
               </div>
             </div>
           </div>
