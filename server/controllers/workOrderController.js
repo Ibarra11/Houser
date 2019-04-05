@@ -53,12 +53,19 @@ module.exports = {
       .get("db")
       .get_queued_work_orders([ownerId])
       .then(workOrders => {
-        console.log(workOrders);
         res.send(workOrders);
       })
       .catch(err => {
         res.send(err);
       });
+  },
+  updateWorkOrderStatus: (req, res) => {
+    let { jobId } = req.params;
+    req.app
+      .get("db")
+      .update_work_order_status([jobId])
+      .then(() => res.sendStatus(200))
+      .catch(err => res.status(500).send(err));
   },
   completedWorkOrder: (req, res) => {
     let { job_id } = req.body;

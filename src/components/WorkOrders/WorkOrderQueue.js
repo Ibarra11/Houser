@@ -70,7 +70,7 @@ class WorkOrderQueue extends Component {
 
   removeFromQueue(jobId) {
     axios
-      .post("/api/work_orders/completed", jobId)
+      .put(`/api/work_orders/${jobId}`)
       .then(() => {
         this.getWorkOrdersFromQueue();
       })
