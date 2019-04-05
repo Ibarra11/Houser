@@ -33,10 +33,11 @@ CREATE TABLE work_order_queue(
     property_id INTEGER,
     owner_id VARCHAR(50) REFERENCES owners(owner_id),
     company_name VARCHAR(100),
-    company_phone VARCHAR(100),
-    company_charge FLOAT,
-    company_email VARCHAR(200),
-    job_description TEXT,
+    company_address VARCHAR(100),
+    company_city VARCHAR(100),
+    company_zipcode VARCHAR(5),
+    company_phone VARCHAR(15),
+    work_description TEXT,
     date_created VARCHAR(50),
     time_created VARCHAR(50)
 )

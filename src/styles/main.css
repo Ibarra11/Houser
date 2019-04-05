@@ -1035,12 +1035,13 @@ template {
             .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group h6 {
               font-size: 1rem;
               width: 15%; }
-            .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group input {
+            .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group input,
+            .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group .selectState {
               width: 85%;
               border: none;
               background-color: transparent;
-              border-bottom: 1px solid #171717;
-              color: #fff;
+              border-bottom: 1px solid #232528;
+              color: #aaacac;
               padding: 3px 0; }
             .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group input:focus {
               outline: none; }

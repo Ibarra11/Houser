@@ -22,7 +22,7 @@ class CreateWorkOrder extends Component {
     this.listProperties = this.listProperties.bind(this);
     this.onPropertyChange = this.onPropertyChange.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-    this.workOrder = this.workOrder.bind(this);
+    this.submitWorkOrder = this.submitWorkOrder.bind(this);
     this.clearWorkOrder = this.clearWorkOrder.bind(this);
   }
 
@@ -95,27 +95,31 @@ class CreateWorkOrder extends Component {
     });
   }
 
-  workOrder() {
-    let date = moment().format("l");
-    let time = moment().format("LT");
+  submitWorkOrder() {
+    console.log(this.state);
     let {
       propertyIndex,
       companyName,
-      companyCharge,
-      companyEmail,
+      companyCity,
+      companyAddress,
+      companyZipcode,
       companyPhone,
-      description
+      workDescription
     } = this.state;
-    companyCharge = parseFloat(companyCharge);
+
+    let date = moment().format("l");
+    let time = moment().format("LT");
+    let propertyId = this.state.properties[propertyIndex].property_id;
 
     axios
       .post("/api/work_orders", {
-        propertyIndex,
+        propertyId,
         companyName,
-        companyCharge,
-        companyEmail,
+        companyAddress,
+        companyCity,
+        companyZipcode,
         companyPhone,
-        description,
+        workDescription,
         date,
         time
       })
@@ -127,7 +131,6 @@ class CreateWorkOrder extends Component {
 
   render() {
     let property = this.state.properties[this.state.propertyIndex];
-    console.log(this.state);
     return (
       <div className="create-work-order">
         <div className="header">
@@ -146,7 +149,9 @@ class CreateWorkOrder extends Component {
             <div className="work-order-request">
               <h5 className="section-title">Work Order Request</h5>
               <div className="property-buttons">
-                <button className="btn">Submit</button>
+                <button onClick={this.submitWorkOrder} className="btn">
+                  Submit
+                </button>
                 <button onClick={this.clearWorkOrder} className="btn">
                   Clear
                 </button>
@@ -174,64 +179,64 @@ class CreateWorkOrder extends Component {
                     type="text"
                   />
                 </div>
-                <div className="property-desc">
-                  <div className="input-group">
-                    <h6>Address:</h6>
-                    <input
-                      name="companyAddress"
-                      onChange={this.onInputChange}
-                      type="text"
-                    />
-                  </div>
+
+                <div className="input-group">
+                  <h6>Address:</h6>
+                  <input
+                    name="companyAddress"
+                    onChange={this.onInputChange}
+                    type="text"
+                  />
                 </div>
-                <div className="property-desc">
-                  <div className="input-group">
-                    <h6>City:</h6>
-                    <input
-                      name="companyCity"
-                      onChange={this.onInputChange}
-                      type="text"
-                    />
-                  </div>
+
+                <div className="input-group">
+                  <h6>City:</h6>
+                  <input
+                    name="companyCity"
+                    onChange={this.onInputChange}
+                    type="text"
+                  />
                 </div>
-                <div className="property-desc">
-                  <div className="input-group">
-                    <h6>State:</h6>
-                    <select
-                      name="companyState"
-                      className="selectState"
-                      onChange={this.onInputChange}
-                    >
-                      {this.state.stateList}
-                    </select>
-                  </div>
+
+                <div className="input-group">
+                  <h6>State:</h6>
+                  <select
+                    name="companyState"
+                    className="selectState"
+                    onChange={this.onInputChange}
+                  >
+                    {this.state.stateList}
+                  </select>
                 </div>
-                <div className="property-desc">
-                  <div className="input-group">
-                    <h6>Zipcode:</h6>
-                    <input
-                      name="companyZipcode"
-                      onChange={this.onInputChange}
-                      type="text"
-                    />
-                  </div>
+
+                <div className="input-group">
+                  <h6>Zipcode:</h6>
+                  <input
+                    name="companyZipcode"
+                    onChange={this.onInputChange}
+                    type="text"
+                  />
                 </div>
-                <div className="property-desc">
-                  <div className="input-group">
-                    <h6>Phone:</h6>
-                    <input
-                      name="companyPhone"
-                      onChange={this.onInputChange}
-                      type="text"
-                    />
-                  </div>
+
+                <div className="input-group">
+                  <h6>Phone:</h6>
+                  <input
+                    name="companyPhone"
+                    onChange={this.onInputChange}
+                    type="text"
+                  />
                 </div>
               </div>
             </div>
+
             <div className="work-description">
               <h5 className="section-title">Work Description</h5>
               <div className="description-box">
-                <textarea name="" className="text-box" />
+                <textarea
+                  onChange={this.onInputChange}
+                  name="workDescription"
+                  className="text-box"
+                />
               </div>
             </div>
           </div>
