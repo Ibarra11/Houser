@@ -209,19 +209,53 @@
           display: flex;
           border: 1px solid $btn-grey;
           height: 17%;
-          justify-content: space-between;
+          width: 100%;
           align-items: center;
+          justify-content: space-between;
           padding: 0 1rem;
           margin-bottom: 0.75rem;
+          .company-info {
+            width: 75%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .company-contact {
+              width: 15%;
+              .company-name {
+                margin-bottom: 0.2rem;
+              }
+            }
+            .address {
+              width: 30%;
+            }
+            .work-description {
+              width: 50%;
+              height: 100%;
+              word-wrap: break-word;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              padding: 0.25rem 0;
+              overflow-y: auto;
+            }
+          }
+          .address {
+            width: 25%;
+          }
           .job-id {
             font-size: 1.25rem;
+            width: 15%;
           }
           .job-date {
+            width: 10%;
             .date {
               margin-bottom: 0.25rem;
             }
           }
           .job-elapsed-time {
+            width: 10%;
             font-size: 1.5rem;
           }
           .job-controls {

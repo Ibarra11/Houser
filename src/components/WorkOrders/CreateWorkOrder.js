@@ -96,12 +96,12 @@ class CreateWorkOrder extends Component {
   }
 
   submitWorkOrder() {
-    console.log(this.state);
     let {
       propertyIndex,
       companyName,
-      companyCity,
       companyAddress,
+      companyCity,
+      companyState,
       companyZipcode,
       companyPhone,
       workDescription
@@ -117,13 +117,16 @@ class CreateWorkOrder extends Component {
         companyName,
         companyAddress,
         companyCity,
+        companyState,
         companyZipcode,
         companyPhone,
         workDescription,
         date,
-        time
+        time,
+        workOrderStatus: "queue"
       })
       .then(() => {
+        console.log(this.props);
         this.props.renderView("WorkOrderQueue");
       })
       .catch(err => console.log(err));

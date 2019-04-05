@@ -1,45 +1,64 @@
 module.exports = {
-  createWorkOrder: (req, res) => {
+  addWorkOrder: (req, res) => {
     let {
       propertyId,
       companyName,
       companyAddress,
       companyCity,
+      companyState,
       companyZipcode,
       companyPhone,
       workDescription,
       date,
-      time
+      time,
+      workOrderStatus
     } = req.body;
     let { ownerId } = req.session;
     req.app
       .get("db")
-      .add_to_queue([
-        propertyId,
-        ownerId,
+      .add_company([
         companyName,
         companyAddress,
         companyCity,
+        companyState,
         companyZipcode,
-        companyPhone,
-        workDescription,
-        date,
-        time
+        companyPhone
       ])
-      .then(() => {
-        res.sendStatus(200);
+      .then(data => {
+        let { company_id } = data[0];
+        req.app
+          .get("db")
+          .add_work_order([
+            propertyId,
+            ownerId,
+            company_id,
+            workDescription,
+            date,
+            time,
+            workOrderStatus
+          ])
+          .then(() => {
+            res.sendStatus(200);
+          })
+          .catch(err => {
+            console.log(err);
+            res.status(500).send(err);
+          });
       })
-      .catch(err => console.log(err));
+      .catch(err => res.send(err));
   },
-  getWorkOrders: (req, res) => {
+  getQueuedWorkOrders: (req, res) => {
     let { ownerId } = req.session;
     req.app
       .get("db")
-      .get_from_queue([ownerId])
+      .get_queued_work_orders([ownerId])
       .then(workOrders => {
+        console.log(workOrders);
         res.send(workOrders);
       })
-      .catch(err => res.status(500).send(err));
+      .catch(err => {
+        res.send(err);
+      });
   },
   completedWorkOrder: (req, res) => {
     let { job_id } = req.body;

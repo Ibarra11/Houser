@@ -1080,15 +1080,44 @@ template {
           display: flex;
           border: 1px solid #4D5765;
           height: 17%;
-          justify-content: space-between;
+          width: 100%;
           align-items: center;
+          justify-content: space-between;
           padding: 0 1rem;
           margin-bottom: 0.75rem; }
+          .component-workOrders .component-views .job-queue .job-queue-container .job .company-info {
+            width: 75%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around; }
+            .component-workOrders .component-views .job-queue .job-queue-container .job .company-info .company-contact {
+              width: 15%; }
+              .component-workOrders .component-views .job-queue .job-queue-container .job .company-info .company-contact .company-name {
+                margin-bottom: 0.2rem; }
+            .component-workOrders .component-views .job-queue .job-queue-container .job .company-info .address {
+              width: 30%; }
+            .component-workOrders .component-views .job-queue .job-queue-container .job .company-info .work-description {
+              width: 50%;
+              height: 100%;
+              word-wrap: break-word;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              padding: 0.25rem 0;
+              overflow-y: auto; }
+          .component-workOrders .component-views .job-queue .job-queue-container .job .address {
+            width: 25%; }
           .component-workOrders .component-views .job-queue .job-queue-container .job .job-id {
-            font-size: 1.25rem; }
-          .component-workOrders .component-views .job-queue .job-queue-container .job .job-date .date {
-            margin-bottom: 0.25rem; }
+            font-size: 1.25rem;
+            width: 15%; }
+          .component-workOrders .component-views .job-queue .job-queue-container .job .job-date {
+            width: 10%; }
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-date .date {
+              margin-bottom: 0.25rem; }
           .component-workOrders .component-views .job-queue .job-queue-container .job .job-elapsed-time {
+            width: 10%;
             font-size: 1.5rem; }
           .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls {
             font-size: 1.25rem;

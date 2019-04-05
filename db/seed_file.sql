@@ -28,31 +28,27 @@ CREATE TABLE property_tenants(
     tenant_SSN INTEGER
 )
 
-CREATE TABLE work_order_queue(
+CREATE TABLE work_orders(
     job_id SERIAL PRIMARY KEY,
-    property_id INTEGER,
+    property_id INTEGER REFERENCES property_information(property_id),
     owner_id VARCHAR(50) REFERENCES owners(owner_id),
+    company_id INTEGER REFERENCES company(company_id),
+    work_description TEXT,
+    date_created VARCHAR(50),
+    time_created VARCHAR(50),
+    work_order_status VARCHAR(8)
+);
+
+
+
+CREATE TABLE company(
+    company_id SERIAL PRIMARY KEY,
     company_name VARCHAR(100),
     company_address VARCHAR(100),
     company_city VARCHAR(100),
+    company_state VARCHAR(2),
     company_zipcode VARCHAR(5),
-    company_phone VARCHAR(15),
-    work_description TEXT,
-    date_created VARCHAR(50),
-    time_created VARCHAR(50)
-)
-
-CREATE TABLE completed_work_orders(
-    job_id SERIAL PRIMARY KEY,
-    property_id INTEGER,
-    owner_id VARCHAR(50) REFERENCES owners(owner_id),
-    company_name VARCHAR(100),
-    company_phone VARCHAR(100),
-    company_charge FLOAT,
-    company_email VARCHAR(200),
-    job_description TEXT,
-    date_created VARCHAR(50),
-    time_created VARCHAR(50)
+    company_phone VARCHAR(15)
 )
 
 
