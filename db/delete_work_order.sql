@@ -1,2 +1,2 @@
-DELETE FROM completed_work_orders 
+DELETE FROM work_orders
 WHERE job_id = $1;

@@ -28,6 +28,7 @@ class CompletedWorkOrders extends Component {
     axios
       .get("/api/work_orders/completed")
       .then(res => {
+        console.log(res);
         if (res.data.length > 0) {
           this.paginationInstance.itemList = res.data;
           this.paginationInstance.calculateNumOfPages();
@@ -96,6 +97,7 @@ class CompletedWorkOrders extends Component {
   };
 
   deleteWorkOrder = workOrderId => {
+    console.log(workOrderId);
     axios
       .delete(`/api/workorder/${workOrderId}`)
       .then(() => {

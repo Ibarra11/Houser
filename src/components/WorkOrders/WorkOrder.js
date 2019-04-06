@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Numeral from "numeral";
 class WorkOrder extends Component {
   constructor() {
     super();

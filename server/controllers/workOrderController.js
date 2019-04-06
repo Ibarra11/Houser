@@ -120,6 +120,9 @@ module.exports = {
       .get("db")
       .delete_work_order([id])
       .then(() => res.sendStatus(200))
-      .catch(err => res.status(500).send(err));
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   }
 };
