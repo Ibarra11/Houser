@@ -45,7 +45,6 @@ app.put("/api/property/:propertyId", propertyCtrl.updateProperty);
 app.post("/api/work_orders", workOrderCtrl.addWorkOrder);
 app.get("/api/work_orders", workOrderCtrl.getQueuedWorkOrders);
 app.put("/api/work_orders/:jobId", workOrderCtrl.updateWorkOrderStatus);
-app.post("/api/work_orders/completed", workOrderCtrl.completedWorkOrder);
 app.get("/api/work_orders/completed", workOrderCtrl.getCompletedWorkOrders);
 app.put("/api/workorder/:id", workOrderCtrl.updateWorkOrder);
 app.delete("/api/workorder/:id", workOrderCtrl.deleteWorkOrder);

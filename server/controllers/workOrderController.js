@@ -67,22 +67,15 @@ module.exports = {
       .then(() => res.sendStatus(200))
       .catch(err => res.status(500).send(err));
   },
-  completedWorkOrder: (req, res) => {
-    let { job_id } = req.body;
-    req.app
-      .get("db")
-      .completed_work_order([job_id])
-      .then(() => {
-        res.sendStatus(200);
-      })
-      .catch(err => console.log(err));
-  },
   getCompletedWorkOrders: (req, res) => {
     let { ownerId } = req.session;
     req.app
       .get("db")
       .completed_work_orders([ownerId])
-      .then(workOrders => res.send(workOrders))
+      .then(workOrders => {
+        console.log(workOrders);
+        res.send(workOrders);
+      })
       .catch(err => res.status(500).send(err));
   },
   updateWorkOrder: (req, res) => {

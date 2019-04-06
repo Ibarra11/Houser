@@ -11,10 +11,6 @@ class QueueItem extends Component {
     this.renderCtrl = this.renderCtrl.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props.data);
-  }
-
   renderCtrl() {
     let { data } = this.props;
     let newDate = moment(data.date_created).format("YYYYMMDD");

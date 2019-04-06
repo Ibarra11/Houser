@@ -13,6 +13,7 @@ class WorkOrder extends Component {
   };
 
   renderComponent = () => {
+    console.log(this.props.data);
     let {
       job_id,
       date_created,
@@ -23,9 +24,11 @@ class WorkOrder extends Component {
       property_zipcode,
       company_name,
       company_phone,
-      company_email,
-      company_charge,
-      job_description
+      company_address,
+      company_city,
+      company_state,
+      company_zipcode,
+      work_description
     } = this.props.data;
     if (this.state.displayWorkOrderInfo) {
       return (
@@ -39,12 +42,14 @@ class WorkOrder extends Component {
               <h5>Company Info</h5>
               <p>Name: {company_name}</p>
               <p>Phone: {company_phone}</p>
-              <p>Email: {company_email}</p>
-              <p>Charge: ${Numeral(company_charge).format("0,0.00")}</p>
+              <p>Address: {company_address}</p>
+              <p>City: {company_city}</p>
+              <p>State: {company_state}</p>
+              <p>Zipcode: {company_zipcode}</p>
             </div>
             <div className="job-description">
-              <h5>Job Description</h5>
-              <p>{job_description}</p>
+              <h5>Work Description</h5>
+              <p>{work_description}</p>
             </div>
           </div>
         </div>
