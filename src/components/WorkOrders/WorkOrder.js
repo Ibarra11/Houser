@@ -13,7 +13,6 @@ class WorkOrder extends Component {
   };
 
   renderComponent = () => {
-    console.log(this.props.data);
     let {
       job_id,
       date_created,

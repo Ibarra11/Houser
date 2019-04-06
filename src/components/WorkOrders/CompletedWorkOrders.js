@@ -82,7 +82,7 @@ class CompletedWorkOrders extends Component {
       let updatedWorkOrders = this.state.workOrdersOnPage.slice();
       updatedWorkOrders[this.state.workOrderIndex] = Object.assign(
         updatedWorkOrders[this.state.workOrderIndex],
-        { ...newWorkOrderData[0] }
+        { ...newWorkOrderData }
       );
       this.setState({
         editWorkOrder: false,

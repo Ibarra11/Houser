@@ -41,7 +41,6 @@ module.exports = {
             res.sendStatus(200);
           })
           .catch(err => {
-            console.log(err);
             res.status(500).send(err);
           });
       })
@@ -73,32 +72,47 @@ module.exports = {
       .get("db")
       .completed_work_orders([ownerId])
       .then(workOrders => {
-        console.log(workOrders);
         res.send(workOrders);
       })
       .catch(err => res.status(500).send(err));
   },
   updateWorkOrder: (req, res) => {
-    let { id } = req.params;
+    let { jobId } = req.params;
     let {
       companyName,
-      companyEmail,
       companyPhone,
-      companyCharge,
-      jobDescription
+      companyAddress,
+      companyCity,
+      companyState,
+      companyZipcode,
+      workDescription
     } = req.body;
     req.app
       .get("db")
-      .update_work_order([
-        id,
-        companyName,
-        companyPhone,
-        +companyCharge,
-        companyEmail,
-        jobDescription
-      ])
-      .then(workOrder => res.send(workOrder))
-      .catch(err => res.status(500).send(err));
+      .update_work_order_description([jobId, workDescription])
+      .then(workOrder => {
+        let { company_id } = workOrder[0];
+        req.app
+          .get("db")
+          .update_company([
+            company_id,
+            companyName,
+            companyAddress,
+            companyCity,
+            companyState,
+            companyZipcode,
+            companyPhone
+          ])
+          .then(companyInfo => {
+            res.send({ ...workOrder[0], ...companyInfo[0] });
+          })
+          .catch(err => {
+            res.status(500).send(err);
+          });
+      })
+      .catch(err => {
+        res.status(500).send(err);
+      });
   },
   deleteWorkOrder: (req, res) => {
     let { id } = req.params;

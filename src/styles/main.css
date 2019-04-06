@@ -1223,10 +1223,10 @@ template {
             margin-left: 3%;
             margin-right: 3%; }
         .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order {
-          width: 95%;
-          height: 27rem;
+          width: 90%;
+          height: 100%;
           margin: 0 auto;
-          padding-top: 1rem;
+          padding: 5% 0;
           display: flex; }
           .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container {
             height: 100%;
@@ -1240,7 +1240,7 @@ template {
               .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-address h4 {
                 font-size: 1.1rem; }
             .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-img {
-              height: 70%; }
+              height: 80%; }
               .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .property-info-container .property-img img {
                 height: 100%;
                 width: 100%; }
@@ -1257,7 +1257,8 @@ template {
           .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container {
             width: 60%;
             height: 100%;
-            border: 1px solid #4D5765; }
+            border: 1px solid #4D5765;
+            overflow-y: auto; }
             .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form {
               padding: 2rem 1rem; }
               .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group {
@@ -1266,7 +1267,8 @@ template {
                 justify-content: space-between; }
                 .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group label {
                   font-size: 1.25rem; }
-                .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group input {
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group input,
+                .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form .input-group select {
                   border-radius: 3px;
                   padding: 4px 12px;
                   width: 60%; }

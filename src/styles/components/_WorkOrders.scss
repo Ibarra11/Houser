@@ -396,10 +396,10 @@
           }
         }
         .edit-work-order {
-          width: 95%;
-          height: 27rem;
+          width: 90%;
+          height: 100%;
           margin: 0 auto;
-          padding-top: 1rem;
+          padding: 5% 0;
           display: flex;
           .property-info-container {
             height: 100%;
@@ -415,7 +415,7 @@
               }
             }
             .property-img {
-              height: 70%;
+              height: 80%;
               img {
                 height: 100%;
                 width: 100%;
@@ -438,6 +438,7 @@
             width: 60%;
             height: 100%;
             border: 1px solid $btn-grey;
+            overflow-y: auto;
             .form {
               padding: 2rem 1rem;
               .input-group {
@@ -447,7 +448,8 @@
                 label {
                   font-size: 1.25rem;
                 }
-                input {
+                input,
+                select {
                   border-radius: 3px;
                   padding: 4px 12px;
                   width: 60%;
