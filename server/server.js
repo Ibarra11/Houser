@@ -26,7 +26,6 @@ app.use(
 
 massive(CONNECTION_STRING)
   .then(db => {
-    console.log("DB Running");
     app.set("db", db);
   })
   .catch(err => console.error(err));
@@ -34,6 +33,8 @@ massive(CONNECTION_STRING)
 // Handle owners login and signup
 app.post("/api/signup", authCtrl.ownerRegistration);
 app.post("/api/login", authCtrl.ownerLogin);
+app.get("/api/auth", authCtrl.getAuthStatus);
+app.post("/api/auth", authCtrl.setAuthStatus);
 
 // Property request
 app.post("/api/property", propertyCtrl.addProperty);

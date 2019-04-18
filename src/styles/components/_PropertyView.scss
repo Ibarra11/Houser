@@ -1,260 +1,273 @@
 .component-home {
-    background-color: #344055;
-    height: 100vh;
-    .nav {
-        display: flex;
-        height: 10.5vh;
-        align-items: center;
-        background-color: $btn-blue;
-        align-items: center;
-        padding: 0 1rem;
-        justify-content: space-between;
-        .link {
-            &:link,
-            &:visited {
-                text-decoration: none;
-                padding-right: 1rem;
-                font-size: 1.25rem;
-                letter-spacing: 2px;
-                color: $light;
-                transition: all 0.5s;
-            }
-            &:hover,
-            &:active {
-                cursor: pointer;
-                color: $btn-blue;
-            }
-        }
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            h1 {
-                margin: 0;
-            }
-            .link {
-                font-size: inherit;
-                padding-bottom: 0;
-            }
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
+  background-color: #344055;
+  height: 100vh;
+  position: relative;
+  .views {
+    .logging-out {
+      border: 1px solid red;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        border: 1px solid green;
+      }
     }
-    .property-view {
-        height: 89vh;
-        display: flex;
+  }
+  .nav {
+    display: flex;
+    height: 10.5vh;
+    align-items: center;
+    background-color: $btn-blue;
+    align-items: center;
+    padding: 0 1rem;
+    justify-content: space-between;
+    .link {
+      &:link,
+      &:visited {
+        text-decoration: none;
+        padding-right: 1rem;
+        font-size: 1.25rem;
+        letter-spacing: 2px;
         color: $light;
-        .property-view-left-column {
-            width: 30%;
-            height: 100%;
-            background-color: #353755;
-            .property-menu {
-                height: 100%;
-                .property-menu-tabs {
-                    height: 12%;
-                    .menu-tab {
-                        display: inline-block;
-                        font-size: 1.35rem;
-                        width: 50%;
-                        height: 100%;
-                        text-align: center;
-                        border: 1px solid $btn-grey;
-                        &:hover {
-                            cursor: pointer;
-                        }
-                        .menu-tab-text {
-                            display: flex;
-                            height: 100%;
-                            justify-content: center;
-                            align-items: center;
-                        }
-                    }
-                    .active {
-                        background-color: $btn-blue;
-                    }
-                }
-            }
-            .property-menu-views {
-                height: 85.5%;
-            }
-        }
-        .property-list-container {
-            width: 70%;
-            height: 100%;
-            border-left: 1px solid $btn-grey;
-            overflow: auto;
-            .property-header {
-                height: 12%;
-                border-bottom: 1px solid $btn-grey;
-                padding: 0 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                .header-title {
-                    display: flex;
-                    align-items: center;
-                    h3 {
-                        font-size: 2rem;
-                    }
-                    h6 {
-                        font-size: 1rem;
-                        position: relative;
-                        top: 0.5vh;
-                        left: 2%;
-                    }
-                }
-            }
-            .property-list {
-                padding: 1rem 0;
-                position: relative;
-                .property-message {
-                    position: absolute;
-                    width: 100%;
-                    text-align: center;
-                    top: 600%;
-                }
-                .property {
-                    height: 27vh;
-                    width: 95%;
-                    margin: 0 auto;
-                    display: flex;
-                    .modal-container {
-                        height: 100%;
-                        ;
-                        div div:nth-child(1) {
-                            left: 1% !important;
-                        }
-                        .modal-content {
-                            display: flex;
-                            height: 100%;
-                            .modal-property-img {
-                                width: 50%;
-                                height: 100%;
-                                img {
-                                    width: 100%;
-                                    height: 100%;
-                                }
-                            }
-                            .modal-property-form {
-                                width: 50%;
-                                background-color: #344055;
-                                height: 100%;
-                                padding-bottom: 1rem;
-                                overflow-y: scroll;
-                                .form-header {
-                                    background-color: #2E6B8D;
-                                    padding: 3% 0;
-                                    text-align: center;
-                                    h3 {
-                                        font-size: 1.75rem;
-                                    }
-                                }
-                                .form-group {
-                                    padding: 0 1rem;
-                                    .group-header {
-                                        width: 100%;
-                                        h5 {
-                                            font-size: 1.25rem;
-                                            margin: 2% 0;
-                                        }
-                                    }
-                                    .input-group {
-                                        display: flex;
-                                        flex-direction: column;
-                                        margin-bottom: 2%;
-                                        label {
-                                            margin-bottom: 0.25rem;
-                                        }
-                                        input {
-                                            border-radius: 5px;
-                                            padding: 5px 3px;
-                                        }
-                                    }
-                                }
-                                .form-group:nth-child(1) {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    flex-wrap: wrap;
-                                    .input-group {
-                                        width: 47%;
-                                    }
-                                }
-                                .form-submit {
-                                    margin-top: 1rem;
-                                    display: flex;
-                                    justify-content: center;
-                                    button {
-                                        padding: 5px;
-                                        width: 25%;
-                                        border-radius: 5px;
-                                    }
-                                    button:first-child {
-                                        margin-right: 5%;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .property-img {
-                        height: 100%;
-                        width: 25%;
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    .property-details {
-                        display: flex;
-                        width: 75%;
-                        h5 {
-                            text-align: center;
-                            font-size: 1.25rem;
-                        }
-                        p {
-                            margin-top: 0.35rem;
-                            font-size: 1.1rem;
-                        }
-                        &>div {
-                            padding: 0.75rem;
-                            border: 1px solid $btn-grey;
-                        }
-                        .property-address {
-                            width: 32%;
-                        }
-                        .property-rent {
-                            width: 20%;
-                        }
-                        .property-tenants {
-                            width: 40%;
-                        }
-                        .property-actions {
-                            border: 1px solid $btn-grey;
-                            ;
-                            width: 8%;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            .action {
-                                &:hover {
-                                    cursor: pointer;
-                                }
-                                i {
-                                    font-size: 1.5rem;
-                                }
-                            }
-                            .action:first-child {
-                                margin-bottom: 2rem;
-                            }
-                        }
-                    }
-                }
-                .property-edit-mode {
-                    background-color: $blue-green;
-                    ;
-                }
-            }
-        }
+        transition: all 0.5s;
+      }
+      &:hover,
+      &:active {
+        cursor: pointer;
+        color: $btn-blue;
+      }
     }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      h1 {
+        margin: 0;
+      }
+      .link {
+        font-size: inherit;
+        padding-bottom: 0;
+      }
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+  }
+  .property-view {
+    height: 89vh;
+    display: flex;
+    color: $light;
+    .property-view-left-column {
+      width: 30%;
+      height: 100%;
+      background-color: #353755;
+      .property-menu {
+        height: 100%;
+        .property-menu-tabs {
+          height: 12%;
+          .menu-tab {
+            display: inline-block;
+            font-size: 1.35rem;
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            border: 1px solid $btn-grey;
+            &:hover {
+              cursor: pointer;
+            }
+            .menu-tab-text {
+              display: flex;
+              height: 100%;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+          .active {
+            background-color: $btn-blue;
+          }
+        }
+      }
+      .property-menu-views {
+        height: 85.5%;
+      }
+    }
+    .property-list-container {
+      width: 70%;
+      height: 100%;
+      border-left: 1px solid $btn-grey;
+      overflow: auto;
+      .property-header {
+        height: 12%;
+        border-bottom: 1px solid $btn-grey;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .header-title {
+          display: flex;
+          align-items: center;
+          h3 {
+            font-size: 2rem;
+          }
+          h6 {
+            font-size: 1rem;
+            position: relative;
+            top: 0.5vh;
+            left: 2%;
+          }
+        }
+      }
+      .property-list {
+        padding: 1rem 0;
+        position: relative;
+        .property-message {
+          position: absolute;
+          width: 100%;
+          text-align: center;
+          top: 600%;
+        }
+        .property {
+          height: 27vh;
+          width: 95%;
+          margin: 0 auto;
+          display: flex;
+          .modal-container {
+            height: 100%;
+            div div:nth-child(1) {
+              left: 1% !important;
+            }
+            .modal-content {
+              display: flex;
+              height: 100%;
+              .modal-property-img {
+                width: 50%;
+                height: 100%;
+                img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .modal-property-form {
+                width: 50%;
+                background-color: #344055;
+                height: 100%;
+                padding-bottom: 1rem;
+                overflow-y: scroll;
+                .form-header {
+                  background-color: #2e6b8d;
+                  padding: 3% 0;
+                  text-align: center;
+                  h3 {
+                    font-size: 1.75rem;
+                  }
+                }
+                .form-group {
+                  padding: 0 1rem;
+                  .group-header {
+                    width: 100%;
+                    h5 {
+                      font-size: 1.25rem;
+                      margin: 2% 0;
+                    }
+                  }
+                  .input-group {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 2%;
+                    label {
+                      margin-bottom: 0.25rem;
+                    }
+                    input {
+                      border-radius: 5px;
+                      padding: 5px 3px;
+                    }
+                  }
+                }
+                .form-group:nth-child(1) {
+                  display: flex;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+                  .input-group {
+                    width: 47%;
+                  }
+                }
+                .form-submit {
+                  margin-top: 1rem;
+                  display: flex;
+                  justify-content: center;
+                  button {
+                    padding: 5px;
+                    width: 25%;
+                    border-radius: 5px;
+                  }
+                  button:first-child {
+                    margin-right: 5%;
+                  }
+                }
+              }
+            }
+          }
+          .property-img {
+            height: 100%;
+            width: 25%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .property-details {
+            display: flex;
+            width: 75%;
+            h5 {
+              text-align: center;
+              font-size: 1.25rem;
+            }
+            p {
+              margin-top: 0.35rem;
+              font-size: 1.1rem;
+            }
+            & > div {
+              padding: 0.75rem;
+              border: 1px solid $btn-grey;
+            }
+            .property-address {
+              width: 32%;
+            }
+            .property-rent {
+              width: 20%;
+            }
+            .property-tenants {
+              width: 40%;
+            }
+            .property-actions {
+              border: 1px solid $btn-grey;
+              width: 8%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              .action {
+                &:hover {
+                  cursor: pointer;
+                }
+                i {
+                  font-size: 1.5rem;
+                }
+              }
+              .action:first-child {
+                margin-bottom: 2rem;
+              }
+            }
+          }
+        }
+        .property-edit-mode {
+          background-color: $blue-green;
+        }
+      }
+    }
+  }
 }

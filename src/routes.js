@@ -12,9 +12,9 @@ import Payment from "./components/Payment/Payment";
 export function baseRoutes() {
   return (
     <Switch>
-      <Route exact path="/" component={LandingPage} />
       <Route path="/payment" component={Payment} />
       <Route path="/houser" component={Navbar} />
+      <Route component={LandingPage} />
     </Switch>
   );
 }
@@ -24,7 +24,7 @@ export function mainRoutes() {
     <Switch>
       <Route exact path="/houser/work-orders" component={WorkOrderViews} />
       <Route exact path="/houser/Transactions" component={Transactions} />
-      <Route path="/houser" component={PropertiesView} />
+      <Route exact path="/houser" component={PropertiesView} />
     </Switch>
   );
 }
