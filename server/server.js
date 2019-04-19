@@ -34,7 +34,7 @@ massive(CONNECTION_STRING)
 app.post("/api/signup", authCtrl.ownerRegistration);
 app.post("/api/login", authCtrl.ownerLogin);
 app.get("/api/auth", authCtrl.getAuthStatus);
-app.post("/api/auth", authCtrl.setAuthStatus);
+app.post("/api/auth", authCtrl.clearAuthStatus);
 
 // Property request
 app.post("/api/property", propertyCtrl.addProperty);

@@ -16,6 +16,7 @@ class LandingPage extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
   toggleActive() {
     this.setState({
       loginActive: !this.state.loginActive,

@@ -56,8 +56,8 @@ module.exports = {
   getAuthStatus: (req, res) => {
     res.send(req.session.loggedIn ? req.session.loggedIn : false);
   },
-  setAuthStatus: (req, res) => {
-    req.session.loggedIn = false;
+  clearAuthStatus: (req, res) => {
+    req.session.destroy();
     res.sendStatus(200);
   }
 };
