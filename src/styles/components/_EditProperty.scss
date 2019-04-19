@@ -1,13 +1,10 @@
 .component-edit-property {
   height: 100%;
-  border: 1px solid green;
   overflow-y: auto;
   .nonUpdating-component {
     height: 100%;
-    border: 2px solid red;
     .property-img {
       height: 45%;
-      border: 1px solid orange;
       display: flex;
       justify-content: center;
       img {
@@ -35,6 +32,7 @@
       flex-wrap: wrap;
       border-bottom: 1px solid #455068;
       border-top: 1px solid #455068;
+      text-align: center;
       .group-header {
         width: 100%;
         height: 2.5rem;
@@ -55,10 +53,6 @@
           border: none;
           padding: 6px 3px;
         }
-        input {
-          background-color: transparent;
-          border: 1px solid $btn-blue;
-        }
         label {
           font-size: 1.15rem;
         }
@@ -70,6 +64,12 @@
       &:nth-child(3) {
         justify-content: space-between;
         height: 35%;
+      }
+      &:nth-child(2) {
+        .input-group {
+          width: 75%;
+          margin: 0 auto;
+        }
       }
     }
     .form-submit {

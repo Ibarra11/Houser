@@ -23,13 +23,11 @@ class Step2 extends Component {
   }
   updateWizard(direction) {
     let { propertyRent } = this.state;
-    if (propertyRent) {
-      this.props.setFinancialInformation(propertyRent);
-      direction === "next"
-        ? this.props.updateStep("step3")
-        : this.props.updateStep("step1");
-    } else {
-      this.props.toggleAlert();
+    this.props.setFinancialInformation(propertyRent);
+    if (direction === "next") {
+      propertyRent ? this.props.updateStep("step3") : this.props.toggleAlert();
+    } else if (direction === "prev") {
+      this.props.updateStep("step1");
     }
   }
   render() {

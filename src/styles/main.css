@@ -304,9 +304,39 @@ template {
   padding: 0;
   box-sizing: border-box; }
 
+.nav {
+  display: flex;
+  height: 10.5vh;
+  align-items: center;
+  background-color: #222e55;
+  align-items: center;
+  padding: 0 1rem;
+  justify-content: space-between; }
+  .nav .link:link, .nav .link:visited {
+    text-decoration: none;
+    padding-right: 1rem;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    color: #f9fdff;
+    transition: all 0.5s; }
+  .nav .link:hover, .nav .link:active {
+    cursor: pointer;
+    color: #0786fc; }
+  .nav .navbar-logo {
+    display: flex;
+    align-items: center; }
+    .nav .navbar-logo h1 {
+      margin: 0; }
+    .nav .navbar-logo .link {
+      font-size: inherit;
+      padding-bottom: 0; }
+  .nav .nav-links {
+    list-style: none;
+    display: flex; }
+
 .component-landing-page {
   font-family: "Roboto Mono", monospace;
-  color: #F9FDFF; }
+  color: #f9fdff; }
   .component-landing-page section {
     padding: 2rem 0; }
     .component-landing-page section .section-header {
@@ -328,10 +358,10 @@ template {
         font-size: 2.75rem;
         margin: 0; }
         .component-landing-page .nav .nav-logo h1 span {
-          color: #009DDB; }
+          color: #009ddb; }
     .component-landing-page .nav a:link,
     .component-landing-page .nav a:visited {
-      color: #F9FDFF;
+      color: #f9fdff;
       text-decoration: none; }
     .component-landing-page .nav a:hover,
     .component-landing-page .nav a:active {
@@ -353,7 +383,7 @@ template {
         transition: border-bottom 0.5s; }
       .component-landing-page .nav .nav-links a:hover,
       .component-landing-page .nav .nav-links a:active {
-        border-bottom: 4px solid #009DDB; }
+        border-bottom: 4px solid #009ddb; }
   .component-landing-page .header {
     background-image: linear-gradient(rgba(0, 100, 148, 0.5), rgba(0, 100, 148, 0.5)), url("../assets/images/bg-main2.jpg");
     background-size: cover;
@@ -378,7 +408,7 @@ template {
         .component-landing-page .header .header-container .header-form .header-form-type {
           display: flex; }
           .component-landing-page .header .header-container .header-form .header-form-type .form-controls {
-            background-color: #4D5765;
+            background-color: #4d5765;
             width: 50%;
             text-align: center;
             padding: 12px;
@@ -387,7 +417,7 @@ template {
               cursor: pointer; }
           .component-landing-page .header .header-container .header-form .header-form-type .signupActive,
           .component-landing-page .header .header-container .header-form .header-form-type .loginActive {
-            background-color: #0786FC; }
+            background-color: #0786fc; }
         .component-landing-page .header .header-container .header-form .header-form-title {
           text-align: center;
           margin: 1.5rem;
@@ -401,7 +431,7 @@ template {
           margin-bottom: 0.8rem;
           color: #fff; }
         .component-landing-page .header .header-container .header-form .header-form-body input:focus {
-          outline: #0786FC solid 2px; }
+          outline: #0786fc solid 2px; }
         .component-landing-page .header .header-container .header-form .header-form-body .input-name-container {
           display: flex;
           justify-content: space-between; }
@@ -425,7 +455,7 @@ template {
           margin-top: 15px; }
           .component-landing-page .header .header-container .header-form .header-form-footer button {
             padding: 10px;
-            background-color: #0786FC;
+            background-color: #0786fc;
             width: 100%;
             border: none; }
             .component-landing-page .header .header-container .header-form .header-form-footer button:hover {
@@ -452,7 +482,7 @@ template {
         .component-landing-page .services .services-container .service-box .box-icon {
           height: 6rem;
           width: 6em;
-          background-color: #009DDB;
+          background-color: #009ddb;
           margin: 0 auto;
           border-radius: 100%;
           display: flex;
@@ -505,7 +535,7 @@ template {
             border: 0; }
       .component-landing-page .contact .contact-card .contact-info {
         width: 40%;
-        background-color: #009DDB;
+        background-color: #009ddb;
         padding: 2rem; }
         .component-landing-page .contact .contact-card .contact-info .contact-info-content {
           height: 75%; }
@@ -527,11 +557,11 @@ template {
   .component-landing-page footer {
     background-color: #1e2024;
     padding: 1.5rem;
-    color: #F9FDFF;
+    color: #f9fdff;
     text-align: center; }
 
 .component-home {
-  background-color: #344055;
+  background-color: #171f39;
   height: 100vh;
   position: relative; }
   .component-home .views .logging-out {
@@ -545,43 +575,14 @@ template {
     justify-content: center; }
     .component-home .views .logging-out h1 {
       border: 1px solid green; }
-  .component-home .nav {
-    display: flex;
-    height: 10.5vh;
-    align-items: center;
-    background-color: #0786FC;
-    align-items: center;
-    padding: 0 1rem;
-    justify-content: space-between; }
-    .component-home .nav .link:link, .component-home .nav .link:visited {
-      text-decoration: none;
-      padding-right: 1rem;
-      font-size: 1.25rem;
-      letter-spacing: 2px;
-      color: #F9FDFF;
-      transition: all 0.5s; }
-    .component-home .nav .link:hover, .component-home .nav .link:active {
-      cursor: pointer;
-      color: #0786FC; }
-    .component-home .nav .navbar-logo {
-      display: flex;
-      align-items: center; }
-      .component-home .nav .navbar-logo h1 {
-        margin: 0; }
-      .component-home .nav .navbar-logo .link {
-        font-size: inherit;
-        padding-bottom: 0; }
-    .component-home .nav .nav-links {
-      list-style: none;
-      display: flex; }
   .component-home .property-view {
     height: 89vh;
     display: flex;
-    color: #F9FDFF; }
+    color: #f9fdff; }
     .component-home .property-view .property-view-left-column {
       width: 30%;
       height: 100%;
-      background-color: #353755; }
+      background-color: #171f39; }
       .component-home .property-view .property-view-left-column .property-menu {
         height: 100%; }
         .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs {
@@ -592,7 +593,8 @@ template {
             width: 50%;
             height: 100%;
             text-align: center;
-            border: 1px solid #4D5765; }
+            border: 3px solid #0c101d;
+            border-right: none; }
             .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .menu-tab:hover {
               cursor: pointer; }
             .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .menu-tab .menu-tab-text {
@@ -601,17 +603,18 @@ template {
               justify-content: center;
               align-items: center; }
           .component-home .property-view .property-view-left-column .property-menu .property-menu-tabs .active {
-            background-color: #0786FC; }
+            background-color: #0786fc; }
       .component-home .property-view .property-view-left-column .property-menu-views {
         height: 85.5%; }
     .component-home .property-view .property-list-container {
       width: 70%;
       height: 100%;
-      border-left: 1px solid #4D5765;
+      border-left: 3px solid #0c101d;
       overflow: auto; }
       .component-home .property-view .property-list-container .property-header {
         height: 12%;
-        border-bottom: 1px solid #4D5765;
+        border: 3px solid #0c101d;
+        border-left: none;
         padding: 0 1rem;
         display: flex;
         justify-content: space-between;
@@ -639,72 +642,18 @@ template {
           width: 95%;
           margin: 0 auto;
           display: flex; }
-          .component-home .property-view .property-list-container .property-list .property .modal-container {
-            height: 100%; }
-            .component-home .property-view .property-list-container .property-list .property .modal-container div div:nth-child(1) {
-              left: 1% !important; }
-            .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content {
-              display: flex;
-              height: 100%; }
-              .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-img {
-                width: 50%;
-                height: 100%; }
-                .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-img img {
-                  width: 100%;
-                  height: 100%; }
-              .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form {
-                width: 50%;
-                background-color: #344055;
-                height: 100%;
-                padding-bottom: 1rem;
-                overflow-y: scroll; }
-                .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-header {
-                  background-color: #2e6b8d;
-                  padding: 3% 0;
-                  text-align: center; }
-                  .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-header h3 {
-                    font-size: 1.75rem; }
-                .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group {
-                  padding: 0 1rem; }
-                  .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group .group-header {
-                    width: 100%; }
-                    .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group .group-header h5 {
-                      font-size: 1.25rem;
-                      margin: 2% 0; }
-                  .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group .input-group {
-                    display: flex;
-                    flex-direction: column;
-                    margin-bottom: 2%; }
-                    .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group .input-group label {
-                      margin-bottom: 0.25rem; }
-                    .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group .input-group input {
-                      border-radius: 5px;
-                      padding: 5px 3px; }
-                .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group:nth-child(1) {
-                  display: flex;
-                  justify-content: space-between;
-                  flex-wrap: wrap; }
-                  .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-group:nth-child(1) .input-group {
-                    width: 47%; }
-                .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-submit {
-                  margin-top: 1rem;
-                  display: flex;
-                  justify-content: center; }
-                  .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-submit button {
-                    padding: 5px;
-                    width: 25%;
-                    border-radius: 5px; }
-                  .component-home .property-view .property-list-container .property-list .property .modal-container .modal-content .modal-property-form .form-submit button:first-child {
-                    margin-right: 5%; }
           .component-home .property-view .property-list-container .property-list .property .property-img {
             height: 100%;
             width: 25%; }
             .component-home .property-view .property-list-container .property-list .property .property-img img {
               width: 100%;
               height: 100%; }
+          .component-home .property-view .property-list-container .property-list .property:last-child > div {
+            border-bottom: 3px solid #4d5765; }
           .component-home .property-view .property-list-container .property-list .property .property-details {
             display: flex;
-            width: 75%; }
+            width: 75%;
+            border-top: 3px solid #4d5765; }
             .component-home .property-view .property-list-container .property-list .property .property-details h5 {
               text-align: center;
               font-size: 1.25rem; }
@@ -713,7 +662,12 @@ template {
               font-size: 1.1rem; }
             .component-home .property-view .property-list-container .property-list .property .property-details > div {
               padding: 0.75rem;
-              border: 1px solid #4D5765; }
+              border-right: 3px solid #4d5765;
+              border-left: 3px solid #4d5765;
+              border-bottom: none; }
+            .component-home .property-view .property-list-container .property-list .property .property-details > div:nth-child(2n + 1) {
+              border-right: none;
+              border-left: none; }
             .component-home .property-view .property-list-container .property-list .property .property-details .property-address {
               width: 32%; }
             .component-home .property-view .property-list-container .property-list .property .property-details .property-rent {
@@ -721,7 +675,7 @@ template {
             .component-home .property-view .property-list-container .property-list .property .property-details .property-tenants {
               width: 40%; }
             .component-home .property-view .property-list-container .property-list .property .property-details .property-actions {
-              border: 1px solid #4D5765;
+              border-right: 3px solid #4d5765;
               width: 8%;
               display: flex;
               flex-direction: column;
@@ -734,7 +688,7 @@ template {
               .component-home .property-view .property-list-container .property-list .property .property-details .property-actions .action:first-child {
                 margin-bottom: 2rem; }
         .component-home .property-view .property-list-container .property-list .property-edit-mode {
-          background-color: #3A87A4; }
+          background-color: #3a87a4; }
 
 .component-property-search h4,
 .component-property-search h5 {
@@ -785,7 +739,7 @@ template {
     margin-top: 5%; }
   .component-property-wizard .wizard-alert {
     text-align: center;
-    color: #CB1B26;
+    color: #cb1b26;
     position: relative;
     top: 0.6rem;
     margin-bottom: 0; }
@@ -928,7 +882,7 @@ template {
 
 .component-workOrders {
   display: flex;
-  color: #F9FDFF; }
+  color: #f9fdff; }
   .component-workOrders .pagination {
     height: 9%;
     float: none;
@@ -939,7 +893,8 @@ template {
     .component-workOrders .control-panel .control-panel-header {
       display: flex;
       height: 12%;
-      border-bottom: 1px solid #4D5765;
+      border-bottom: 3px solid #0c101d;
+      border-top: 3px solid #0c101d;
       justify-content: center;
       align-items: center; }
       .component-workOrders .control-panel .control-panel-header h3 {
@@ -961,15 +916,15 @@ template {
         .component-workOrders .control-panel .controls .controls-link:hover {
           cursor: pointer; }
   .component-workOrders .component-views {
-    border-left: 1px solid #4D5765;
+    border-left: 3px solid #0c101d;
     width: 75%;
     height: 89vh; }
     .component-workOrders .component-views .create-work-order {
       height: 100%; }
       .component-workOrders .component-views .create-work-order .header {
         text-align: center;
-        border-left: 1px solid #4D5765;
-        border-bottom: 1px solid #4D5765;
+        border: 3px solid #0c101d;
+        border-left: none;
         height: 12%;
         display: flex;
         justify-content: center;
@@ -981,7 +936,8 @@ template {
         width: 75%;
         margin: 0 auto;
         margin-top: 2rem;
-        height: 75%; }
+        height: 75%;
+        border-collapse: collapse; }
         .component-workOrders .component-views .create-work-order .section-container .work-order-request,
         .component-workOrders .component-views .create-work-order .section-container .company-info,
         .component-workOrders .component-views .create-work-order .section-container .work-description,
@@ -1002,20 +958,24 @@ template {
           position: relative; }
           .component-workOrders .component-views .create-work-order .section-container .property-section .property-img {
             position: relative;
-            width: 100%; }
+            width: 100%;
+            border: none; }
             .component-workOrders .component-views .create-work-order .section-container .property-section .property-img img {
               height: 100%;
               width: 100%; }
-          .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .property-buttons {
-            width: 75%;
-            margin: 0 auto;
-            position: relative;
-            top: 25%;
-            display: flex;
-            justify-content: space-between; }
-            .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .property-buttons .btn {
-              width: 40%;
-              font-size: 1.15rem; }
+          .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request {
+            border-right: none;
+            border-top: none; }
+            .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .property-buttons {
+              width: 75%;
+              margin: 0 auto;
+              position: relative;
+              top: 25%;
+              display: flex;
+              justify-content: space-between; }
+              .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .property-buttons .btn {
+                width: 40%;
+                font-size: 1.15rem; }
           .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector {
             position: absolute;
             text-align: center;
@@ -1023,7 +983,8 @@ template {
             height: 50%;
             top: 0;
             background-color: rgba(0, 0, 0, 0.7);
-            padding-bottom: 3%; }
+            padding-bottom: 3%;
+            border-right: none; }
             .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector .select-container {
               display: flex;
               flex-direction: column;
@@ -1062,15 +1023,17 @@ template {
               padding: 3px 0; }
             .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group input:focus {
               outline: none; }
-        .component-workOrders .component-views .create-work-order .company-section .work-description .description-box {
-          width: 90%;
-          margin: 0 auto;
-          height: 75%; }
-          .component-workOrders .component-views .create-work-order .company-section .work-description .description-box .text-box {
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            padding: 10px; }
+        .component-workOrders .component-views .create-work-order .company-section .work-description {
+          border-top: none; }
+          .component-workOrders .component-views .create-work-order .company-section .work-description .description-box {
+            width: 90%;
+            margin: 0 auto;
+            height: 75%; }
+            .component-workOrders .component-views .create-work-order .company-section .work-description .description-box .text-box {
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+              padding: 10px; }
     .component-workOrders .component-views .job-queue {
       height: 100%;
       text-align: center;
@@ -1079,7 +1042,8 @@ template {
       justify-content: space-between; }
       .component-workOrders .component-views .job-queue .job-queue-header {
         height: 12%;
-        border-bottom: 1px solid #4D5765;
+        border: 3px solid #0c101d;
+        border-left: none;
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
@@ -1092,10 +1056,10 @@ template {
           bottom: 0.25vh; }
       .component-workOrders .component-views .job-queue .job-queue-container {
         height: 75%;
-        border-bottom: 1px solid #4D5765; }
+        border-bottom: 3px solid #0c101d; }
         .component-workOrders .component-views .job-queue .job-queue-container .job {
           display: flex;
-          border: 1px solid #4D5765;
+          border: 1px solid #4d5765;
           height: 17%;
           width: 100%;
           align-items: center;
@@ -1153,8 +1117,8 @@ template {
     .component-workOrders .component-views .completed-jobs {
       height: 100%; }
       .component-workOrders .component-views .completed-jobs .job-header {
-        border-bottom: 1px solid #4D5765;
-        border-left: 1px solid #4D5765;
+        border: 3px solid #0c101d;
+        border-left: none;
         height: 12%;
         display: flex;
         justify-content: center;
@@ -1167,7 +1131,7 @@ template {
         flex-wrap: wrap;
         height: 79%;
         width: 100%;
-        border-bottom: 1px solid #4D5765; }
+        border-bottom: 3px solid #0c101d; }
         .component-workOrders .component-views .completed-jobs .completed-jobs-container i:hover {
           cursor: pointer; }
         .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list {
@@ -1206,7 +1170,7 @@ template {
                 .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content h5 {
                   margin-bottom: 0.5rem; }
                 .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content .company-info {
-                  border-bottom: 1px solid #4D5765;
+                  border-bottom: 1px solid #4d5765;
                   margin: 0.5rem 0; }
                 .component-workOrders .component-views .completed-jobs .completed-jobs-container .work-order-list .work-order .work-order-info .work-order-content .job-description {
                   text-align: center; }
@@ -1274,7 +1238,7 @@ template {
           .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container {
             width: 60%;
             height: 100%;
-            border: 1px solid #4D5765;
+            border: 1px solid #4d5765;
             overflow-y: auto; }
             .component-workOrders .component-views .completed-jobs .completed-jobs-container .edit-work-order .work-order-info-container .form {
               padding: 2rem 1rem; }
@@ -1303,10 +1267,10 @@ template {
     width: 100%;
     height: 100%;
     height: 90%;
-    border: 1px solid #4D5765;
-    color: #F9FDFF; }
+    border: 3px solid #0c101d;
+    color: #f9fdff; }
     .component-transactions .transaction-table .header {
-      border-bottom: 1px solid #4D5765;
+      border-bottom: 3px solid #0c101d;
       padding: 1rem;
       text-align: center; }
       .component-transactions .transaction-table .header h4 {
@@ -1328,9 +1292,9 @@ template {
       .component-transactions .transaction-table .table-content .table-header th {
         padding: 0.5rem;
         font-size: 1.25rem;
-        border: 1px solid #4D5765; }
+        border: 1px solid #0c101d; }
       .component-transactions .transaction-table .table-content .table-body td {
-        border: 1px solid #4D5765; }
+        border: 2px solid #0c101d; }
       .component-transactions .transaction-table .table-content .table-body tr td {
         padding: 0.5rem 0;
         text-align: center;
@@ -1370,7 +1334,7 @@ template {
     .payment .payment-form .payment-description {
       width: 40%;
       height: 100%;
-      background-color: #009DDB;
+      background-color: #009ddb;
       text-align: center; }
       .payment .payment-form .payment-description h1 {
         text-align: center;
@@ -1472,7 +1436,7 @@ template {
     width: 60%;
     left: 20%;
     top: 110%;
-    background-color: #CB1B26;
+    background-color: #cb1b26;
     padding: 0.75rem;
     text-align: center; }
     .payment .payment-err h6 {
@@ -1480,21 +1444,18 @@ template {
 
 .component-edit-property {
   height: 100%;
-  border: 1px solid green;
   overflow-y: auto; }
   .component-edit-property .nonUpdating-component {
-    height: 100%;
-    border: 2px solid red; }
+    height: 100%; }
     .component-edit-property .nonUpdating-component .property-img {
       height: 45%;
-      border: 1px solid orange;
       display: flex;
       justify-content: center; }
       .component-edit-property .nonUpdating-component .property-img img {
         height: 100%;
         width: 100%; }
   .component-edit-property .header {
-    background-color: #0786FC;
+    background-color: #0786fc;
     padding: 0.5rem;
     text-align: center; }
     .component-edit-property .header h3 {
@@ -1508,7 +1469,8 @@ template {
       display: flex;
       flex-wrap: wrap;
       border-bottom: 1px solid #455068;
-      border-top: 1px solid #455068; }
+      border-top: 1px solid #455068;
+      text-align: center; }
       .component-edit-property .edit-property-form .form-group .group-header {
         width: 100%;
         height: 2.5rem;
@@ -1526,9 +1488,6 @@ template {
           border-radius: 2px;
           border: none;
           padding: 6px 3px; }
-        .component-edit-property .edit-property-form .form-group .input-group input {
-          background-color: transparent;
-          border: 1px solid #0786FC; }
         .component-edit-property .edit-property-form .form-group .input-group label {
           font-size: 1.15rem; }
         .component-edit-property .edit-property-form .form-group .input-group select {
@@ -1536,6 +1495,9 @@ template {
       .component-edit-property .edit-property-form .form-group:first-child, .component-edit-property .edit-property-form .form-group:nth-child(3) {
         justify-content: space-between;
         height: 35%; }
+      .component-edit-property .edit-property-form .form-group:nth-child(2) .input-group {
+        width: 75%;
+        margin: 0 auto; }
     .component-edit-property .edit-property-form .form-submit {
       height: 10%;
       width: 15rem;

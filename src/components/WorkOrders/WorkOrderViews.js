@@ -7,7 +7,9 @@ class WorkOrders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: <CreateWorkOrder />
+      view: (
+        <CreateWorkOrder renderView={() => this.renderView("WorkOrderQueue")} />
+      )
     };
     this.renderView = this.renderView.bind(this);
   }

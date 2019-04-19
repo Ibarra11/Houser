@@ -17,6 +17,12 @@ class LandingPage extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount() {
+    axios.get("/api/auth").then(res => {
+      res.data ? axios.post("/api/auth", { status: false }) : null;
+    });
+  }
+
   toggleActive() {
     this.setState({
       loginActive: !this.state.loginActive,

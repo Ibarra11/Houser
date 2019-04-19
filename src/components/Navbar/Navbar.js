@@ -10,14 +10,13 @@ class Navbar extends Component {
   componentDidMount() {
     console.log("test");
     axios.get("/api/auth").then(res => {
-      console.log(res);
       if (res.data === false) {
         this.props.history.push("/");
       }
     });
   }
   handleLogOut() {
-    axios.post("/api/auth", { body: false }).then(() => {
+    axios.post("/api/auth", { status: false }).then(() => {
       this.props.history.push("/");
     });
   }

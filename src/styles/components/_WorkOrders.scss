@@ -12,7 +12,8 @@
     .control-panel-header {
       display: flex;
       height: 12%;
-      border-bottom: 1px solid $btn-grey;
+      border-bottom: 3px solid $border-dark;
+      border-top: 3px solid $border-dark;
       justify-content: center;
       align-items: center;
       h3 {
@@ -41,15 +42,15 @@
     }
   }
   .component-views {
-    border-left: 1px solid $btn-grey;
+    border-left: 3px solid $border-dark;
     width: 75%;
     height: 89vh;
     .create-work-order {
       height: 100%;
       .header {
         text-align: center;
-        border-left: 1px solid $btn-grey;
-        border-bottom: 1px solid $btn-grey;
+        border: 3px solid $border-dark;
+        border-left: none;
         height: 12%;
         display: flex;
         justify-content: center;
@@ -64,6 +65,7 @@
         margin: 0 auto;
         margin-top: 2rem;
         height: 75%;
+        border-collapse: collapse;
         .work-order-request,
         .company-info,
         .work-description,
@@ -87,12 +89,15 @@
           .property-img {
             position: relative;
             width: 100%;
+            border: none;
             img {
               height: 100%;
               width: 100%;
             }
           }
           .work-order-request {
+            border-right: none;
+            border-top: none;
             .property-buttons {
               width: 75%;
               margin: 0 auto;
@@ -114,6 +119,7 @@
             top: 0;
             background-color: rgba($color: #000000, $alpha: 0.7);
             padding-bottom: 3%;
+            border-right: none;
             .select-container {
               display: flex;
               flex-direction: column;
@@ -134,6 +140,7 @@
       }
       .company-section {
         width: 50%;
+
         .company-info {
           .input-container {
             width: 90%;
@@ -166,6 +173,7 @@
           }
         }
         .work-description {
+          border-top: none;
           .description-box {
             width: 90%;
             margin: 0 auto;
@@ -188,7 +196,8 @@
       justify-content: space-between;
       .job-queue-header {
         height: 12%;
-        border-bottom: 1px solid $btn-grey;
+        border: 3px solid $border-dark;
+        border-left: none;
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
@@ -204,10 +213,10 @@
       }
       .job-queue-container {
         height: 75%;
-        border-bottom: 1px solid $btn-grey;
+        border-bottom: 3px solid $border-dark;
         .job {
           display: flex;
-          border: 1px solid $btn-grey;
+          border: 1px solid $border-light;
           height: 17%;
           width: 100%;
           align-items: center;
@@ -289,8 +298,8 @@
     .completed-jobs {
       height: 100%;
       .job-header {
-        border-bottom: 1px solid $btn-grey;
-        border-left: 1px solid $btn-grey;
+        border: 3px solid $border-dark;
+        border-left: none;
         height: 12%;
         display: flex;
         justify-content: center;
@@ -305,7 +314,7 @@
         flex-wrap: wrap;
         height: 79%;
         width: 100%;
-        border-bottom: 1px solid $btn-grey;
+        border-bottom: 3px solid $border-dark;
         i:hover {
           cursor: pointer;
         }

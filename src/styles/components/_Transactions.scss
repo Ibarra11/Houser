@@ -1,64 +1,64 @@
 .component-transactions {
-    height: 89vh;
-    display: flex;
-    flex-direction: column;
-    .transaction-table {
-        width: 100%;
-        height: 100%;
-        height: 90%;
-        border: 1px solid $btn-grey;
-        color: $light;
-        .header {
-            border-bottom: 1px solid $btn-grey;
-            padding: 1rem;
+  height: 89vh;
+  display: flex;
+  flex-direction: column;
+  .transaction-table {
+    width: 100%;
+    height: 100%;
+    height: 90%;
+    border: 3px solid $border-dark;
+    color: $light;
+    .header {
+      border-bottom: 3px solid $border-dark;
+      padding: 1rem;
+      text-align: center;
+      h4 {
+        text-align: center;
+        font-size: 1.35rem;
+      }
+    }
+    .table-content {
+      border-collapse: collapse;
+      width: 100%;
+      .table-header {
+        th:nth-child(1) {
+          width: 10%;
+        }
+        th:nth-child(2) {
+          width: 10%;
+        }
+        th:nth-child(3) {
+          width: 15%;
+        }
+        th:nth-child(4) {
+          width: 30%;
+        }
+        th:last-child {
+          width: 10%;
+        }
+        th {
+          padding: 0.5rem;
+          font-size: 1.25rem;
+          border: 1px solid $border-dark;
+        }
+      }
+      .table-body {
+        td {
+          border: 2px solid $border-dark;
+        }
+        tr {
+          td {
+            padding: 0.5rem 0;
             text-align: center;
-            h4 {
-                text-align: center;
-                font-size: 1.35rem;
-            }
+            font-size: 1rem;
+          }
         }
-        .table-content {
-            border-collapse: collapse;
-            width: 100%;
-            .table-header {
-                th:nth-child(1) {
-                    width: 10%;
-                }
-                th:nth-child(2) {
-                    width: 10%;
-                }
-                th:nth-child(3) {
-                    width: 15%;
-                }
-                th:nth-child(4) {
-                    width: 30%;
-                }
-                th:last-child {
-                    width: 10%;
-                }
-                th {
-                    padding: 0.5rem;
-                    font-size: 1.25rem;
-                    border: 1px solid $btn-grey;
-                }
-            }
-            .table-body {
-                td {
-                    border: 1px solid $btn-grey;
-                }
-                tr {
-                    td {
-                        padding: 0.5rem 0;
-                        text-align: center;
-                        font-size: 1rem;
-                    }
-                }
-            }
-        }
+      }
     }
-    .pagination{
-        float: none;
-        height: 10%;
-        margin: 0 auto;
-    }
+  }
+  .pagination {
+    float: none;
+    height: 10%;
+    margin: 0 auto;
+  }
 }
