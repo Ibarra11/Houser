@@ -312,7 +312,9 @@ template {
   align-items: center;
   padding: 0 1rem;
   justify-content: space-between; }
-  .nav .link:link, .nav .link:visited {
+  .nav .link, .nav .link:link, .nav .link:visited {
+    background: transparent;
+    border: none;
     text-decoration: none;
     padding-right: 1rem;
     font-size: 1.25rem;
@@ -321,7 +323,7 @@ template {
     transition: all 0.5s; }
   .nav .link:hover, .nav .link:active {
     cursor: pointer;
-    color: #0786fc; }
+    color: #f58a07; }
   .nav .navbar-logo {
     display: flex;
     align-items: center; }

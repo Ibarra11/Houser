@@ -7,8 +7,11 @@
   padding: 0 1rem;
   justify-content: space-between;
   .link {
+    &,
     &:link,
     &:visited {
+      background: transparent;
+      border: none;
       text-decoration: none;
       padding-right: 1rem;
       font-size: 1.25rem;
@@ -19,7 +22,7 @@
     &:hover,
     &:active {
       cursor: pointer;
-      color: $btn-blue;
+      color: $gold;
     }
   }
   .navbar-logo {

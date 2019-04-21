@@ -45,10 +45,9 @@ class Navbar extends Component {
             <Link to="/houser/Transactions" className="link">
               Transactions
             </Link>
-            {/* <Link to="/" className="link">
-              Logout
-            </Link> */}
-            <button onClick={this.handleLogOut}>Logout</button>
+            <button className="link" onClick={this.handleLogOut}>
+              <i className="fas fa-sign-out-alt" />
+            </button>
           </ul>
         </nav>
         <div className="views">{mainRoutes()}</div>
