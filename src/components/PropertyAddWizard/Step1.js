@@ -11,9 +11,12 @@ class Step1 extends Component {
       propertyCity: "",
       propertyState: "",
       propertyZipcode: "",
-      states: []
+      states: [],
+      addressAutoComplete: [],
+      addressSelected: ""
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
     this.updateWizard = this.updateWizard.bind(this);
   }
 
@@ -44,7 +47,39 @@ class Step1 extends Component {
   }
 
   handleInputChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    let {
+      REACT_APP_ADDRESS_AUTH_ID,
+      REACT_APP_AUTH_TOKEN,
+      REACT_APP_ADDRESS_API
+    } = process.env;
+    let address = e.target.value;
+    if (e.target.name === "propertyStreet") {
+      axios
+        .get(
+          `${REACT_APP_ADDRESS_API}auth-id=29625604425932441&prefix=${
+            e.target.value
+          }`
+        )
+        .then(addresses => {
+          this.setState({
+            addressAutoComplete: addresses.data.suggestions || [],
+            propertyStreet: address
+          });
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+  }
+
+  handleSelectChange(e) {
+    let address = e.target.value.split(",");
+    this.setState({
+      propertyStreet: address[0],
+      propertyCity: address[1],
+      propertyState: address[2],
+      addressAutoComplete: []
+    });
   }
 
   updateWizard() {
@@ -82,6 +117,25 @@ class Step1 extends Component {
               name="propertyStreet"
               type="text"
             />
+            {this.state.addressAutoComplete.length > 0 ? (
+              <select
+                name="addressSelected"
+                size={this.state.addressAutoComplete.length}
+                onChange={this.handleSelectChange}
+              >
+                {this.state.addressAutoComplete.map(address => {
+                  let { street_line, city, state } = address;
+                  return (
+                    <option
+                      key={address.text}
+                      value={[street_line, city, state]}
+                    >
+                      {address.text}
+                    </option>
+                  );
+                })}
+              </select>
+            ) : null}
           </div>
           <div className="input-group">
             <h6>City</h6>
@@ -90,6 +144,7 @@ class Step1 extends Component {
               onChange={this.handleInputChange}
               name="propertyCity"
               type="text"
+              autoComplete="off"
             />
           </div>
           <div className="input-group">
