@@ -47,16 +47,12 @@ class Step1 extends Component {
   }
 
   handleInputChange(e) {
-    let {
-      REACT_APP_ADDRESS_AUTH_ID,
-      REACT_APP_AUTH_TOKEN,
-      REACT_APP_ADDRESS_API
-    } = process.env;
+    let { REACT_APP_ADDRESS_AUTH_ID, REACT_APP_ADDRESS_API } = process.env;
     let address = e.target.value;
     if (e.target.name === "propertyStreet") {
       axios
         .get(
-          `${REACT_APP_ADDRESS_API}auth-id=29625604425932441&prefix=${
+          `${REACT_APP_ADDRESS_API}auth-id=${REACT_APP_ADDRESS_AUTH_ID}&prefix=${
             e.target.value
           }`
         )
@@ -84,7 +80,13 @@ class Step1 extends Component {
 
   updateWizard() {
     // All fields of this step must be completed before going on
-    if (Object.values(this.state).indexOf("") === -1) {
+    let {
+      propertyStreet,
+      propertyCity,
+      propertyState,
+      propertyZipcode
+    } = this.state;
+    if (propertyStreet && propertyCity && propertyState && propertyZipcode) {
       let {
         propertyStreet,
         propertyCity,
@@ -149,20 +151,17 @@ class Step1 extends Component {
           </div>
           <div className="input-group">
             <h6>State</h6>
-            <select name="propertyState" onChange={this.handleInputChange}>
-              {
-                <option key={this.state.propertyState}>
-                  {this.state.propertyState}
-                </option>
-              }
+            <select
+              value={this.state.propertyState}
+              name="propertyState"
+              onChange={this.handleInputChange}
+            >
               {this.state.states.map(state => {
-                if (state.abbreviation !== this.state.propertyState) {
-                  return (
-                    <option key={state.abbreviation}>
-                      {state.abbreviation}
-                    </option>
-                  );
-                }
+                return (
+                  <option value={state.abbreviation} key={state.abbreviation}>
+                    {state.abbreviation}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -173,6 +172,7 @@ class Step1 extends Component {
               onChange={this.handleInputChange}
               name="propertyZipcode"
               type="text"
+              autoComplete="off"
             />
           </div>
         </div>
