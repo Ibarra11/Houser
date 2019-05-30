@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import WorkOrderQueue from "./WorkOrderQueue";
 import CreateWorkOrder from "./CreateWorkOrder";
 import CompletedWorkOrders from "./CompletedWorkOrders";
-
+import FilterWorkOrder from "./FilterWorkOrder";
 class WorkOrders extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +12,7 @@ class WorkOrders extends Component {
       )
     };
     this.renderView = this.renderView.bind(this);
+    this.addFilter = this.addFilter.bind(this);
   }
   renderView(view) {
     if (view === "CreateWorkOrder") {
@@ -28,7 +29,9 @@ class WorkOrders extends Component {
       this.setState({ view: <CompletedWorkOrders /> });
     }
   }
+  addFilter() {}
   render() {
+    console.log(this.state);
     return (
       <div className="component-workOrders">
         <div className="control-panel">
@@ -57,6 +60,9 @@ class WorkOrders extends Component {
               Completed Work Orders
             </div>
           </div>
+          {this.state.view.type.name !== "CreateWorkOrder" ? (
+            <FilterWorkOrder />
+          ) : null}
         </div>
         <div className="component-views">{this.state.view}</div>
       </div>

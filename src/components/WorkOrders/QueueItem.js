@@ -13,13 +13,49 @@ class QueueItem extends Component {
 
   renderCtrl() {
     let { data } = this.props;
-    let newDate = moment(data.date_created).format("YYYYMMDD");
-    let timeElapsed = moment(newDate, "YYYYMMDD")
-      .fromNow()
-      .split(" ");
-    if (timeElapsed[0] === "a") {
-      timeElapsed[0] = 1;
+    let currentDate = moment().toObject();
+    currentDate.months += 1;
+    console.log(data);
+    let workOrderDate = data.date_created.split("/");
+    let workOrderTime = data.time_created.split(/[:""]/);
+
+    let workOrderMonth = +workOrderDate[0];
+    let workOrderDay = +workOrderDate[1];
+    let workOrderYear = +workOrderDate[2];
+    let workOrderHour = +workOrderTime[0] + 12;
+    let workOrderMinutes = +workOrderTime[1];
+    console.log(currentDate);
+
+    let timeElapsed = {
+      years: 0,
+      months: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0
+    };
+
+    if (currentDate.years > workOrderYear) {
+      timeElapsed.years = currentDate.years - workOrderYear;
     }
+    if (currentDate.months > workOrderMonth) {
+      timeElapsed.months = currentDate.months - workOrderMonth;
+    }
+    if (currentDate.months < workOrderMonth) {
+      timeElapsed.months += workOrderMonth - currentDate.months;
+    }
+    if (currentDate.date > workOrderDay) {
+      timeElapsed.hours += (currentDate.date - workOrderDay) * 24;
+    }
+    if (currentDate.date < workOrderDay) {
+      timeElapsed.hours += (workOrderDay - currentDate.date) * 24;
+    }
+    if (currentDate.hours > workOrderHour) {
+      timeElapsed.hours -= currentDate.hours - workOrderHour;
+    }
+    if (currentDate.hours < workOrderHour) {
+      timeElapsed.hours -= workOrderHour - currentDate.hours;
+    }
+
     if (this.state.displayWorkOrderInfo) {
       return (
         <div key={this.props.data.job_id} className="job">
@@ -78,7 +114,7 @@ class QueueItem extends Component {
             <div className="time">{data.time_created}</div>
           </div>
           <div className="job-elapsed-time">
-            {timeElapsed[0] + " " + timeElapsed[1]}
+            {/* {timeElapsed[0] + " " + timeElapsed[1]} */}
           </div>
           <div className="job-controls">
             <div

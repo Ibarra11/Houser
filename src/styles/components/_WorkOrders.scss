@@ -9,6 +9,11 @@
   .control-panel {
     width: 25%;
     min-height: 89vh;
+    display: flex;
+    flex-direction: column;
+    .hidden {
+      display: none;
+    }
     .control-panel-header {
       display: flex;
       height: 12%;
@@ -31,12 +36,80 @@
       }
     }
     .controls {
+      height: 38%;
       padding: 1rem;
       .controls-link {
         margin-bottom: 1rem;
         font-size: 1.25rem;
         &:hover {
           cursor: pointer;
+        }
+      }
+    }
+    .work-order-filter {
+      height: 50%;
+      border: 1px solid green;
+      padding: 1rem;
+      .filter-header {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .filter-container {
+        display: flex;
+        width: 100%;
+        button {
+          border-radius: 3px;
+          border: none;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .filter-add {
+          width: 30%;
+          // height: 100%;
+          .filter-add-button {
+            width: 100%;
+            padding: 0.5rem 0;
+
+            height: 100%;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+        .filter-main {
+          width: 70%;
+
+          display: flex;
+          .filter-select {
+            width: 70%;
+
+            display: flex;
+            justify-content: space-around;
+            .filter-type,
+            .filter-order {
+              padding: 0.5rem 0;
+              width: 45%;
+              border-radius: 3px;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+          .filter-controls {
+            width: 30%;
+            display: flex;
+            justify-content: space-around;
+
+            .filter-control-button {
+              padding: 0.5rem 0;
+              width: 45%;
+              i {
+                width: 1rem;
+              }
+            }
+          }
         }
       }
     }
@@ -140,7 +213,6 @@
       }
       .company-section {
         width: 50%;
-
         .company-info {
           .input-container {
             width: 90%;
@@ -162,7 +234,7 @@
                 width: 85%;
                 border: none;
                 background-color: transparent;
-                border-bottom: 1px solid #232528;
+                border-bottom: 1px solid #09121f;
                 color: #aaacac;
                 padding: 3px 0;
               }
