@@ -8,7 +8,6 @@ class Navbar extends Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
   componentDidMount() {
-    console.log("test");
     axios.get("/api/auth").then(res => {
       if (res.data === false) {
         this.props.history.push("/");

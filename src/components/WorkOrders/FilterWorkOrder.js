@@ -1,51 +1,114 @@
 import React, { Component } from "react";
-
+import FilterList from "./FilterList";
 class FilterWorkOrder extends Component {
   constructor(props) {
     super(props);
     this.state = {
       displayFilter: false,
-      filterOrderOptions: ["ASC", "DESC"]
+      filterType: "",
+      filterOrderOptions: [],
+      filterOrderOption: "",
+      filterList: {}
     };
     this.displayFilter = this.displayFilter.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleFilterOrder = this.handleFilterOrder.bind(this);
+    this.addFilter = this.addFilter.bind(this);
   }
 
   handleFilterChange(e) {
-    console.log(e.target.value);
-    if (e.target.value === "jobId" || e.target.value === "date") {
+    if (e.target.value === "Job Id" || e.target.value === "Date") {
       this.setState({
-        filterOrderOptions: ["ASC", "DESC"]
+        filterType: e.target.value,
+        filterOrderOptions: ["ASC", "DESC"],
+        filterOrderOption: ""
       });
-    } else if (e.target.value === "property") {
+    } else {
+      let address = "";
+      let addressListLookup = {};
+      let addressList = [];
+      this.props.properties.forEach(property => {
+        address = `${property.property_street} ${property.property_city}, ${
+          property.property_state
+        } ${property.property_zipcode}`;
+        if (!addressListLookup[address]) {
+          addressList.push(address);
+          addressListLookup[address] = 1;
+        }
+      });
       this.setState({
-        filterOrderOptions: ["2600 Dels Lane", "417 Wolfe Ave", "419 Wolfe Ave"]
+        filterType: "Property",
+        filterOrderOptions: addressList,
+        filterOrderOption: ""
       });
+    }
+  }
+
+  handleFilterOrder(e) {
+    this.setState({
+      filterOrderOption: e.target.value
+    });
+  }
+
+  addFilter() {
+    if (this.state.filterOrderOption) {
+      let filterListCopy = Object.create(this.state.filterList);
+      let { filterType, filterOrderOption } = this.state;
+      filterListCopy[filterType] = filterOrderOption;
+      this.setState(
+        {
+          displayFilter: false,
+          filterType: "",
+          filterOrderOptions: [],
+          filterOrderOption: "",
+          filterList: filterListCopy
+        },
+        this.props.toggleFilter(
+          this.state.filterType,
+          this.state.filterOrderOption
+        )
+      );
     }
   }
 
   displayFilter() {
     if (this.state.displayFilter) {
+      let { filterType, filterList } = this.state;
       return (
         <div className="filter-main">
           <div className="filter-select">
             <select onChange={this.handleFilterChange} className="filter-type">
-              <option value="jobId">Job Id</option>
-              <option value="property">Property</option>
-              <option value="date">Date</option>
+              <option value={this.state.filterType}>
+                {this.state.filterType}
+              </option>
+              {filterType !== "Job Id" && !filterList["Job Id"] ? (
+                <option value="Job Id">Job Id</option>
+              ) : null}
+              {this.state.filterType !== "Date" && !filterList["Date"] ? (
+                <option value="Date">Date</option>
+              ) : null}
+              {this.state.filterType !== "Property" &&
+              !filterList["Property"] ? (
+                <option value="Property">Property</option>
+              ) : null}
             </select>
-            <select className="filter-order">
+            <select onChange={this.handleFilterOrder} className="filter-order">
+              <option value={this.state.filterOrderOption}>
+                {this.state.filterOrderOption}
+              </option>
               {this.state.filterOrderOptions.map((filterOption, index) => {
-                return (
-                  <option key={filterOption + index} value={filterOption}>
-                    {filterOption}
-                  </option>
-                );
+                if (filterOption !== this.state.filterOrderOption) {
+                  return (
+                    <option key={filterOption + index} value={filterOption}>
+                      {filterOption}
+                    </option>
+                  );
+                }
               })}
             </select>
           </div>
           <div className="filter-controls">
-            <button className="filter-control-button">
+            <button onClick={this.addFilter} className="filter-control-button">
               <i className="fas fa-check" />
             </button>
             <button
@@ -64,7 +127,7 @@ class FilterWorkOrder extends Component {
     return (
       <div className="work-order-filter">
         <div className="filter-header">
-          <h5>Filters</h5>
+          <h3>Filters</h3>
         </div>
         <div className="filter-container">
           <div className="filter-add">
@@ -76,6 +139,7 @@ class FilterWorkOrder extends Component {
             </button>
           </div>
           {this.displayFilter()}
+          <FilterList list={this.state.filterList} />
         </div>
       </div>
     );

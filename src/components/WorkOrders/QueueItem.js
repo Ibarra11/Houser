@@ -15,7 +15,7 @@ class QueueItem extends Component {
     let { data } = this.props;
     let currentDate = moment().toObject();
     currentDate.months += 1;
-    console.log(data);
+
     let workOrderDate = data.date_created.split("/");
     let workOrderTime = data.time_created.split(/[:""]/);
 
@@ -24,7 +24,6 @@ class QueueItem extends Component {
     let workOrderYear = +workOrderDate[2];
     let workOrderHour = +workOrderTime[0] + 12;
     let workOrderMinutes = +workOrderTime[1];
-    console.log(currentDate);
 
     let timeElapsed = {
       years: 0,

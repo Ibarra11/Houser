@@ -9,7 +9,6 @@ class WorkOrderQueue extends Component {
       workOrders: [],
       currentWorkOrders: []
     };
-
     this.paginationInstance = new Pagination([], 5);
     this.currentPage = 1;
     this.getWorkOrdersFromQueue = this.getWorkOrdersFromQueue.bind(this);
@@ -30,16 +29,22 @@ class WorkOrderQueue extends Component {
           let pageItems = this.paginationInstance.displayItemsOnPage(
             this.currentPage
           );
-          this.setState({
-            workOrders: res.data,
-            currentWorkOrders: pageItems
-          });
+          this.setState(
+            {
+              workOrders: res.data,
+              currentWorkOrders: pageItems
+            },
+            this.props.getProperties(res.data)
+          );
         } else {
           this.paginationInstance.reset();
-          this.setState({
-            workOrders: res.data,
-            currentWorkOrders: []
-          });
+          this.setState(
+            {
+              workOrders: res.data,
+              currentWorkOrders: []
+            },
+            this.props.getProperties([])
+          );
         }
       })
       .catch(err => console.log(err));

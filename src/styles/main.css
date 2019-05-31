@@ -924,14 +924,13 @@ template {
           cursor: pointer; }
     .component-workOrders .control-panel .work-order-filter {
       height: 50%;
-      border: 1px solid green;
+      border-top: 3px solid #0c101d;
       padding: 1rem; }
       .component-workOrders .control-panel .work-order-filter .filter-header {
         text-align: center;
         font-size: 2rem;
         margin-bottom: 1rem; }
       .component-workOrders .control-panel .work-order-filter .filter-container {
-        display: flex;
         width: 100%; }
         .component-workOrders .control-panel .work-order-filter .filter-container button {
           border-radius: 3px;
@@ -939,7 +938,8 @@ template {
           .component-workOrders .control-panel .work-order-filter .filter-container button:hover {
             cursor: pointer; }
         .component-workOrders .control-panel .work-order-filter .filter-container .filter-add {
-          width: 30%; }
+          width: 50%;
+          margin: 0 auto; }
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-add .filter-add-button {
             width: 100%;
             padding: 0.5rem 0;
@@ -947,22 +947,26 @@ template {
             .component-workOrders .control-panel .work-order-filter .filter-container .filter-add .filter-add-button:hover {
               cursor: pointer; }
         .component-workOrders .control-panel .work-order-filter .filter-container .filter-main {
-          width: 70%;
-          display: flex; }
+          width: 100%;
+          display: flex;
+          margin-top: 1rem; }
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select {
-            width: 70%;
+            width: 80%;
             display: flex;
             justify-content: space-around; }
             .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select .filter-type,
             .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select .filter-order {
               padding: 0.5rem 0;
-              width: 45%;
               border-radius: 3px; }
               .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select .filter-type:hover,
               .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select .filter-order:hover {
                 cursor: pointer; }
+            .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select .filter-type {
+              width: 30%; }
+            .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-select .filter-order {
+              width: 65%; }
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-controls {
-            width: 30%;
+            width: 20%;
             display: flex;
             justify-content: space-around; }
             .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-controls .filter-control-button {
@@ -970,6 +974,34 @@ template {
               width: 45%; }
               .component-workOrders .control-panel .work-order-filter .filter-container .filter-main .filter-controls .filter-control-button i {
                 width: 1rem; }
+        .component-workOrders .control-panel .work-order-filter .filter-container .filter-list {
+          margin-top: 1rem; }
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-type,
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-order {
+            width: 30%; }
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-actions {
+            width: 15%; }
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-order {
+            margin: 0 10%; }
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-list-headers,
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-item {
+            display: flex;
+            text-align: center; }
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-list-headers {
+            border-bottom: 2px solid #22668a;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem; }
+            .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-list-headers h4 {
+              font-size: 1.25rem; }
+          .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-item {
+            background-color: #3a87a4;
+            padding: 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 1rem; }
+            .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-item h5 {
+              font-size: 1.1rem; }
+            .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-item .filter-actions .filter-remove {
+              background: none; }
   .component-workOrders .component-views {
     border-left: 3px solid #0c101d;
     width: 75%;

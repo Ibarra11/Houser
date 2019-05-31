@@ -9,10 +9,15 @@ class WorkOrders extends Component {
     this.state = {
       view: (
         <CreateWorkOrder renderView={() => this.renderView("WorkOrderQueue")} />
-      )
+      ),
+      filterOptions: {
+        type: "",
+        order: ""
+      },
+      workOrderProperties: []
     };
     this.renderView = this.renderView.bind(this);
-    this.addFilter = this.addFilter.bind(this);
+    this.toggleFilter = this.toggleFilter.bind(this);
   }
   renderView(view) {
     if (view === "CreateWorkOrder") {
@@ -24,12 +29,30 @@ class WorkOrders extends Component {
         )
       });
     } else if (view === "WorkOrderQueue") {
-      this.setState({ view: <WorkOrderQueue /> });
+      this.setState({
+        view: (
+          <WorkOrderQueue
+            getProperties={properties =>
+              this.setState({ workOrderProperties: properties })
+            }
+            filters={this.state.filterOptions}
+          />
+        )
+      });
     } else if (view === "CompletedWorkOrders") {
       this.setState({ view: <CompletedWorkOrders /> });
     }
   }
-  addFilter() {}
+  toggleFilter(type, order) {
+    console.log("Type: " + type);
+    console.log("Order: " + order);
+    this.setState({
+      filterOptions: {
+        type,
+        order
+      }
+    });
+  }
   render() {
     console.log(this.state);
     return (
@@ -61,7 +84,10 @@ class WorkOrders extends Component {
             </div>
           </div>
           {this.state.view.type.name !== "CreateWorkOrder" ? (
-            <FilterWorkOrder />
+            <FilterWorkOrder
+              properties={this.state.workOrderProperties}
+              toggleFilter={this.toggleFilter}
+            />
           ) : null}
         </div>
         <div className="component-views">{this.state.view}</div>
