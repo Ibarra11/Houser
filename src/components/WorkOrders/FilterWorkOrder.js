@@ -15,9 +15,15 @@ class FilterWorkOrder extends Component {
     this.handleFilterOrder = this.handleFilterOrder.bind(this);
     this.addFilter = this.addFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
+    this.hideFilter = this.hideFilter.bind(this);
   }
 
   handleFilterChange(e) {
+    console.log(e.target.value);
+    if (!e.target) {
+      e.target.value = e;
+    }
     if (e.target.value === "Job Id" || e.target.value === "Date") {
       this.setState({
         filterType: e.target.value,
@@ -51,12 +57,25 @@ class FilterWorkOrder extends Component {
     });
   }
 
-  removeFilter(filterOption) {
+  removeFilter(filterType) {
     let filterListCopy = this.state.filterList;
-    delete filterListCopy[filterOption];
+    delete filterListCopy[filterType];
     this.setState({
       FilterList: filterListCopy
     });
+  }
+
+  updateFilter(filterType) {
+    console.log(filterType);
+    let fakeEventObj = {};
+    fakeEventObj.target = { value: filterType };
+    this.setState(
+      {
+        displayFilter: true,
+        filterType
+      },
+      this.handleFilterChange(fakeEventObj)
+    );
   }
 
   addFilter() {
@@ -66,7 +85,6 @@ class FilterWorkOrder extends Component {
         { [filterType]: filterOrderOption },
         this.state.filterList
       );
-      console.log(filterListCopy);
       this.setState(
         {
           displayFilter: false,
@@ -123,10 +141,7 @@ class FilterWorkOrder extends Component {
             <button onClick={this.addFilter} className="filter-control-button">
               <i className="fas fa-check" />
             </button>
-            <button
-              onClick={() => this.setState({ displayFilter: false })}
-              className="filter-control-button"
-            >
+            <button onClick={this.hideFilter} className="filter-control-button">
               <i className="fas fa-times" />
             </button>
           </div>
@@ -135,8 +150,21 @@ class FilterWorkOrder extends Component {
     }
   }
 
+  hideFilter() {
+    if (this.state.filterList[this.state.filterType]) {
+      this.setState({
+        displayFilter: false,
+        filterType: "",
+        filterOrderOptions: []
+      });
+    } else {
+      this.setState({
+        displayFilter: false
+      });
+    }
+  }
+
   render() {
-    // console.log(this.state);
     return (
       <div className="work-order-filter">
         <div className="filter-header">
@@ -154,6 +182,7 @@ class FilterWorkOrder extends Component {
           {this.displayFilter()}
           <FilterList
             removeFilter={this.removeFilter}
+            updateFilter={this.updateFilter}
             list={this.state.filterList}
           />
         </div>

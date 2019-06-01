@@ -1,6 +1,6 @@
 import React from "react";
 import FilterItem from "./FilterItem";
-const FilterList = function({ list, removeFilter }) {
+const FilterList = function({ list, removeFilter, updateFilter }) {
   let filters = [];
   for (let filter in list) {
     filters.push({ filterType: filter, filterOrder: list[filter] });
@@ -22,6 +22,7 @@ const FilterList = function({ list, removeFilter }) {
         return (
           <FilterItem
             removeFilter={removeFilter}
+            updateFilter={updateFilter}
             key={filter.filterType}
             filter={filter}
           />

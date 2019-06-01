@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterItem = function({ filter, removeFilter }) {
+const FilterItem = function({ filter, removeFilter, updateFilter }) {
   console.log(filter);
   return (
     <div className="filter-item">
@@ -18,6 +18,15 @@ const FilterItem = function({ filter, removeFilter }) {
           <h5>
             {" "}
             <i className="fas fa-times" />
+          </h5>
+        </button>
+        <button
+          onClick={() => updateFilter(filter.filterType)}
+          className="filter-edit"
+        >
+          <h5>
+            {" "}
+            <i className="fas fa-edit" />
           </h5>
         </button>
       </div>
