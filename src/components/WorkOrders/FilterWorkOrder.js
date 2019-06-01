@@ -14,6 +14,7 @@ class FilterWorkOrder extends Component {
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleFilterOrder = this.handleFilterOrder.bind(this);
     this.addFilter = this.addFilter.bind(this);
+    this.removeFilter = this.removeFilter.bind(this);
   }
 
   handleFilterChange(e) {
@@ -50,11 +51,22 @@ class FilterWorkOrder extends Component {
     });
   }
 
+  removeFilter(filterOption) {
+    let filterListCopy = this.state.filterList;
+    delete filterListCopy[filterOption];
+    this.setState({
+      FilterList: filterListCopy
+    });
+  }
+
   addFilter() {
     if (this.state.filterOrderOption) {
-      let filterListCopy = Object.create(this.state.filterList);
       let { filterType, filterOrderOption } = this.state;
-      filterListCopy[filterType] = filterOrderOption;
+      let filterListCopy = Object.assign(
+        { [filterType]: filterOrderOption },
+        this.state.filterList
+      );
+      console.log(filterListCopy);
       this.setState(
         {
           displayFilter: false,
@@ -124,6 +136,7 @@ class FilterWorkOrder extends Component {
   }
 
   render() {
+    // console.log(this.state);
     return (
       <div className="work-order-filter">
         <div className="filter-header">
@@ -139,7 +152,10 @@ class FilterWorkOrder extends Component {
             </button>
           </div>
           {this.displayFilter()}
-          <FilterList list={this.state.filterList} />
+          <FilterList
+            removeFilter={this.removeFilter}
+            list={this.state.filterList}
+          />
         </div>
       </div>
     );
