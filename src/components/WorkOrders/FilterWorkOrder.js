@@ -20,7 +20,6 @@ class FilterWorkOrder extends Component {
   }
 
   handleFilterChange(e) {
-    console.log(e.target.value);
     if (!e.target) {
       e.target.value = e;
     }
@@ -66,7 +65,6 @@ class FilterWorkOrder extends Component {
   }
 
   updateFilter(filterType) {
-    console.log(filterType);
     let fakeEventObj = {};
     fakeEventObj.target = { value: filterType };
     this.setState(
@@ -79,12 +77,10 @@ class FilterWorkOrder extends Component {
   }
 
   addFilter() {
-    if (this.state.filterOrderOption) {
-      let { filterType, filterOrderOption } = this.state;
-      let filterListCopy = Object.assign(
-        { [filterType]: filterOrderOption },
-        this.state.filterList
-      );
+    let { filterType, filterOrderOption, filterList } = this.state;
+    if (filterOrderOption && filterList[filterType] !== filterOrderOption) {
+      let filterListCopy = Object.assign({}, this.state.filterList);
+      filterListCopy[filterType] = filterOrderOption;
       this.setState(
         {
           displayFilter: false,
@@ -151,17 +147,12 @@ class FilterWorkOrder extends Component {
   }
 
   hideFilter() {
-    if (this.state.filterList[this.state.filterType]) {
-      this.setState({
-        displayFilter: false,
-        filterType: "",
-        filterOrderOptions: []
-      });
-    } else {
-      this.setState({
-        displayFilter: false
-      });
-    }
+    this.setState({
+      displayFilter: false,
+      filterType: "",
+      filterOrderOptions: [],
+      filterOrderOption: ""
+    });
   }
 
   render() {

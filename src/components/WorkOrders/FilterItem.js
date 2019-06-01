@@ -1,7 +1,6 @@
 import React from "react";
 
 const FilterItem = function({ filter, removeFilter, updateFilter }) {
-  console.log(filter);
   return (
     <div className="filter-item">
       <div className="filter-type">

@@ -27,7 +27,6 @@ class CreateWorkOrder extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     axios
       .get("/api/property")
       .then(res => {

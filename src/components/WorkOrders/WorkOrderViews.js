@@ -44,8 +44,6 @@ class WorkOrders extends Component {
     }
   }
   toggleFilter(type, order) {
-    console.log("Type: " + type);
-    console.log("Order: " + order);
     this.setState({
       filterOptions: {
         type,
@@ -54,7 +52,6 @@ class WorkOrders extends Component {
     });
   }
   render() {
-    console.log(this.state);
     return (
       <div className="component-workOrders">
         <div className="control-panel">
