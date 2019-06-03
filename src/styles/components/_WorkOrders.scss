@@ -125,6 +125,14 @@
           }
           .filter-actions {
             width: 15%;
+            display: flex;
+            justify-content: space-around;
+            button {
+              background: none;
+              color: $light;
+              position: relative;
+              left: 10%;
+            }
           }
           .filter-order {
             margin: 0 10%;

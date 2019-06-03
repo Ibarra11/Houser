@@ -980,7 +980,14 @@ template {
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-order {
             width: 30%; }
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-actions {
-            width: 15%; }
+            width: 15%;
+            display: flex;
+            justify-content: space-around; }
+            .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-actions button {
+              background: none;
+              color: #f9fdff;
+              position: relative;
+              left: 10%; }
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-order {
             margin: 0 10%; }
           .component-workOrders .control-panel .work-order-filter .filter-container .filter-list .filter-list-headers,

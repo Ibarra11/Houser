@@ -20,9 +20,6 @@ class FilterWorkOrder extends Component {
   }
 
   handleFilterChange(e) {
-    if (!e.target) {
-      e.target.value = e;
-    }
     if (e.target.value === "Job Id" || e.target.value === "Date") {
       this.setState({
         filterType: e.target.value,
@@ -59,9 +56,12 @@ class FilterWorkOrder extends Component {
   removeFilter(filterType) {
     let filterListCopy = this.state.filterList;
     delete filterListCopy[filterType];
-    this.setState({
-      FilterList: filterListCopy
-    });
+    this.setState(
+      {
+        FilterList: filterListCopy
+      },
+      this.props.setFilters(filterListCopy)
+    );
   }
 
   updateFilter(filterType) {
@@ -89,10 +89,7 @@ class FilterWorkOrder extends Component {
           filterOrderOption: "",
           filterList: filterListCopy
         },
-        this.props.toggleFilter(
-          this.state.filterType,
-          this.state.filterOrderOption
-        )
+        this.props.setFilters(filterListCopy)
       );
     }
   }

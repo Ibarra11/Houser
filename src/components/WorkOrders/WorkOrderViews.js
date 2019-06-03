@@ -7,48 +7,35 @@ class WorkOrders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: (
-        <CreateWorkOrder renderView={() => this.renderView("WorkOrderQueue")} />
-      ),
-      filterOptions: {
-        type: "",
-        order: ""
-      },
+      view: "CreateWorkOrder",
+      filters: {},
       workOrderProperties: []
     };
     this.renderView = this.renderView.bind(this);
-    this.toggleFilter = this.toggleFilter.bind(this);
+    this.setFilters = this.setFilters.bind(this);
   }
-  renderView(view) {
+  renderView() {
+    let { view } = this.state;
     if (view === "CreateWorkOrder") {
-      this.setState({
-        view: (
-          <CreateWorkOrder
-            renderView={() => this.renderView("WorkOrderQueue")}
-          />
-        )
-      });
+      return (
+        <CreateWorkOrder renderView={() => this.renderView("WorkOrderQueue")} />
+      );
     } else if (view === "WorkOrderQueue") {
-      this.setState({
-        view: (
-          <WorkOrderQueue
-            getProperties={properties =>
-              this.setState({ workOrderProperties: properties })
-            }
-            filters={this.state.filterOptions}
-          />
-        )
-      });
+      return (
+        <WorkOrderQueue
+          getProperties={properties =>
+            this.setState({ workOrderProperties: properties })
+          }
+          filters={this.state.filters}
+        />
+      );
     } else if (view === "CompletedWorkOrders") {
-      this.setState({ view: <CompletedWorkOrders /> });
+      return <CompletedWorkOrders />;
     }
   }
-  toggleFilter(type, order) {
+  setFilters(filterList) {
     this.setState({
-      filterOptions: {
-        type,
-        order
-      }
+      filters: filterList
     });
   }
   render() {
@@ -61,33 +48,33 @@ class WorkOrders extends Component {
           </div>
           <div className="controls">
             <div
-              onClick={() => this.renderView("CreateWorkOrder")}
+              onClick={() => this.setState({ view: "CreateWorkOrder" })}
               className="controls-link"
             >
               Create Work Order
             </div>
             <div
-              onClick={() => this.renderView("WorkOrderQueue")}
+              onClick={() => this.setState({ view: "WorkOrderQueue" })}
               className="controls-link"
             >
               {" "}
               Work Order Queue
             </div>
             <div
-              onClick={() => this.renderView("CompletedWorkOrders")}
+              onClick={() => this.setState({ view: "CompletedWorkOrders" })}
               className="controls-link"
             >
               Completed Work Orders
             </div>
           </div>
-          {this.state.view.type.name !== "CreateWorkOrder" ? (
+          {this.state.view !== "CreateWorkOrder" ? (
             <FilterWorkOrder
               properties={this.state.workOrderProperties}
-              toggleFilter={this.toggleFilter}
+              setFilters={this.setFilters}
             />
           ) : null}
         </div>
-        <div className="component-views">{this.state.view}</div>
+        <div className="component-views">{this.renderView()}</div>
       </div>
     );
   }

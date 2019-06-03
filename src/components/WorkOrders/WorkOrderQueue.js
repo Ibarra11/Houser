@@ -7,6 +7,8 @@ class WorkOrderQueue extends Component {
     super();
     this.state = {
       workOrders: [],
+      filteredWorkOrders: [],
+      workOrderFilters: {},
       currentWorkOrders: []
     };
     this.paginationInstance = new Pagination([], 5);
@@ -14,9 +16,40 @@ class WorkOrderQueue extends Component {
     this.getWorkOrdersFromQueue = this.getWorkOrdersFromQueue.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
+    this.filterQueue = this.filterQueue.bind(this);
   }
   componentDidMount() {
     this.getWorkOrdersFromQueue();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    let updateFlag = false;
+    let filters = Object.assign({}, this.state.workOrderFilters);
+    let currentFilterLength = Object.keys(this.props.filters).length;
+    let previousFilterLength = Object.keys(prevState.workOrderFilters).length;
+    if (previousFilterLength > currentFilterLength) {
+      this.setState(
+        {
+          workOrderFilters: this.props.filters
+        },
+        this.filterQueue
+      );
+    } else if (currentFilterLength > 0) {
+      for (let prop in this.props.filters) {
+        if (!this.state.workOrderFilters[prop]) {
+          updateFlag = true;
+          filters[prop] = this.props.filters[prop];
+        } else if (
+          this.state.workOrderFilters[prop] !== this.props.filters[prop]
+        ) {
+          updateFlag = true;
+          filters[prop] = this.props.filters[prop];
+        }
+      }
+      if (updateFlag) {
+        this.setState({ workOrderFilters: filters }, this.filterQueue);
+      }
+    }
   }
 
   getWorkOrdersFromQueue() {
@@ -50,13 +83,69 @@ class WorkOrderQueue extends Component {
       .catch(err => console.log(err));
   }
 
-  updatePageItems() {
+  filterQueue() {
+    console.log(this.state);
+    let filters = Object.assign({}, this.state.workOrderFilters);
+    if (Object.keys(filters).length > 0) {
+      let queue;
+      if (this.state.filteredWorkOrders.length > 0) {
+        queue = this.state.filteredWorkOrders.slice();
+      } else {
+        queue = this.state.workOrders.slice();
+      }
+      let order;
+      let filteredQueue;
+      for (let filter in filters) {
+        order = filters[filter];
+        if (filter === "Job Id") {
+          let firstCurrentWorkOrder = this.state.currentWorkOrders[0].job_id;
+          let lastCurrentWorkOrder = this.state.currentWorkOrders[
+            this.state.currentWorkOrders.length - 1
+          ].job_id;
+          if (order === "ASC" && firstCurrentWorkOrder > lastCurrentWorkOrder) {
+            filteredQueue = queue.reverse();
+            console.log(filteredQueue);
+            this.paginationInstance.itemList = filteredQueue;
+            this.updatePageItems(true);
+          } else if (
+            order === "DESC" &&
+            firstCurrentWorkOrder < lastCurrentWorkOrder
+          ) {
+            filteredQueue = queue.reverse();
+            console.log(filteredQueue);
+            this.paginationInstance.itemList = filteredQueue;
+            this.updatePageItems(true);
+          }
+        } else if (filter === "Property") {
+        } else if (filter === "Date") {
+          if (filter === "Job Id") {
+            if (order === "ASC") {
+            } else {
+            }
+          }
+        }
+      }
+    } else {
+      this.paginationInstance.itemList = this.state.workOrders;
+      this.updatePageItems();
+    }
+  }
+
+  updatePageItems(filters = null) {
     let pageItems = this.paginationInstance.displayItemsOnPage(
       this.currentPage
     );
-    this.setState({
-      currentWorkOrders: pageItems
-    });
+    if (filters) {
+      this.setState({
+        currentWorkOrders: pageItems,
+        filteredWorkOrders: this.paginationInstance.itemList
+      });
+    } else {
+      this.setState({
+        currentWorkOrders: pageItems,
+        filteredWorkOrders: []
+      });
+    }
   }
 
   updateCurrentPage(direction) {
