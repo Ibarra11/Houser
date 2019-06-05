@@ -18,7 +18,9 @@ class WorkOrders extends Component {
     let { view } = this.state;
     if (view === "CreateWorkOrder") {
       return (
-        <CreateWorkOrder renderView={() => this.renderView("WorkOrderQueue")} />
+        <CreateWorkOrder
+          renderView={() => this.setState({ view: "WorkOrderQueue" })}
+        />
       );
     } else if (view === "WorkOrderQueue") {
       return (

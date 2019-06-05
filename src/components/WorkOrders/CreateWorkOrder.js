@@ -126,8 +126,7 @@ class CreateWorkOrder extends Component {
         workOrderStatus: "queue"
       })
       .then(() => {
-        console.log(this.props);
-        this.props.renderView("WorkOrderQueue");
+        this.props.renderView();
       })
       .catch(err => console.log(err));
   }
