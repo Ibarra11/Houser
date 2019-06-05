@@ -85,14 +85,19 @@ class CreateWorkOrder extends Component {
   }
 
   clearWorkOrder() {
-    this.setState({
-      propertyIndex: -1,
-      companyName: "",
-      companyPhone: "",
-      companyEmail: "",
-      companyCharge: "",
-      workDescription: ""
-    });
+    this.setState(
+      {
+        propertyIndex: -1,
+        companyName: "",
+        companyAddress: "",
+        companyPhone: "",
+        companyCity: "",
+        companyState: "",
+        companyZipcode: "",
+        workDescription: ""
+      },
+      () => (document.getElementById("propertySelect").value = "defaultValue")
+    );
   }
 
   submitWorkOrder() {
@@ -162,8 +167,10 @@ class CreateWorkOrder extends Component {
             <div className="property-selector">
               <div className="select-container">
                 <h6>Select A Property</h6>
-                <select onChange={this.onPropertyChange}>
-                  {this.state.propertyIndex === -1 ? <option value="" /> : null}
+                <select id="propertySelect" onChange={this.onPropertyChange}>
+                  {this.state.propertyIndex === -1 ? (
+                    <option value="defaultValue" />
+                  ) : null}
                   {this.listProperties()}
                 </select>
               </div>
@@ -179,6 +186,7 @@ class CreateWorkOrder extends Component {
                     name="companyName"
                     onChange={this.onInputChange}
                     type="text"
+                    value={this.state.companyName}
                   />
                 </div>
 
@@ -188,6 +196,7 @@ class CreateWorkOrder extends Component {
                     name="companyAddress"
                     onChange={this.onInputChange}
                     type="text"
+                    value={this.state.companyAddress}
                   />
                 </div>
 
@@ -197,6 +206,7 @@ class CreateWorkOrder extends Component {
                     name="companyCity"
                     onChange={this.onInputChange}
                     type="text"
+                    value={this.state.companyCity}
                   />
                 </div>
 
@@ -206,6 +216,7 @@ class CreateWorkOrder extends Component {
                     name="companyState"
                     className="selectState"
                     onChange={this.onInputChange}
+                    value={this.state.companyState}
                   >
                     {this.state.stateList}
                   </select>
@@ -217,6 +228,7 @@ class CreateWorkOrder extends Component {
                     name="companyZipcode"
                     onChange={this.onInputChange}
                     type="text"
+                    value={this.state.companyZipcode}
                   />
                 </div>
 
@@ -226,6 +238,7 @@ class CreateWorkOrder extends Component {
                     name="companyPhone"
                     onChange={this.onInputChange}
                     type="text"
+                    value={this.state.companyPhone}
                   />
                 </div>
               </div>
@@ -238,6 +251,7 @@ class CreateWorkOrder extends Component {
                   onChange={this.onInputChange}
                   name="workDescription"
                   className="text-box"
+                  value={this.state.workDescription}
                 />
               </div>
             </div>
