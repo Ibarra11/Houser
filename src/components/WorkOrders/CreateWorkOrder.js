@@ -33,7 +33,6 @@ class CreateWorkOrder extends Component {
       .then(res => {
         this.setState({ properties: res.data }, () => {
           let stateList = StateList();
-          console.log(stateList);
           this.setState({ stateList, companyState: stateList[0].props.value });
         });
       })

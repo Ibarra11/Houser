@@ -23,33 +23,39 @@ class WorkOrderQueue extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let updateFlag = false;
-    let filters = Object.assign({}, this.state.workOrderFilters);
-    let currentFilterLength = Object.keys(this.props.filters).length;
-    let previousFilterLength = Object.keys(prevState.workOrderFilters).length;
-    if (previousFilterLength > currentFilterLength) {
-      this.setState(
-        {
-          workOrderFilters: this.props.filters
-        },
-        this.filterQueue
-      );
-    } else if (currentFilterLength > 0) {
-      for (let prop in this.props.filters) {
-        if (!this.state.workOrderFilters[prop]) {
-          updateFlag = true;
-          filters[prop] = this.props.filters[prop];
-        } else if (
-          this.state.workOrderFilters[prop] !== this.props.filters[prop]
-        ) {
-          updateFlag = true;
-          filters[prop] = this.props.filters[prop];
+    if (this.state.workOrders.length > 0) {
+      let updateFlag = false;
+      let filters = Object.assign({}, this.state.workOrderFilters);
+      let currentFilterLength = Object.keys(this.props.filters).length;
+      let previousFilterLength = Object.keys(prevState.workOrderFilters).length;
+      if (previousFilterLength > currentFilterLength) {
+        this.setState(
+          {
+            workOrderFilters: this.props.filters
+          },
+          this.filterQueue
+        );
+      } else if (currentFilterLength > 0) {
+        for (let prop in this.props.filters) {
+          if (!this.state.workOrderFilters[prop]) {
+            updateFlag = true;
+            filters[prop] = this.props.filters[prop];
+          } else if (
+            this.state.workOrderFilters[prop] !== this.props.filters[prop]
+          ) {
+            updateFlag = true;
+            filters[prop] = this.props.filters[prop];
+          }
+        }
+        if (updateFlag) {
+          this.setState({ workOrderFilters: filters }, this.filterQueue);
         }
       }
-      if (updateFlag) {
-        this.setState({ workOrderFilters: filters }, this.filterQueue);
-      }
     }
+  }
+
+  componentWillUnmount() {
+    this.props.resetFilters();
   }
 
   getWorkOrdersFromQueue() {

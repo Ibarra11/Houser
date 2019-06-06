@@ -29,6 +29,7 @@ class WorkOrders extends Component {
             this.setState({ workOrderProperties: properties })
           }
           filters={this.state.filters}
+          resetFilters={() => this.setState({ filters: {} })}
         />
       );
     } else if (view === "CompletedWorkOrders") {
