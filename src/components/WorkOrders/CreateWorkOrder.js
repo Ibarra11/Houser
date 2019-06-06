@@ -17,7 +17,8 @@ class CreateWorkOrder extends Component {
       companyCity: "",
       companyZipcode: "",
       companyState: "",
-      workDescription: ""
+      workDescription: "",
+      workOrderAlert: false
     };
     this.listProperties = this.listProperties.bind(this);
     this.onPropertyChange = this.onPropertyChange.bind(this);
@@ -32,6 +33,7 @@ class CreateWorkOrder extends Component {
       .then(res => {
         this.setState({ properties: res.data }, () => {
           let stateList = StateList();
+          console.log(stateList);
           this.setState({ stateList, companyState: stateList[0].props.value });
         });
       })
@@ -92,9 +94,9 @@ class CreateWorkOrder extends Component {
         companyAddress: "",
         companyPhone: "",
         companyCity: "",
-        companyState: "",
         companyZipcode: "",
-        workDescription: ""
+        workDescription: "",
+        workOrderAlert: false
       },
       () => (document.getElementById("propertySelect").value = "defaultValue")
     );
@@ -111,29 +113,41 @@ class CreateWorkOrder extends Component {
       companyPhone,
       workDescription
     } = this.state;
-
-    let date = moment().format("l");
-    let time = moment().format("LT");
-    let propertyId = this.state.properties[propertyIndex].property_id;
-
-    axios
-      .post("/api/work_orders", {
-        propertyId,
-        companyName,
-        companyAddress,
-        companyCity,
-        companyState,
-        companyZipcode,
-        companyPhone,
-        workDescription,
-        date,
-        time,
-        workOrderStatus: "queue"
-      })
-      .then(() => {
-        this.props.renderView();
-      })
-      .catch(err => console.log(err));
+    console.log(this.state);
+    if (
+      propertyIndex >= 0 &&
+      companyName &&
+      companyAddress &&
+      companyCity &&
+      companyState &&
+      companyZipcode &&
+      companyPhone &&
+      workDescription
+    ) {
+      let date = moment().format("l");
+      let time = moment().format("LT");
+      let propertyId = this.state.properties[propertyIndex].property_id;
+      axios
+        .post("/api/work_orders", {
+          propertyId,
+          companyName,
+          companyAddress,
+          companyCity,
+          companyState,
+          companyZipcode,
+          companyPhone,
+          workDescription,
+          date,
+          time,
+          workOrderStatus: "queue"
+        })
+        .then(() => {
+          this.props.renderView();
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.setState({ workOrderAlert: true });
+    }
   }
 
   render() {
@@ -162,6 +176,15 @@ class CreateWorkOrder extends Component {
                 <button onClick={this.clearWorkOrder} className="btn">
                   Clear
                 </button>
+              </div>
+              <div
+                className={
+                  this.state.workOrderAlert ? "work-order-alert" : "hidden"
+                }
+              >
+                <p>
+                  All fields must be completed before processing work order!
+                </p>
               </div>
             </div>
             <div className="property-selector">

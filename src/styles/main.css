@@ -1070,6 +1070,12 @@ template {
               .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .property-buttons .btn {
                 width: 40%;
                 font-size: 1.15rem; }
+            .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .work-order-alert {
+              display: flex;
+              justify-content: center;
+              color: #cb1b26; }
+            .component-workOrders .component-views .create-work-order .section-container .property-section .work-order-request .hidden {
+              display: none; }
           .component-workOrders .component-views .create-work-order .section-container .property-section .property-selector {
             position: absolute;
             text-align: center;

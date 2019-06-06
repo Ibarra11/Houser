@@ -57,7 +57,6 @@ class WorkOrderQueue extends Component {
       .get("/api/work_orders")
       .then(res => {
         if (res.data.length > 0) {
-          console.log(res.data);
           this.paginationInstance.itemList = res.data;
           this.paginationInstance.calculateNumOfPages();
           let pageItems = this.paginationInstance.displayItemsOnPage(
@@ -85,7 +84,6 @@ class WorkOrderQueue extends Component {
   }
 
   filterQueue() {
-    console.log(this.state);
     let filters = Object.assign({}, this.state.workOrderFilters);
     if (Object.keys(filters).length > 0) {
       let queue;
