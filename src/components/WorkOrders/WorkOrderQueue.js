@@ -22,19 +22,15 @@ class WorkOrderQueue extends Component {
     this.getWorkOrdersFromQueue();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(prevProps, prevState) {
     if (this.state.workOrders.length > 0) {
       let updateFlag = false;
+
       let filters = Object.assign({}, this.state.workOrderFilters);
       let currentFilterLength = Object.keys(this.props.filters).length;
       let previousFilterLength = Object.keys(prevState.workOrderFilters).length;
       if (previousFilterLength > currentFilterLength) {
-        this.setState(
-          {
-            workOrderFilters: this.props.filters
-          },
-          this.filterQueue
-        );
+        this.filterQueue();
       } else if (currentFilterLength > 0) {
         for (let prop in this.props.filters) {
           if (!this.state.workOrderFilters[prop]) {
@@ -90,6 +86,8 @@ class WorkOrderQueue extends Component {
   }
 
   filterQueue() {
+    console.log(this.props.filters);
+    console.log(this.state);
     let filters = Object.assign({}, this.state.workOrderFilters);
     if (Object.keys(filters).length > 0) {
       let queue;
@@ -101,15 +99,28 @@ class WorkOrderQueue extends Component {
       let order;
       let filteredQueue;
       for (let filter in filters) {
+        console.log(filter);
         order = filters[filter];
         if (filter === "Job Id") {
           let firstCurrentWorkOrder = this.state.currentWorkOrders[0].job_id;
           let lastCurrentWorkOrder = this.state.currentWorkOrders[
             this.state.currentWorkOrders.length - 1
           ].job_id;
-          if (order === "ASC" && firstCurrentWorkOrder > lastCurrentWorkOrder) {
+          if (!this.props.filters[filter]) {
+            console.log(filter);
             filteredQueue = queue.reverse();
-            console.log(filteredQueue);
+            this.paginationInstance.itemList = filteredQueue;
+            this.setState(
+              {
+                workOrderFilters: this.props.filters
+              },
+              this.updatePageItems(true)
+            );
+          } else if (
+            order === "ASC" &&
+            firstCurrentWorkOrder > lastCurrentWorkOrder
+          ) {
+            filteredQueue = queue.reverse();
             this.paginationInstance.itemList = filteredQueue;
             this.updatePageItems(true);
           } else if (
@@ -117,22 +128,29 @@ class WorkOrderQueue extends Component {
             firstCurrentWorkOrder < lastCurrentWorkOrder
           ) {
             filteredQueue = queue.reverse();
-            console.log(filteredQueue);
             this.paginationInstance.itemList = filteredQueue;
             this.updatePageItems(true);
           }
         } else if (filter === "Property") {
-        } else if (filter === "Date") {
-          if (filter === "Job Id") {
-            if (order === "ASC") {
-            } else {
+          let street, state, zipcode, city;
+          let filteredProperties = [];
+          for (let i = 0; i < queue.length; i++) {
+            console.log(queue[i]);
+            street = queue[i].property_street;
+            city = queue[i].property_city;
+            state = queue[i].property_state;
+            zipcode = queue[i].property_zipcode;
+
+            if (filters[filter] === `${street} ${city}, ${state} ${zipcode}`) {
+              filteredProperties.push(queue[i]);
             }
           }
+          this.paginationInstance.itemList = filteredProperties;
+          this.updatePageItems(true);
         }
       }
     } else {
       this.paginationInstance.itemList = this.state.workOrders;
-      this.updatePageItems();
     }
   }
 
@@ -140,10 +158,11 @@ class WorkOrderQueue extends Component {
     let pageItems = this.paginationInstance.displayItemsOnPage(
       this.currentPage
     );
+    let filteredWorkOrders = this.paginationInstance.itemList;
     if (filters) {
       this.setState({
         currentWorkOrders: pageItems,
-        filteredWorkOrders: this.paginationInstance.itemList
+        filteredWorkOrders
       });
     } else {
       this.setState({
