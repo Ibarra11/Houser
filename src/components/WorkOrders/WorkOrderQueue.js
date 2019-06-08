@@ -9,6 +9,7 @@ class WorkOrderQueue extends Component {
       workOrders: [],
       filteredWorkOrders: [],
       workOrderFilters: {},
+      workOrderFilterStatus: {},
       currentWorkOrders: []
     };
     this.paginationInstance = new Pagination([], 5);
@@ -22,29 +23,38 @@ class WorkOrderQueue extends Component {
     this.getWorkOrdersFromQueue();
   }
 
-  async componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.workOrders.length > 0) {
       let updateFlag = false;
-
       let filters = Object.assign({}, this.state.workOrderFilters);
+      let filterStatus = Object.assign({}, this.state.workOrderFilterStatus);
       let currentFilterLength = Object.keys(this.props.filters).length;
       let previousFilterLength = Object.keys(prevState.workOrderFilters).length;
-      if (previousFilterLength > currentFilterLength) {
+
+      if (
+        previousFilterLength > currentFilterLength ||
+        (currentFilterLength === 0 && this.state.filteredWorkOrders.length > 0)
+      ) {
         this.filterQueue();
       } else if (currentFilterLength > 0) {
         for (let prop in this.props.filters) {
           if (!this.state.workOrderFilters[prop]) {
             updateFlag = true;
             filters[prop] = this.props.filters[prop];
+            filterStatus[prop] = "NEW";
           } else if (
             this.state.workOrderFilters[prop] !== this.props.filters[prop]
           ) {
+            filterStatus[prop] = "UPDATED";
             updateFlag = true;
             filters[prop] = this.props.filters[prop];
           }
         }
         if (updateFlag) {
-          this.setState({ workOrderFilters: filters }, this.filterQueue);
+          this.setState(
+            { workOrderFilters: filters, workOrderFilterStatus: filterStatus },
+            this.filterQueue
+          );
         }
       }
     }
@@ -86,8 +96,6 @@ class WorkOrderQueue extends Component {
   }
 
   filterQueue() {
-    console.log(this.props.filters);
-    console.log(this.state);
     let filters = Object.assign({}, this.state.workOrderFilters);
     if (Object.keys(filters).length > 0) {
       let queue;
@@ -96,61 +104,105 @@ class WorkOrderQueue extends Component {
       } else {
         queue = this.state.workOrders.slice();
       }
-      let order;
+
       let filteredQueue;
       for (let filter in filters) {
-        console.log(filter);
-        order = filters[filter];
         if (filter === "Job Id") {
-          let firstCurrentWorkOrder = this.state.currentWorkOrders[0].job_id;
-          let lastCurrentWorkOrder = this.state.currentWorkOrders[
-            this.state.currentWorkOrders.length - 1
-          ].job_id;
+          let filterStatus = Object.assign(
+            {},
+            this.state.workOrderFilterStatus
+          );
           if (!this.props.filters[filter]) {
-            console.log(filter);
             filteredQueue = queue.reverse();
             this.paginationInstance.itemList = filteredQueue;
+            delete filterStatus[filter];
             this.setState(
               {
-                workOrderFilters: this.props.filters
+                workOrderFilters: this.props.filters,
+                workOrderFilterStatus: filterStatus
               },
               this.updatePageItems(true)
             );
           } else if (
-            order === "ASC" &&
-            firstCurrentWorkOrder > lastCurrentWorkOrder
+            this.state.workOrderFilterStatus[filter] === "NEW" ||
+            this.state.workOrderFilterStatus[filter] === "UPDATED"
           ) {
+            let filterStatus = Object.assign(
+              {},
+              this.state.workOrderFilterStatus
+            );
             filteredQueue = queue.reverse();
+            filterStatus[filter] = "APPLIED";
             this.paginationInstance.itemList = filteredQueue;
-            this.updatePageItems(true);
-          } else if (
-            order === "DESC" &&
-            firstCurrentWorkOrder < lastCurrentWorkOrder
-          ) {
-            filteredQueue = queue.reverse();
-            this.paginationInstance.itemList = filteredQueue;
-            this.updatePageItems(true);
+            this.setState(
+              {
+                workOrderFilterStatus: filterStatus
+              },
+              this.updatePageItems(true)
+            );
           }
         } else if (filter === "Property") {
-          let street, state, zipcode, city;
-          let filteredProperties = [];
-          for (let i = 0; i < queue.length; i++) {
-            console.log(queue[i]);
-            street = queue[i].property_street;
-            city = queue[i].property_city;
-            state = queue[i].property_state;
-            zipcode = queue[i].property_zipcode;
+          let filterStatus = Object.assign(
+            {},
+            this.state.workOrderFilterStatus
+          );
+          if (!this.props.filters[filter]) {
+            this.paginationInstance.itemList = this.state.workOrders;
+            delete filterStatus[filter];
+            this.setState(
+              {
+                workOrderFilters: this.props.filters,
+                workOrderFilterStatus: filterStatus
+              },
+              this.updatePageItems(true)
+            );
+          } else if (
+            this.state.workOrderFilterStatus[filter] === "NEW" ||
+            this.state.workOrderFilterStatus[filter] === "UPDATED"
+          ) {
+            let street, state, zipcode, city;
+            let filteredProperties = [];
+            filterStatus[filter] = "APPLIED";
+            queue =
+              this.state.workOrderFilterStatus[filter] === "UPDATED"
+                ? this.state.workOrders
+                : queue;
+            for (let i = 0; i < queue.length; i++) {
+              street = queue[i].property_street;
+              city = queue[i].property_city;
+              state = queue[i].property_state;
+              zipcode = queue[i].property_zipcode;
 
-            if (filters[filter] === `${street} ${city}, ${state} ${zipcode}`) {
-              filteredProperties.push(queue[i]);
+              if (
+                filters[filter] === `${street} ${city}, ${state} ${zipcode}`
+              ) {
+                filteredProperties.push(queue[i]);
+              }
             }
+            this.paginationInstance.itemList = filteredProperties;
+            if (this.state.workOrderFilters["Job Id"] === "DESC") {
+              filterStatus["Job Id"] = "UPDATED";
+            }
+            this.setState(
+              {
+                workOrderFilterStatus: filterStatus,
+                filteredWorkOrders: filteredProperties
+              },
+              this.filterQueue
+            );
           }
-          this.paginationInstance.itemList = filteredProperties;
-          this.updatePageItems(true);
         }
       }
     } else {
-      this.paginationInstance.itemList = this.state.workOrders;
+      this.setState(
+        {
+          filteredWorkOrders: []
+        },
+        () => {
+          this.paginationInstance.itemList = this.state.workOrders;
+          this.updatePageItems();
+        }
+      );
     }
   }
 
