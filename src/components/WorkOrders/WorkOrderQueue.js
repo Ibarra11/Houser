@@ -223,6 +223,7 @@ class WorkOrderQueue extends Component {
       this.currentPage
     );
     let filteredWorkOrders = this.paginationInstance.itemList;
+    this.paginationInstance.calculateNumOfPages();
     if (filters) {
       this.setState({
         currentWorkOrders: pageItems,
