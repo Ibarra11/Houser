@@ -114,7 +114,13 @@ class WorkOrderQueue extends Component {
               {},
               this.state.workOrderFilterStatus
             );
-            if (!this.props.filters[filter]) {
+            let order = filters[filter];
+            let firstWorkOrder = queue[0].job_id;
+            let secondWorkOrder = queue[1].job_id;
+            if (
+              !this.props.filters[filter] &&
+              firstWorkOrder > secondWorkOrder
+            ) {
               filteredQueue = queue.reverse();
               this.paginationInstance.itemList = filteredQueue;
               delete filterStatus[filter];
@@ -133,15 +139,28 @@ class WorkOrderQueue extends Component {
                 {},
                 this.state.workOrderFilterStatus
               );
-              filteredQueue = queue.reverse();
-              filterStatus[filter] = "APPLIED";
-              this.paginationInstance.itemList = filteredQueue;
-              this.setState(
-                {
-                  workOrderFilterStatus: filterStatus
-                },
-                this.updatePageItems(true)
-              );
+
+              if (order === "DESC" && firstWorkOrder < secondWorkOrder) {
+                filteredQueue = queue.reverse();
+                this.paginationInstance.itemList = filteredQueue;
+                filterStatus[filter] = "APPLIED";
+                this.setState(
+                  {
+                    workOrderFilterStatus: filterStatus
+                  },
+                  this.updatePageItems(true)
+                );
+              } else if (order === "ASC" && firstWorkOrder > secondWorkOrder) {
+                filteredQueue = queue.reverse();
+                this.paginationInstance.itemList = filteredQueue;
+                filterStatus[filter] = "APPLIED";
+                this.setState(
+                  {
+                    workOrderFilterStatus: filterStatus
+                  },
+                  this.updatePageItems(true)
+                );
+              }
             }
           } else if (filter === "Property") {
             let filterStatus = Object.assign(
