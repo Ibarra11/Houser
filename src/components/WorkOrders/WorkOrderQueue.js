@@ -98,141 +98,139 @@ class WorkOrderQueue extends Component {
   filterQueue() {
     let filters = Object.assign({}, this.state.workOrderFilters);
     let filterLength = Object.keys(filters).length;
-    if (filterLength > 0) {
-      let queue;
-      if (this.state.filteredWorkOrders.length > 0) {
-        queue = this.state.filteredWorkOrders.slice();
-      } else {
-        queue = this.state.workOrders.slice();
-      }
-      let filteredQueue;
 
-      if (filterLength > 0) {
-        for (let filter in filters) {
-          if (filter === "Job Id") {
-            let filterStatus = Object.assign(
-              {},
-              this.state.workOrderFilterStatus
+    let queue;
+    let filteredQueue;
+
+    if (this.state.filteredWorkOrders.length > 0) {
+      queue = this.state.filteredWorkOrders.slice();
+    } else {
+      queue = this.state.workOrders.slice();
+    }
+
+    let filterStatus = Object.assign({}, this.state.workOrderFilterStatus);
+
+    if (filterLength > 0 && queue.length > 1) {
+      for (let filter in filters) {
+        if (filter === "Job Id") {
+          let order = filters[filter];
+          let firstWorkOrder = queue[0].job_id;
+          let secondWorkOrder = queue[1].job_id;
+          if (!this.props.filters[filter] && firstWorkOrder > secondWorkOrder) {
+            filteredQueue = queue.reverse();
+            this.paginationInstance.itemList = filteredQueue;
+            delete filterStatus[filter];
+            this.setState(
+              {
+                workOrderFilters: this.props.filters,
+                workOrderFilterStatus: filterStatus
+              },
+              this.updatePageItems(true)
             );
-            let order = filters[filter];
-            let firstWorkOrder = queue[0].job_id;
-            let secondWorkOrder = queue[1].job_id;
-            if (
-              !this.props.filters[filter] &&
-              firstWorkOrder > secondWorkOrder
-            ) {
+          } else if (
+            this.state.workOrderFilterStatus[filter] === "NEW" ||
+            this.state.workOrderFilterStatus[filter] === "UPDATED"
+          ) {
+            let orderFlag = false;
+            if (order === "DESC" && firstWorkOrder < secondWorkOrder) {
+              orderFlag = true;
+            } else if (order === "ASC" && firstWorkOrder > secondWorkOrder) {
+              orderFlag = true;
+            }
+
+            if (orderFlag) {
               filteredQueue = queue.reverse();
               this.paginationInstance.itemList = filteredQueue;
-              delete filterStatus[filter];
-              this.setState(
-                {
-                  workOrderFilters: this.props.filters,
-                  workOrderFilterStatus: filterStatus
-                },
-                this.updatePageItems(true)
-              );
-            } else if (
-              this.state.workOrderFilterStatus[filter] === "NEW" ||
-              this.state.workOrderFilterStatus[filter] === "UPDATED"
-            ) {
-              let filterStatus = Object.assign(
-                {},
-                this.state.workOrderFilterStatus
-              );
-
-              if (order === "DESC" && firstWorkOrder < secondWorkOrder) {
-                filteredQueue = queue.reverse();
-                this.paginationInstance.itemList = filteredQueue;
-                filterStatus[filter] = "APPLIED";
-                this.setState(
-                  {
-                    workOrderFilterStatus: filterStatus
-                  },
-                  this.updatePageItems(true)
-                );
-              } else if (order === "ASC" && firstWorkOrder > secondWorkOrder) {
-                filteredQueue = queue.reverse();
-                this.paginationInstance.itemList = filteredQueue;
-                filterStatus[filter] = "APPLIED";
-                this.setState(
-                  {
-                    workOrderFilterStatus: filterStatus
-                  },
-                  this.updatePageItems(true)
-                );
-              }
-            }
-          } else if (filter === "Property") {
-            let filterStatus = Object.assign(
-              {},
-              this.state.workOrderFilterStatus
-            );
-            if (!this.props.filters[filter]) {
-              this.paginationInstance.itemList = this.state.workOrders;
-              delete filterStatus[filter];
-              if (this.state.workOrderFilters["Job Id"] === "DESC") {
-                filterStatus["Job Id"] = "UPDATED";
-              }
-              this.setState(
-                {
-                  workOrderFilters: this.props.filters,
-                  workOrderFilterStatus: filterStatus
-                },
-                this.updatePageItems(true)
-              );
-            } else if (
-              this.state.workOrderFilterStatus[filter] === "NEW" ||
-              this.state.workOrderFilterStatus[filter] === "UPDATED"
-            ) {
-              let street, state, zipcode, city;
-              let filteredProperties = [];
-              queue =
-                this.state.workOrderFilterStatus[filter] === "UPDATED"
-                  ? this.state.workOrders
-                  : queue;
-              for (let i = 0; i < queue.length; i++) {
-                street = queue[i].property_street;
-                city = queue[i].property_city;
-                state = queue[i].property_state;
-                zipcode = queue[i].property_zipcode;
-
-                if (
-                  filters[filter] === `${street} ${city}, ${state} ${zipcode}`
-                ) {
-                  filteredProperties.push(queue[i]);
-                }
-              }
-              this.paginationInstance.itemList = filteredProperties;
-              if (
-                filterStatus[filter] === "UPDATED" &&
-                this.state.workOrderFilters["Job Id"] &&
-                this.state.workOrderFilters["Job Id"] === "DESC"
-              ) {
-                filterStatus["Job Id"] = "UPDATED";
-              }
               filterStatus[filter] = "APPLIED";
               this.setState(
                 {
-                  workOrderFilterStatus: filterStatus,
-                  filteredWorkOrders: filteredProperties
+                  workOrderFilterStatus: filterStatus
                 },
-                () => {
-                  filterStatus["Job Id"] && filterStatus["Job Id"] === "UPDATED"
-                    ? this.filterQueue()
-                    : this.updatePageItems(true);
-                }
+                this.updatePageItems(true)
               );
             }
           }
+        } else if (filter === "Property") {
+          if (!this.props.filters[filter]) {
+            this.paginationInstance.itemList = this.state.workOrders;
+            delete filterStatus[filter];
+            if (this.state.workOrderFilters["Job Id"] === "DESC") {
+              filterStatus["Job Id"] = "UPDATED";
+            }
+            this.setState(
+              {
+                workOrderFilters: this.props.filters,
+                workOrderFilterStatus: filterStatus
+              },
+              this.updatePageItems(true)
+            );
+          } else if (
+            this.state.workOrderFilterStatus[filter] === "NEW" ||
+            this.state.workOrderFilterStatus[filter] === "UPDATED"
+          ) {
+            let street, state, zipcode, city;
+            let filteredProperties = [];
+            queue =
+              this.state.workOrderFilterStatus[filter] === "UPDATED"
+                ? this.state.workOrders
+                : queue;
+            for (let i = 0; i < queue.length; i++) {
+              street = queue[i].property_street;
+              city = queue[i].property_city;
+              state = queue[i].property_state;
+              zipcode = queue[i].property_zipcode;
+
+              if (
+                filters[filter] === `${street} ${city}, ${state} ${zipcode}`
+              ) {
+                filteredProperties.push(queue[i]);
+              }
+            }
+            this.paginationInstance.itemList = filteredProperties;
+            if (
+              filterStatus[filter] === "UPDATED" &&
+              this.state.workOrderFilters["Job Id"] &&
+              this.state.workOrderFilters["Job Id"] === "DESC"
+            ) {
+              filterStatus["Job Id"] = "UPDATED";
+            }
+            filterStatus[filter] = "APPLIED";
+            this.setState(
+              {
+                workOrderFilterStatus: filterStatus,
+                filteredWorkOrders: filteredProperties
+              },
+              () => {
+                filterStatus["Job Id"] && filterStatus["Job Id"] === "UPDATED"
+                  ? this.filterQueue()
+                  : this.updatePageItems(true);
+              }
+            );
+          }
         }
       }
+    } else if (queue.length === 1) {
+      for (let filter in filters) {
+        if (filter === "Property" && !this.props.filters[filter]) {
+          delete filters[filter];
+          delete filterStatus[filter];
+          this.paginationInstance.itemList = this.state.workOrders;
+        }
+      }
+      this.setState(
+        {
+          workOrderFilters: filters,
+          workOrderFilterStatus: filterStatus
+        },
+        this.updatePageItems()
+      );
     } else {
       this.paginationInstance.itemList = this.state.workOrders;
       this.setState(
         {
           workOrderFilterStatus: {}
         },
-        this.updatePageItems()
+        this.updatePageItems
       );
     }
   }

@@ -58,7 +58,7 @@ class WorkOrder extends Component {
           <img src={property_img} alt="property img" />
           <div className="card-overlay">
             <div className="job-id">
-              <h5> Work Order #{job_id}</h5>
+              <h5> Job #{job_id}</h5>
             </div>
             <div className="property-address">
               <p>
