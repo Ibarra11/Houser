@@ -9,11 +9,12 @@ class WorkOrders extends Component {
     this.state = {
       view: "CreateWorkOrder",
       filters: {},
-      workOrderProperties: []
+      properties: []
     };
     this.renderView = this.renderView.bind(this);
     this.setFilters = this.setFilters.bind(this);
   }
+
   renderView() {
     let { view } = this.state;
     if (view === "CreateWorkOrder") {
@@ -25,15 +26,21 @@ class WorkOrders extends Component {
     } else if (view === "WorkOrderQueue") {
       return (
         <WorkOrderQueue
-          getProperties={properties =>
-            this.setState({ workOrderProperties: properties })
-          }
+          getProperties={properties => this.setState({ properties })}
           filters={this.state.filters}
           resetFilters={() => this.setState({ filters: {} })}
         />
       );
     } else if (view === "CompletedWorkOrders") {
-      return <CompletedWorkOrders />;
+      return (
+        <CompletedWorkOrders
+          filters={this.state.filters}
+          resetFilters={() => this.setState({ filters: {} })}
+          getProperties={properties => {
+            this.setState({ properties });
+          }}
+        />
+      );
     }
   }
   setFilters(filterList) {
@@ -72,7 +79,7 @@ class WorkOrders extends Component {
           </div>
           {this.state.view !== "CreateWorkOrder" ? (
             <FilterWorkOrder
-              properties={this.state.workOrderProperties}
+              properties={this.state.properties}
               setFilters={this.setFilters}
             />
           ) : null}

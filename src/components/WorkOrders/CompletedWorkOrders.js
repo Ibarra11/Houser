@@ -11,7 +11,10 @@ class CompletedWorkOrders extends Component {
       workOrdersOnPage: [],
       editWorkOrder: false,
       workOrderData: {},
-      workOrderIndex: 0
+      workOrderIndex: 0,
+      filteredWorkOrders: [],
+      workOrderFilters: {},
+      workOrderFilterStatus: {}
     };
 
     this.paginationInstance = new Pagination([], 6);
@@ -22,7 +25,10 @@ class CompletedWorkOrders extends Component {
 
   componentDidMount() {
     this.getCompletedWorkOrders();
+    console.log(this.props);
   }
+
+  componentDidUpdate(prevProps, prevState) {}
 
   getCompletedWorkOrders() {
     axios
@@ -34,10 +40,13 @@ class CompletedWorkOrders extends Component {
           let pageItems = this.paginationInstance.displayItemsOnPage(
             this.currentPage
           );
-          this.setState({
-            workOrderList: res.data,
-            workOrdersOnPage: pageItems
-          });
+          this.setState(
+            {
+              workOrderList: res.data,
+              workOrdersOnPage: pageItems
+            },
+            this.props.getProperties(res.data)
+          );
         } else {
           this.paginationInstance.reset();
           this.setState({ workOrderList: [], workOrdersOnPage: [] });
