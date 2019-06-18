@@ -35,7 +35,6 @@ module.exports = {
     filters = context.state.workOrderFilters,
     filterStatus = context.state.workOrderFilterStatus
   ) => {
-    // let filters = Object.assign({}, context.state.workOrderFilters);
     let filterLength = Object.keys(filters).length;
 
     let queue;

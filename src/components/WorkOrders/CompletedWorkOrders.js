@@ -3,12 +3,13 @@ import axios from "axios";
 import Pagination from "../../utilities/Pagination";
 import WorkOrderList from "./WorkOrderList";
 import EditWorkOrder from "./EditWorkOrder";
+import { filterCheck } from "../../utilities/Filter";
 class CompletedWorkOrders extends Component {
   constructor() {
     super();
     this.state = {
-      workOrderList: [],
-      workOrdersOnPage: [],
+      workOrders: [],
+      currentWorkOrders: [],
       editWorkOrder: false,
       workOrderData: {},
       workOrderIndex: 0,
@@ -25,10 +26,17 @@ class CompletedWorkOrders extends Component {
 
   componentDidMount() {
     this.getCompletedWorkOrders();
-    console.log(this.props);
   }
 
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.workOrders.length > 0) {
+      filterCheck(this, prevState);
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.resetFilters();
+  }
 
   getCompletedWorkOrders() {
     axios
@@ -42,8 +50,8 @@ class CompletedWorkOrders extends Component {
           );
           this.setState(
             {
-              workOrderList: res.data,
-              workOrdersOnPage: pageItems
+              workOrders: res.data,
+              currentWorkOrders: pageItems
             },
             this.props.getProperties(res.data)
           );
@@ -69,13 +77,23 @@ class CompletedWorkOrders extends Component {
     }
   }
 
-  updatePageItems() {
+  updatePageItems(filters = null) {
     let pageItems = this.paginationInstance.displayItemsOnPage(
       this.currentPage
     );
-    this.setState({
-      currentWorkOrders: pageItems
-    });
+    let filteredWorkOrders = this.paginationInstance.itemList;
+    this.paginationInstance.calculateNumOfPages();
+    if (filters) {
+      this.setState({
+        currentWorkOrders: pageItems,
+        filteredWorkOrders
+      });
+    } else {
+      this.setState({
+        currentWorkOrders: pageItems,
+        filteredWorkOrders: []
+      });
+    }
   }
 
   editWorkOrder = (workOrderData, index) => {
@@ -133,7 +151,7 @@ class CompletedWorkOrders extends Component {
             <WorkOrderList
               deleteWorkOrder={this.deleteWorkOrder}
               editWorkOrder={this.editWorkOrder}
-              workOrders={this.state.workOrdersOnPage}
+              workOrders={this.state.currentWorkOrders}
             />
           )}
         </div>

@@ -24,7 +24,6 @@ class WorkOrderQueue extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.state);
     if (this.state.workOrders.length > 0) {
       filterCheck(this, prevState);
     }
@@ -66,7 +65,6 @@ class WorkOrderQueue extends Component {
   }
 
   updatePageItems(filters = null) {
-    console.log("test");
     let pageItems = this.paginationInstance.displayItemsOnPage(
       this.currentPage
     );
