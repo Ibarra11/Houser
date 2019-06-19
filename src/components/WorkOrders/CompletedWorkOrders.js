@@ -106,7 +106,7 @@ class CompletedWorkOrders extends Component {
 
   cancelEditWorkOrder = newWorkOrderData => {
     if (newWorkOrderData) {
-      let updatedWorkOrders = this.state.workOrdersOnPage.slice();
+      let updatedWorkOrders = this.state.currentWorkOrders.slice();
       updatedWorkOrders[this.state.workOrderIndex] = Object.assign(
         updatedWorkOrders[this.state.workOrderIndex],
         { ...newWorkOrderData }

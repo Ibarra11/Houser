@@ -542,12 +542,13 @@
           width: 90%;
           height: 100%;
           margin: 0 auto;
+          position: relative;
           padding: 5% 0;
           display: flex;
           .property-info-container {
             height: 100%;
             width: 40%;
-            background-color: #395d7c;
+            // background-color: #395d7c;
             .property-address {
               display: flex;
               align-items: center;
@@ -564,22 +565,10 @@
                 width: 100%;
               }
             }
-            .edit-buttons {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding: 0 1rem;
-              width: 100%;
-              button {
-                width: 45%;
-                height: 60%;
-                padding: 8px 3px;
-              }
-            }
           }
           .work-order-info-container {
             width: 60%;
-            height: 100%;
+            height: 80%;
             border: 1px solid $btn-grey;
             overflow-y: auto;
             .form {
@@ -603,6 +592,30 @@
                 border-radius: 3px;
                 height: 11rem;
                 padding: 1rem;
+              }
+            }
+          }
+          .edit-buttons {
+            // display: flex;
+            // justify-content: space-between;
+            // align-items: center;
+            padding: 0 1rem;
+            width: 50%;
+            margin: 0 auto;
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            button {
+              width: 35%;
+              height: 60%;
+              padding: 8px 3px;
+              &:hover,
+              &:active {
+                cursor: pointer;
+              }
+              &:first-child {
+                margin-right: 2rem;
               }
             }
           }

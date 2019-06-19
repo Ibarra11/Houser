@@ -62,17 +62,6 @@ class EditWorkOrder extends Component {
               alt="property img"
             />
           </div>
-          <div className="property-address">
-            <h4>{`${this.props.workOrderData.property_street}, ${
-              this.props.workOrderData.property_city
-            } ${this.props.workOrderData.property_state}, ${
-              this.props.workOrderData.property_zipcode
-            } `}</h4>
-          </div>
-          <div className="edit-buttons">
-            <button onClick={this.editWorkOrder}>Edit</button>
-            <button onClick={this.props.cancelEditWorkOrder}>Cancel</button>
-          </div>
         </div>
         <div className="work-order-info-container">
           <div className="form">
@@ -139,6 +128,10 @@ class EditWorkOrder extends Component {
               />
             </div>
           </div>
+        </div>
+        <div className="edit-buttons">
+          <button onClick={this.editWorkOrder}>Edit</button>
+          <button onClick={this.props.cancelEditWorkOrder}>Cancel</button>
         </div>
       </div>
     );
