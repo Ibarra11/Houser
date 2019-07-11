@@ -73,6 +73,7 @@ app.post(
   },
   async (req, res) => {
     let { amount, token } = req.body;
+    console.log(req.body);
     let stripeAmount = amount * 100;
     let dateObj = new Date();
     let month = dateObj.getUTCMonth() + 1;
@@ -86,7 +87,9 @@ app.post(
         description: "An example charge",
         source: token.id
       });
+      console.log(response);
       let stripeId = response.id;
+
       let paymentResponse = await req.app
         .get("db")
         .insert_payment([req.property_id, amount, newDate, stripeId]);
@@ -96,6 +99,7 @@ app.post(
         res.status(400).send("Payment unsucceessful");
       }
     } catch (err) {
+      console.log(err);
       res.status(500).send(err);
     }
   }

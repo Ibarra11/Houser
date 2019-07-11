@@ -34,15 +34,16 @@ class Step3 extends Component {
     if (e.target.name === "propertyTenantContactNumber") {
       if (e.target.value.length < 14) {
         let phoneNumber = formatPhoneNumber(e.target.value);
-        phoneNumber || phoneNumber === ""
-          ? this.setState({ propertyTenantContactNumber: phoneNumber })
-          : null;
+        if (phoneNumber || phoneNumber === "") {
+          this.setState({ propertyTenantContactNumber: phoneNumber });
+        }
       }
     } else if (e.target.name === "propertyTenantSSN") {
       let val = Number(e.target.value);
+
       if (e.target.value.length <= 4 && val) {
         this.setState({ propertyTenantSSN: val });
-      } else if (e.target.value === " ") {
+      } else if (e.target.value === "") {
         this.setState({ propertyTenantSSN: e.target.value });
       }
     } else {
@@ -108,7 +109,7 @@ class Step3 extends Component {
           <div className="input-group">
             <h6>Last 4 Digits of SSN</h6>
             <input
-              type="password"
+              type="input"
               value={this.state.propertyTenantSSN}
               name="propertyTenantSSN"
               onChange={this.handleInputChange}

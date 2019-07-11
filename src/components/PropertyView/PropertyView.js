@@ -173,9 +173,7 @@ class PropertyView extends Component {
                 </div>
               </div>
               <div className="property-menu-views">
-                {this.state.propertyList.length > 0
-                  ? this.renderBasedOnMenuType()
-                  : null}
+                {this.renderBasedOnMenuType()}
               </div>
             </div>
           ) : (

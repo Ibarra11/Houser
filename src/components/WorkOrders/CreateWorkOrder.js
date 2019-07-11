@@ -112,7 +112,7 @@ class CreateWorkOrder extends Component {
       companyPhone,
       workDescription
     } = this.state;
-    console.log(this.state);
+
     if (
       propertyIndex >= 0 &&
       companyName &&
@@ -123,6 +123,7 @@ class CreateWorkOrder extends Component {
       companyPhone &&
       workDescription
     ) {
+      console.log("test");
       let date = moment().format("l");
       let time = moment().format("LT");
       let propertyId = this.state.properties[propertyIndex].property_id;
