@@ -95,8 +95,12 @@ class LandingPage extends Component {
         <header className="header">
           <div className="header-container">
             <div className="header-content">
-              {/* <h1>Property Management</h1> */}
-              <h4 />
+              <h1>Property Management Made Easy</h1>
+              <h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit sunt eligendi distinctio maiores, incidunt consequuntur
+                excepturi. Mollitia odit vero consequatur?
+              </h3>
             </div>
             <div className="header-form">
               <div className="header-form-type">

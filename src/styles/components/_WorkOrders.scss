@@ -40,7 +40,8 @@
       padding: 1rem;
       .controls-link {
         margin-bottom: 1rem;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
+        
         &:hover {
           cursor: pointer;
         }
@@ -348,6 +349,9 @@
       .job-queue-container {
         height: 75%;
         border-bottom: 3px solid $border-dark;
+        .hidden {
+          display: none;
+        }
         .job {
           display: flex;
           border: 1px solid $border-light;
@@ -415,14 +419,20 @@
                 cursor: pointer;
               }
             }
-            .action:first-child {
+
+            .action:nth-child(2) {
               i:hover {
-                color: #ffcf40;
+                color: $primary-red;
               }
             }
             .action:last-child {
               i:hover {
                 color: #4cd765;
+              }
+            }
+            .action:first-child {
+              i:hover {
+                color: #ffcf40;
               }
             }
           }
@@ -548,7 +558,7 @@
           .property-info-container {
             height: 100%;
             width: 40%;
-            // background-color: #395d7c;
+
             .property-address {
               display: flex;
               align-items: center;
@@ -596,9 +606,6 @@
             }
           }
           .edit-buttons {
-            // display: flex;
-            // justify-content: space-between;
-            // align-items: center;
             padding: 0 1rem;
             width: 50%;
             margin: 0 auto;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Pagination from "../../utilities/Pagination";
 import WorkOrderQueueList from "./WorkOrderQueueList";
-import { filterCheck, filterQueue } from "../../utilities/Filter";
+import { filterCheck } from "../../utilities/Filter";
 class WorkOrderQueue extends Component {
   constructor() {
     super();
@@ -17,6 +17,7 @@ class WorkOrderQueue extends Component {
     this.currentPage = 1;
     this.getWorkOrdersFromQueue = this.getWorkOrdersFromQueue.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
+    this.addToCompletedWorkOrders = this.addToCompletedWorkOrders.bind(this);
     this.removeFromQueue = this.removeFromQueue.bind(this);
   }
   componentDidMount() {
@@ -97,13 +98,19 @@ class WorkOrderQueue extends Component {
     }
   }
 
-  removeFromQueue(jobId) {
+  addToCompletedWorkOrders(jobId) {
     axios
       .put(`/api/work_orders/${jobId}`)
       .then(() => {
         this.getWorkOrdersFromQueue();
       })
       .catch(err => console.log(err));
+  }
+
+  removeFromQueue(jobId) {
+    axios.delete(`/api/workorder/${jobId}`).then(() => {
+      this.getWorkOrdersFromQueue();
+    });
   }
 
   render() {
@@ -119,8 +126,9 @@ class WorkOrderQueue extends Component {
         </div>
         <div className="job-queue-container">
           <WorkOrderQueueList
-            removeFromQueue={this.removeFromQueue}
+            addToCompletedWorkOrders={this.addToCompletedWorkOrders}
             queueList={this.state.currentWorkOrders}
+            removeFromQueue={this.removeFromQueue}
           />
         </div>
         <div className="pagination">

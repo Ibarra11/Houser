@@ -66,7 +66,7 @@ class Transactions extends Component {
                 </div>
             </div>
         )
-    }
+  }
 }
 
 export default Transactions;

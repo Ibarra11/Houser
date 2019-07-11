@@ -398,8 +398,9 @@ template {
       margin: 0 auto; }
       .component-landing-page .header .header-container .header-content {
         width: 50%;
-        border: 1px solid orange;
         text-align: center; }
+        .component-landing-page .header .header-container .header-content h1 {
+          font-size: 2.5rem; }
       .component-landing-page .header .header-container .header-form {
         background-color: rgba(0, 0, 0, 0.75);
         width: 50%;
@@ -919,7 +920,7 @@ template {
       padding: 1rem; }
       .component-workOrders .control-panel .controls .controls-link {
         margin-bottom: 1rem;
-        font-size: 1.25rem; }
+        font-size: 1.5rem; }
         .component-workOrders .control-panel .controls .controls-link:hover {
           cursor: pointer; }
     .component-workOrders .control-panel .work-order-filter {
@@ -1157,6 +1158,8 @@ template {
       .component-workOrders .component-views .job-queue .job-queue-container {
         height: 75%;
         border-bottom: 3px solid #0c101d; }
+        .component-workOrders .component-views .job-queue .job-queue-container .hidden {
+          display: none; }
         .component-workOrders .component-views .job-queue .job-queue-container .job {
           display: flex;
           border: 1px solid #4d5765;
@@ -1210,10 +1213,12 @@ template {
               transition: all 1s; }
             .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:hover {
               cursor: pointer; }
-            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:first-child i:hover {
-              color: #ffcf40; }
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:nth-child(2) i:hover {
+              color: #cb1b26; }
             .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:last-child i:hover {
               color: #4cd765; }
+            .component-workOrders .component-views .job-queue .job-queue-container .job .job-controls .action:first-child i:hover {
+              color: #ffcf40; }
     .component-workOrders .component-views .completed-jobs {
       height: 100%; }
       .component-workOrders .component-views .completed-jobs .job-header {

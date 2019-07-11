@@ -14,6 +14,8 @@ const paymentCtrl = require("./controllers/paymentController");
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
+app.use(express.static(`${__dirname}/../build`));
+
 app.use(bodyParser.json());
 
 app.use(

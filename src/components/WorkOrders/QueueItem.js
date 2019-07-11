@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
+import ElapsedTime from "../../utilities/ElapsedTIme";
 
 class QueueItem extends Component {
   constructor() {
@@ -17,43 +18,27 @@ class QueueItem extends Component {
     currentDate.months += 1;
 
     let workOrderDate = data.date_created.split("/");
-    let workOrderTime = data.time_created.split(/[:""]/);
+    let workOrderTime = data.time_created.split(/[:" "]/);
 
     let workOrderMonth = +workOrderDate[0];
     let workOrderDay = +workOrderDate[1];
     let workOrderYear = +workOrderDate[2];
-    let workOrderHour = +workOrderTime[0] + 12;
+    let workOrderTimePeriod = workOrderTime[2];
+    console.log(workOrderTime);
+    let workOrderHour =
+      +workOrderTime[0] !== 12 && workOrderTimePeriod === "PM"
+        ? +workOrderTime[0] + 12
+        : +workOrderTime[0];
     let workOrderMinutes = +workOrderTime[1];
+    console.log(workOrderHour);
 
-    let timeElapsed = {
-      years: 0,
-      months: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0
-    };
-
-    if (currentDate.years > workOrderYear) {
-      timeElapsed.years = currentDate.years - workOrderYear;
-    }
-    if (currentDate.months > workOrderMonth) {
-      timeElapsed.months = currentDate.months - workOrderMonth;
-    }
-    if (currentDate.months < workOrderMonth) {
-      timeElapsed.months += workOrderMonth - currentDate.months;
-    }
-    if (currentDate.date > workOrderDay) {
-      timeElapsed.hours += (currentDate.date - workOrderDay) * 24;
-    }
-    if (currentDate.date < workOrderDay) {
-      timeElapsed.hours += (workOrderDay - currentDate.date) * 24;
-    }
-    if (currentDate.hours > workOrderHour) {
-      timeElapsed.hours -= currentDate.hours - workOrderHour;
-    }
-    if (currentDate.hours < workOrderHour) {
-      timeElapsed.hours -= workOrderHour - currentDate.hours;
-    }
+    ElapsedTime(
+      workOrderDay,
+      workOrderMonth,
+      workOrderYear,
+      workOrderHour,
+      workOrderMinutes
+    );
 
     if (this.state.displayWorkOrderInfo) {
       return (
@@ -84,13 +69,6 @@ class QueueItem extends Component {
             >
               {" "}
               <i className="fa fa-times" />
-            </div>
-            <div
-              onClick={() => this.props.removeFromQueue(data.job_id)}
-              className="action"
-            >
-              {" "}
-              <i className="fa fa-check-circle" />
             </div>
           </div>
         </div>
@@ -123,8 +101,16 @@ class QueueItem extends Component {
               {" "}
               <i className="fa fa-tools" />
             </div>
+
             <div
               onClick={() => this.props.removeFromQueue(data.job_id)}
+              className="action"
+            >
+              {" "}
+              <i className="fas fa-trash" />
+            </div>
+            <div
+              onClick={() => this.props.addToCompletedWorkOrders(data.job_id)}
               className="action"
             >
               {" "}
