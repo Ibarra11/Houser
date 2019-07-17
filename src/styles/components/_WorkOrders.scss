@@ -41,7 +41,7 @@
       .controls-link {
         margin-bottom: 1rem;
         font-size: 1.5rem;
-        
+
         &:hover {
           cursor: pointer;
         }
@@ -303,6 +303,14 @@
               }
               input:focus {
                 outline: none;
+              }
+              &:nth-child(2) {
+                position: relative;
+                .addressAutoCompleteSelect {
+                  position: absolute;
+                  top: 100%;
+                  width: 100%;
+                }
               }
             }
           }

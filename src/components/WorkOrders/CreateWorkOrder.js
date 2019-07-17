@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
 import { AsYouType } from "libphonenumber-js";
+import AddressAutoComplete from "../../utilities/AddressAutoComplete";
 import propertyPlaceholder from "../../assets/images/propertyPlaceholder.jpg";
 import StateList from "../../utilities/StateList";
 class CreateWorkOrder extends Component {
@@ -18,13 +19,15 @@ class CreateWorkOrder extends Component {
       companyZipcode: "",
       companyState: "",
       workDescription: "",
-      workOrderAlert: false
+      workOrderAlert: false,
+      addressAutoComplete: []
     };
     this.listProperties = this.listProperties.bind(this);
     this.onPropertyChange = this.onPropertyChange.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.submitWorkOrder = this.submitWorkOrder.bind(this);
     this.clearWorkOrder = this.clearWorkOrder.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   componentDidMount() {
@@ -70,7 +73,7 @@ class CreateWorkOrder extends Component {
     });
   }
 
-  onInputChange(e) {
+  async onInputChange(e) {
     if (e.target.name === "companyPhone") {
       // Only allows phone numbers (209) 111-1111
       if (this.state.companyPhone.length <= 13) {
@@ -78,11 +81,28 @@ class CreateWorkOrder extends Component {
           companyPhone: new AsYouType("US").input(e.target.value)
         });
       }
+    } else if (e.target.name === "companyAddress") {
+      let inputAddress = e.target.value;
+      let addressArr = await AddressAutoComplete(inputAddress);
+      this.setState({
+        addressAutoComplete: addressArr,
+        companyAddress: inputAddress
+      });
     } else {
       this.setState({
         [e.target.name]: e.target.value
       });
     }
+  }
+
+  handleSelectChange(e) {
+    let address = e.target.value.split(",");
+    this.setState({
+      companyAddress: address[0],
+      companyCity: address[1],
+      companyState: address[2],
+      addressAutoComplete: []
+    });
   }
 
   clearWorkOrder() {
@@ -123,7 +143,6 @@ class CreateWorkOrder extends Component {
       companyPhone &&
       workDescription
     ) {
-      console.log("test");
       let date = moment().format("l");
       let time = moment().format("LT");
       let propertyId = this.state.properties[propertyIndex].property_id;
@@ -221,6 +240,26 @@ class CreateWorkOrder extends Component {
                     type="text"
                     value={this.state.companyAddress}
                   />
+                  {this.state.addressAutoComplete.length > 0 ? (
+                    <select
+                      name="addressSelected"
+                      size={this.state.addressAutoComplete.length}
+                      onChange={this.handleSelectChange}
+                      className="addressAutoCompleteSelect"
+                    >
+                      {this.state.addressAutoComplete.map(address => {
+                        let { street_line, city, state } = address;
+                        return (
+                          <option
+                            key={address.text}
+                            value={[street_line, city, state]}
+                          >
+                            {address.text}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  ) : null}
                 </div>
 
                 <div className="input-group">

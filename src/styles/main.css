@@ -1124,6 +1124,12 @@ template {
               padding: 3px 0; }
             .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group input:focus {
               outline: none; }
+            .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group:nth-child(2) {
+              position: relative; }
+              .component-workOrders .component-views .create-work-order .company-section .company-info .input-container .input-group:nth-child(2) .addressAutoCompleteSelect {
+                position: absolute;
+                top: 100%;
+                width: 100%; }
         .component-workOrders .component-views .create-work-order .company-section .work-description {
           border-top: none; }
           .component-workOrders .component-views .create-work-order .company-section .work-description .description-box {
