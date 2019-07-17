@@ -88,6 +88,13 @@ class CreateWorkOrder extends Component {
         addressAutoComplete: addressArr,
         companyAddress: inputAddress
       });
+    } else if (e.target.name === "companyZipcode") {
+      if (
+        (+e.target.value && e.target.value.length <= 5) ||
+        e.target.value === ""
+      ) {
+        this.setState({ companyZipcode: +e.target.value || "" });
+      }
     } else {
       this.setState({
         [e.target.name]: e.target.value
