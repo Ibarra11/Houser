@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setPropertyAddress } from "../../redux/reducer";
+import AddressAutoComplete from "../../utilities/AddressAutoComplete";
 import axios from "axios";
 
 class Step1 extends Component {
@@ -46,23 +47,14 @@ class Step1 extends Component {
       });
   }
 
-  handleInputChange(e) {
-    let { REACT_APP_ADDRESS_AUTH_ID, REACT_APP_ADDRESS_API } = process.env;
-    let address = e.target.value;
+  async handleInputChange(e) {
     if (e.target.name === "propertyStreet") {
-      axios
-        .get(
-          `${REACT_APP_ADDRESS_API}auth-id=${REACT_APP_ADDRESS_AUTH_ID}&prefix=${
-            e.target.value
-          }`
-        )
-        .then(addresses => {
-          this.setState({
-            addressAutoComplete: addresses.data.suggestions || [],
-            propertyStreet: address
-          });
-        })
-        .catch(err => console.log(err));
+      let inputAddress = e.target.value;
+      let addressArr = await AddressAutoComplete(inputAddress);
+      this.setState({
+        addressAutoComplete: addressArr,
+        propertyStreet: inputAddress
+      });
     } else {
       this.setState({ [e.target.name]: e.target.value });
     }

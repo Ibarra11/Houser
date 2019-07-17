@@ -25,9 +25,9 @@ module.exports = {
       companyPhone
     ]);
 
+    // This db call is getting the last current index of the property.  And, it's being incremented by 1.
     let job_data = await db.get_last_work_order([ownerId]);
     job_data[0].job_id += 1;
-    console.log(job_data);
 
     db.add_work_order([
       job_data[0].job_id,

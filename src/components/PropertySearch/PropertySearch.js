@@ -116,7 +116,6 @@ class PropertySearch extends Component {
       for (let i = 0; i < this.props.propertyList.length; i++) {
         keyFlag = false;
         for (let j = 0; j < filterKeys.length; j++) {
-          console.log(this.state.filters[filterKeys[j]]);
           if (
             this.props.propertyList[i][filterKeys[j]] ===
             this.state.filters[filterKeys[j]]
