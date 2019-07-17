@@ -26,6 +26,8 @@ module.exports = {
     ]);
 
     let job_data = await db.get_last_work_order([ownerId]);
+    job_data[0].job_id += 1;
+    console.log(job_data);
 
     db.add_work_order([
       job_data[0].job_id,
