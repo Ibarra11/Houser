@@ -108,26 +108,32 @@ class PropertySearch extends Component {
 
   filterProperties() {
     let filterKeys = this.getFilterKeys(this.state.filters);
-    let filteredProperties = [];
-    let keyFlag;
-    for (let i = 0; i < this.props.propertyList.length; i++) {
-      keyFlag = false;
-      for (let j = 0; j < filterKeys.length; j++) {
-        if (
-          this.props.propertyList[i][filterKeys[j]] ===
-          this.state.filters[filterKeys[j]]
-        ) {
-          keyFlag = true;
-        } else {
-          keyFlag = false;
-          break;
+
+    if (filterKeys.length > 0) {
+      let filteredProperties = [];
+      let keyFlag;
+
+      for (let i = 0; i < this.props.propertyList.length; i++) {
+        keyFlag = false;
+        for (let j = 0; j < filterKeys.length; j++) {
+          console.log(this.state.filters[filterKeys[j]]);
+          if (
+            this.props.propertyList[i][filterKeys[j]] ===
+            this.state.filters[filterKeys[j]]
+          ) {
+            keyFlag = true;
+          } else {
+            keyFlag = false;
+            break;
+          }
+        }
+        if (keyFlag) {
+          filteredProperties.push(this.props.propertyList[i]);
         }
       }
-      if (keyFlag) {
-        filteredProperties.push(this.props.propertyList[i]);
-      }
+      console.log(this.state);
+      this.props.renderFilteredProperties(filteredProperties);
     }
-    this.props.renderFilteredProperties(filteredProperties);
   }
 
   clearFilters() {
@@ -142,7 +148,16 @@ class PropertySearch extends Component {
       for (let i = 0; i < filterMenus.length; i++) {
         filterMenus[i].value = "";
       }
-      this.props.clearFilteredProperties();
+      this.setState(
+        {
+          filters: {
+            property_state: "",
+            property_city: "",
+            property_zipcode: 0
+          }
+        },
+        () => this.props.clearFilteredProperties()
+      );
     }
   }
 
