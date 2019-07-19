@@ -7,9 +7,7 @@ module.exports = {
   formatPhoneNumber: (inputValue, deletedChar) => {
     let lastInputChar = inputValue.substring(inputValue.length - 1);
     let lastInputCharIntoNum = Number(lastInputChar);
-    console.log(inputValue.length);
-    console.log(lastInputCharIntoNum);
-    console.log(lastInputChar);
+
     if (
       (isNaN(lastInputCharIntoNum) || lastInputChar === "") &&
       inputValue.length < 1

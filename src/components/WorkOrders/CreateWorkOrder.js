@@ -5,6 +5,7 @@ import { AsYouType } from "libphonenumber-js";
 import AddressAutoComplete from "../../utilities/AddressAutoComplete";
 import propertyPlaceholder from "../../assets/images/propertyPlaceholder.jpg";
 import StateList from "../../utilities/StateList";
+import { formatPhoneNumber } from "../../utilities/Format";
 class CreateWorkOrder extends Component {
   constructor() {
     super();
@@ -76,10 +77,13 @@ class CreateWorkOrder extends Component {
   async onInputChange(e) {
     if (e.target.name === "companyPhone") {
       // Only allows phone numbers (209) 111-1111
-      if (this.state.companyPhone.length <= 13) {
-        this.setState({
-          companyPhone: new AsYouType("US").input(e.target.value)
-        });
+      if (e.target.value.length < 14) {
+        console.log(this.state.companyPhone.length);
+        let phoneNumber = formatPhoneNumber(e.target.value);
+        console.log(phoneNumber);
+        if (phoneNumber || phoneNumber === "") {
+          this.setState({ companyPhone: phoneNumber });
+        }
       }
     } else if (e.target.name === "companyAddress") {
       let inputAddress = e.target.value;

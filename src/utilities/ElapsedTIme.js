@@ -17,9 +17,6 @@ export default function(
     minutes: 0
   };
 
-  console.log(currentDate);
-  console.log(workOrderMinutes);
-
   if (currentDate.years > workOrderYear) {
     elapsedTime.years = currentDate.years - workOrderYear;
   }
@@ -35,6 +32,4 @@ export default function(
   if (currentDate.minutes > workOrderMinutes) {
     elapsedTime.minutes = currentDate.minutes - workOrderMinutes;
   }
-
-  console.log(elapsedTime);
 }
