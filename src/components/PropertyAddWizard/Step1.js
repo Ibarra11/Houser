@@ -55,6 +55,13 @@ class Step1 extends Component {
         addressAutoComplete: addressArr,
         propertyStreet: inputAddress
       });
+    } else if (e.target.name === "propertyZipcode") {
+      if (
+        (+e.target.value && e.target.value.length <= 5) ||
+        e.target.value === ""
+      ) {
+        this.setState({ propertyZipcode: +e.target.value || "" });
+      }
     } else {
       this.setState({ [e.target.name]: e.target.value });
     }

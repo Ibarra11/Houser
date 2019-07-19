@@ -5,24 +5,33 @@
 
 module.exports = {
   formatPhoneNumber: (inputValue, deletedChar) => {
-    let lastInputChar = Number(inputValue.substring(inputValue.length - 1));
-    // let numberCheck = lastInputChar === "-" || lastInputChar === "(" || lastInputChar === ")" && inputValue.length > 2 ? true : Number(lastInputChar);
-    console.log(deletedChar);
-    if (isNaN(lastInputChar)) {
-      return null;
-    } else {
+    let lastInputChar = inputValue.substring(inputValue.length - 1);
+    let lastInputCharIntoNum = Number(lastInputChar);
+    console.log(inputValue.length);
+    console.log(lastInputCharIntoNum);
+    console.log(lastInputChar);
+    if (
+      (isNaN(lastInputCharIntoNum) || lastInputChar === "") &&
+      inputValue.length < 1
+    ) {
+      return "";
+    } else if (/[0-9)-]/.test(lastInputChar)) {
       if (inputValue.length === 3) {
         return `(${inputValue})`;
       } else if (inputValue.length === 4) {
         if (inputValue[0] === "(") {
           return inputValue.substring(1, 3);
         }
+      } else if (inputValue.length === 5) {
+        return inputValue.substring(0, 5);
       } else if (inputValue.length === 9) {
-        return `${inputValue.substring(0, 8) + "-" + inputValue.substring(8)}`;
+        return lastInputCharIntoNum || lastInputCharIntoNum === 0
+          ? `${inputValue.substring(0, 8) + "-" + inputValue.substring(8)}`
+          : `${inputValue.substring(0, inputValue.length - 1)}`;
       } else if (inputValue.length === 10) {
         return inputValue.substring(0, 8);
       } else {
-        return inputValue;
+        if (lastInputChar !== "-" && lastInputChar !== ")") return inputValue;
       }
     }
   }
